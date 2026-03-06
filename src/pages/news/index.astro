@@ -1,0 +1,251 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Scam & fraud news"
+  description="Latest scam and consumer protection news from the FTC and trusted sources."
+>
+  <header class="news-hero">
+    <img
+      src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80"
+      alt=""
+      width="1200"
+      height="280"
+      class="news-hero-img"
+    />
+    <div class="news-hero-overlay">
+      <h1 class="news-hero-title">Scam & fraud news</h1>
+      <p class="news-hero-tagline">Latest consumer protection and scam alerts.</p>
+    </div>
+  </header>
+  <p class="intro">Recent consumer protection and scam-related news. Use this page to stay aware of current threats and enforcement actions.</p>
+
+  <div id="news-container" class="news-container">
+    <p class="news-loading" aria-live="polite">Loading news…</p>
+  </div>
+
+  <div id="news-fallback" class="news-fallback" hidden>
+    <p>News feed is temporarily unavailable. You can still get the latest scam alerts from these sources:</p>
+    <ul>
+      <li><a href="https://consumer.ftc.gov/consumer-alerts" target="_blank" rel="noopener noreferrer">FTC Consumer Alerts</a></li>
+      <li><a href="https://www.ic3.gov/News" target="_blank" rel="noopener noreferrer">FBI IC3 News</a></li>
+    </ul>
+  </div>
+
+  <p class="news-source">Feed source: <a href="https://www.ftc.gov/news-events/stay-connected/ftc-rss-feeds" target="_blank" rel="noopener noreferrer">FTC Consumer Protection Press Releases</a>. Updates when you load this page.</p>
+</Layout>
+
+<script>
+  const FTC_RSS = 'https://www.ftc.gov/feeds/press-release-consumer-protection.xml';
+  const API = 'https://api.rss2json.com/v1/api.json';
+  const MAX_ITEMS = 25;
+
+  const container = document.getElementById('news-container');
+  const fallback = document.getElementById('news-fallback');
+
+  function formatDate(raw) {
+    if (!raw) return '';
+    try {
+      const d = new Date(raw);
+      return isNaN(d.getTime()) ? raw : d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    } catch {
+      return raw;
+    }
+  }
+
+  function snippet(html) {
+    if (!html) return '';
+    const plain = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    return plain.length > 220 ? plain.slice(0, 220) + '…' : plain;
+  }
+
+  function showFallback() {
+    if (container) container.hidden = true;
+    if (fallback) {
+      fallback.hidden = false;
+    }
+  }
+
+  function renderList(items) {
+    if (!container || !items.length) {
+      showFallback();
+      return;
+    }
+    const ul = document.createElement('ul');
+    ul.className = 'news-list';
+    for (const item of items) {
+      const li = document.createElement('li');
+      li.className = 'news-item';
+      const title = document.createElement('a');
+      title.href = item.link || '#';
+      title.target = '_blank';
+      title.rel = 'noopener noreferrer';
+      title.className = 'news-title';
+      title.textContent = item.title || 'Untitled';
+      const timeEl = document.createElement('time');
+      timeEl.className = 'news-date';
+      timeEl.dateTime = item.pubDate || '';
+      timeEl.textContent = formatDate(item.pubDate);
+      li.appendChild(title);
+      li.appendChild(timeEl);
+      const desc = snippet(item.description);
+      if (desc) {
+        const p = document.createElement('p');
+        p.className = 'news-desc';
+        p.textContent = desc;
+        li.appendChild(p);
+      }
+      ul.appendChild(li);
+    }
+    container.innerHTML = '';
+    container.appendChild(ul);
+    container.hidden = false;
+    if (fallback) fallback.hidden = true;
+  }
+
+  async function loadNews() {
+    if (!container) return;
+    const apiUrl = `${API}?rss_url=${encodeURIComponent(FTC_RSS)}`;
+
+    async function tryFetch(url) {
+      const res = await fetch(url, { signal: AbortSignal.timeout(15000) });
+      const text = await res.text();
+      return text ? JSON.parse(text) : null;
+    }
+
+    try {
+      let data = null;
+      try {
+        data = await tryFetch(apiUrl);
+      } catch {
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`;
+        const raw = await fetch(proxyUrl, { signal: AbortSignal.timeout(15000) });
+        const text = await raw.text();
+        data = text ? JSON.parse(text) : null;
+      }
+      if (data?.status === 'ok' && Array.isArray(data.items)) {
+        renderList(data.items.slice(0, MAX_ITEMS));
+      } else {
+        showFallback();
+      }
+    } catch {
+      showFallback();
+    }
+  }
+
+  loadNews();
+</script>
+
+<style>
+  .news-hero {
+    position: relative;
+    margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)) var(--space-xl);
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: calc(100% + 2 * var(--space-lg));
+  }
+
+  .news-hero-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: var(--color-border);
+  }
+
+  .news-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-lg) 0 var(--space-md);
+  }
+
+  .news-hero-title {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .news-hero-tagline {
+    margin: var(--space-xs) 0 0;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .intro {
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-muted);
+  }
+
+  .news-container {
+    min-height: 120px;
+  }
+
+  .news-loading {
+    color: var(--color-text-muted);
+    padding: var(--space-lg) 0;
+  }
+
+  .news-fallback {
+    padding: var(--space-xl) 0;
+  }
+
+  .news-fallback[hidden] {
+    display: none;
+  }
+
+  .news-fallback ul {
+    margin-top: var(--space-md);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .news-item {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .news-item:last-child {
+    border-bottom: none;
+  }
+
+  .news-title {
+    display: block;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .news-title:hover {
+    text-decoration: underline;
+  }
+
+  .news-date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .news-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .news-source {
+    margin-top: var(--space-2xl);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>

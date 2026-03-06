@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="About"
+  description="About Scam Avenger: we help you find where to report scams and corruption. We do not take reports—we point you to official channels."
+>
+  <div class="about-hero">
+    <img
+      src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=80"
+      alt=""
+      width="1000"
+      height="320"
+      class="about-hero-img"
+    />
+  </div>
+
+  <h1>About Scam Avenger</h1>
+
+  <p>Scam Avenger helps you find the right place to report scams and corruption. We explain common scam types and link you to official government and trusted reporting channels.</p>
+
+  <h2>What we do</h2>
+  <ul>
+    <li>Explain how different scams work and what to do if you’re targeted.</li>
+    <li>Point you to the correct official form or agency (e.g. FTC, IC3, CFPB, IRS, Oversight.gov) based on your situation.</li>
+    <li>Keep a news feed of scam and consumer-protection updates.</li>
+  </ul>
+
+  <h2>What we don’t do</h2>
+  <p>We do <strong>not</strong> take reports ourselves. We don’t collect your personal information or forward your complaint. We only help you find and use the right official U.S. (and future) channels to report.</p>
+
+  <h2>Coverage</h2>
+  <p>We currently focus on the United States. More countries may be added later. All links go to official or trusted sources.</p>
+
+  <p><a href="/">← Back to Home</a></p>
+</Layout>
+
+<style>
+  .about-hero {
+    margin: 0 calc(-1 * var(--space-lg)) var(--space-xl);
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: calc(100% + 2 * var(--space-lg));
+  }
+
+  .about-hero-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: var(--color-border);
+  }
+</style>

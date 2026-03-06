@@ -1,0 +1,247 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getUsScamTypes, SCAM_CATEGORY_LABELS } from '../data/us-scams';
+
+const categoryOrder: Array<keyof typeof SCAM_CATEGORY_LABELS> = [
+  'online', 'phone', 'financial', 'impersonation', 'employment', 'housing',
+  'prizes_charity', 'identity_benefits', 'government', 'emerging',
+];
+const orderMap = Object.fromEntries(categoryOrder.map((c, i) => [c, i]));
+
+const usScamTopics = getUsScamTypes()
+  .sort((a, b) => (orderMap[a.category] ?? 99) - (orderMap[b.category] ?? 99))
+  .map((s) => ({
+    name: s.name,
+    path: `/us/scams/${s.slug}/`,
+    category: SCAM_CATEGORY_LABELS[s.category],
+  }));
+
+const baseUrl = import.meta.env.BASE_URL;
+const heroImageSrc = `${baseUrl}images/hero.svg`;
+const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7654579.jpeg?auto=compress&cs=tinysrgb&w=1200&fit=crop';
+---
+
+<Layout title="Scam Avenger" description="Find where to report scams and corruption. Choose your country for official reporting channels.">
+  <header class="hero">
+    <img
+      src={heroImagePexels}
+      alt="Person filling out a report or complaint form—report scams to the right place."
+      width="1200"
+      height="400"
+      class="hero-img"
+      fetchpriority="high"
+      loading="eager"
+      onerror="this.onerror=null; this.src=this.dataset.fallback || '';"
+      data-fallback={heroImageSrc}
+    />
+    <div class="hero-overlay">
+      <h1 class="hero-title">Scam Avenger</h1>
+      <p class="hero-tagline">Report scams the right way—we connect you to the official channels that can help.</p>
+    </div>
+  </header>
+
+  <p class="intro-p">We do not take reports ourselves. Select a country below to see scam types and where to report each one.</p>
+
+  <section class="country-section">
+    <h2>Choose your country</h2>
+    <p>Select a country to see types of scams. Click a scam type to open its details page and find where to report.</p>
+
+    <label for="country-select" class="sr-only">Country</label>
+    <select id="country-select" class="country-select" aria-label="Select country">
+      <option value="">-- Select a country --</option>
+      <option value="us">United States</option>
+    </select>
+
+    <div id="topics-wrap" class="topics-wrap" hidden>
+      <h3>Types of scams by category</h3>
+      <div class="table-wrap">
+        <table class="topics-table" id="topics-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Scam type</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="topics-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="more-soon">More countries may be added in the future.</p>
+  </section>
+</Layout>
+
+<script define:vars={{ usScamTopics }}>
+  const countryPages = {
+    us: {
+      name: 'United States',
+      topics: usScamTopics,
+    },
+  };
+
+  const select = document.getElementById('country-select');
+  const wrap = document.getElementById('topics-wrap');
+  const tbody = document.getElementById('topics-body');
+
+  if (select && wrap && tbody) {
+    function fillTable(countryKey) {
+      const country = countryPages[countryKey];
+      if (!country) {
+        wrap.hidden = true;
+        return;
+      }
+      tbody.innerHTML = '';
+      for (const topic of country.topics) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="category-cell">${topic.category}</td>
+          <td><a href="${topic.path}">${topic.name}</a></td>
+          <td><a href="${topic.path}" class="action-link">View details</a></td>
+        `;
+        tbody.appendChild(tr);
+      }
+      wrap.hidden = false;
+    }
+
+    select.addEventListener('change', () => {
+      const value = select.value;
+      if (value) fillTable(value);
+      else wrap.hidden = true;
+    });
+  }
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    margin: 0 calc(-1 * var(--space-lg)) var(--space-xl);
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: calc(100% + 2 * var(--space-lg));
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: var(--color-border);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(27, 54, 93, 0.9) 0%, rgba(27, 54, 93, 0.4) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-xl) 0 var(--space-lg);
+  }
+
+  .hero-title {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  .hero-tagline {
+    margin: var(--space-xs) 0 0;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.95);
+  }
+
+  .intro-p {
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-muted);
+  }
+
+  .country-section {
+    margin-top: var(--space-lg);
+  }
+
+  .country-select {
+    display: block;
+    width: 100%;
+    max-width: 20rem;
+    margin: var(--space-md) 0;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+  }
+
+  .topics-wrap {
+    margin-top: var(--space-xl);
+  }
+
+  .topics-wrap h3 {
+    margin-bottom: var(--space-md);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: var(--space-lg) 0;
+  }
+
+  .topics-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .topics-table th,
+  .topics-table td {
+    padding: var(--space-sm) var(--space-md);
+    text-align: left;
+    border: 1px solid var(--color-border);
+  }
+
+  .topics-table th {
+    background: var(--color-surface);
+    font-weight: 600;
+  }
+
+  .topics-table tbody tr:nth-child(even) {
+    background: var(--color-surface);
+  }
+
+  .topics-table a {
+    font-weight: 600;
+  }
+
+  .topics-table td .action-link {
+    font-weight: 500;
+  }
+
+  .category-cell {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .more-soon {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-xl);
+  }
+
+  .hero + .intro-p {
+    margin-top: 0;
+  }
+</style>

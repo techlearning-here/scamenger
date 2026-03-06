@@ -1,0 +1,29 @@
+---
+interface Props {
+  /** Short "What this page is for" text */
+  intro: string;
+  /** "What to do right now" items */
+  steps: string[];
+}
+
+const { intro, steps } = Astro.props;
+---
+
+<section class="category-intro" aria-labelledby="intro-heading">
+  <h2 id="intro-heading">What this page is for</h2>
+  <p>{intro}</p>
+  <h3>What to do right now</h3>
+  <ul>
+    {steps.map((step) => <li>{step}</li>)}
+  </ul>
+</section>
+
+<style>
+  .category-intro {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .category-intro h2 {
+    margin-top: 0;
+  }
+</style>

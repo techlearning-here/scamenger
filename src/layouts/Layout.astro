@@ -1,0 +1,151 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Base path for country-specific pages (e.g. "/us"). When set, nav shows category links under this base. */
+  base?: string;
+}
+
+const { title, description, base = '' } = Astro.props;
+const homeHref = base ? `${base}/` : '/';
+
+const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined;
+const adsenseSlotMain = import.meta.env.PUBLIC_ADSENSE_SLOT_MAIN as string | undefined;
+const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description ?? 'Find where to report scams and corruption in the USA. We help you reach the right official channels.'} />
+    <title>{title} | Scam Avenger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+    {showAdsense && (
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+        crossorigin="anonymous"
+      />
+    )}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <nav class="site-nav" aria-label="Main">
+          <a href={homeHref}>Home</a>
+          <a href="/news/">News</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <div class="container">
+        <slot />
+      </div>
+      {showAdsense && (
+        <div class="container ad-container">
+          <ins
+            class="adsbygoogle ad-block"
+            data-ad-client={adsenseClient}
+            data-ad-slot={adsenseSlotMain}
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+          <script is:inline>
+            (function () {
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              } catch (e) {}
+            })();
+          </script>
+        </div>
+      )}
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p class="disclaimer">We do not take reports. We only help you find the right official channels to report scams and corruption.</p>
+        <p class="copy">&copy; Scam Avenger. Links go to official government and trusted sites. Hero image from <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a>.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    background: var(--gradient-header);
+    border-bottom: 3px solid var(--color-accent);
+    padding: var(--space-md) 0;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 10%;
+    width: 100%;
+  }
+
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+  }
+
+  .site-nav a {
+    color: var(--color-header-text);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .site-nav a:hover {
+    color: #a4d4f4;
+    text-decoration: none;
+  }
+
+  .main {
+    padding: var(--space-2xl) 0;
+    min-height: 60vh;
+  }
+
+  .ad-container {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    min-height: 100px;
+  }
+
+  .ad-block {
+    display: block;
+  }
+
+  .site-footer {
+    background: var(--gradient-header);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: var(--space-md) 0;
+    margin-top: var(--space-2xl);
+  }
+
+  .disclaimer {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: var(--space-xs);
+  }
+
+  .copy {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+  }
+
+  .copy a {
+    color: #a4d4f4;
+  }
+
+  .copy a:hover {
+    color: #fff;
+  }
+</style>

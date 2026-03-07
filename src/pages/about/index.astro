@@ -41,12 +41,6 @@ const canonicalUrl = siteOrigin ? `${siteOrigin}${baseUrl.replace(/\/$/, '')}/ab
   <h2>Coverage</h2>
   <p>We currently focus on the United States. More countries may be added later. All links go to official or trusted sources.</p>
 
-  <h2 id="link-to-us">Link to us</h2>
-  <p>If you run a blog, news site, or resource page and want to link to Scam Avenger, you’re welcome to use the following. This helps people find where to report scams and can help our site get discovered.</p>
-  <p><strong>Suggested anchor text:</strong> “where to report scams”, “report fraud USA”, “Scam Avenger”, or “report scams (FTC, IC3)”.</p>
-  <p><strong>Copy-paste HTML:</strong></p>
-  <pre class="link-snippet"><code>&lt;a href="https://scamenger.com/" target="_blank" rel="noopener noreferrer"&gt;Where to report scams and fraud in the USA&lt;/a&gt;</code></pre>
-  <p>For a specific scam type, use <code>https://scamenger.com/us/scams/<em>slug</em>/</code> (e.g. <code>/us/scams/phishing/</code>, <code>/us/scams/romance/</code>).</p>
 
   <p><a href={import.meta.env.BASE_URL || '/'}>← Back to Home</a></p>
 </Layout>
@@ -89,20 +83,5 @@ const canonicalUrl = siteOrigin ? `${siteOrigin}${baseUrl.replace(/\/$/, '')}/ab
     margin: var(--space-xs) 0 0;
     font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.9);
-  }
-
-  .link-snippet {
-    margin: var(--space-md) 0;
-    padding: var(--space-md);
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    overflow-x: auto;
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  .link-snippet code {
-    font-family: ui-monospace, monospace;
   }
 </style>

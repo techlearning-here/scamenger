@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+const baseUrl = import.meta.env.BASE_URL || '';
 const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
-const canonicalUrl = siteOrigin ? `${siteOrigin}/about/` : undefined;
+const canonicalUrl = siteOrigin ? `${siteOrigin}${baseUrl.replace(/\/$/, '')}/about/` : undefined;
 ---
 
 <Layout
@@ -47,7 +48,7 @@ const canonicalUrl = siteOrigin ? `${siteOrigin}/about/` : undefined;
   <pre class="link-snippet"><code>&lt;a href="https://scamenger.com/" target="_blank" rel="noopener noreferrer"&gt;Where to report scams and fraud in the USA&lt;/a&gt;</code></pre>
   <p>For a specific scam type, use <code>https://scamenger.com/us/scams/<em>slug</em>/</code> (e.g. <code>/us/scams/phishing/</code>, <code>/us/scams/romance/</code>).</p>
 
-  <p><a href="/">← Back to Home</a></p>
+  <p><a href={import.meta.env.BASE_URL || '/'}>← Back to Home</a></p>
 </Layout>
 
 <style>

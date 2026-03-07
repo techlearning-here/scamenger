@@ -62,7 +62,7 @@ const impersonationScams = getUsScamTypes().filter((s) => s.category === 'impers
   <p>Detailed guides and where to report each:</p>
   <ul class="scam-links">
     {impersonationScams.map((scam) => (
-      <li><a href={`/us/scams/${scam.slug}/`}>{scam.name}</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}us/scams/${scam.slug}/`}>{scam.name}</a></li>
     ))}
   </ul>
 </Layout>

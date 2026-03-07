@@ -12,7 +12,7 @@ const usScamTopics = getUsScamTypes()
   .sort((a, b) => (orderMap[a.category] ?? 99) - (orderMap[b.category] ?? 99))
   .map((s) => ({
     name: s.name,
-    path: `/us/scams/${s.slug}/`,
+    path: `${baseUrl}us/scams/${s.slug}/`,
     category: SCAM_CATEGORY_LABELS[s.category],
   }));
 
@@ -60,7 +60,7 @@ const ogImage = heroImagePhoto;
     <ul class="popular-guides-list">
       {popularGuides.map((scam) => (
         <li class="popular-guides-item">
-          <a href={`/us/scams/${scam.slug}/`} class="popular-guides-link">{scam.name}</a>
+          <a href={`${baseUrl}us/scams/${scam.slug}/`} class="popular-guides-link">{scam.name}</a>
         </li>
       ))}
     </ul>

@@ -13,7 +13,8 @@ export function getStaticPaths() {
 
 const { scam } = Astro.props;
 const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
-const canonicalUrl = siteOrigin ? `${siteOrigin}/us/scams/${scam.slug}/` : undefined;
+const baseUrl = import.meta.env.BASE_URL || '';
+const canonicalUrl = siteOrigin ? `${siteOrigin}${baseUrl.replace(/\/$/, '')}/us/scams/${scam.slug}/` : undefined;
 const metaDesc = scam.intro.length > 155 ? scam.intro.slice(0, 152).trim() + '...' : scam.intro;
 const categoryLabel = SCAM_CATEGORY_LABELS[scam.category];
 const pageKeywords = `report ${scam.name}, ${scam.name} fraud, where to report ${scam.name}, report fraud USA, FTC report, IC3, ${categoryLabel}`;
@@ -36,7 +37,7 @@ const relatedScams = (scam.relatedSlugs ?? [])
     url: canonicalUrl,
     publisher: { '@type': 'Organization', name: 'Scam Avenger' },
   })} />
-  <p class="back"><a href="/">← Back to Home</a></p>
+  <p class="back"><a href={import.meta.env.BASE_URL || '/'}>← Back to Home</a></p>
   <p class="category-label">Category: {SCAM_CATEGORY_LABELS[scam.category]}</p>
   <h1>{scam.name}</h1>
 
@@ -126,7 +127,7 @@ const relatedScams = (scam.relatedSlugs ?? [])
       <h2 id="related-heading">Related scams</h2>
       <ul class="related-list">
         {relatedScams.map((related) => (
-          <li><a href={`/us/scams/${related.slug}/`}>{related.name}</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}us/scams/${related.slug}/`}>{related.name}</a></li>
         ))}
       </ul>
     </section>

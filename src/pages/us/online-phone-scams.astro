@@ -61,7 +61,7 @@ const onlinePhoneScams = getUsScamTypes().filter((s) => s.category === 'online' 
   <p>Detailed guides and where to report each:</p>
   <ul class="scam-links">
     {onlinePhoneScams.map((scam) => (
-      <li><a href={`/us/scams/${scam.slug}/`}>{scam.name}</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}us/scams/${scam.slug}/`}>{scam.name}</a></li>
     ))}
   </ul>
 </Layout>

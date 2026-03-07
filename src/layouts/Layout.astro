@@ -23,7 +23,7 @@ const homeHref = siteRoot ? `${siteRoot}/` : '/';
 
 const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
-const canonicalUrl = canonicalProp ?? (siteOrigin ? `${siteOrigin}${pathname}${pathname === '/' ? '' : '/'}` : undefined);
+const canonicalUrl = canonicalProp ?? (siteOrigin && siteRoot ? `${siteOrigin}${siteRoot}${pathname}${pathname === '/' ? '' : '/'}` : undefined);
 const fullTitle = title === 'Scam Avenger' ? 'Scam Avenger – Where to Report Scams, Fraud & Corruption' : `${title} | Scam Avenger`;
 const metaDescription = description ?? 'Find where to report scams, fraud, and corruption in the USA. Report to FTC, IC3, CFPB, and official channels.';
 const ogImage = image ?? undefined;
@@ -98,8 +98,8 @@ const showTopAd = showAdsense && Boolean(adsenseSlotTop ?? adsenseSlotMain);
       <div class="container">
         <nav class="site-nav" aria-label="Main">
           <a href={homeHref}>Home</a>
-          <a href="/news/">News</a>
-          <a href="/about/">About</a>
+          <a href={`${baseUrl}news/`}>News</a>
+          <a href={`${baseUrl}about/`}>About</a>
         </nav>
       </div>
     </header>

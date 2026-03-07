@@ -8,6 +8,8 @@ const categoryOrder: Array<keyof typeof SCAM_CATEGORY_LABELS> = [
 ];
 const orderMap = Object.fromEntries(categoryOrder.map((c, i) => [c, i]));
 
+const baseUrl = import.meta.env.BASE_URL || '';
+
 const usScamTopics = getUsScamTypes()
   .sort((a, b) => (orderMap[a.category] ?? 99) - (orderMap[b.category] ?? 99))
   .map((s) => ({
@@ -21,7 +23,6 @@ const popularGuides = getUsScamTypes().filter((s) => popularSlugs.includes(s.slu
 
 const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
 const canonicalUrl = siteOrigin ? `${siteOrigin}/` : undefined;
-const baseUrl = import.meta.env.BASE_URL;
 const heroImageFallback = `${baseUrl}images/hero.svg`;
 /** Hero: Unsplash business/planning (photo-1454165804606-c3d57bc86b40) */
 const heroImagePhoto = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=400&auto=format&fit=crop&ixlib=rb-4.1.0';

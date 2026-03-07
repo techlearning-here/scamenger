@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-// For GitHub Pages project site (e.g. username.github.io/scamenger), set base: '/scamenger/'
+// GitHub Pages project site: https://techlearning-here.github.io/scamenger/
 export default defineConfig({
-  site: 'https://scamenger.com',
-  base: '/',
+  site: 'https://techlearning-here.github.io',
+  base: '/scamenger/',
 });

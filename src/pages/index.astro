@@ -16,12 +16,16 @@ const usScamTopics = getUsScamTypes()
     category: SCAM_CATEGORY_LABELS[s.category],
   }));
 
-const baseUrl = import.meta.env.BASE_URL;
-const heroImageSrc = `${baseUrl}images/hero.svg`;
-const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7654579.jpeg?auto=compress&cs=tinysrgb&w=1200&fit=crop';
+const popularSlugs = ['phishing', 'romance', 'irs-tax-impersonation', 'identity-theft', 'job-employment', 'robocalls-phone', 'bank-zelle-transfer', 'fake-shopping'];
+const popularGuides = getUsScamTypes().filter((s) => popularSlugs.includes(s.slug));
+
 const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
 const canonicalUrl = siteOrigin ? `${siteOrigin}/` : undefined;
-const ogImage = heroImagePexels;
+const baseUrl = import.meta.env.BASE_URL;
+const heroImageFallback = `${baseUrl}images/hero.svg`;
+/** Hero: Unsplash business/planning (photo-1454165804606-c3d57bc86b40) */
+const heroImagePhoto = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=400&auto=format&fit=crop&ixlib=rb-4.1.0';
+const ogImage = heroImagePhoto;
 ---
 
 <Layout
@@ -32,15 +36,15 @@ const ogImage = heroImagePexels;
 >
   <header class="hero">
     <img
-      src={heroImagePexels}
-      alt="Person filling out a report or complaint form—report scams to the right place."
+      src={heroImagePhoto}
+      alt=""
       width="1200"
       height="400"
       class="hero-img"
       fetchpriority="high"
       loading="eager"
-      onerror="this.onerror=null; this.src=this.dataset.fallback || '';"
-      data-fallback={heroImageSrc}
+      onerror="this.onerror=null; this.src=this.dataset.fallback||'';"
+      data-fallback={heroImageFallback}
     />
     <div class="hero-overlay">
       <h1 class="hero-title">Scam Avenger</h1>
@@ -50,9 +54,21 @@ const ogImage = heroImagePexels;
 
   <p class="intro-p">We do not take reports ourselves. Select a country below to see scam types and where to report each one.</p>
 
+  <section class="popular-guides" aria-labelledby="popular-guides-heading">
+    <h2 id="popular-guides-heading">Popular reporting guides</h2>
+    <p class="popular-guides-intro">Quick links to where to report common scams in the USA:</p>
+    <ul class="popular-guides-list">
+      {popularGuides.map((scam) => (
+        <li class="popular-guides-item">
+          <a href={`/us/scams/${scam.slug}/`} class="popular-guides-link">{scam.name}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   <section class="country-section">
     <h2>Choose your country</h2>
-    <p>Select a country to see types of scams. Click a scam type to open its details page and find where to report.</p>
+    <p>Select a country to see types of scams. Click a scam type to see its details and find where to report.</p>
 
     <label for="country-select" class="sr-only">Country</label>
     <select id="country-select" class="country-select" aria-label="Select country">
@@ -78,7 +94,6 @@ const ogImage = heroImagePexels;
       </div>
     </div>
 
-    <p class="more-soon">More countries may be added in the future.</p>
   </section>
 </Layout>
 
@@ -146,7 +161,7 @@ const ogImage = heroImagePexels;
 
   .hero-img {
     width: 100%;
-    height: 160px;
+    height: 200px;
     object-fit: cover;
     display: block;
     background: var(--color-border);
@@ -155,7 +170,7 @@ const ogImage = heroImagePexels;
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(27, 54, 93, 0.9) 0%, rgba(27, 54, 93, 0.4) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(27, 54, 93, 0.88) 0%, rgba(27, 54, 93, 0.35) 40%, rgba(27, 54, 93, 0.08) 70%, transparent 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -276,13 +291,72 @@ const ogImage = heroImagePexels;
     border: 0;
   }
 
-  .more-soon {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    margin-top: var(--space-lg);
-  }
-
   .hero + .intro-p {
     margin-top: 0;
+  }
+
+  .popular-guides {
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .popular-guides h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+  }
+
+  .popular-guides-intro {
+    margin: 0 0 var(--space-md);
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+
+  .popular-guides-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 480px) {
+    .popular-guides-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .popular-guides-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+  }
+
+  .popular-guides-item {
+    margin: 0;
+  }
+
+  .popular-guides-link {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .popular-guides-link:hover {
+    background: rgba(0, 113, 188, 0.08);
+    border-color: var(--color-accent);
+    text-decoration: none;
   }
 </style>

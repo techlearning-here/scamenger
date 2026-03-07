@@ -2,6 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import CategoryIntro from '../../components/CategoryIntro.astro';
 import ReportCard from '../../components/ReportCard.astro';
+import { getUsScamTypes } from '../../data/us-scams';
+
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
+const canonicalUrl = siteOrigin ? `${siteOrigin}/us/financial-banking/` : undefined;
+const financialScams = getUsScamTypes().filter((s) => s.category === 'financial');
 ---
 
 <Layout
@@ -9,6 +14,7 @@ import ReportCard from '../../components/ReportCard.astro';
   title="Financial and banking scams"
   description="Where to report bank fraud, card fraud, loan scams, and debt collector issues. CFPB complaint portal and regulator links."
   keywords="report bank fraud, report credit card fraud, CFPB complaint, loan scam report, debt collector complaint, Zelle fraud report, wire fraud report"
+  canonical={canonicalUrl}
 >
   <h1>Financial and banking scams</h1>
 
@@ -43,4 +49,12 @@ import ReportCard from '../../components/ReportCard.astro';
   <p>
     If money was stolen or you are a victim of fraud, also contact your local police and consider <a href="https://www.ic3.gov/" target="_blank" rel="noopener noreferrer">IC3</a> for internet-related theft.
   </p>
+
+  <h2>Scam types in this category</h2>
+  <p>Detailed guides and where to report each:</p>
+  <ul class="scam-links">
+    {financialScams.map((scam) => (
+      <li><a href={`/us/scams/${scam.slug}/`}>{scam.name}</a></li>
+    ))}
+  </ul>
 </Layout>

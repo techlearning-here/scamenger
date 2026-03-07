@@ -38,7 +38,9 @@ const metaKeywords = keywordsProp == null
 
 const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined;
 const adsenseSlotMain = import.meta.env.PUBLIC_ADSENSE_SLOT_MAIN as string | undefined;
+const adsenseSlotTop = import.meta.env.PUBLIC_ADSENSE_SLOT_TOP as string | undefined;
 const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
+const showTopAd = showAdsense && Boolean(adsenseSlotTop ?? adsenseSlotMain);
 ---
 
 <!doctype html>
@@ -102,6 +104,24 @@ const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
       </div>
     </header>
     <main class="main">
+      {showTopAd && (
+        <div class="container ad-container ad-container--top">
+          <ins
+            class="adsbygoogle ad-block"
+            data-ad-client={adsenseClient}
+            data-ad-slot={adsenseSlotTop ?? adsenseSlotMain}
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+          <script is:inline>
+            (function () {
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              } catch (e) {}
+            })();
+          </script>
+        </div>
+      )}
       <div class="container">
         <slot />
       </div>
@@ -127,7 +147,7 @@ const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
     <footer class="site-footer">
       <div class="container">
         <p class="disclaimer">We do not take reports. We only help you find the right official channels to report scams and corruption.</p>
-        <p class="copy">&copy; Scam Avenger. Links go to official government and trusted sites. Hero image from <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a>.</p>
+        <p class="copy">&copy; Scam Avenger. Links go to official government and trusted sites.</p>
       </div>
     </footer>
   </body>
@@ -175,12 +195,19 @@ const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
     min-height: 100px;
   }
 
+  .ad-container--top {
+    margin-top: 0;
+    padding-top: var(--space-md);
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
   .ad-block {
     display: block;
   }
 
   .site-footer {
-    background: var(--gradient-header);
+    background: var(--gradient-footer);
     border-top: 1px solid rgba(255,255,255,0.1);
     padding: var(--space-md) 0;
     margin-top: var(--space-xl);

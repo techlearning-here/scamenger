@@ -2,6 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import CategoryIntro from '../../components/CategoryIntro.astro';
 import ReportCard from '../../components/ReportCard.astro';
+import { getUsScamTypes } from '../../data/us-scams';
+
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
+const canonicalUrl = siteOrigin ? `${siteOrigin}/us/corruption-fraud-waste/` : undefined;
+const governmentScams = getUsScamTypes().filter((s) => s.category === 'government');
 ---
 
 <Layout
@@ -9,6 +14,7 @@ import ReportCard from '../../components/ReportCard.astro';
   title="Corruption, fraud, and waste in government"
   description="Where to report federal fraud, waste, abuse, and retaliation. Oversight.gov and Inspector General (OIG) hotlines."
   keywords="report government fraud, report corruption, Oversight.gov, OIG hotline, federal waste report, report abuse federal program, whistleblower"
+  canonical={canonicalUrl}
 >
   <h1>Corruption, fraud, and waste in government</h1>
 
@@ -58,6 +64,14 @@ import ReportCard from '../../components/ReportCard.astro';
   <p class="note">
     This site does not take reports. We only help you find the right official channels to report scams and corruption.
   </p>
+
+  <h2>Scam types in this category</h2>
+  <p>Detailed guides and where to report each:</p>
+  <ul class="scam-links">
+    {governmentScams.map((scam) => (
+      <li><a href={`/us/scams/${scam.slug}/`}>{scam.name}</a></li>
+    ))}
+  </ul>
 </Layout>
 
 <style>

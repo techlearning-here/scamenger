@@ -108,6 +108,22 @@ For each category page, you can repeat a simple structure:
 
 You can position your site as a simple, friendly “front door” that explains options and then sends people to the right official U.S. channels.
 
+## SEO and search engines
+
+- **Sitemap:** The site generates a sitemap at `https://scamenger.com/sitemap-index.xml` (referenced in `public/robots.txt`). Submit this URL in [Google Search Console](https://search.google.com/search-console) (Sitemaps) and in Bing Webmaster Tools so search engines can discover and index your pages.
+- **Canonical URLs:** Main pages (home, about, news, category pages, scam detail pages) use canonical links to avoid duplicate-content issues.
+- **Internal links:** The homepage has a “Popular reporting guides” block; each category page lists scam types in that category with links to the detail pages. This helps crawlers and users find content.
+
+For more ideas on **aggregating content from external sites** (RSS feeds, alerts, statistics), see [docs/aggregation-ideas.md](docs/aggregation-ideas.md).
+
+## Refreshing the build every 2 days (news)
+
+The **News** page pulls FTC/IC3/CFPB RSS at **build time**. To refresh news on your GitHub Pages site every 2 days:
+
+1. **Use GitHub Actions for Pages.** In repo **Settings → Pages**, set Source to **GitHub Actions** (and ensure you have a workflow that deploys to GitHub Pages on push, e.g. as in DEPLOY.md).
+
+2. **Scheduled workflow.** The workflow in `.github/workflows/scheduled-build.yml` runs on a cron every 2 days and on manual trigger. It builds the site (so news is refreshed) and deploys the result to GitHub Pages, so your live site updates with fresh news without a push.
+
 Site role and positioning
 Your site does not take reports; it explains “if X happened, here’s who you contact and what info to bring,” then links to official portals like USA.gov’s scam tool and IC3.
 

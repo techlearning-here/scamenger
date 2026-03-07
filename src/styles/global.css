@@ -12,7 +12,8 @@
   --color-header-bg: #1b365d;
   --color-header-text: #ffffff;
   --gradient-bg: linear-gradient(180deg, #f8fafc 0%, #f0f4f8 100%);
-  --gradient-header: linear-gradient(180deg, #1b365d 0%, #252f3d 100%);
+  --gradient-header: linear-gradient(135deg, #1b365d 0%, #2c5282 35%, #2d3748 70%, #252f3d 100%);
+  --gradient-footer: linear-gradient(135deg, #252f3d 0%, #2d3748 30%, #2c5282 65%, #1b365d 100%);
   --gradient-accent: linear-gradient(180deg, #0071bc 0%, #005a9c 100%);
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-heading: 'DM Sans', system-ui, sans-serif;
@@ -85,4 +86,8 @@ ul {
 
 li {
   margin-bottom: var(--space-xs);
+}
+
+.scam-links {
+  margin-top: var(--space-sm);
 }

@@ -2,6 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import CategoryIntro from '../../components/CategoryIntro.astro';
 import ReportCard from '../../components/ReportCard.astro';
+import { getUsScamTypes } from '../../data/us-scams';
+
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
+const canonicalUrl = siteOrigin ? `${siteOrigin}/us/government-impersonation-tax/` : undefined;
+const impersonationScams = getUsScamTypes().filter((s) => s.category === 'impersonation');
 ---
 
 <Layout
@@ -9,6 +14,7 @@ import ReportCard from '../../components/ReportCard.astro';
   title="Government impersonation and tax scams"
   description="Where to report IRS, Treasury, and government imposter fraud. Official IRS phishing and Treasury scam reporting links."
   keywords="report IRS scam, report tax scam, government imposter fraud, Treasury scam report, IRS phishing report, report government impersonation"
+  canonical={canonicalUrl}
 >
   <h1>Government impersonation and tax scams</h1>
 
@@ -51,4 +57,12 @@ import ReportCard from '../../components/ReportCard.astro';
   <p>
     Older adults targeted by fraud can also contact the <a href="https://www.justice.gov/elderjustice/national-elder-fraud-hotline" target="_blank" rel="noopener noreferrer">National Elder Fraud Hotline</a>.
   </p>
+
+  <h2>Scam types in this category</h2>
+  <p>Detailed guides and where to report each:</p>
+  <ul class="scam-links">
+    {impersonationScams.map((scam) => (
+      <li><a href={`/us/scams/${scam.slug}/`}>{scam.name}</a></li>
+    ))}
+  </ul>
 </Layout>

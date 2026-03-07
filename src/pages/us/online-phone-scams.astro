@@ -2,6 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import CategoryIntro from '../../components/CategoryIntro.astro';
 import ReportCard from '../../components/ReportCard.astro';
+import { getUsScamTypes } from '../../data/us-scams';
+
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
+const canonicalUrl = siteOrigin ? `${siteOrigin}/us/online-phone-scams/` : undefined;
+const onlinePhoneScams = getUsScamTypes().filter((s) => s.category === 'online' || s.category === 'phone');
 ---
 
 <Layout
@@ -9,6 +14,7 @@ import ReportCard from '../../components/ReportCard.astro';
   title="Online and phone scams"
   description="Where to report online fraud, phishing, phone and text scams. Report to FTC ReportFraud, IC3, and FCC."
   keywords="report online fraud, report phishing, report phone scam, internet fraud report, IC3 report, FTC ReportFraud, text scam report, robocall complaint"
+  canonical={canonicalUrl}
 >
   <h1>Online and phone scams</h1>
 
@@ -50,4 +56,12 @@ import ReportCard from '../../components/ReportCard.astro';
   <p>
     See also <a href="https://www.usa.gov/phone-scams" target="_blank" rel="noopener noreferrer">USA.gov – Phone scams</a> for more on reporting phone and text scams.
   </p>
+
+  <h2>Scam types in this category</h2>
+  <p>Detailed guides and where to report each:</p>
+  <ul class="scam-links">
+    {onlinePhoneScams.map((scam) => (
+      <li><a href={`/us/scams/${scam.slug}/`}>{scam.name}</a></li>
+    ))}
+  </ul>
 </Layout>

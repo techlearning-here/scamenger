@@ -70,24 +70,28 @@ jobs:
 
 Then in repo **Settings → Pages**, set Source to **GitHub Actions**. Pushing to `main` will build and deploy.
 
-To enable AdSense, add repository secrets `PUBLIC_ADSENSE_CLIENT` and `PUBLIC_ADSENSE_SLOT_MAIN`, then in the workflow add before `npm run build`:
+The **scheduled-build** workflow (`.github/workflows/scheduled-build.yml`) runs every 2 days and also builds and deploys to GitHub Pages, so the News page (RSS-fed at build time) stays updated without a push.
+
+To enable AdSense, add repository secrets `PUBLIC_ADSENSE_CLIENT` and `PUBLIC_ADSENSE_SLOT_MAIN` (and optionally `PUBLIC_ADSENSE_SLOT_TOP` for a separate top ad unit), then in the workflow add before `npm run build`:
 
 ```yaml
 env:
   PUBLIC_ADSENSE_CLIENT: ${{ secrets.PUBLIC_ADSENSE_CLIENT }}
   PUBLIC_ADSENSE_SLOT_MAIN: ${{ secrets.PUBLIC_ADSENSE_SLOT_MAIN }}
+  PUBLIC_ADSENSE_SLOT_TOP: ${{ secrets.PUBLIC_ADSENSE_SLOT_TOP }}
 ```
 
 (Or use a `.env` file locally and ensure it is not committed.)
 
 ## Google AdSense
 
-Ads are optional and only appear when these environment variables are set at **build time**:
+Ads are optional and only appear when these environment variables are set at **build time**. Ads show on **every page** (Layout wraps all pages).
 
 - `PUBLIC_ADSENSE_CLIENT` – your publisher ID (e.g. `ca-pub-xxxxxxxxxxxxxxxx`)
-- `PUBLIC_ADSENSE_SLOT_MAIN` – ad unit/slot ID for the main placement (below content, above footer)
+- `PUBLIC_ADSENSE_SLOT_MAIN` – ad unit/slot ID for the placement below content (above footer)
+- `PUBLIC_ADSENSE_SLOT_TOP` – (optional) ad unit/slot ID for the placement at the top of main content (below header). If unset, the top placement uses `PUBLIC_ADSENSE_SLOT_MAIN` so you can use one ad unit for both positions.
 
-Copy `.env.example` to `.env`, fill in the values from your [AdSense](https://www.google.com/adsense/) account, then build. If either variable is missing, no ad script or placeholder is included.
+**Placements:** Top of content (below nav) and bottom (above footer). Set both secrets in your GitHub Actions workflow (and in `.env` locally if you use it) so builds include ads.
 
 ## Custom domain
 

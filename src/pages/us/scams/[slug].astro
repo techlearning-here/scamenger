@@ -12,14 +12,28 @@ export function getStaticPaths() {
 }
 
 const { scam } = Astro.props;
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
+const canonicalUrl = siteOrigin ? `${siteOrigin}/us/scams/${scam.slug}/` : undefined;
+const metaDesc = scam.intro.length > 155 ? scam.intro.slice(0, 152).trim() + '...' : scam.intro;
+const categoryLabel = SCAM_CATEGORY_LABELS[scam.category];
+const pageKeywords = `report ${scam.name}, ${scam.name} fraud, where to report ${scam.name}, report fraud USA, FTC report, IC3, ${categoryLabel}`;
 ---
 
 <Layout
-  base="/us"
   title={scam.name}
-  description={`How to report ${scam.name} in the USA. ${scam.intro.slice(0, 120)}...`}
+  description={`How to report ${scam.name} in the USA. ${metaDesc}`}
+  keywords={pageKeywords}
+  canonical={canonicalUrl}
 >
-  <p class="back"><a href="/us/">← Back to US overview</a></p>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `How to report ${scam.name} in the USA`,
+    description: metaDesc,
+    url: canonicalUrl,
+    publisher: { '@type': 'Organization', name: 'Scam Avenger' },
+  })} />
+  <p class="back"><a href="/">← Back to Home</a></p>
   <p class="category-label">Category: {SCAM_CATEGORY_LABELS[scam.category]}</p>
   <h1>{scam.name}</h1>
 
@@ -27,6 +41,50 @@ const { scam } = Astro.props;
     <h2 id="story-heading">How it often plays out</h2>
     <p class="story">{scam.story}</p>
   </section>
+
+  {(scam.spotIt?.length ?? 0) > 0 ? (
+    <section class="spot-section" aria-labelledby="spot-heading">
+      <h2 id="spot-heading">How to spot it</h2>
+      <ul>
+        {scam.spotIt!.map((tip) => (
+          <li>{tip}</li>
+        ))}
+      </ul>
+    </section>
+  ) : (
+    <section class="spot-section" aria-labelledby="spot-heading">
+      <h2 id="spot-heading">How to spot it</h2>
+      <p class="spot-generic">Common red flags: pressure to act immediately, requests for payment by gift card or wire, offers that seem too good to be true, or unsolicited requests for your personal or financial details.</p>
+    </section>
+  )}
+
+  {(scam.dos?.length ?? 0) > 0 || (scam.donts?.length ?? 0) > 0 ? (
+    <section class="dos-donts" aria-labelledby="dos-donts-heading">
+      <h2 id="dos-donts-heading">Do's and don'ts</h2>
+      <div class="dos-donts-grid">
+        {(scam.dos?.length ?? 0) > 0 ? (
+          <div class="dos-list">
+            <h3>Do</h3>
+            <ul>
+              {scam.dos!.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        {(scam.donts?.length ?? 0) > 0 ? (
+          <div class="donts-list">
+            <h3>Don't</h3>
+            <ul>
+              {scam.donts!.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
+    </section>
+  ) : null}
 
   <CategoryIntro intro={scam.intro} steps={scam.steps} />
 
@@ -82,5 +140,93 @@ const { scam } = Astro.props;
     margin: 0;
     font-size: 1rem;
     line-height: 1.65;
+  }
+
+  .spot-section {
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .spot-section h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+  }
+
+  .spot-section ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .spot-section li {
+    margin-bottom: var(--space-sm);
+    line-height: 1.5;
+  }
+
+  .spot-section .spot-generic {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  .dos-donts {
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .dos-donts h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+  }
+
+  .dos-donts-grid {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 640px) {
+    .dos-donts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .dos-list h3,
+  .donts-list h3 {
+    font-size: 1rem;
+    margin: 0 0 var(--space-sm);
+    color: var(--color-text);
+  }
+
+  .dos-list h3 {
+    color: var(--color-accent);
+  }
+
+  .donts-list h3 {
+    color: var(--color-error, #c00);
+  }
+
+  .dos-list ul,
+  .donts-list ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .dos-list li,
+  .donts-list li {
+    margin-bottom: var(--space-sm);
+    line-height: 1.5;
   }
 </style>

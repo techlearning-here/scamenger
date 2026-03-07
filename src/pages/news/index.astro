@@ -1,10 +1,33 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const FTC_RSS = 'https://www.ftc.gov/feeds/press-release-consumer-protection.xml';
+const API = 'https://api.rss2json.com/v1/api.json';
+const MAX_ITEMS = 25;
+
+/** Fetch news at build time so the page has content without client-side API */
+let newsItems: Array<{ title: string; link: string; pubDate: string; description?: string }> = [];
+try {
+  const apiUrl = `${API}?rss_url=${encodeURIComponent(FTC_RSS)}`;
+  const res = await fetch(apiUrl, { signal: AbortSignal.timeout(12000) });
+  const data = await res.json();
+  if (data?.status === 'ok' && Array.isArray(data.items)) {
+    newsItems = data.items.slice(0, MAX_ITEMS).map((item: { title?: string; link?: string; pubDate?: string; description?: string }) => ({
+      title: item.title || 'Untitled',
+      link: item.link || '#',
+      pubDate: item.pubDate || '',
+      description: item.description || '',
+    }));
+  }
+} catch {
+  newsItems = [];
+}
 ---
 
 <Layout
   title="Scam & fraud news"
-  description="Latest scam and consumer protection news from the FTC and trusted sources."
+  description="Latest scam, fraud, and consumer protection news from the FTC and trusted sources."
+  keywords="scam news, fraud news, FTC consumer protection, scam alerts, consumer fraud alerts"
 >
   <header class="news-hero">
     <img
@@ -21,11 +44,34 @@ import Layout from '../../layouts/Layout.astro';
   </header>
   <p class="intro">Recent consumer protection and scam-related news. Use this page to stay aware of current threats and enforcement actions.</p>
 
-  <div id="news-container" class="news-container">
-    <p class="news-loading" aria-live="polite">Loading news…</p>
-  </div>
+  {newsItems.length > 0 ? (
+    <div id="news-container" class="news-container">
+      <ul class="news-list">
+        {newsItems.map((item) => {
+          const dateStr = (() => {
+            try {
+              const d = new Date(item.pubDate);
+              return isNaN(d.getTime()) ? '' : d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            } catch { return ''; }
+          })();
+          const desc = item.description?.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 220);
+          return (
+            <li class="news-item">
+              <a href={item.link} target="_blank" rel="noopener noreferrer" class="news-title">{item.title}</a>
+              {dateStr && <time class="news-date" dateTime={item.pubDate}>{dateStr}</time>}
+              {desc && <p class="news-desc">{desc}{desc.length >= 220 ? '…' : ''}</p>}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  ) : (
+    <div id="news-container" class="news-container">
+      <p class="news-loading" aria-live="polite">Loading news…</p>
+    </div>
+  )}
 
-  <div id="news-fallback" class="news-fallback" hidden>
+  <div id="news-fallback" class="news-fallback" hidden={newsItems.length > 0}>
     <p>News feed is temporarily unavailable. You can still get the latest scam alerts from these sources:</p>
     <ul>
       <li><a href="https://consumer.ftc.gov/consumer-alerts" target="_blank" rel="noopener noreferrer">FTC Consumer Alerts</a></li>
@@ -134,13 +180,15 @@ import Layout from '../../layouts/Layout.astro';
     }
   }
 
-  loadNews();
+  if (document.getElementById('news-container')?.querySelector('.news-loading')) {
+    loadNews();
+  }
 </script>
 
 <style>
   .news-hero {
     position: relative;
-    margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)) var(--space-xl);
+    margin: 0 calc(-1 * var(--space-lg)) var(--space-xl);
     border-radius: var(--radius);
     overflow: hidden;
     max-width: calc(100% + 2 * var(--space-lg));

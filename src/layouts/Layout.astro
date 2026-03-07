@@ -4,12 +4,37 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  /** Comma-separated or array of meta keywords (fraud, scam report, etc.). Optional; default includes fraud and related terms. */
+  keywords?: string | string[];
   /** Base path for country-specific pages (e.g. "/us"). When set, nav shows category links under this base. */
   base?: string;
+  /** Full URL for canonical link and og:url. If not set, uses site + current path. */
+  canonical?: string;
+  /** Full URL for og:image and twitter:image (e.g. hero image). Recommended 1200x630. */
+  image?: string;
+  /** Set to true to add noindex (e.g. draft pages). */
+  noIndex?: boolean;
 }
 
-const { title, description, base = '' } = Astro.props;
-const homeHref = base ? `${base}/` : '/';
+const { title, description, keywords: keywordsProp, base = '', canonical: canonicalProp, image, noIndex = false } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL || '';
+const siteRoot = baseUrl.replace(/\/$/, '');
+const homeHref = siteRoot ? `${siteRoot}/` : '/';
+
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonicalUrl = canonicalProp ?? (siteOrigin ? `${siteOrigin}${pathname}${pathname === '/' ? '' : '/'}` : undefined);
+const fullTitle = title === 'Scam Avenger' ? 'Scam Avenger – Where to Report Scams, Fraud & Corruption' : `${title} | Scam Avenger`;
+const metaDescription = description ?? 'Find where to report scams, fraud, and corruption in the USA. Report to FTC, IC3, CFPB, and official channels.';
+const ogImage = image ?? undefined;
+const ogImageAlt = 'Report scams, fraud, and corruption – Scam Avenger connects you to official U.S. reporting channels.';
+
+const defaultKeywords = 'report scam, report fraud, consumer fraud, where to report scam, where to report fraud, FTC report fraud, IC3 internet crime, CFPB complaint, identity theft report, government corruption report, report corruption, elder fraud, phishing report, scam reporting USA';
+const metaKeywords = keywordsProp == null
+  ? defaultKeywords
+  : Array.isArray(keywordsProp)
+    ? keywordsProp.join(', ')
+    : keywordsProp;
 
 const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT as string | undefined;
 const adsenseSlotMain = import.meta.env.PUBLIC_ADSENSE_SLOT_MAIN as string | undefined;
@@ -21,8 +46,40 @@ const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description ?? 'Find where to report scams and corruption in the USA. We help you reach the right official channels.'} />
-    <title>{title} | Scam Avenger</title>
+    <title>{fullTitle}</title>
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    <link rel="apple-touch-icon" href={`${baseUrl}favicon.svg`} />
+    <meta name="description" content={metaDescription} />
+    <meta name="keywords" content={metaKeywords} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Scam Avenger" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={metaDescription} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:alt" content={ogImageAlt} />}
+    {ogImage && <meta property="og:image:width" content="1200" />}
+    {ogImage && <meta property="og:image:height" content="630" />}
+    <meta property="og:locale" content="en_US" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    {ogImage && <meta name="twitter:image:alt" content={ogImageAlt} />}
+    {/* JSON-LD WebSite for search engines */}
+    {siteOrigin && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Scam Avenger',
+        url: siteOrigin,
+        description: 'Find where to report scams, fraud, and corruption. We connect you to official U.S. channels: FTC ReportFraud, IC3, CFPB, Oversight.gov, and state agencies.',
+      })} />
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
@@ -108,8 +165,8 @@ const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
   }
 
   .main {
-    padding: var(--space-2xl) 0;
-    min-height: 60vh;
+    padding: var(--space-xl) 0;
+    min-height: 50vh;
   }
 
   .ad-container {
@@ -126,7 +183,7 @@ const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
     background: var(--gradient-header);
     border-top: 1px solid rgba(255,255,255,0.1);
     padding: var(--space-md) 0;
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xl);
   }
 
   .disclaimer {

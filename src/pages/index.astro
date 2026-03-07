@@ -19,9 +19,17 @@ const usScamTopics = getUsScamTypes()
 const baseUrl = import.meta.env.BASE_URL;
 const heroImageSrc = `${baseUrl}images/hero.svg`;
 const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7654579.jpeg?auto=compress&cs=tinysrgb&w=1200&fit=crop';
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : '';
+const canonicalUrl = siteOrigin ? `${siteOrigin}/` : undefined;
+const ogImage = heroImagePexels;
 ---
 
-<Layout title="Scam Avenger" description="Find where to report scams and corruption. Choose your country for official reporting channels.">
+<Layout
+  title="Scam Avenger"
+  description="Find where to report scams, fraud, and corruption. Official reporting channels: FTC, IC3, CFPB. Report consumer fraud, identity theft, and internet crime in the USA."
+  canonical={canonicalUrl}
+  image={ogImage}
+>
   <header class="hero">
     <img
       src={heroImagePexels}
@@ -58,8 +66,9 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
         <table class="topics-table" id="topics-table">
           <thead>
             <tr>
-              <th>Category</th>
+              <th class="sn-col">#</th>
               <th>Scam type</th>
+              <th>Category</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -74,6 +83,7 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
 </Layout>
 
 <script define:vars={{ usScamTopics }}>
+  const STORAGE_KEY = 'scam-avenger-country';
   const countryPages = {
     us: {
       name: 'United States',
@@ -93,30 +103,42 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
         return;
       }
       tbody.innerHTML = '';
-      for (const topic of country.topics) {
+      country.topics.forEach((topic, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td class="category-cell">${topic.category}</td>
+          <td class="sn-cell">${index + 1}</td>
           <td><a href="${topic.path}">${topic.name}</a></td>
+          <td class="category-cell">${topic.category}</td>
           <td><a href="${topic.path}" class="action-link">View details</a></td>
         `;
         tbody.appendChild(tr);
-      }
+      });
       wrap.hidden = false;
     }
 
     select.addEventListener('change', () => {
       const value = select.value;
-      if (value) fillTable(value);
-      else wrap.hidden = true;
+      if (value) {
+        fillTable(value);
+        try { sessionStorage.setItem(STORAGE_KEY, value); } catch (_) {}
+      } else {
+        wrap.hidden = true;
+        try { sessionStorage.removeItem(STORAGE_KEY); } catch (_) {}
+      }
     });
+
+    const saved = (() => { try { return sessionStorage.getItem(STORAGE_KEY); } catch (_) { return null; } })();
+    if (saved && countryPages[saved]) {
+      select.value = saved;
+      fillTable(saved);
+    }
   }
 </script>
 
 <style>
   .hero {
     position: relative;
-    margin: 0 calc(-1 * var(--space-lg)) var(--space-xl);
+    margin: 0 calc(-1 * var(--space-lg)) var(--space-md);
     border-radius: var(--radius);
     overflow: hidden;
     max-width: calc(100% + 2 * var(--space-lg));
@@ -124,7 +146,7 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
 
   .hero-img {
     width: 100%;
-    height: 220px;
+    height: 160px;
     object-fit: cover;
     display: block;
     background: var(--color-border);
@@ -137,7 +159,7 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: var(--space-xl) 0 var(--space-lg);
+    padding: var(--space-lg) var(--space-lg) var(--space-md);
   }
 
   .hero-title {
@@ -154,19 +176,19 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
   }
 
   .intro-p {
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
     color: var(--color-text-muted);
   }
 
   .country-section {
-    margin-top: var(--space-lg);
+    margin-top: var(--space-md);
   }
 
   .country-select {
     display: block;
     width: 100%;
     max-width: 20rem;
-    margin: var(--space-md) 0;
+    margin: var(--space-sm) 0;
     padding: var(--space-sm) var(--space-md);
     font-size: 1rem;
     font-family: var(--font-sans);
@@ -176,16 +198,19 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
   }
 
   .topics-wrap {
-    margin-top: var(--space-xl);
+    margin-top: var(--space-lg);
   }
 
   .topics-wrap h3 {
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
   }
 
   .table-wrap {
     overflow-x: auto;
-    margin: var(--space-lg) 0;
+    margin: var(--space-md) 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
   }
 
   .topics-table {
@@ -194,19 +219,26 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
     font-size: 0.95rem;
   }
 
-  .topics-table th,
-  .topics-table td {
-    padding: var(--space-sm) var(--space-md);
+  .topics-table thead th,
+  .topics-table :global(tbody td) {
+    padding: var(--space-sm) var(--space-lg);
+    padding-right: var(--space-xl);
     text-align: left;
     border: 1px solid var(--color-border);
+    vertical-align: middle;
   }
 
-  .topics-table th {
+  .topics-table thead th {
     background: var(--color-surface);
     font-weight: 600;
   }
 
-  .topics-table tbody tr:nth-child(even) {
+  /* :global() so alternating row styles apply to JS-injected tbody rows */
+  .topics-table :global(tbody tr:nth-child(odd) td) {
+    background: var(--color-bg);
+  }
+
+  .topics-table :global(tbody tr:nth-child(even) td) {
     background: var(--color-surface);
   }
 
@@ -214,11 +246,20 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
     font-weight: 600;
   }
 
-  .topics-table td .action-link {
+  .topics-table :global(td .action-link) {
     font-weight: 500;
   }
 
-  .category-cell {
+  .topics-table :global(.category-cell) {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .topics-table .sn-col,
+  .topics-table :global(.sn-cell) {
+    width: 2.5rem;
+    min-width: 2.5rem;
+    text-align: right;
     color: var(--color-text-muted);
     font-size: 0.9rem;
   }
@@ -238,7 +279,7 @@ const heroImagePexels = 'https://images.pexels.com/photos/7654579/pexels-photo-7
   .more-soon {
     font-size: 0.9rem;
     color: var(--color-text-muted);
-    margin-top: var(--space-xl);
+    margin-top: var(--space-lg);
   }
 
   .hero + .intro-p {

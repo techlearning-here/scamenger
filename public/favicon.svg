@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-hidden="true">
+  <title>Scam Avenger  Report scams and fraud</title>
+  <!-- Shield -->
+  <path fill="#0071bc" d="M16 2L4 6v10c0 7 5.5 11.5 12 14 6.5-2.5 12-7 12-14V6L16 2z"/>
+  <!-- Exclamation: stem + dot for clarity at small sizes -->
+  <rect x="14.2" y="9" width="3.6" height="11" rx="1.2" fill="#fff"/>
+  <circle cx="16" cy="23" r="2.2" fill="#fff"/>
+</svg>

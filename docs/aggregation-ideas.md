@@ -14,7 +14,7 @@ All feeds are merged, deduped, and sorted by date at build time. The News page u
 
 ## More RSS feeds you can add
 
-Same pattern: add a `{ url: '...', sourceName: '...' }` entry to `NEWS_FEEDS` in `src/pages/news/index.astro` (both the top-level constant and the one inside the `<script>` block).
+Same pattern: add a `{ url: '...', sourceName: '...' }` entry to `NEWS_FEEDS` in `frontend/app/news/getNews.ts`.
 
 | Source | RSS URL | Notes |
 |--------|---------|--------|

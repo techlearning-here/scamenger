@@ -1,0 +1,77 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { CategoryIntro } from '@/components/CategoryIntro';
+import { ReportCard } from '@/components/ReportCard';
+import { getUsScamTypes } from '@/data/us-scams';
+
+const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
+
+export const metadata: Metadata = {
+  title: 'Online and phone scams',
+  description: 'Where to report online fraud, phishing, phone and text scams. Report to FTC ReportFraud, IC3, and FCC.',
+  keywords: 'report online fraud, report phishing, report phone scam, internet fraud report, IC3 report, FTC ReportFraud, text scam report, robocall complaint',
+  alternates: { canonical: `${siteUrl}/us/online-phone-scams/` },
+  openGraph: {
+    title: 'Online and phone scams | Scam Avenger',
+    description: 'Where to report online fraud, phishing, phone and text scams. Report to FTC ReportFraud, IC3, and FCC.',
+    url: `${siteUrl}/us/online-phone-scams/`,
+  },
+  twitter: { card: 'summary_large_image', title: 'Online and phone scams | Scam Avenger', description: 'Where to report online fraud, phishing, phone and text scams.' },
+};
+
+export default function OnlinePhoneScamsPage() {
+  const onlinePhoneScams = getUsScamTypes().filter((s) => s.category === 'online' || s.category === 'phone');
+
+  return (
+    <>
+      <h1>Online and phone scams</h1>
+
+      <CategoryIntro
+        intro="If you were targeted by an online or phone scam—phishing, fake shopping, robocalls, spoofing, or someone trying to trick you into sending money or personal info—use the links below to report to the right U.S. agency."
+        steps={[
+          'Stop contact with the scammer and do not send more money or information.',
+          'Save evidence: screenshots, emails, URLs, phone numbers, dates.',
+          'Report using one of the official links below so it gets to the right place.',
+        ]}
+      />
+
+      <h2>Where to report</h2>
+
+      <ReportCard
+        who="The FTC collects reports of scams and shares them with law enforcement."
+        when="Use this for most consumer scams, fake businesses, and fraud attempts (calls, emails, or online)."
+        prepare={['Dates and amounts', 'Phone numbers, emails, or URLs', 'Screenshots or messages', 'How you paid']}
+        href="https://reportfraud.ftc.gov/"
+        label="Go to FTC ReportFraud"
+      />
+
+      <ReportCard
+        who="The FBI's Internet Crime Complaint Center (IC3) handles internet-related crime."
+        when="Use this for phishing, online shopping fraud, crypto scams, hacked accounts, and other internet crime."
+        prepare={['Dates and descriptions', 'URLs, emails, usernames', 'Screenshots', 'Financial loss if any']}
+        href="https://www.ic3.gov/"
+        label="Go to IC3"
+      />
+
+      <ReportCard
+        who="The FCC handles complaints about robocalls, spoofing, and phone/text scams."
+        when="Use this when the problem is unwanted calls, caller ID spoofing, or text scams."
+        prepare={['Phone number or date/time of call', 'Carrier and phone number that received the call']}
+        href="https://consumercomplaints.fcc.gov/hc/en-us"
+        label="FCC consumer complaints"
+      />
+
+      <p>
+        See also <a href="https://www.usa.gov/phone-scams" target="_blank" rel="noopener noreferrer">USA.gov – Phone scams</a> for more on reporting phone and text scams.
+      </p>
+
+      <h2>Scam types in this category</h2>
+      <p>Detailed guides and where to report each:</p>
+      <ul className="scam-links">
+        {onlinePhoneScams.map((scam) => (
+          <li key={scam.slug}><Link href={`/us/scams/${scam.slug}/`}>{scam.name}</Link></li>
+        ))}
+      </ul>
+    </>
+  );
+}

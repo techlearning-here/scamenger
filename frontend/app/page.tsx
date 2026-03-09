@@ -77,13 +77,24 @@ export default function HomePage() {
           loading="eager"
         />
         <div className="hero-overlay">
-          <h1 className="hero-tagline">One scam report can protect millions of people.<br />We’ll newly connect you to the right help.</h1>
+          <h1 className="hero-tagline">You're not alone. Let's get you to the right help.<br />Report a scam, find official channels, and protect others.</h1>
         </div>
       </header>
 
+      <section className="trust-indicators" aria-label="Trust and privacy">
+        <span className="trust-indicators-item">
+          <span className="trust-indicators-icon" aria-hidden="true">🛡️</span>
+          <strong>100% free</strong> — no cost to report or browse
+        </span>
+        <span className="trust-indicators-item">
+          <span className="trust-indicators-icon" aria-hidden="true">🔒</span>
+          <strong>No sign-up required</strong> — submit a report without an account
+        </span>
+      </section>
+
       <section className="mission-block" aria-label="Our mission">
         <p className="mission-text">
-          <strong>Our mission</strong> is to build a <strong>community-based scam database</strong> to support people who have been targeted—and to help others avoid the same traps. Together we surface patterns, warn others, and point to the right official channels to report.
+          <strong>You&apos;re not alone.</strong> We help people who&apos;ve been targeted by scams find the right place to report and get support. Our community-based guides point you to official channels (FTC, IC3, CFPB, and more) so you can take action—and help others avoid the same traps.
         </p>
       </section>
 

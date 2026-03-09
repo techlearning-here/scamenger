@@ -107,6 +107,25 @@ Both the backend and frontend expose a **health check** endpoint so Render and V
 
 Manual check: open `https://<your-render-url>/health` and `https://<your-vercel-domain>/health` in a browser; both should return `{"status":"ok"}`.
 
+### Troubleshooting: "Reports service unavailable"
+
+If submitting a scam report from the Vercel site returns **"Reports service unavailable"**, the backend (Render) is returning 503 because it cannot use Supabase. Check the following:
+
+1. **Render environment variables**  
+   In Render → your Web Service → **Environment**:
+   - **`SUPABASE_URL`** must be set to your Supabase project URL (e.g. `https://xxxxx.supabase.co`). No trailing slash.
+   - **`SUPABASE_SERVICE_ROLE_KEY`** must be set to the **service_role** key from Supabase → Project Settings → API (not the anon key).
+   - After changing env vars, trigger a **redeploy** so the new values are applied.
+
+2. **Supabase migration**  
+   The `reports` table must exist. In Supabase → **SQL Editor**, run `supabase/migrations/001_schema.sql` for the same project whose URL and key you use on Render.
+
+3. **Frontend API URL**  
+   In Vercel → Project → **Settings → Environment Variables**, ensure **`NEXT_PUBLIC_API_URL`** is exactly your Render service URL (e.g. `https://scam-avenger-api.onrender.com`) with no trailing slash. Redeploy the frontend after changing it.
+
+4. **Render service up**  
+   If the backend is on Render’s free tier, it may spin down after inactivity. Open `https://<your-render-url>/health` in a browser; if it loads (even slowly), the service is up. The first request after spin-down can take 30–60 seconds.
+
 ---
 
 ## 5. Custom domain (optional)

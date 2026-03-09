@@ -1,4 +1,5 @@
 """Report-scam API: create and retrieve reports."""
+import logging
 import uuid
 from typing import Any, Optional
 
@@ -10,6 +11,7 @@ from app.db.supabase import get_supabase
 from app.models.report import RatePayload, ReportCreate, ReportPendingResponse, ReportResponse
 
 router = APIRouter(prefix="/reports", tags=["reports"])
+logger = logging.getLogger(__name__)
 
 
 def _generate_slug() -> str:
@@ -90,6 +92,7 @@ def create_report(payload: ReportCreate) -> ReportResponse:
     try:
         result = sb.table("reports").insert(row).execute()
     except Exception as e:
+        logger.exception("Supabase insert failed: %s", e)
         raise HTTPException(
             status_code=503,
             detail="Reports service unavailable.",

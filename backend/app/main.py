@@ -5,6 +5,8 @@ Backend for Scam Avenger (e.g. report-scams API, auth, aggregation).
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.routers import admin, reports
+
 app = FastAPI(
     title="Scam Avenger API",
     description="Backend for Scam Avenger – reports, auth, and aggregated trends.",
@@ -22,11 +24,21 @@ app.add_middleware(
 
 @app.get("/health")
 def health():
-    """Health check for Render / load balancers."""
+    """Health check for Render / load balancers. Returns 200 with {"status": "ok"}."""
     return {"status": "ok"}
+
+
+@app.head("/health")
+def health_head():
+    """Health check (HEAD) for Render / load balancers."""
+    return None
 
 
 @app.get("/")
 def root():
     """API root."""
     return {"service": "Scam Avenger API", "docs": "/docs"}
+
+
+app.include_router(reports.router)
+app.include_router(admin.router)

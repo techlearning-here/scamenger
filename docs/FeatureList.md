@@ -6,13 +6,13 @@ Consolidated feature list from NewFeatures.md (ScamAdviser-inspired) and readme_
 
 ## 0. Top priority — Report scams platform
 
-User-reported scams with shareable links, authenticated ratings to reduce fraudulent reporting, and privacy-safe aggregated trends. **Tech stack:** Supabase (data storage), backend on Render, frontend (Next.js) on Vercel.
+User-reported scams with shareable links; **anyone can submit a report without signing in.** Authenticated ratings help reduce fraudulent reporting; privacy-safe aggregated trends. **Tech stack:** Supabase (data storage), backend on Render, frontend (Next.js) on Vercel.
 
 | # | Feature | Description |
 |---|---------|-------------|
-| **P0** | **Report scams + shareable URL** | User submits a report and receives a unique URL (e.g. `/reports/{report-id}`). They can share this link so others can find and reference the report. |
-| **P0** | **Authenticated view + ratings** | Only authenticated users can open a report and rate it based on their own experience (e.g. "This happened to me too" / "Not relevant"). Ratings help surface fraudulent or low-quality reports and improve trust. |
-| **P0** | **Aggregated public trends** | Public-facing dashboard or pages show **aggregated** data only: no specifics, no victim descriptions, no PII. Show trends (e.g. scam types over time, regions, categories) to inform the community and authorities without exposing individual reports. |
+| **P0** | **Report scams + shareable URL** | User submits a report **without creating an account or signing in** and receives a unique URL (e.g. `/reports/{report-id}`). Each report captures **country of scam origin** (where the scam appears to originate or primarily targets). They can share this link so others can find and reference the report. |
+| **P0** | **Authenticated view + ratings** | Only authenticated users can open a report and rate it. Ratings use **1–5 stars** on four dimensions: **Credibility** (believable/accurate?), **Usefulness** (helpful to others?), **Completeness** (information complete?), **Relevance** (e.g. “This happened to me too” = 5, “Not relevant” = 1). One rating per user per report. Ratings help surface fraudulent or low-quality reports and improve trust. See **docs/ReportRatingCategories.md**.
+| **P0** | **Aggregated public trends** | Public-facing dashboard or pages show **aggregated** data only: no specifics, no victim descriptions, no PII. Show trends (e.g. scam types over time, **regions/countries of origin**, categories) to inform the community and authorities without exposing individual reports. |
 | **P0** | **Stack** | **Supabase** — reports, users, ratings, and analytics tables. **Backend** — hosted on **Render** (API/serverless for auth, report creation, aggregation). **Frontend** — **Next.js** app hosted on **Vercel**. |
 
 ---
@@ -53,7 +53,7 @@ User-reported scams with shareable links, authenticated ratings to reduce fraudu
 | # | Feature | Description |
 |---|---------|-------------|
 | 11 | **Community scam reports** | User-submitted reports with a "Latest Reports" feed — builds SEO and social proof. |
-| 12 | **Report scams form** | "Seen something suspicious? Share to protect!" — form to submit scam details: report type (website, phone, crypto address, or IBAN; "+ Add more" for multiple), scam category + subcategory dropdowns, "Lost money?" option, free-text narrative ("How did you get in contact? What happened next?"), and optional consent to share the report with police and crime-fighting agencies. Feeds into the community reports feed (#11). |
+| 12 | **Report scams form** | "Seen something suspicious? Share to protect!" — form to submit scam details: **country of scam origin** (required), report type (website, phone, crypto address, or IBAN; "+ Add more" for multiple), scam category + subcategory dropdowns, "Lost money?" option, free-text narrative ("How did you get in contact? What happened next?"), and optional consent to share the report with police and crime-fighting agencies. Feeds into the community reports feed (#11). |
 | 13 | **Live stats dashboard** | Public metrics (e.g. "X reports, Y scam types, Z visits") to build authority. |
 | 14 | **Press / review badges** | Press logos (e.g. Time, Yahoo Finance) and links to Trustpilot, SiteJabber, Google Reviews for credibility. |
 | 15 | **Newsletter signup** | Email list for recurring traffic and monetizable audience. |
@@ -103,7 +103,7 @@ User-reported scams with shareable links, authenticated ratings to reduce fraudu
 
 | Phase | Focus |
 |-------|--------|
-| **Top priority** | **Report scams platform (P0)** — Shareable report URLs, authenticated view + ratings (fraud mitigation), aggregated public trends (no specifics). Stack: Supabase + backend (Render) + frontend (Next.js on Vercel). |
+| **Top priority** | **Report scams platform (P0)** — Shareable report URLs (submit without signing in), authenticated view + ratings (fraud mitigation), aggregated public trends (no specifics). Stack: Supabase + backend (Render) + frontend (Next.js on Vercel). |
 | **Phase 1 (MVP)** | Unified scam checker (#1) + Report scams form (#12) + Community reports (#11) + Scam category cards (#7/#8) + Country guide (#17) |
 | **Phase 2** | Blog/alerts (#16) + Live stats (#13) + Newsletter (#15) |
 | **Phase 3** | B2B "Claim your site" (#24) + API (#25) + Mobile app (#26) |

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
+import { FabReport } from '@/components/FabReport';
 import './globals.css';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
@@ -160,6 +161,7 @@ export default function RootLayout({
             <p className="copy">&copy; Scam Avenger. Links go to official government and trusted sites.</p>
           </div>
         </footer>
+        <FabReport />
         {showAdsense && (
           <Script id="adsense-push" strategy="afterInteractive">
             {`(function(){try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}})();`}

@@ -121,9 +121,13 @@ For more ideas on **aggregating content from external sites** (RSS feeds, alerts
 The **News** page pulls FTC/IC3/CFPB RSS at **build time**. On Vercel, to refresh the live site without a push:
 
 1. **Deploy hook.** In Vercel: **Project → Settings → Git → Deploy Hooks**, create a hook and copy the URL.
-2. **GitHub Actions.** Add a repo secret `VERCEL_DEPLOY_HOOK_URL` with that URL. The workflow in `.github/workflows/scheduled-build.yml` runs every 2 days (and on manual trigger) and calls the hook so Vercel rebuilds and redeploys with fresh news.
+2. **Scheduled rebuilds.** Call that URL from a cron job (e.g. Render Cron Job or another scheduler). See [DEPLOYMENT.md](./DEPLOYMENT.md) for details.
 
 See [DEPLOY.md](docs/DEPLOY.md) for full Vercel setup (including **Root Directory** set to `frontend`) and optional scheduled refresh.
+
+## Testing (TDD)
+
+The project uses **test-driven development**. Frontend tests (Vitest + React Testing Library) live in `frontend/src`; backend tests (pytest) live in `backend/tests/`. See [TDD.md](TDD.md) for how to run tests and the Red–Green–Refactor loop.
 
 Site role and positioning
 Your site explains “if X happened, here’s who you contact and what info to bring,” then links to official portals like USA.gov’s scam tool and IC3.

@@ -6,6 +6,10 @@ const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL 
 const STATIC_PATHS = [
   '/',
   '/about/',
+  '/report/',
+  '/reports/',
+  '/login/',
+  '/auth/callback/',
   '/news/',
   '/us/online-phone-scams/',
   '/us/financial-banking/',

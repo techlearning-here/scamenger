@@ -33,7 +33,8 @@ export type ScamCategoryId =
   | 'prizes_charity'
   | 'identity_benefits'
   | 'government'
-  | 'emerging';
+  | 'emerging'
+  | 'other';
 
 export interface UsScamType {
   slug: string;
@@ -74,4 +75,5 @@ export const SCAM_CATEGORY_LABELS: Record<ScamCategoryId, string> = {
   identity_benefits: 'Identity & benefits',
   government: 'Government & oversight',
   emerging: 'Emerging & other',
+  other: 'Other',
 };

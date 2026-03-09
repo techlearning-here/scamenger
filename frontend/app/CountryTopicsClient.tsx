@@ -1,6 +1,10 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import type { ScamCategoryId } from '@/data/scams/types';
+import { SCAM_CATEGORY_ICONS } from '@/data/scams/icons';
+import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
+import { ScamCard } from '@/components/ScamCard';
 
 const STORAGE_KEY = 'scam-avenger-country';
 
@@ -8,12 +12,19 @@ interface Topic {
   name: string;
   path: string;
   category: string;
+  slug: string;
+  categoryId: ScamCategoryId;
 }
 
 interface CountryPage {
   name: string;
   topics: Topic[];
 }
+
+const CATEGORY_ORDER: ScamCategoryId[] = [
+  'online', 'phone', 'financial', 'impersonation', 'employment', 'housing',
+  'prizes_charity', 'identity_benefits', 'government', 'emerging', 'other',
+];
 
 export function CountryTopicsClient({
   usScamTopics,
@@ -34,10 +45,27 @@ export function CountryTopicsClient({
   );
 }
 
+function groupTopicsByCategory(topics: Topic[]): { categoryId: ScamCategoryId; label: string; icon: string; topics: Topic[] }[] {
+  const byCategory = new Map<ScamCategoryId, Topic[]>();
+  for (const t of topics) {
+    const list = byCategory.get(t.categoryId) ?? [];
+    list.push(t);
+    byCategory.set(t.categoryId, list);
+  }
+  const orderIndex = Object.fromEntries(CATEGORY_ORDER.map((c, i) => [c, i]));
+  return CATEGORY_ORDER
+    .filter((id) => byCategory.has(id))
+    .map((categoryId) => ({
+      categoryId,
+      label: SCAM_CATEGORY_LABELS[categoryId],
+      icon: SCAM_CATEGORY_ICONS[categoryId],
+      topics: byCategory.get(categoryId)!,
+    }));
+}
+
 function CountrySelect({ countryPages }: { countryPages: Record<string, CountryPage> }) {
   const [selected, setSelected] = useState('');
   const wrapRef = useRef<HTMLDivElement>(null);
-  const tbodyRef = useRef<HTMLTableSectionElement>(null);
 
   useEffect(() => {
     const saved = (() => {
@@ -50,30 +78,6 @@ function CountrySelect({ countryPages }: { countryPages: Record<string, CountryP
     if (saved && countryPages[saved]) setSelected(saved);
   }, [countryPages]);
 
-  useEffect(() => {
-    const value = selected;
-    const country = countryPages[value];
-    const wrap = wrapRef.current;
-    const tbody = tbodyRef.current;
-    if (!wrap || !tbody) return;
-    if (!country) {
-      wrap.hidden = true;
-      return;
-    }
-    tbody.innerHTML = '';
-    country.topics.forEach((topic, index) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td class="sn-cell">${index + 1}</td>
-        <td><a href="${topic.path}">${topic.name}</a></td>
-        <td class="category-cell">${topic.category}</td>
-        <td><a href="${topic.path}" class="action-link">View details</a></td>
-      `;
-      tbody.appendChild(tr);
-    });
-    wrap.hidden = false;
-  }, [selected, countryPages]);
-
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     setSelected(value);
@@ -84,6 +88,9 @@ function CountrySelect({ countryPages }: { countryPages: Record<string, CountryP
       // ignore
     }
   };
+
+  const country = selected ? countryPages[selected] : null;
+  const groups = country ? groupTopicsByCategory(country.topics) : [];
 
   return (
     <section className="country-section">
@@ -100,21 +107,27 @@ function CountrySelect({ countryPages }: { countryPages: Record<string, CountryP
         <option value="">-- Select a country --</option>
         <option value="us">United States</option>
       </select>
-      <div id="topics-wrap" className="topics-wrap" ref={wrapRef} hidden>
+      <div id="topics-wrap" className="topics-wrap" ref={wrapRef} hidden={!country}>
         <h3>Types of scams by category</h3>
-        <div className="table-wrap">
-          <table className="topics-table" id="topics-table">
-            <thead>
-              <tr>
-                <th className="sn-col">#</th>
-                <th>Scam type</th>
-                <th>Category</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="topics-body" ref={tbodyRef} />
-          </table>
-        </div>
+        {groups.map(({ categoryId, label, icon, topics: categoryTopics }) => (
+          <div key={categoryId} className="topics-category-block">
+            <h4 className="topics-category-heading">
+              <span className="topics-category-icon" aria-hidden="true">{icon}</span>
+              {label}
+            </h4>
+            <ul className="scam-cards-grid">
+              {categoryTopics.map((topic) => (
+                <ScamCard
+                  key={topic.slug}
+                  slug={topic.slug}
+                  name={topic.name}
+                  category={topic.categoryId}
+                  href={topic.path}
+                />
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );

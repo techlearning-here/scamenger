@@ -83,6 +83,27 @@ export default async function ScamSlugPage({ params }: PageProps) {
       <p className="category-label">Category: {categoryLabel}</p>
       <h1>{scam.name}</h1>
 
+      <nav className="progress-steps" aria-label="What happens next">
+        <h2 id="progress-steps-heading" className="progress-steps-title">What happens next</h2>
+        <ol className="progress-steps-list" aria-labelledby="progress-steps-heading">
+          <li className="progress-step">
+            <span className="progress-step-label">Report</span>
+            <span className="progress-step-desc">Submit your experience so others can avoid the same scam.</span>
+            <Link href="/report/" className="progress-step-link">Report a scam</Link>
+          </li>
+          <li className="progress-step">
+            <span className="progress-step-label">Track</span>
+            <span className="progress-step-desc">View your report or browse community reports.</span>
+            <Link href="/reports/" className="progress-step-link">View reports</Link>
+          </li>
+          <li className="progress-step">
+            <span className="progress-step-label">Prevent</span>
+            <span className="progress-step-desc">Learn how to spot this scam and protect yourself.</span>
+            <a href="#spot-heading" className="progress-step-link">How to spot it</a>
+          </li>
+        </ol>
+      </nav>
+
       {scam.warning ? (
         <section className="warning-section" aria-labelledby="warning-heading">
           <h2 id="warning-heading" className="visually-hidden">Important</h2>

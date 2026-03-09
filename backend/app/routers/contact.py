@@ -1,14 +1,18 @@
 """Public contact form: submit message (stored in DB for admin to view)."""
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
 from app.db.supabase import get_supabase
 from app.models.contact import ContactCreate, ContactMessageResponse
+from app.rate_limit import rate_limit_contact
 
 router = APIRouter(tags=["contact"])
 
 
 @router.post("/contact", response_model=ContactMessageResponse, status_code=201)
-def create_contact_message(payload: ContactCreate) -> ContactMessageResponse:
+def create_contact_message(
+    payload: ContactCreate,
+    _: None = Depends(rate_limit_contact),
+) -> ContactMessageResponse:
     """Submit a contact form message. Stored for admin to read/delete in dashboard."""
     sb = get_supabase()
     if not sb:

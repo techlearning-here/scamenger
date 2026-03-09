@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { CategoryIntro } from '@/components/CategoryIntro';
 import { ReportCard } from '@/components/ReportCard';
+import { ScamCard } from '@/components/ScamCard';
 import { getUsScamTypes } from '@/data/us-scams';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
@@ -60,9 +60,9 @@ export default function FinancialBankingPage() {
 
       <h2>Scam types in this category</h2>
       <p>Detailed guides and where to report each:</p>
-      <ul className="scam-links">
+      <ul className="scam-cards-grid">
         {financialScams.map((scam) => (
-          <li key={scam.slug}><Link href={`/us/scams/${scam.slug}/`}>{scam.name}</Link></li>
+          <ScamCard key={scam.slug} slug={scam.slug} name={scam.name} category={scam.category} />
         ))}
       </ul>
     </>

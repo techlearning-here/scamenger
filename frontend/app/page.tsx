@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getUsScamTypes, SCAM_CATEGORY_LABELS } from '@/data/us-scams';
 import type { ScamCategoryId } from '@/data/scams/types';
+import { ScamCard } from '@/components/ScamCard';
 import { CountryTopicsClient } from './CountryTopicsClient';
 
 const categoryOrder: ScamCategoryId[] = [
@@ -38,6 +39,8 @@ function getOrderedTopics() {
       name: s.name,
       path: `/us/scams/${s.slug}/`,
       category: SCAM_CATEGORY_LABELS[s.category],
+      slug: s.slug,
+      categoryId: s.category,
     }));
 }
 
@@ -74,7 +77,7 @@ export default function HomePage() {
           loading="eager"
         />
         <div className="hero-overlay">
-          <h1 className="hero-tagline">One scam report can protect millions of people. We’ll connect you to the right help.</h1>
+          <h1 className="hero-tagline">One scam report can protect millions of people.<br />We’ll newly connect you to the right help.</h1>
         </div>
       </header>
 
@@ -107,11 +110,14 @@ export default function HomePage() {
       <section className="popular-guides" aria-labelledby="popular-guides-heading">
         <h2 id="popular-guides-heading">Popular reporting guides</h2>
         <p className="popular-guides-intro">Quick links to where to report common scams in the USA:</p>
-        <ul className="popular-guides-list">
+        <ul className="scam-cards-grid popular-guides-list">
           {popularGuides.map((scam) => (
-            <li key={scam.slug} className="popular-guides-item">
-              <Link href={`/us/scams/${scam.slug}/`} className="popular-guides-link">{scam.name}</Link>
-            </li>
+            <ScamCard
+              key={scam.slug}
+              slug={scam.slug}
+              name={scam.name}
+              category={scam.category}
+            />
           ))}
         </ul>
       </section>

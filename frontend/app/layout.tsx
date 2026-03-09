@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
-import { FabReport } from '@/components/FabReport';
+import { FabActions } from '@/components/FabActions';
 import { SocialLinks } from '@/components/SocialLinks';
 import './globals.css';
 
@@ -173,7 +173,7 @@ export default function RootLayout({
             <p className="copy">&copy; Scam Avenger. Links go to official government and trusted sites.</p>
           </div>
         </footer>
-        <FabReport />
+        <FabActions />
         {showAdsense && (
           <Script id="adsense-push" strategy="afterInteractive">
             {`(function(){try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}})();`}

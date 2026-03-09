@@ -2,14 +2,14 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, EmailStr, Field
 
 
 class ContactCreate(BaseModel):
     """Payload to submit contact form (public)."""
 
     name: str = Field(..., min_length=1, max_length=255)
-    email: str = Field(..., min_length=1, max_length=255)
+    email: EmailStr = Field(..., max_length=255)
     message: str = Field(..., min_length=1, max_length=10_000)
 
 

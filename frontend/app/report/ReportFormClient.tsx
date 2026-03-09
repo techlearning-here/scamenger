@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   createReport,
@@ -12,7 +12,7 @@ import {
   type ReportType,
   type LostMoneyRange,
 } from '@/data/reports/api';
-import { COUNTRY_OPTIONS } from '@/data/reports/countries';
+import { COUNTRY_OPTIONS, getCountryFromLocale } from '@/data/reports/countries';
 import { SCAM_CATEGORY_LABELS, type ScamCategoryId } from '@/data/scams/types';
 
 const CATEGORY_OPTIONS: { value: ScamCategoryId; label: string }[] = (
@@ -23,6 +23,7 @@ const NARRATIVE_MAX_LENGTH = 3000;
 
 export function ReportFormClient() {
   const [countryOrigin, setCountryOrigin] = useState('');
+  const [countryAutoSelected, setCountryAutoSelected] = useState(false);
   const [reportType, setReportType] = useState<ReportType>('website');
   const [reportTypeDetail, setReportTypeDetail] = useState('');
   const [category, setCategory] = useState<ScamCategoryId | ''>('');
@@ -30,6 +31,14 @@ export function ReportFormClient() {
   const [narrative, setNarrative] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const detected = getCountryFromLocale();
+    if (detected && !countryOrigin) {
+      setCountryOrigin(detected);
+      setCountryAutoSelected(true);
+    }
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -85,7 +94,10 @@ export function ReportFormClient() {
         <select
           id="country_origin"
           value={countryOrigin}
-          onChange={(e) => setCountryOrigin(e.target.value)}
+          onChange={(e) => {
+            setCountryOrigin(e.target.value);
+            setCountryAutoSelected(false);
+          }}
           required
           disabled={submitting}
           className="form-control"
@@ -97,6 +109,11 @@ export function ReportFormClient() {
             </option>
           ))}
         </select>
+        {countryAutoSelected && (
+          <p className="form-hint form-hint-autodetect" role="note">
+            We’ve pre-selected a country based on your browser. You can change it if the scam originated elsewhere.
+          </p>
+        )}
       </div>
 
       <div className="form-group">

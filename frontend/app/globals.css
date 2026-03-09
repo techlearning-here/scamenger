@@ -94,6 +94,88 @@ li {
   margin-top: var(--space-sm);
 }
 
+/* Card-based scam category lists (#7) – small cards, 3 columns (2 on narrow only) */
+.scam-cards-grid,
+ul.scam-cards-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 479px) {
+  .scam-cards-grid,
+  ul.scam-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+.scam-card-wrap {
+  margin: 0;
+}
+
+.scam-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  min-height: 3rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.scam-card:hover {
+  border-color: var(--color-accent);
+  border-left-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 113, 188, 0.15);
+  color: var(--color-text);
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(248, 252, 255, 1) 100%);
+  transform: translateY(-2px);
+}
+
+.scam-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.scam-card-icon-wrap {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgba(0, 113, 188, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scam-card:hover .scam-card-icon-wrap {
+  background: rgba(0, 113, 188, 0.15);
+}
+
+.scam-card-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.scam-card-name {
+  flex: 1;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
 /* Home page */
 .hero {
   position: relative;
@@ -158,6 +240,7 @@ li {
   font-size: 1.5rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
+  text-align: center;
 }
 
 @media (min-width: 480px) {
@@ -317,6 +400,29 @@ li {
   margin-bottom: var(--space-sm);
 }
 
+.topics-category-block {
+  margin-bottom: var(--space-xl);
+}
+
+.topics-category-block:last-child {
+  margin-bottom: 0;
+}
+
+.topics-category-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-md);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.topics-category-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
 .table-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -429,13 +535,14 @@ li {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: var(--space-sm);
-  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  grid-template-columns: repeat(3, 1fr);
 }
 
-@media (min-width: 480px) {
+@media (max-width: 479px) {
   .popular-guides-list {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
   }
 }
 
@@ -692,11 +799,18 @@ li {
 }
 
 /* Floating action button: Report a scam */
-.fab_report {
+.fab_group {
   position: fixed;
   right: calc(1rem + env(safe-area-inset-right));
   bottom: calc(1rem + env(safe-area-inset-bottom));
   z-index: 1000;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+}
+
+.fab_report {
+  position: static;
   min-height: 3.5rem;
   padding: 0 1.25rem;
   border-radius: 9999px;
@@ -710,6 +824,35 @@ li {
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
+}
+
+.fab_help_now {
+  position: static;
+  min-height: 3.5rem;
+  padding: 0 1.25rem;
+  border-radius: 9999px;
+  background: #c53030;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(197, 48, 48, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.fab_help_now:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(197, 48, 48, 0.5);
+  text-decoration: none;
+  color: #fff;
+}
+
+.fab_help_now_text {
+  white-space: nowrap;
+  color: #fff;
 }
 
 .fab_report,
@@ -731,6 +874,58 @@ li {
 .fab_report_text {
   white-space: nowrap;
   color: #fff;
+}
+
+/* Help now page */
+.help-now-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-xl);
+}
+
+.help-now-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.help-now-card {
+  display: block;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.help-now-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0, 113, 188, 0.15);
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.help-now-card-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.help-now-card-desc {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.help-now-footer {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.95rem;
+}
+
+.help-now-footer a {
+  margin-right: 0.25rem;
 }
 
 .about-hero {
@@ -1029,6 +1224,66 @@ li {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   margin-bottom: var(--space-sm);
+}
+
+/* Progress indication: Report → Track → Prevent (#5) */
+.progress-steps {
+  margin: var(--space-lg) 0 var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.progress-steps-title {
+  margin: 0 0 var(--space-md);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.progress-steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .progress-steps-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.progress-step {
+  margin: 0;
+  padding: var(--space-md);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.progress-step-label {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-accent);
+}
+
+.progress-step-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.progress-step-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: var(--space-xs);
 }
 
 .story-section {

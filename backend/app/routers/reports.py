@@ -9,6 +9,7 @@ from app.auth.deps import get_current_user_id
 from app.cache import get_report_cached, set_report_cached
 from app.db.supabase import get_supabase
 from app.models.report import RatePayload, ReportCreate, ReportPendingResponse, ReportResponse
+from app.rate_limit import rate_limit_reports
 
 router = APIRouter(prefix="/reports", tags=["reports"])
 logger = logging.getLogger(__name__)
@@ -62,7 +63,10 @@ def _report_from_record(
 
 
 @router.post("", response_model=ReportResponse, status_code=201)
-def create_report(payload: ReportCreate) -> ReportResponse:
+def create_report(
+    payload: ReportCreate,
+    _: None = Depends(rate_limit_reports),
+) -> ReportResponse:
     """Create a new scam report (no auth). Returns the report with shareable id (use in URL as ?id=)."""
     sb = get_supabase()
     if not sb:

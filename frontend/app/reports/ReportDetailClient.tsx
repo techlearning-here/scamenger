@@ -116,6 +116,7 @@ function ReportDetailInner() {
     return (
       <div className="report-detail-not-found">
         <p>{report.message}</p>
+        <p className="report-detail-hidden-until">Hidden until approved.</p>
         <Link href="/report/">Report a scam</Link>
       </div>
     );
@@ -136,8 +137,13 @@ function ReportDetailInner() {
     <article className="report-detail-card">
       {isPending && (
         <p className="report-detail-status-pending" role="status">
-          Status: Waiting for approval. {fullReport.message ?? 'It may take up to 48 hours.'}
+          Status: Waiting for approval. Hidden until approved. {fullReport.message ?? 'It may take up to 48 hours.'}
         </p>
+      )}
+      {isPending && viewToken && (
+        <div className="report-detail-copy-notice" role="alert">
+          <strong>Copy your report URL below and save it.</strong> This full view of your report will not be accessible again after you close or leave this page—we don’t email the link.
+        </div>
       )}
       <section className="report-detail-meta-block" aria-label="Report details">
         <h2 className="report-detail-section-title">Report details</h2>
@@ -218,6 +224,7 @@ function ReportDetailInner() {
         <h2 className="report-detail-section-title">Share this report</h2>
         {isPending && viewToken ? (
           <>
+            <p className="report-detail-save-hint">Save this link now—you won’t be able to return to this full view after you close the page.</p>
             <p className="report-detail-share-label">Your link (full view while pending)</p>
             <p className="report-detail-share-url report-detail-share-url-full">
               <a href={fullReportUrl} target="_blank" rel="noopener noreferrer" className="report-detail-share-link">

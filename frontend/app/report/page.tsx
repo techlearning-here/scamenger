@@ -6,11 +6,11 @@ const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL 
 
 export const metadata: Metadata = {
   title: 'Report a scam',
-  description: 'Submit a scam report and get a shareable link. No account required. Help protect others by reporting scams.',
+  description: 'Submit a scam report anonymously. No account required. Get a shareable link to warn others. Help protect others by reporting scams.',
   alternates: { canonical: `${siteUrl}/report/` },
   openGraph: {
     title: 'Report a scam | Scam Avenger',
-    description: 'Submit a scam report and get a shareable link. No account required.',
+    description: 'Submit a scam report anonymously. No account required. Get a shareable link to warn others.',
     url: `${siteUrl}/report/`,
   },
 };
@@ -27,7 +27,7 @@ export default function ReportPage() {
         Report a scam
       </h1>
       <p className="report-scam-lead">
-        Seen something suspicious? Share to protect others. We’ll give you a link you can share with anyone.
+        Report anonymously—no account or sign-in required. Seen something suspicious? Share it to protect others. We’ll give you a link you can share with anyone.
       </p>
       <ReportFormClient />
     </>

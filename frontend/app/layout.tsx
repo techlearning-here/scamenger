@@ -122,6 +122,7 @@ export default function RootLayout({
         <header className="site_header">
           <div className="layout_container">
             <nav className="site_nav" aria-label="Main">
+              <Link href="/report/" className="site_nav_report">Report a scam</Link>
               <Link href="/">Home</Link>
               <Link href="/news/">News</Link>
               <Link href="/about/">About</Link>

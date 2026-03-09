@@ -66,7 +66,7 @@ export function ReportFormClient() {
   return (
     <form onSubmit={handleSubmit} className="report-scam-form" aria-labelledby="report-scam-heading">
       <p className="report-scam-intro">
-        No account needed. Your report gets a shareable link so you can share it with others or authorities.
+        Report anonymously. No account needed—we don’t ask for your name or email. Your report gets a shareable link so you can share it with others or authorities.
       </p>
       <p className="report-scam-pii-note" role="note">
         Please avoid including any personally identifiable information (e.g. your full name, address, phone number, or email) in your report. Describe what happened without revealing details that could identify you or others.

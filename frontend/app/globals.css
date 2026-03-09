@@ -170,6 +170,120 @@ li {
   color: var(--color-text-muted);
 }
 
+.mission-block {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md) 0;
+}
+
+.mission-heading {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.mission-text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+@media (min-width: 480px) {
+  .mission-block {
+    margin-bottom: var(--space-xl);
+    padding: var(--space-sm) 0;
+  }
+  .mission-heading {
+    font-size: 1.25rem;
+  }
+  .mission-text {
+    font-size: 1.05rem;
+  }
+}
+
+.top-scam-stats {
+  margin: var(--space-xl) 0;
+}
+
+.top-scam-stats-heading {
+  margin-top: 0;
+  margin-bottom: var(--space-xs);
+  font-size: 1.15rem;
+}
+
+.top-scam-stats-intro {
+  margin: 0 0 var(--space-md);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.top-scam-stats-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .top-scam-stats-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .top-scam-stats-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+.top-scam-stats-card {
+  margin: 0;
+}
+
+.top-scam-stats-card-link {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--color-text);
+  min-height: 5rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.top-scam-stats-card-link:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.top-scam-stats-card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1.2;
+  margin-bottom: var(--space-xs);
+}
+
+.top-scam-stats-card-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.top-scam-stats-card-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: auto;
+}
+
 .country-section {
   margin-top: var(--space-md);
 }
@@ -399,6 +513,20 @@ li {
 
 .site_nav a:hover {
   color: #a4d4f4;
+  text-decoration: none;
+}
+
+.site_nav_report {
+  background: var(--color-accent);
+  color: #fff !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  border-radius: var(--radius);
+  margin-right: var(--space-sm);
+}
+
+.site_nav_report:hover {
+  background: var(--color-accent-hover);
+  color: #fff !important;
   text-decoration: none;
 }
 
@@ -1181,6 +1309,21 @@ li {
   font-size: 0.95rem;
   color: #92400e;
 }
+
+.report-detail-copy-notice {
+  margin: 0 0 var(--space-lg);
+  padding: var(--space-md);
+  background: #eff6ff;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.report-detail-copy-notice strong {
+  display: block;
+  margin-bottom: var(--space-xs);
+}
 .report-detail-waiting {
   color: var(--color-text-muted);
   font-style: italic;
@@ -1338,6 +1481,12 @@ li {
 }
 .report-detail-share-block .report-detail-section-title {
   border-bottom-color: var(--color-accent);
+}
+.report-detail-save-hint {
+  margin: 0 0 var(--space-md);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
 }
 .report-detail-share-url { margin: 0 0 var(--space-md); word-break: break-all; font-size: 0.95rem; }
 .report-detail-share-url-full .report-detail-share-link { color: var(--color-accent); font-weight: 500; }

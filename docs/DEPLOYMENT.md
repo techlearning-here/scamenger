@@ -83,8 +83,29 @@ We use **two Supabase projects**: one for **production** (used by Render and Ver
 
 - **Frontend → Backend:** In Vercel, ensure `NEXT_PUBLIC_API_URL` is exactly the Render service URL (no trailing slash). The report form and report-by-slug page call this API.
 - **CORS:** The backend allows all origins (`allow_origins=["*"]`). For production you can restrict this to your Vercel domain(s) in `backend/app/main.py` if desired.
-- **Health check:** Open `https://<your-render-url>/health`; it should return `{"status":"ok"}`.
+- **Health check URLs:** See [Health check URLs (Render & Vercel)](#health-check-urls-render--vercel) below.
 - **Report flow:** Submit a test report from the Vercel-deployed site and open the shareable report link.
+
+### Health check URLs (Render & Vercel)
+
+Both the backend and frontend expose a **health check** endpoint so Render and Vercel can verify the service is running.
+
+| Service   | Health check URL                    | Response        |
+|-----------|-------------------------------------|-----------------|
+| **Backend (Render)**  | `https://<your-render-service-url>/health` | `{"status":"ok"}` |
+| **Frontend (Vercel)** | `https://<your-vercel-domain>/health`      | `{"status":"ok"}` |
+
+**Render (backend)**  
+- In the Web Service → **Settings**, set **Health Check Path** to `/health`.  
+- Render will call `GET https://<your-render-url>/health` periodically; a 200 response is treated as healthy.  
+- Optional: **HEAD** `/health` is also supported for lighter probes.
+
+**Vercel (frontend)**  
+- The Next.js app serves **GET** and **HEAD** `/health` (see `frontend/app/health/route.ts`).  
+- Use `https://<your-vercel-domain>/health` for monitoring or uptime checks.  
+- Vercel does not require a health path for standard deployments; this is useful for external monitoring or load balancers.
+
+Manual check: open `https://<your-render-url>/health` and `https://<your-vercel-domain>/health` in a browser; both should return `{"status":"ok"}`.
 
 ---
 

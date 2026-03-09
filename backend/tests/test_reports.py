@@ -126,7 +126,8 @@ def test_get_report_returns_404_when_rejected(client, mock_supabase):
 def test_get_report_returns_503_when_supabase_unavailable(client, mock_supabase):
     """GET /reports/{report_id} returns 503 when Supabase is not configured."""
     mock_supabase.return_value = None
-    response = client.get("/reports/550e8400-e29b-41d4-a716-446655440000")
+    with patch("app.routers.reports.get_report_cached", return_value=None):
+        response = client.get("/reports/550e8400-e29b-41d4-a716-446655440000")
     assert response.status_code == 503
     assert "unavailable" in response.json()["detail"].lower()
 
@@ -139,7 +140,8 @@ def test_get_report_returns_404_when_not_found(client, mock_supabase):
     )
     mock_supabase.return_value = MagicMock()
     mock_supabase.return_value.table.return_value = mock_table
-    response = client.get("/reports/550e8400-e29b-41d4-a716-446655440000")
+    with patch("app.routers.reports.get_report_cached", return_value=None):
+        response = client.get("/reports/550e8400-e29b-41d4-a716-446655440000")
     assert response.status_code == 404
     assert "not found" in response.json()["detail"].lower()
 
@@ -164,7 +166,8 @@ def test_get_report_returns_200_with_report(client, mock_supabase):
     )
     mock_supabase.return_value = MagicMock()
     mock_supabase.return_value.table.return_value = mock_table
-    response = client.get(f"/reports/{report_id}")
+    with patch("app.routers.reports.get_report_cached", return_value=None):
+        response = client.get(f"/reports/{report_id}")
     assert response.status_code == 200
     data = response.json()
     assert data["id"] == report_id
@@ -289,8 +292,9 @@ def test_create_report_validates_report_type(client, mock_supabase):
 def test_rate_report_returns_401_without_auth(client, mock_supabase):
     """POST /reports/{report_id}/rate returns 401 when no Bearer token."""
     mock_supabase.return_value = MagicMock()
-    response = client.post(
-        "/reports/550e8400-e29b-41d4-a716-446655440000/rate",
-        json={"credibility": 4, "usefulness": 5, "completeness": 3, "relevance": 4},
-    )
+    with patch("app.auth.deps.SUPABASE_URL", "https://example.supabase.co"):
+        response = client.post(
+            "/reports/550e8400-e29b-41d4-a716-446655440000/rate",
+            json={"credibility": 4, "usefulness": 5, "completeness": 3, "relevance": 4},
+        )
     assert response.status_code == 401

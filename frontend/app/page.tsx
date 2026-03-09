@@ -74,8 +74,7 @@ export default function HomePage() {
           loading="eager"
         />
         <div className="hero-overlay">
-          <h1 className="hero-title">Scam Avenger</h1>
-          <p className="hero-tagline">Report scams the right way—we connect you to the official channels that can help.</p>
+          <h1 className="hero-tagline">One scam report can protect millions of people. We’ll connect you to the right help.</h1>
         </div>
       </header>
 

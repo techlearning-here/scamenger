@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Script from 'next/script';
 import { FabReport } from '@/components/FabReport';
 import './globals.css';
@@ -63,6 +64,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -73,8 +79,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
@@ -112,7 +116,7 @@ export default function RootLayout({
                   '@id': `${siteUrl}/#organization`,
                   name: 'Scam Avenger',
                   url: siteUrl,
-                  logo: { '@type': 'ImageObject', url: `${siteUrl}/favicon.svg` },
+                  logo: { '@type': 'ImageObject', url: `${siteUrl}/icon.png` },
                   description: siteDescription,
                 },
               ],
@@ -122,10 +126,14 @@ export default function RootLayout({
         <header className="site_header">
           <div className="layout_container">
             <nav className="site_nav" aria-label="Main">
-              <Link href="/report/" className="site_nav_report">Report a scam</Link>
+              <Link href="/" className="site_nav_logo" aria-label="Scam Avenger – Home">
+                <Image src="/icon.png" alt="" width={40} height={40} className="site_nav_logo_img" />
+                <span className="site_nav_logo_text">Scam Avenger</span>
+              </Link>
               <Link href="/">Home</Link>
               <Link href="/news/">News</Link>
               <Link href="/about/">About</Link>
+              <Link href="/report/" className="site_nav_report">Report a scam</Link>
             </nav>
           </div>
         </header>

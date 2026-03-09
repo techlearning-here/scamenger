@@ -47,10 +47,14 @@ function ReportDetailInner() {
       setReport(null);
       return;
     }
+    setError(null);
     let cancelled = false;
     getReportById(reportId, viewToken || undefined)
       .then((data) => {
-        if (!cancelled) setReport(data ?? null);
+        if (!cancelled) {
+          setReport(data ?? null);
+          setError(null);
+        }
       })
       .catch((err) => {
         if (!cancelled) {
@@ -86,7 +90,7 @@ function ReportDetailInner() {
     );
   }
 
-  if (error) {
+  if (error && (report === null || report === undefined)) {
     return (
       <div className="report-detail-not-found">
         <p>{error}</p>

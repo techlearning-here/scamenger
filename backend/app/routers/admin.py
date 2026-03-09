@@ -20,6 +20,10 @@ from app.models.report import (
     AdminApprovedStatsResponse,
     ReportResponse,
 )
+from app.models.contact import (
+    ContactMessageResponse,
+    ContactMessagesListResponse,
+)
 
 router = APIRouter(prefix="/z7k2m9", tags=["admin"])
 
@@ -262,3 +266,127 @@ def delete_report(
     except Exception:
         raise HTTPException(status_code=503, detail="Service unavailable") from None
     invalidate_report_cached(report_id)
+
+
+def _contact_message_from_record(record: dict[str, Any]) -> ContactMessageResponse:
+    """Build ContactMessageResponse from a contact_messages row."""
+    return ContactMessageResponse(
+        id=str(record["id"]),
+        name=record.get("name"),
+        email=record.get("email"),
+        message=record["message"],
+        read=record.get("read", False),
+        created_at=record["created_at"],
+    )
+
+
+@router.get("/messages", response_model=ContactMessagesListResponse)
+def list_contact_messages(
+    _admin: str = Depends(get_admin_from_token),
+    read: Optional[bool] = None,
+    page: int = 1,
+    page_size: int = 50,
+) -> ContactMessagesListResponse:
+    """List contact form messages. Admin only. Optional filter by read (true/false)."""
+    if page < 1:
+        page = 1
+    if page_size < 1:
+        page_size = 50
+    if page_size > 100:
+        page_size = 100
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    try:
+        base = sb.table("contact_messages").select("*").order("created_at", desc=True)
+        if read is not None:
+            base = base.eq("read", read)
+        offset = (page - 1) * page_size
+        result = base.range(offset, offset + page_size - 1).execute()
+    except Exception:
+        raise HTTPException(status_code=503, detail="Service unavailable") from None
+    data = result.data or []
+    if read is not None and len(data) < page_size:
+        total = offset + len(data)
+    else:
+        try:
+            count_query = sb.table("contact_messages").select("id")
+            if read is not None:
+                count_query = count_query.eq("read", read)
+            count_result = count_query.execute()
+            total = len(count_result.data or [])
+        except Exception:
+            total = offset + len(data)
+    items = [_contact_message_from_record(r) for r in data]
+    return ContactMessagesListResponse(
+        items=items,
+        total=total,
+        page=page,
+        page_size=page_size,
+    )
+
+
+@router.get("/messages/{message_id}", response_model=ContactMessageResponse)
+def get_contact_message(
+    message_id: str,
+    _admin: str = Depends(get_admin_from_token),
+    mark_read: bool = True,
+) -> ContactMessageResponse:
+    """Get one contact message by id. Optionally mark as read (default true). Admin only."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    try:
+        result = sb.table("contact_messages").select("*").eq("id", message_id).limit(1).execute()
+    except Exception:
+        raise HTTPException(status_code=503, detail="Service unavailable") from None
+    if not result.data or len(result.data) == 0:
+        raise HTTPException(status_code=404, detail="Message not found")
+    record = result.data[0]
+    if mark_read and not record.get("read"):
+        try:
+            sb.table("contact_messages").update({"read": True}).eq("id", message_id).execute()
+            record = {**record, "read": True}
+        except Exception:
+            pass
+    return _contact_message_from_record(record)
+
+
+@router.patch("/messages/{message_id}/read", response_model=ContactMessageResponse)
+def mark_contact_message_read(
+    message_id: str,
+    _admin: str = Depends(get_admin_from_token),
+) -> ContactMessageResponse:
+    """Mark a contact message as read. Admin only."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    try:
+        sb.table("contact_messages").update({"read": True}).eq("id", message_id).execute()
+        result = sb.table("contact_messages").select("*").eq("id", message_id).limit(1).execute()
+    except Exception:
+        raise HTTPException(status_code=503, detail="Service unavailable") from None
+    if not result.data or len(result.data) == 0:
+        raise HTTPException(status_code=404, detail="Message not found")
+    return _contact_message_from_record(result.data[0])
+
+
+@router.delete("/messages/{message_id}", status_code=204)
+def delete_contact_message(
+    message_id: str,
+    _admin: str = Depends(get_admin_from_token),
+) -> None:
+    """Permanently delete a contact message. Admin only."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    try:
+        result = sb.table("contact_messages").select("id").eq("id", message_id).limit(1).execute()
+    except Exception:
+        raise HTTPException(status_code=503, detail="Service unavailable") from None
+    if not result.data or len(result.data) == 0:
+        raise HTTPException(status_code=404, detail="Message not found")
+    try:
+        sb.table("contact_messages").delete().eq("id", message_id).execute()
+    except Exception:
+        raise HTTPException(status_code=503, detail="Service unavailable") from None

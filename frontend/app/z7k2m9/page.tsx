@@ -48,14 +48,16 @@ export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [actionId, setActionId] = useState<string | null>(null);
-
-  const token = typeof window !== 'undefined' ? getStoredAdminToken() : null;
+  const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!token) {
-      router.replace('/z7k2m9/login/');
-      return;
-    }
+    const t = getStoredAdminToken();
+    setToken(t);
+    if (!t) router.replace('/z7k2m9/login/');
+  }, [router]);
+
+  useEffect(() => {
+    if (!token) return;
     let cancelled = false;
     Promise.all([
       listAdminReports(token, { status: 'pending', page: pendingPage, page_size: PAGE_SIZE }),
@@ -169,13 +171,16 @@ export default function AdminDashboardPage() {
       </nav>
       <div className="admin-header">
         <h1 className="report-scam-title">Admin – Reports</h1>
-        <button
-          type="button"
-          onClick={handleLogout}
-          className="admin-logout-btn"
-        >
-          Log out
-        </button>
+        <div className="admin-header-actions">
+          <Link href="/z7k2m9/messages/" className="admin-logout-btn">View messages</Link>
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="admin-logout-btn"
+          >
+            Log out
+          </button>
+        </div>
       </div>
       <p className="report-scam-lead">
         Review pending and rejected reports. Only approved reports are visible to the public; approved reports are not listed here.

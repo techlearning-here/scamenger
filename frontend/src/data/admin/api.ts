@@ -246,3 +246,74 @@ export async function updateAdminReport(
   }
   return res.json();
 }
+
+/** Contact message (admin view). */
+export interface ContactMessageDto {
+  id: string;
+  name: string | null;
+  email: string | null;
+  message: string;
+  read: boolean;
+  created_at: string;
+}
+
+export interface ContactMessagesListResponse {
+  items: ContactMessageDto[];
+  total: number;
+  page: number;
+  page_size: number;
+}
+
+/** List contact messages (admin). Optional filter by read. */
+export async function listContactMessages(
+  token: string,
+  params?: { read?: boolean; page?: number; page_size?: number },
+): Promise<ContactMessagesListResponse> {
+  const search = new URLSearchParams();
+  if (params?.read !== undefined) search.set('read', String(params.read));
+  if (params?.page != null) search.set('page', String(params.page));
+  if (params?.page_size != null) search.set('page_size', String(params.page_size));
+  const qs = search.toString();
+  const url = `${API_BASE}/z7k2m9/messages${qs ? `?${qs}` : ''}`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+  return res.json();
+}
+
+/** Get one contact message by id (marks as read by default). Admin. */
+export async function getContactMessage(
+  messageId: string,
+  token: string,
+  markRead = true,
+): Promise<ContactMessageDto> {
+  const url = `${API_BASE}/z7k2m9/messages/${encodeURIComponent(messageId)}?mark_read=${markRead}`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (res.status === 404) throw new Error('Message not found');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+  return res.json();
+}
+
+/** Delete a contact message. Admin. */
+export async function deleteContactMessage(
+  messageId: string,
+  token: string,
+): Promise<void> {
+  const res = await fetch(`${API_BASE}/z7k2m9/messages/${encodeURIComponent(messageId)}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (res.status === 404) throw new Error('Message not found');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+}

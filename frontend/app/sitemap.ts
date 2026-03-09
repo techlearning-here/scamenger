@@ -6,6 +6,7 @@ const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL 
 const STATIC_PATHS = [
   '/',
   '/about/',
+  '/contact/',
   '/report/',
   '/reports/',
   '/login/',

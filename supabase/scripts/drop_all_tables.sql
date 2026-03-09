@@ -6,3 +6,4 @@
 -- Drop in dependency order: report_raters references reports.
 DROP TABLE IF EXISTS public.report_raters CASCADE;
 DROP TABLE IF EXISTS public.reports CASCADE;
+DROP TABLE IF EXISTS public.contact_messages CASCADE;

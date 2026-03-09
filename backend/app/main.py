@@ -5,7 +5,7 @@ Backend for Scam Avenger (e.g. report-scams API, auth, aggregation).
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import admin, reports
+from app.routers import admin, contact, reports
 
 app = FastAPI(
     title="Scam Avenger API",
@@ -41,4 +41,5 @@ def root():
 
 
 app.include_router(reports.router)
+app.include_router(contact.router)
 app.include_router(admin.router)

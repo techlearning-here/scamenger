@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
 import { FabReport } from '@/components/FabReport';
+import { SocialLinks } from '@/components/SocialLinks';
 import './globals.css';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
@@ -90,7 +91,7 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -133,6 +134,7 @@ export default function RootLayout({
               <Link href="/">Home</Link>
               <Link href="/news/">News</Link>
               <Link href="/about/">About</Link>
+              <Link href="/contact/">Contact</Link>
               <Link href="/report/" className="site_nav_report">Report a scam</Link>
             </nav>
           </div>
@@ -166,6 +168,7 @@ export default function RootLayout({
         </main>
         <footer className="site_footer">
           <div className="layout_container">
+            <SocialLinks />
             <p className="disclaimer">We help you find the right official channels to report scams and corruption.</p>
             <p className="copy">&copy; Scam Avenger. Links go to official government and trusted sites.</p>
           </div>

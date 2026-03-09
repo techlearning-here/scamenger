@@ -22,8 +22,8 @@ GitHub Pages and static-export–only builds are not used; the frontend is built
 
 We use **two Supabase projects**: one for **production** (used by Render and Vercel), one for **development** (used in local `backend/.env`). Run the same migration on both; use each project’s URL and keys in the corresponding environment.
 
-1. **Production:** Create a project at [supabase.com](https://supabase.com) (e.g. **scamenger-prod**). Run `supabase/migrations/001_schema.sql` in **SQL Editor**. Use this project’s URL and keys for Render and Vercel (steps 2–3 below).
-2. **Development (optional):** Create a second project (e.g. **scamenger-dev**), run `001_schema.sql` there too, and use its URL and service_role key in `backend/.env` for local development.
+1. **Production:** Create a project at [supabase.com](https://supabase.com) (e.g. **scamenger-prod**). Run `supabase/migrations/001_schema.sql` and `supabase/migrations/002_contact_messages.sql` in **SQL Editor**. Use this project’s URL and keys for Render and Vercel (steps 2–3 below).
+2. **Development (optional):** Create a second project (e.g. **scamenger-dev**), run `001_schema.sql` and `002_contact_messages.sql` there too, and use its URL and service_role key in `backend/.env` for local development.
 3. In **Project Settings → API** (for each project), note:
    - **Project URL** → `SUPABASE_URL`
    - **anon (public) key** → for frontend (e.g. `NEXT_PUBLIC_SUPABASE_ANON_KEY`)
@@ -85,6 +85,7 @@ We use **two Supabase projects**: one for **production** (used by Render and Ver
 - **CORS:** The backend allows all origins (`allow_origins=["*"]`). For production you can restrict this to your Vercel domain(s) in `backend/app/main.py` if desired.
 - **Health check URLs:** See [Health check URLs (Render & Vercel)](#health-check-urls-render--vercel) below.
 - **Report flow:** Submit a test report from the Vercel-deployed site and open the shareable report link.
+- **Contact form:** The public contact form (`/contact`) submits messages to the backend; they are stored in the `contact_messages` table (created by `002_contact_messages.sql`). Admins can view, read, and delete messages at **Admin → View messages** (`/z7k2m9/messages/`).
 
 ### Health check URLs (Render & Vercel)
 
@@ -118,7 +119,7 @@ If submitting a scam report from the Vercel site returns **"Reports service unav
    - After changing env vars, trigger a **redeploy** so the new values are applied.
 
 2. **Supabase migration**  
-   The `reports` table must exist. In Supabase → **SQL Editor**, run `supabase/migrations/001_schema.sql` for the same project whose URL and key you use on Render.
+   The `reports` table must exist. In Supabase → **SQL Editor**, run `supabase/migrations/001_schema.sql` and `supabase/migrations/002_contact_messages.sql` for the same project whose URL and key you use on Render.
 
 3. **Frontend API URL**  
    In Vercel → Project → **Settings → Environment Variables**, ensure **`NEXT_PUBLIC_API_URL`** is exactly your Render service URL (e.g. `https://scam-avenger-api.onrender.com`) with no trailing slash. Redeploy the frontend after changing it.
@@ -159,4 +160,4 @@ If submitting a scam report from the Vercel site returns **"Reports service unav
 | Backend | Render | `backend` | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` |
 | DB / Auth | Supabase | — | Run migrations; use URL and keys in frontend/backend |
 
-After deployment, the public site is the Vercel URL (or your custom domain). Reports are stored in Supabase and served via the Render API.
+After deployment, the public site is the Vercel URL (or your custom domain). Reports are stored in Supabase and served via the Render API. Contact form submissions are stored in `contact_messages`; admins manage them at `/z7k2m9/messages/`.

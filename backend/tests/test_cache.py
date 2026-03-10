@@ -1,7 +1,14 @@
 """Unit tests for report LRU cache (TDD: test cache behavior in isolation)."""
 import pytest
 
-from app.cache import get_report_cached, set_report_cached, invalidate_report_cached
+from app.cache import (
+    get_report_cached,
+    set_report_cached,
+    invalidate_report_cached,
+    get_config_cached,
+    set_config_cached,
+    invalidate_config_cached,
+)
 
 
 def test_get_report_cached_returns_none_when_empty():
@@ -53,3 +60,36 @@ def test_set_report_cached_overwrites_existing():
     set_report_cached(report_id, {"v": 1})
     set_report_cached(report_id, {"v": 2})
     assert get_report_cached(report_id) == {"v": 2}
+
+
+# --- Config cache ---
+
+
+def test_get_config_cached_returns_none_when_empty():
+    """get_config_cached returns None when cache was never set."""
+    invalidate_config_cached()
+    assert get_config_cached() is None
+
+
+def test_set_config_cached_and_get_roundtrip():
+    """set_config_cached stores data; get_config_cached returns it."""
+    invalidate_config_cached()
+    data = {"show_facebook_consent": True, "show_report_scam": False}
+    set_config_cached(data)
+    assert get_config_cached() == data
+
+
+def test_invalidate_config_cached_clears_cache():
+    """invalidate_config_cached clears cache; get_config_cached then returns None."""
+    set_config_cached({"show_facebook_consent": True, "show_report_scam": True})
+    assert get_config_cached() is not None
+    invalidate_config_cached()
+    assert get_config_cached() is None
+
+
+def test_set_config_cached_overwrites_existing_config():
+    """set_config_cached overwrites previous config."""
+    invalidate_config_cached()
+    set_config_cached({"show_facebook_consent": True, "show_report_scam": True})
+    set_config_cached({"show_facebook_consent": False, "show_report_scam": False})
+    assert get_config_cached() == {"show_facebook_consent": False, "show_report_scam": False}

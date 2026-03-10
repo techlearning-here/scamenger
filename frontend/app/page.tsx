@@ -15,19 +15,19 @@ const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL 
 const heroImagePhoto = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=400&auto=format&fit=crop&ixlib=rb-4.1.0';
 
 export const metadata: Metadata = {
-  title: 'Where to Report Scams, Fraud & Corruption | Scam Avenger',
-  description: 'Report scams, fraud & corruption in the USA. Free guides to FTC, IC3, CFPB & official channels. Report identity theft, phishing & consumer fraud. No sign-up required.',
+  title: 'Report Scams & Fraud | Scam Avenger',
+  description: 'Report scams and fraud. Free guides with official reporting links by country and scam type. No sign-up required.',
   alternates: { canonical: `${siteUrl}/` },
   openGraph: {
-    title: 'Where to Report Scams, Fraud & Corruption | Scam Avenger',
-    description: 'Report scams, fraud & corruption in the USA. Free guides to FTC, IC3, CFPB & official channels. Report identity theft, phishing & consumer fraud.',
+    title: 'Report Scams & Fraud | Scam Avenger',
+    description: 'Report scams and fraud. Free guides with official reporting links. No sign-up required.',
     url: `${siteUrl}/`,
-    images: [{ url: heroImagePhoto, width: 1200, height: 400, alt: 'Where to report scams, fraud and corruption – Scam Avenger' }],
+    images: [{ url: heroImagePhoto, width: 1200, height: 400, alt: 'Report scams and fraud – Scam Avenger' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Where to Report Scams, Fraud & Corruption | Scam Avenger',
-    description: 'Report scams, fraud & corruption in the USA. Free guides to FTC, IC3, CFPB & official channels.',
+    title: 'Report Scams & Fraud | Scam Avenger',
+    description: 'Report scams and fraud. Free guides with official reporting links.',
     images: [heroImagePhoto],
   },
 };
@@ -77,7 +77,7 @@ export default function HomePage() {
           loading="eager"
         />
         <div className="hero-overlay">
-          <h1 className="hero-tagline">Where to Report a Scam – Get Official Links (FTC, IC3, CFPB)<br />Report fraud &amp; corruption. Free guides. No sign-up required.</h1>
+          <h1 className="hero-tagline">Report Scams the Right Way — Official Links &amp; Guides<br />Free step-by-step guides by scam type.</h1>
         </div>
       </header>
 
@@ -94,7 +94,7 @@ export default function HomePage() {
 
       <section className="mission-block" aria-label="Our mission">
         <p className="mission-text">
-          <strong>You&apos;re not alone.</strong> We help people who&apos;ve been targeted by scams find the right place to report and get support. Our community-based guides point you to official channels (FTC, IC3, CFPB, and more) so you can take action—and help others avoid the same traps.
+          <strong>You&apos;re not alone.</strong> We help people who&apos;ve been targeted by scams find the right place to report and get support. Our community-based scam report and guidance point you to official channels in your country so you can take action—and help others avoid the same traps.
         </p>
       </section>
 

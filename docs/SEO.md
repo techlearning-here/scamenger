@@ -5,15 +5,15 @@ This document summarizes the on-site SEO optimizations applied to improve search
 ## What Was Done
 
 ### 1. **Global (layout)**
-- **Title**: Primary keyword first – "Where to Report Scams, Fraud & Corruption | Scam Avenger".
-- **Meta description**: ~155 characters, includes FTC, IC3, CFPB, "report scam", "report fraud", "no sign-up".
+- **Title**: Primary keyword first – "Report Scams & Fraud | Scam Avenger" (global; no US-only agency names).
+- **Meta description**: ~155 characters, includes "report scam", "report fraud", "official links", "no sign-up"; global wording.
 - **Keywords**: Expanded long-tail (where to report scam/fraud, report scam USA, FTC report fraud, IC3, CFPB complaint, identity theft report, phishing, etc.).
 - **JSON-LD**: Added `Service` schema (Scam & Fraud Reporting Guides, areaServed USA) alongside existing `WebSite` and `Organization` for richer results.
 - **Open Graph / Twitter**: Title and description aligned with meta; image alt text keyword-aware.
 
 ### 2. **Home page**
-- **Title**: "Where to Report Scams, Fraud & Corruption | Scam Avenger".
-- **H1**: "Where to Report a Scam – Get Official Links (FTC, IC3, CFPB)" with supporting line for relevance and CTR.
+- **Title**: "Report Scams & Fraud | Scam Avenger".
+- **H1**: "Report Scams the Right Way — Official Links & Guides" with supporting line "Free step-by-step guides by scam type. No account required." (global; no FTC/IC3/CFPB).
 - **Meta description**: Keyword-rich, under 160 characters.
 
 ### 3. **Sitemap**

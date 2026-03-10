@@ -873,6 +873,24 @@ ul.scam-cards-grid {
   margin-bottom: var(--space-md);
 }
 
+.site_footer_legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+  font-size: 0.9rem;
+}
+
+.site_footer_legal a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site_footer_legal a:hover {
+  color: #fff;
+}
+
 .site_footer_social a {
   color: #fff;
 }
@@ -1685,6 +1703,10 @@ ul.scam-cards-grid {
 /* Report a scam form */
 .report-scam-title { margin-bottom: var(--space-xs); }
 .report-scam-lead { margin-bottom: var(--space-lg); color: var(--color-text-muted); }
+
+.legal-content { margin-bottom: var(--space-xl); }
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content ul { margin-bottom: var(--space-md); }
 .report-scam-form {
   max-width: 32rem;
   padding: var(--space-md);

@@ -9,9 +9,9 @@ import './globals.css';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 const defaultOgImageFallback = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=630&auto=format&fit=crop';
-const siteTitle = 'Where to Report Scams, Fraud & Corruption | Scam Avenger';
-const siteDescription = 'Report scams, fraud & corruption in the USA. Free guides to FTC, IC3, CFPB & official channels. Report identity theft, phishing & consumer fraud. No sign-up required.';
-const siteKeywords = 'where to report scam, where to report fraud, report scam USA, report fraud USA, FTC report fraud, IC3 report internet crime, CFPB complaint, identity theft report, report phishing, report consumer fraud, report corruption, elder fraud report, scam reporting, fraud reporting USA';
+const siteTitle = 'Report Scams & Fraud | Scam Avenger';
+const siteDescription = 'Report scams and fraud. Free guides with official reporting links by country and scam type. No sign-up required.';
+const siteKeywords = 'where to report scam, where to report fraud, report scam, report fraud, report phishing, identity theft report, consumer fraud report, scam reporting, fraud reporting, official scam report';
 
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const adsenseSlotMain = process.env.NEXT_PUBLIC_ADSENSE_SLOT_MAIN;
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     url: siteUrl,
     images: [
-      { url: defaultOgImageFallback, width: 1200, height: 630, alt: 'Where to report scams, fraud and corruption – Scam Avenger' },
+      { url: defaultOgImageFallback, width: 1200, height: 630, alt: 'Report scams and fraud – Scam Avenger' },
     ],
   },
   twitter: {
@@ -125,7 +125,7 @@ export default function RootLayout({
                 {
                   '@type': 'Service',
                   name: 'Scam & Fraud Reporting Guides',
-                  description: 'Free guides on where to report scams, fraud, and corruption in the USA. Links to FTC, IC3, CFPB and official reporting channels. Report anonymously with no sign-up.',
+                  description: 'Free guides on where to report scams and fraud. Official reporting links by country and scam type. Report anonymously with no sign-up.',
                   provider: { '@id': `${siteUrl}/#organization` },
                   areaServed: { '@type': 'Country', name: 'United States' },
                   url: siteUrl,
@@ -180,8 +180,15 @@ export default function RootLayout({
         <footer className="site_footer">
           <div className="layout_container">
             <SocialLinks />
+            <nav className="site_footer_legal" aria-label="Legal">
+              <Link href="/privacy/">Privacy Policy</Link>
+              <Link href="/terms/">Terms &amp; Conditions</Link>
+              <Link href="/disclaimer/">Disclaimer</Link>
+              <Link href="/content-guidelines/">Content Guidelines</Link>
+              <Link href="/notice-takedown/">Notice and Take Down</Link>
+            </nav>
             <p className="disclaimer">We help you find the right official channels to report scams and corruption.</p>
-            <p className="copy">&copy; Scam Avenger. Links go to official government and trusted sites.</p>
+            <p className="copy">&copy; {new Date().getFullYear()} Scam Avenger. Links go to official government and trusted sites.</p>
           </div>
         </footer>
         <FabActions />

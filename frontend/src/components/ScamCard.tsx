@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getScamIcon } from '@/data/scams/icons';
+import { getScamIcon, getPrevalenceBadge } from '@/data/scams/icons';
 import type { ScamCategoryId } from '@/data/scams/types';
 
 export interface ScamCardProps {
@@ -15,6 +15,7 @@ export interface ScamCardProps {
 export function ScamCard({ slug, name, category, href }: ScamCardProps) {
   const url = href ?? `/us/scams/${slug}/`;
   const icon = getScamIcon(slug, category);
+  const badge = getPrevalenceBadge(slug);
 
   return (
     <li className="scam-card-wrap">
@@ -23,6 +24,11 @@ export function ScamCard({ slug, name, category, href }: ScamCardProps) {
           <span className="scam-card-icon">{icon}</span>
         </span>
         <span className="scam-card-name">{name}</span>
+        {badge && (
+          <span className={`scam-card-badge scam-card-badge--${badge}`}>
+            {badge === 'most-reported' ? 'Most reported' : 'Trending'}
+          </span>
+        )}
       </Link>
     </li>
   );

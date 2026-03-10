@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers import admin, contact, reports
+from app.routers.config import router as config_router
 
 app = FastAPI(
     title="Scam Avenger API",
@@ -41,5 +42,6 @@ def root():
 
 
 app.include_router(reports.router)
+app.include_router(config_router)
 app.include_router(contact.router)
 app.include_router(admin.router)

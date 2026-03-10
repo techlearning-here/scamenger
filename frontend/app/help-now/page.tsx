@@ -5,18 +5,18 @@ import { HelpNowClient } from './HelpNowClient';
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 
 export const metadata: Metadata = {
-  title: 'Need help now?',
-  description: 'Emergency contacts and official reporting links by country: FTC, IC3, Action Fraud, CAFC, Scamwatch and more. Report fraud and get help quickly.',
-  keywords: 'report fraud now, FTC report, IC3 report, Action Fraud, CAFC, Scamwatch, elder fraud hotline, identity theft report',
+  title: 'Need Help Now? Report Fraud – FTC, IC3, CFPB Links | Scam Avenger',
+  description: 'Emergency contacts and official reporting links: FTC, IC3, Action Fraud, CAFC, Scamwatch. Report fraud and get help quickly. Where to report scams now.',
+  keywords: 'report fraud now, FTC report, IC3 report, Action Fraud, CAFC, Scamwatch, elder fraud hotline, identity theft report, where to report scam',
   alternates: { canonical: `${siteUrl}/help-now/` },
   openGraph: {
-    title: 'Need help now? | Scam Avenger',
-    description: 'Emergency contacts and official reporting links by country. Report fraud and get help quickly.',
+    title: 'Need Help Now? Report Fraud – FTC, IC3, CFPB Links | Scam Avenger',
+    description: 'Emergency contacts and official reporting links. Report fraud and get help quickly.',
     url: `${siteUrl}/help-now/`,
   },
   twitter: {
     card: 'summary',
-    title: 'Need help now? | Scam Avenger',
+    title: 'Need Help Now? Report Fraud | Scam Avenger',
     description: 'Emergency contacts and official reporting links by country.',
   },
 };

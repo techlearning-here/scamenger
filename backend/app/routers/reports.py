@@ -50,6 +50,7 @@ def _report_from_record(
         lost_money_range=record.get("lost_money_range"),
         narrative=narrative,
         consent_share_authorities=record["consent_share_authorities"],
+        consent_share_social=record.get("consent_share_social", False),
         created_at=record["created_at"],
         rating_count=rating_count,
         avg_credibility=round(avg_credibility, 2),
@@ -90,6 +91,7 @@ def create_report(
         "lost_money_range": store_range,
         "narrative": payload.narrative,
         "consent_share_authorities": payload.consent_share_authorities,
+        "consent_share_social": payload.consent_share_social,
         "status": "pending",
         "submitter_view_token": view_token,
     }

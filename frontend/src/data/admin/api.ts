@@ -18,6 +18,7 @@ export interface AdminReportDto {
   lost_money_range: string | null;
   narrative: string | null;
   consent_share_authorities: boolean;
+  consent_share_social: boolean;
   created_at: string;
   rating_count: number;
   avg_credibility: number;
@@ -206,7 +207,7 @@ export async function getAdminReport(
   return res.json();
 }
 
-/** Fields that can be updated by admin (all optional). */
+/** Fields that can be updated by admin (all optional). Consent flags are not included — admins cannot edit them. */
 export interface AdminReportUpdateDto {
   country_origin?: string;
   report_type?: string;
@@ -215,7 +216,6 @@ export interface AdminReportUpdateDto {
   lost_money?: boolean;
   lost_money_range?: string | null;
   narrative?: string | null;
-  consent_share_authorities?: boolean;
   status?: 'pending' | 'approved' | 'rejected';
 }
 
@@ -262,6 +262,43 @@ export interface ContactMessagesListResponse {
   total: number;
   page: number;
   page_size: number;
+}
+
+/** Site settings (admin). */
+export interface SiteSettingsDto {
+  show_facebook_consent: boolean;
+  show_report_scam: boolean;
+}
+
+/** Get site settings. Admin. */
+export async function getSettings(token: string): Promise<SiteSettingsDto> {
+  const res = await fetch(`${API_BASE}/z7k2m9/settings`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+  return res.json();
+}
+
+/** Update site settings. Admin. Only provided fields are updated. */
+export async function updateSettings(
+  token: string,
+  payload: { show_facebook_consent?: boolean; show_report_scam?: boolean },
+): Promise<SiteSettingsDto> {
+  const res = await fetch(`${API_BASE}/z7k2m9/settings`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify(payload),
+  });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+  return res.json();
 }
 
 /** List contact messages (admin). Optional filter by read. */

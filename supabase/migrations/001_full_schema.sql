@@ -1,9 +1,8 @@
--- Scam Avenger: full schema (reports + report_raters).
--- Run this in Supabase SQL Editor (Dashboard → SQL Editor) or via Supabase CLI.
--- Requires Supabase Auth enabled for report_raters.
+-- Scam Avenger: full schema (single migration).
+-- Run in Supabase SQL Editor or via Supabase CLI. Requires Supabase Auth for report_raters.
 
 -- =============================================================================
--- 1. REPORTS TABLE
+-- REPORTS TABLE
 -- =============================================================================
 
 CREATE TABLE IF NOT EXISTS public.reports (
@@ -52,7 +51,7 @@ COMMENT ON COLUMN public.reports.status IS 'pending = awaiting approval; approve
 COMMENT ON COLUMN public.reports.submitter_view_token IS 'Secret token returned on create; include as view_token in GET to see full report while pending.';
 
 -- =============================================================================
--- 2. REPORT_RATERS TABLE (one rating per user per report)
+-- REPORT_RATERS TABLE
 -- =============================================================================
 
 CREATE TABLE IF NOT EXISTS public.report_raters (
@@ -78,3 +77,59 @@ CREATE POLICY "Users can read own report_raters rows"
   ON public.report_raters FOR SELECT
   TO authenticated
   USING (auth.uid() = user_id);
+
+-- =============================================================================
+-- CONTACT_MESSAGES TABLE
+-- =============================================================================
+
+CREATE TABLE IF NOT EXISTS public.contact_messages (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  message TEXT NOT NULL,
+  read BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_contact_messages_created_at ON public.contact_messages (created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_contact_messages_read ON public.contact_messages (read);
+
+ALTER TABLE public.contact_messages ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow anonymous insert" ON public.contact_messages
+  FOR INSERT WITH CHECK (true);
+
+COMMENT ON TABLE public.contact_messages IS 'Contact form submissions; admin views and deletes via dashboard.';
+
+-- =============================================================================
+-- REPORTS: consent_share_social
+-- =============================================================================
+
+ALTER TABLE public.reports
+  ADD COLUMN IF NOT EXISTS consent_share_social BOOLEAN NOT NULL DEFAULT false;
+
+COMMENT ON COLUMN public.reports.consent_share_social IS 'Submitter consent to share an anonymized summary on Scam Avenger social (e.g. Facebook) after admin approval.';
+
+-- =============================================================================
+-- SITE_SETTINGS
+-- =============================================================================
+
+CREATE TABLE IF NOT EXISTS public.site_settings (
+  key TEXT PRIMARY KEY,
+  value JSONB NOT NULL DEFAULT 'true'
+);
+
+ALTER TABLE public.site_settings ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow public read" ON public.site_settings
+  FOR SELECT USING (true);
+
+COMMENT ON TABLE public.site_settings IS 'Site configuration. show_facebook_consent: when true, report form shows the Facebook share consent checkbox. show_report_scam: when true, Report a scam is shown in nav and FAB and /report/ is available.';
+
+INSERT INTO public.site_settings (key, value)
+VALUES ('show_facebook_consent', 'true')
+ON CONFLICT (key) DO NOTHING;
+
+INSERT INTO public.site_settings (key, value)
+VALUES ('show_report_scam', 'true')
+ON CONFLICT (key) DO NOTHING;

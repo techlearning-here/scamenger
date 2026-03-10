@@ -6,19 +6,19 @@ const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL 
 const newsOgImage = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&h=630&q=80';
 
 export const metadata: Metadata = {
-  title: 'Scam & fraud news',
-  description: 'Latest scam, fraud, and consumer protection news from the FTC and trusted sources.',
-  keywords: 'scam news, fraud news, FTC consumer protection, scam alerts, consumer fraud alerts',
+  title: 'Scam & Fraud News | FTC, IC3, CFPB Alerts | Scam Avenger',
+  description: 'Latest scam, fraud, and consumer protection news from the FTC and trusted sources. Stay updated on scam alerts and fraud reports.',
+  keywords: 'scam news, fraud news, FTC consumer protection, scam alerts, consumer fraud alerts, IC3 news, CFPB news',
   alternates: { canonical: `${siteUrl}/news/` },
   openGraph: {
-    title: 'Scam & fraud news | Scam Avenger',
+    title: 'Scam & Fraud News | FTC, IC3, CFPB Alerts | Scam Avenger',
     description: 'Latest scam, fraud, and consumer protection news from the FTC and trusted sources.',
     url: `${siteUrl}/news/`,
     images: [{ url: newsOgImage, width: 1200, height: 630, alt: 'Scam & fraud news' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Scam & fraud news | Scam Avenger',
+    title: 'Scam & Fraud News | FTC, IC3, CFPB Alerts | Scam Avenger',
     description: 'Latest scam, fraud, and consumer protection news from the FTC and trusted sources.',
     images: [newsOgImage],
   },

@@ -51,6 +51,7 @@ export interface ReportCreatePayload {
   lost_money_range?: LostMoneyRange | null;
   narrative: string;
   consent_share_authorities?: boolean;
+  consent_share_social?: boolean;
 }
 
 export interface ReportResponseDto {
@@ -64,6 +65,7 @@ export interface ReportResponseDto {
   lost_money_range: string | null;
   narrative: string | null;
   consent_share_authorities: boolean;
+  consent_share_social: boolean;
   created_at: string;
   rating_count?: number;
   avg_credibility?: number;
@@ -166,6 +168,19 @@ export const REPORT_TYPE_LABELS: Record<ReportType, string> = {
   telegram: 'Telegram',
   discord: 'Discord',
   other: 'Other',
+};
+
+/** Emoji icon per report type for UI display */
+export const REPORT_TYPE_ICONS: Record<ReportType, string> = {
+  website: '🌐',
+  phone: '📞',
+  crypto: '₿',
+  iban: '🏦',
+  social_media: '📱',
+  whatsapp: '💬',
+  telegram: '✈️',
+  discord: '🎮',
+  other: '📋',
 };
 
 /** Label and placeholder for the type-specific detail input */

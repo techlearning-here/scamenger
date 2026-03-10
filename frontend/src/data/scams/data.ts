@@ -16,8 +16,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report using the links below. If you clicked a link or shared info, change passwords and alert your bank.',
     ],
     reports: [
-      { who: 'The FTC collects scam reports and shares with law enforcement.', when: 'Use for phishing attempts, fake login pages, or requests for money or personal info.', prepare: ['The email or message', 'Sender address or phone', 'Dates'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet crime including phishing.', when: 'Use when the scam was online (email, website, or app).', prepare: ['URLs', 'Screenshots', 'What was lost or exposed'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects scam reports and shares with law enforcement.', when: 'Use for phishing attempts, fake login pages, or requests for money or personal info.', prepare: ['The email or message', 'Sender address or phone', 'Dates'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet crime including phishing.', when: 'Use when the scam was online (email, website, or app).', prepare: ['URLs', 'Screenshots', 'What was lost or exposed'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'Never enter your password, PIN, or one-time codes after clicking a link in an email or text. Legitimate companies will not ask for these by email.',
     statistics: ['Phishing was among the top reported fraud categories to the FTC in 2023.', 'IC3 received hundreds of thousands of internet crime complaints involving phishing and similar schemes.'],
@@ -45,8 +45,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and, if it involved a fake link or loss, to IC3.',
     ],
     reports: [
-      { who: 'The FTC collects reports of text and phone scams.', when: 'Use for fraudulent or deceptive text messages.', prepare: ['Screenshot of message', 'Phone number', 'Date'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet crime.', when: 'Use when you lost money or shared sensitive info via a link in a text.', prepare: ['Message', 'URL if you have it', 'What happened'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of text and phone scams.', when: 'Use for fraudulent or deceptive text messages.', prepare: ['Screenshot of message', 'Phone number', 'Date'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet crime.', when: 'Use when you lost money or shared sensitive info via a link in a text.', prepare: ['Message', 'URL if you have it', 'What happened'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'Do not click links or reply to unsolicited texts. Banks, delivery companies, and government agencies do not ask for payment or personal details by text.',
     relatedSlugs: ['phishing', 'fake-shopping', 'tech-support'],
@@ -73,8 +73,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and, if the site was online, to IC3.',
     ],
     reports: [
-      { who: 'The FTC tracks consumer fraud and fake businesses.', when: 'Use when you paid for something you did not receive or was not as described.', prepare: ['Order details', 'Amount paid', 'Seller name or site', 'Screenshots'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet-related fraud.', when: 'Use when the purchase was made online.', prepare: ['Website URL', 'Dates and amount', 'Any messages'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC tracks consumer fraud and fake businesses.', when: 'Use when you paid for something you did not receive or was not as described.', prepare: ['Order details', 'Amount paid', 'Seller name or site', 'Screenshots'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet-related fraud.', when: 'Use when the purchase was made online.', prepare: ['Website URL', 'Dates and amount', 'Any messages'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'If a deal looks too good to be true, it often is. Legitimate sellers do not ask you to pay more or send gift cards to "release" an order.',
     statistics: ['Online shopping fraud was one of the top categories of fraud reported to the FTC in 2023.', 'Social media marketplace scams are increasingly common; verify the seller before paying.'],

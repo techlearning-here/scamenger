@@ -9,6 +9,8 @@ export interface ScamReport {
   prepare?: string[];
   href: string;
   label: string;
+  /** Optional estimated time to complete the report (e.g. "~5 min"). */
+  estimatedTime?: string;
 }
 
 /** One FAQ item for the scam detail page */

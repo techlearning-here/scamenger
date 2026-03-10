@@ -222,3 +222,36 @@ def test_admin_patch_report_returns_200_updated(client):
     data = response.json()
     assert data["narrative"] == "Updated narrative"
     assert data["status"] == "approved"
+
+
+def test_admin_patch_report_does_not_accept_consent(client):
+    """PATCH with consent_share_authorities in body must not update consent — only submitter sets it."""
+    report_id = "550e8400-e29b-41d4-a716-446655440000"
+    login = client.post("/z7k2m9/login", json={"username": ADMIN_USER, "password": ADMIN_PASS})
+    token = login.json()["access_token"]
+    record = {
+        "id": report_id, "slug": "abc", "country_origin": "US", "report_type": "website",
+        "category": None, "report_type_detail": None, "lost_money": False, "lost_money_range": None,
+        "narrative": "Original", "consent_share_authorities": False, "created_at": "2025-01-15T12:00:00Z",
+        "status": "pending", "rating_count": 0, "sum_credibility": 0, "sum_usefulness": 0,
+        "sum_completeness": 0, "sum_relevance": 0,
+    }
+    updated_record = {**record, "narrative": "Updated", "consent_share_authorities": False}
+    mock_table = MagicMock()
+    mock_table.select.return_value.eq.return_value.limit.return_value.execute.side_effect = [
+        MagicMock(data=[record]),
+        MagicMock(data=[updated_record]),
+    ]
+    with patch("app.routers.admin.get_supabase") as mock_sb:
+        mock_sb.return_value.table.return_value = mock_table
+        response = client.patch(
+            f"/z7k2m9/reports/{report_id}",
+            json={"narrative": "Updated", "consent_share_authorities": True},
+            headers={"Authorization": f"Bearer {token}"},
+        )
+    assert response.status_code == 200
+    call_args = mock_table.update.call_args
+    assert call_args is not None
+    passed_updates = call_args[0][0]
+    assert "consent_share_authorities" not in passed_updates
+    assert passed_updates.get("narrative") == "Updated"

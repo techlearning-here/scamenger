@@ -3,35 +3,36 @@ import { getUsScamSlugs } from '@/data/us-scams';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 
-const STATIC_PATHS = [
-  '/',
-  '/about/',
-  '/contact/',
-  '/help-now/',
-  '/report/',
-  '/reports/',
-  '/login/',
-  '/auth/callback/',
-  '/news/',
-  '/us/online-phone-scams/',
-  '/us/financial-banking/',
-  '/us/government-impersonation-tax/',
-  '/us/corruption-fraud-waste/',
+const STATIC_PATHS: { path: string; priority: number; changeFreq: 'weekly' | 'monthly' }[] = [
+  { path: '/', priority: 1.0, changeFreq: 'weekly' },
+  { path: '/report/', priority: 0.95, changeFreq: 'weekly' },
+  { path: '/lookup-report/', priority: 0.9, changeFreq: 'weekly' },
+  { path: '/help-now/', priority: 0.95, changeFreq: 'weekly' },
+  { path: '/about/', priority: 0.85, changeFreq: 'monthly' },
+  { path: '/contact/', priority: 0.85, changeFreq: 'monthly' },
+  { path: '/news/', priority: 0.9, changeFreq: 'weekly' },
+  { path: '/us/online-phone-scams/', priority: 0.8, changeFreq: 'weekly' },
+  { path: '/us/financial-banking/', priority: 0.8, changeFreq: 'weekly' },
+  { path: '/us/government-impersonation-tax/', priority: 0.8, changeFreq: 'weekly' },
+  { path: '/us/corruption-fraud-waste/', priority: 0.8, changeFreq: 'weekly' },
 ];
 
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const slugs = getUsScamSlugs();
+  const now = new Date();
   const scamUrls = slugs.map((slug) => ({
     url: `${siteUrl}/us/scams/${slug}/`,
+    lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
-  const staticEntries = STATIC_PATHS.map((path) => ({
+  const staticEntries = STATIC_PATHS.map(({ path, priority, changeFreq }) => ({
     url: path === '/' ? siteUrl : `${siteUrl}${path}`,
-    changeFrequency: 'weekly' as const,
-    priority: path === '/' ? 1.0 : 0.9,
+    lastModified: now,
+    changeFrequency: changeFreq,
+    priority,
   }));
   return [...staticEntries, ...scamUrls];
 }

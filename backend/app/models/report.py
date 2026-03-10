@@ -38,6 +38,7 @@ class ReportCreate(BaseModel):
     lost_money_range: Optional[LostMoneyRange] = None
     narrative: str = Field(..., min_length=1, max_length=3_000)
     consent_share_authorities: bool = False
+    consent_share_social: bool = False
 
 
 class RatePayload(BaseModel):
@@ -64,6 +65,7 @@ class ReportResponse(BaseModel):
     lost_money_range: Optional[str] = None
     narrative: Optional[str]
     consent_share_authorities: bool
+    consent_share_social: bool = False
     created_at: datetime
     rating_count: int = 0
     avg_credibility: float = 0.0
@@ -93,7 +95,7 @@ class AdminReportResponse(ReportResponse):
 
 
 class AdminReportUpdate(BaseModel):
-    """Payload to update a report (admin). All fields optional."""
+    """Payload to update a report (admin). All fields optional. Consent flags are not included — only the submitter can set them; admins cannot change consent."""
 
     country_origin: Optional[str] = Field(None, min_length=1, max_length=255)
     report_type: Optional[ReportType] = None
@@ -102,7 +104,6 @@ class AdminReportUpdate(BaseModel):
     lost_money: Optional[bool] = None
     lost_money_range: Optional[LostMoneyRange] = None
     narrative: Optional[str] = Field(None, max_length=3_000)
-    consent_share_authorities: Optional[bool] = None
     status: Optional[ReportStatus] = None
 
 

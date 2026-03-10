@@ -5,18 +5,18 @@ import { ContactForm } from './ContactForm';
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 
 export const metadata: Metadata = {
-  title: 'Contact us',
-  description: 'Contact Scam Avenger with questions or feedback. We’re building a community-based scam database to support people who have been targeted.',
-  keywords: 'contact Scam Avenger, scam report feedback, fraud report support',
+  title: 'Contact Us | Scam Avenger – Report Scams & Fraud',
+  description: 'Contact Scam Avenger with questions or feedback. We help you find where to report scams, fraud & corruption. Report a scam via our report form.',
+  keywords: 'contact Scam Avenger, scam report feedback, report fraud support, where to report scam',
   alternates: { canonical: `${siteUrl}/contact/` },
   openGraph: {
-    title: 'Contact us | Scam Avenger',
-    description: 'Contact Scam Avenger with questions or feedback.',
+    title: 'Contact Us | Scam Avenger – Report Scams & Fraud',
+    description: 'Contact Scam Avenger with questions or feedback. We help you find where to report scams and fraud.',
     url: `${siteUrl}/contact/`,
   },
   twitter: {
     card: 'summary',
-    title: 'Contact us | Scam Avenger',
+    title: 'Contact Us | Scam Avenger',
     description: 'Contact Scam Avenger with questions or feedback.',
   },
 };

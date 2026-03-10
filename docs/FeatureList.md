@@ -62,6 +62,14 @@ User-reported scams with shareable links; **anyone can submit a report without s
 
 ---
 
+## 9. Social sharing integrations
+
+| # | Feature | Description | Status |
+|---|---------|-------------|--------|
+| 27 | **Facebook — Post approved reports** | When a report submitter gives **consent to share on social** (separate from "share with authorities") and an admin **approves** the report, post an **anonymized summary** (e.g. scam type, country, link to report) to the Scam Avenger Facebook Page via Meta Graph API. No per-post fee from Meta; requires Meta App, Facebook Page, and Page access token. Sub-features: (1) Add `consent_share_social` to report form and DB; (2) Backend job or webhook on approval to build summary and call Graph API `POST /{page-id}/feed`; (3) Optional admin toggle per report "Post to Facebook" at approval time. | Planned |
+
+---
+
 ## 5. Content & SEO
 
 | # | Feature | Description | Status |
@@ -109,7 +117,7 @@ User-reported scams with shareable links; **anyone can submit a report without s
 |-------|--------|
 | **Top priority** | **Report scams platform (P0)** — Shareable report URLs (submit without signing in), authenticated view + ratings (fraud mitigation), aggregated public trends (no specifics). Stack: Supabase + backend (Render) + frontend (Next.js on Vercel). |
 | **Phase 1 (MVP)** | Unified scam checker (#1) + Report scams form (#12) + Community reports (#11) + Scam category cards (#7/#8) + Country guide (#17) |
-| **Phase 2** | Blog/alerts (#16) + Live stats (#13) + Newsletter (#15) |
+| **Phase 2** | Blog/alerts (#16) + Live stats (#13) + Newsletter (#15) + **Facebook — post approved reports (#27)** |
 | **Phase 3** | B2B "Claim your site" (#24) + API (#25) + Mobile app (#26) |
 
 **Differentiator:** The "I got scammed → what do I do now?" guided wizard (#4) remains a unique angle vs ScamAdviser.
@@ -124,6 +132,6 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | Partial | 10 | Aggregated trends, Card-based categories (#7), Route to channel (#4b), Trust indicators (#18b), Breadcrumb (#21), Community reports (#11), Live stats (#13), Blog (#16), Country guide (#17), Trust score (#23) |
 | Missing | 12 | Search-first (#2), Replace dropdown (#2b), Wizard (#4), Progress (#5), Estimated time (#6), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Unified scam checker (#1) |
 | Unverified | 2 | Mobile-first (#22), 48px touch targets (#22b) |
-| Planned | 5 | Niche tools (#9), Press badges (#14), Newsletter (#15), Revenue (#24–26) |
+| Planned | 6 | Niche tools (#9), Press badges (#14), Newsletter (#15), **Facebook post approved reports (#27)**, Revenue (#24–26) |
 
 *Last updated from NewFeatures.md, readme_New_UX.md, and MISSING_FEATURES_FROM_NEW_UX.md.*

@@ -4,9 +4,11 @@ interface ReportCardProps {
   prepare?: string[];
   href: string;
   label: string;
+  /** Optional estimated time to complete (e.g. "~5 min"). */
+  estimatedTime?: string;
 }
 
-export function ReportCard({ who, when, prepare = [], href, label }: ReportCardProps) {
+export function ReportCard({ who, when, prepare = [], href, label, estimatedTime }: ReportCardProps) {
   return (
     <article className="report-card">
       <p className="report-who"><strong>Who:</strong> {who}</p>
@@ -21,7 +23,10 @@ export function ReportCard({ who, when, prepare = [], href, label }: ReportCardP
           </ul>
         </div>
       )}
-      <a href={href} className="report-link" target="_blank" rel="noopener noreferrer">{label}</a>
+      <p className="report-link-wrap">
+        <a href={href} className="report-link" target="_blank" rel="noopener noreferrer">{label}</a>
+        {estimatedTime && <span className="report-estimated-time">{estimatedTime}</span>}
+      </p>
     </article>
   );
 }

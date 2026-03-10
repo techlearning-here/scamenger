@@ -179,6 +179,26 @@ ul.scam-cards-grid {
   letter-spacing: 0.01em;
 }
 
+.scam-card-badge {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+.scam-card-badge--most-reported {
+  background: rgba(13, 122, 111, 0.15);
+  color: var(--color-calm);
+}
+
+.scam-card-badge--trending {
+  background: rgba(0, 113, 188, 0.12);
+  color: var(--color-accent);
+}
+
 /* Home page */
 .hero {
   position: relative;
@@ -324,6 +344,35 @@ ul.scam-cards-grid {
   color: var(--color-trust);
   font-weight: 600;
 }
+
+.report-id-search-block {
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg) var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.report-id-search-heading { margin: 0 0 var(--space-xs); font-size: 1.15rem; }
+.report-id-search-intro { margin: 0 0 var(--space-md); font-size: 0.95rem; color: var(--color-text-muted); }
+.report-id-search-form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-md); }
+.report-id-search-label { display: block; font-weight: 500; margin-bottom: var(--space-xs); width: 100%; }
+.report-id-search-input { flex: 1; min-width: 12rem; max-width: 28rem; font-family: monospace; }
+.report-id-search-submit {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: #fff;
+  background: var(--gradient-accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.report-id-search-submit:hover { background: var(--color-accent-hover); }
+
+.report-id-search-page { margin-top: var(--space-md); }
+.report-id-search-back { margin-top: var(--space-xl); }
+.report-id-search-back a { font-weight: 500; }
 
 .top-scam-stats {
   margin: var(--space-xl) 0;
@@ -696,6 +745,18 @@ ul.scam-cards-grid {
   align-items: center;
 }
 
+.site_nav a:not(.site_nav_logo):not(.site_nav_report)::after {
+  content: "|";
+  margin-left: var(--space-md);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+  pointer-events: none;
+}
+
+.site_nav a:last-child::after {
+  display: none;
+}
+
 .site_nav a:hover {
   color: #a4d4f4;
   text-decoration: none;
@@ -731,6 +792,10 @@ ul.scam-cards-grid {
     padding: var(--space-md) 0;
     justify-content: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .site_nav a:not(.site_nav_logo):not(.site_nav_report)::after {
+    display: none;
   }
 
   .site_nav_logo {
@@ -1239,6 +1304,20 @@ ul.scam-cards-grid {
   text-decoration: none;
 }
 
+.report-link-wrap {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.report-estimated-time {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
 .note {
   font-size: 0.9rem;
   color: var(--color-text-muted);
@@ -1263,6 +1342,37 @@ ul.scam-cards-grid {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   margin-bottom: var(--space-sm);
+}
+
+.scam-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: 0;
+}
+
+.scam-title-row h1 {
+  margin: 0;
+}
+
+.scam-prevalence-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+.scam-prevalence-badge--most-reported {
+  background: rgba(13, 122, 111, 0.15);
+  color: var(--color-calm);
+}
+
+.scam-prevalence-badge--trending {
+  background: rgba(0, 113, 188, 0.12);
+  color: var(--color-accent);
 }
 
 /* Progress indication: Report → Track → Prevent (#5) */
@@ -1652,6 +1762,66 @@ ul.scam-cards-grid {
 .form-group-checkbox { display: flex; align-items: flex-start; gap: var(--space-sm); }
 .form-group-checkbox .form-checkbox { margin-top: 0.2rem; width: 1.25rem; height: 1.25rem; flex-shrink: 0; }
 .form-group-checkbox label { margin-bottom: 0; font-weight: 500; }
+
+/* Left–right switch (optional consent, report form) */
+.form-group-switch { margin-bottom: var(--space-md); }
+.form-switch-label { display: block; font-weight: 500; margin-bottom: var(--space-sm); }
+.form-switch-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  user-select: none;
+}
+.form-switch-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.form-switch-track {
+  position: relative;
+  width: 3.5rem;
+  height: 1.5rem;
+  background: var(--color-border);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+  overflow: visible;
+}
+.form-switch-wrap:has(.form-switch-input:checked) .form-switch-track { background: var(--color-accent); }
+.form-switch-wrap:has(.form-switch-input:focus-visible) .form-switch-track { box-shadow: 0 0 0 3px var(--color-accent); outline: none; }
+.form-switch-input:focus-visible { outline: none; }
+.form-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+.form-switch-wrap:has(.form-switch-input:checked) .form-switch-knob { transform: translateX(1.75rem); border-color: var(--color-accent); }
+.form-switch-ends {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+.form-switch-ends span { min-width: 1.75rem; text-align: center; }
+.form-switch-track { flex-shrink: 0; }
+.form-switch-wrap:has(.form-switch-input:checked) .form-switch-yes { color: var(--color-accent); font-weight: 600; }
+.form-switch-wrap:has(.form-switch-input:not(:checked)) .form-switch-no { color: var(--color-text); font-weight: 600; }
+.form-switch-wrap:has(.form-switch-input:disabled) { opacity: 0.7; cursor: not-allowed; }
+
 .form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); margin-top: var(--space-xl); }
 .report-scam-submit {
   padding: var(--space-md) var(--space-lg);
@@ -1669,6 +1839,19 @@ ul.scam-cards-grid {
 .report-scam-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 .report-scam-cancel { font-size: 0.95rem; color: var(--color-text-muted); padding: var(--space-sm) 0; min-height: 2.75rem; display: inline-flex; align-items: center; }
 .report-scam-cancel:hover { color: var(--color-accent); }
+
+/* Report form preview (before submit) */
+.report-preview-card { max-width: 40rem; margin: 0 auto; padding: var(--space-lg); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); }
+.report-preview-title { margin: 0 0 var(--space-sm); font-size: 1.25rem; }
+.report-preview-intro { margin: 0 0 var(--space-lg); color: var(--color-text-muted); font-size: 0.95rem; }
+.report-preview-meta { margin: 0 0 var(--space-xl); }
+.report-preview-narrative { white-space: pre-wrap; word-break: break-word; }
+.report-preview-actions { margin-top: var(--space-xl); }
+.report-scam-preview-back { padding: var(--space-md) var(--space-lg); font-size: 1rem; font-weight: 500; font-family: var(--font-sans); color: var(--color-accent); background: transparent; border: 1px solid var(--color-accent); border-radius: var(--radius); cursor: pointer; }
+.report-scam-preview-back:hover { background: var(--color-calm-muted); }
+.report-scam-preview-btn { padding: var(--space-md) var(--space-lg); min-height: 2.75rem; font-size: 1rem; font-weight: 500; font-family: var(--font-sans); color: var(--color-accent); background: transparent; border: 1px solid var(--color-accent); border-radius: var(--radius); cursor: pointer; }
+.report-scam-preview-btn:hover { background: #eff6ff; }
+.report-scam-preview-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 
 .contact-intro { margin: 0 0 var(--space-md); color: var(--color-text-muted); }
 .contact-success { padding: var(--space-lg); background: #f0fdf4; border: 1px solid #86efac; border-radius: var(--radius); margin-bottom: var(--space-lg); }
@@ -1706,6 +1889,33 @@ ul.scam-cards-grid {
   display: block;
   margin-bottom: var(--space-xs);
 }
+
+.report-detail-save-id-block {
+  margin: 0 0 var(--space-lg);
+  padding: var(--space-lg);
+  background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0, 113, 188, 0.12);
+}
+.report-detail-save-id-heading { margin: 0 0 var(--space-sm); font-size: 1.15rem; color: var(--color-accent); }
+.report-detail-save-id-intro { margin: 0 0 var(--space-md); font-size: 0.95rem; color: var(--color-text); line-height: 1.5; }
+.report-detail-save-id-value-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); }
+.report-detail-save-id-value {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-sm) var(--space-md);
+  font-family: monospace;
+  font-size: 1rem;
+  word-break: break-all;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.report-detail-copy-id-btn { flex-shrink: 0; }
+
 .report-detail-waiting {
   color: var(--color-text-muted);
   font-style: italic;
@@ -1816,6 +2026,7 @@ ul.scam-cards-grid {
   color: var(--color-text);
   word-break: break-word;
 }
+.report-detail-type-icon { margin-right: 0.2em; }
 .report-detail-lost-badge {
   display: inline-block;
   padding: var(--space-xs) var(--space-sm);
@@ -1953,13 +2164,23 @@ ul.scam-cards-grid {
 .admin-header-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }
 .admin-logout-btn { padding: var(--space-sm) var(--space-md); font-size: 0.9rem; font-family: var(--font-sans); color: var(--color-text-muted); background: transparent; border: 1px solid var(--color-border); border-radius: var(--radius); cursor: pointer; text-decoration: none; }
 .admin-logout-btn:hover { color: var(--color-text); border-color: var(--color-text-muted); }
+.admin-settings-block { margin-bottom: var(--space-xl); padding: var(--space-md); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); }
+.admin-settings-heading { font-size: 1.1rem; margin: 0 0 var(--space-md); }
+.admin-settings-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); }
+.admin-settings-row + .admin-settings-row { margin-top: var(--space-sm); }
+.admin-settings-label { display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; font-size: 0.95rem; }
+.admin-settings-label input { flex-shrink: 0; }
+.admin-settings-saving { font-size: 0.9rem; color: var(--color-text-muted); }
+.admin-settings-apply-btn { padding: var(--space-sm) var(--space-lg); font-size: 0.95rem; font-family: var(--font-sans); font-weight: 600; color: #fff; background: var(--color-accent); border: none; border-radius: var(--radius); cursor: pointer; }
+.admin-settings-apply-btn:hover:not(:disabled) { background: var(--color-accent-hover); }
+.admin-settings-apply-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 .admin-section { margin-top: var(--space-xl); }
 .admin-section-title { font-size: 1.1rem; margin: 0 0 var(--space-md); color: var(--color-text-muted); }
 .admin-report-list { list-style: none; margin: 0; padding: 0; }
 .admin-report-item { padding: var(--space-md); margin-bottom: var(--space-md); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); }
 .admin-report-item-pending { border-left: 4px solid #b45309; }
 .admin-report-meta { display: flex; flex-wrap: wrap; gap: var(--space-md); font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-xs); }
-.admin-report-id { font-family: monospace; }
+.admin-report-id { font-family: monospace; word-break: break-all; }
 .admin-report-narrative { font-size: 0.95rem; color: var(--color-text); margin: var(--space-sm) 0; line-height: 1.5; }
 .admin-report-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); margin-top: var(--space-sm); }
 .admin-report-link { font-size: 0.9rem; color: var(--color-accent); }
@@ -1988,6 +2209,72 @@ ul.scam-cards-grid {
 .admin-report-delete-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 .admin-report-item-rejected { border-left: 4px solid var(--color-text-muted); opacity: 0.9; }
 .admin-report-item-approved { border-left: 4px solid #059669; }
+
+/* Admin Facebook share modal */
+.admin-fb-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-xl);
+  overflow-y: auto;
+  z-index: 1000;
+}
+.admin-fb-modal {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 36rem;
+  width: 100%;
+  margin: var(--space-xl) auto;
+  padding: var(--space-lg);
+}
+.admin-fb-modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-md); margin-bottom: var(--space-md); }
+.admin-fb-modal-title { margin: 0; font-size: 1.2rem; }
+.admin-fb-modal-close {
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+.admin-fb-modal-close:hover { color: var(--color-text); }
+.admin-fb-modal-intro { margin: 0 0 var(--space-lg); font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.5; }
+.admin-fb-report-id { margin: 0 0 var(--space-md); font-size: 0.9rem; }
+.admin-fb-report-id-code { font-family: monospace; font-size: 0.85em; padding: 0.1em 0.3em; background: var(--color-bg); border-radius: 3px; word-break: break-all; }
+.admin-fb-form-group { margin-bottom: var(--space-lg); }
+.admin-fb-label { display: block; font-weight: 500; margin-bottom: var(--space-xs); }
+.admin-fb-textarea { width: 100%; min-height: 8rem; }
+.admin-fb-actions { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-lg); }
+.admin-fb-btn { padding: var(--space-sm) var(--space-md); font-size: 0.95rem; font-family: var(--font-sans); border-radius: var(--radius); cursor: pointer; }
+.admin-fb-btn-secondary { background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text); }
+.admin-fb-btn-secondary:hover:not(:disabled) { background: var(--color-bg); }
+.admin-fb-btn-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
+.admin-fb-btn-primary { background: var(--color-accent); border: none; color: #fff; }
+.admin-fb-btn-primary:hover { background: var(--color-accent-hover); }
+.admin-fb-preview-wrap { margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+.admin-fb-preview-label { margin: 0 0 var(--space-sm); font-size: 0.9rem; color: var(--color-text-muted); }
+.admin-fb-preview-card {
+  background: #f0f2f5;
+  border-radius: 8px;
+  padding: var(--space-md);
+  font-family: var(--font-sans);
+  color: #1c1e21;
+}
+.admin-fb-preview-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
+.admin-fb-preview-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent); opacity: 0.9; flex-shrink: 0; }
+.admin-fb-preview-page-name { font-size: 0.95rem; }
+.admin-fb-preview-meta { font-size: 0.9rem; color: var(--color-text-muted); }
+.admin-fb-preview-body { font-size: 0.95rem; line-height: 1.4; white-space: pre-wrap; word-break: break-word; margin-bottom: var(--space-sm); }
+.admin-fb-preview-link { font-size: 0.85rem; }
+.admin-fb-preview-link a { color: var(--color-accent); }
+.admin-fb-share-btn { font-size: 0.9rem; padding: var(--space-xs) var(--space-sm); background: #1877f2; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; }
+.admin-fb-share-btn:hover { background: #166fe5; }
+
 .admin-report-detail-wrap { max-width: 48rem; margin: 0 auto; padding: var(--space-md); }
 .admin-report-actions-top { margin-bottom: var(--space-md); }
 .admin-report-edit-form { background: var(--color-surface); padding: var(--space-lg); border-radius: var(--radius); margin-bottom: var(--space-lg); }

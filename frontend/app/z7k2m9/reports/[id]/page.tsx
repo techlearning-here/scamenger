@@ -15,6 +15,7 @@ import {
 } from '@/data/admin/api';
 import {
   REPORT_TYPE_LABELS,
+  REPORT_TYPE_ICONS,
   LOST_MONEY_RANGE_OPTIONS,
   REPORT_TYPE_DETAIL_LABELS,
   type ReportType,
@@ -50,7 +51,8 @@ export default function AdminReportDetailPage() {
   const params = useParams();
   const router = useRouter();
   const reportId = typeof params.id === 'string' ? params.id : '';
-  const token = typeof window !== 'undefined' ? getStoredAdminToken() : null;
+  const [token, setToken] = useState<string | null>(null);
+  const [hasCheckedAuth, setHasCheckedAuth] = useState(false);
 
   const [report, setReport] = useState<AdminReportDto | null>(null);
   const [loading, setLoading] = useState(true);
@@ -59,6 +61,11 @@ export default function AdminReportDetailPage() {
   const [saving, setSaving] = useState(false);
   const [actionId, setActionId] = useState<string | null>(null);
   const [form, setForm] = useState<AdminReportUpdateDto>({});
+
+  useEffect(() => {
+    setToken(getStoredAdminToken());
+    setHasCheckedAuth(true);
+  }, []);
 
   const loadReport = useCallback(() => {
     if (!token || !reportId) return;
@@ -77,12 +84,13 @@ export default function AdminReportDetailPage() {
   }, [reportId, token, router]);
 
   useEffect(() => {
+    if (!hasCheckedAuth) return;
     if (!token) {
       router.replace('/z7k2m9/login/');
       return;
     }
     if (reportId) loadReport();
-  }, [token, reportId, router, loadReport]);
+  }, [hasCheckedAuth, token, reportId, router, loadReport]);
 
   useEffect(() => {
     if (report && editing) {
@@ -94,7 +102,6 @@ export default function AdminReportDetailPage() {
         lost_money: report.lost_money,
         lost_money_range: (report.lost_money_range as LostMoneyRange) || undefined,
         narrative: report.narrative ?? undefined,
-        consent_share_authorities: report.consent_share_authorities,
         status: report.status,
       });
     }
@@ -143,7 +150,20 @@ export default function AdminReportDetailPage() {
     }
   }
 
-  if (!token) return null;
+  if (!hasCheckedAuth) {
+    return (
+      <div className="admin-report-detail-wrap">
+        <p className="report-detail-loading">Loading…</p>
+      </div>
+    );
+  }
+  if (!token) {
+    return (
+      <div className="admin-report-detail-wrap">
+        <p className="report-detail-loading">Redirecting to login…</p>
+      </div>
+    );
+  }
   if (loading || !reportId) {
     return (
       <div className="admin-report-detail-wrap">
@@ -353,6 +373,7 @@ export default function AdminReportDetailPage() {
               <div className="report-detail-meta-row">
                 <dt className="report-detail-meta-label">Type</dt>
                 <dd className="report-detail-meta-value">
+                  <span className="report-detail-type-icon" aria-hidden="true">{REPORT_TYPE_ICONS[report.report_type as ReportType] ?? '📋'}</span>{' '}
                   {REPORT_TYPE_LABELS[report.report_type as ReportType] ?? report.report_type}
                 </dd>
               </div>
@@ -389,8 +410,8 @@ export default function AdminReportDetailPage() {
                 </dd>
               </div>
               <div className="report-detail-meta-row">
-                <dt className="report-detail-meta-label">Consent share with authorities</dt>
-                <dd className="report-detail-meta-value">{report.consent_share_authorities ? 'Yes' : 'No'}</dd>
+                <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook)</dt>
+                <dd className="report-detail-meta-value">{report.consent_share_social ? 'Yes' : 'No'}</dd>
               </div>
             </dl>
             {report.narrative && (

@@ -15,7 +15,7 @@ export const HELP_LINKS_BY_COUNTRY: Record<string, HelpLink[]> = {
     { label: 'FTC Report Fraud', href: 'https://reportfraud.ftc.gov/', description: 'Report scams, fraud, and identity theft to the Federal Trade Commission.', external: true },
     { label: 'FBI IC3 (Internet Crime)', href: 'https://www.ic3.gov/', description: 'Report internet crime, including phishing, romance scams, and online fraud.', external: true },
     { label: 'CFPB – Submit a complaint', href: 'https://www.consumerfinance.gov/complaint/', description: 'Complaints about banks, credit cards, loans, and financial services.', external: true },
-    { label: 'National Elder Fraud Hotline', href: 'https://www.justice.gov/elderjustice/national-elder-fraud-hotline', description: '1-833-372-8311 — Report elder fraud and get support (DOJ).', external: true },
+    { label: 'National Elder Fraud Hotline', href: 'tel:+18333728311', description: '1-833-372-8311 — Report elder fraud and get support (DOJ). Mon–Fri 10am–6pm ET.', external: true },
     { label: 'IdentityTheft.gov', href: 'https://www.identitytheft.gov/', description: 'Step-by-step recovery and reporting if someone stole your identity.', external: true },
     { label: 'Report a scam to Scam Avenger', href: '/report/', description: 'Share your experience with our community and get a shareable report link.', external: false },
   ],

@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getUsScamBySlug, getUsScamTypes, SCAM_CATEGORY_LABELS } from '@/data/us-scams';
+import { getPrevalenceBadge } from '@/data/scams/icons';
 import { CategoryIntro } from '@/components/CategoryIntro';
 import { ReportCard } from '@/components/ReportCard';
 
@@ -23,9 +24,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const metaDesc = scam.intro.length > 155 ? scam.intro.slice(0, 152).trim() + '...' : scam.intro;
   const categoryLabel = SCAM_CATEGORY_LABELS[scam.category];
   const pageKeywords = `report ${scam.name}, ${scam.name} fraud, where to report ${scam.name}, report fraud USA, FTC report, IC3, ${categoryLabel}`;
-  const title = `How to report ${scam.name} in the USA`;
+  const title = `How to Report ${scam.name} in the USA | Scam Avenger`;
   return {
-    title: scam.name,
+    title: title,
     description: `How to report ${scam.name} in the USA. ${metaDesc}`,
     keywords: pageKeywords,
     alternates: { canonical: `${siteUrl}/us/scams/${scam.slug}/` },
@@ -63,6 +64,7 @@ export default async function ScamSlugPage({ params }: PageProps) {
   const relatedScams = (scam.relatedSlugs ?? [])
     .map((s) => getUsScamBySlug(s))
     .filter((s): s is NonNullable<typeof s> => s != null);
+  const prevalenceBadge = getPrevalenceBadge(scam.slug);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -81,7 +83,14 @@ export default async function ScamSlugPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <p className="back"><Link href="/">← Back to Home</Link></p>
       <p className="category-label">Category: {categoryLabel}</p>
-      <h1>{scam.name}</h1>
+      <div className="scam-title-row">
+        <h1>{scam.name}</h1>
+        {prevalenceBadge && (
+          <span className={`scam-prevalence-badge scam-prevalence-badge--${prevalenceBadge}`}>
+            {prevalenceBadge === 'most-reported' ? 'Most reported' : 'Trending'}
+          </span>
+        )}
+      </div>
 
       <nav className="progress-steps" aria-label="What happens next">
         <h2 id="progress-steps-heading" className="progress-steps-title">What happens next</h2>
@@ -183,6 +192,7 @@ export default async function ScamSlugPage({ params }: PageProps) {
           prepare={r.prepare}
           href={r.href}
           label={r.label}
+          estimatedTime={r.estimatedTime}
         />
       ))}
 

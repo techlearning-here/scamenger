@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { QRCodeSVG } from 'qrcode.react';
 import { getReportById } from '@/data/reports/api';
-import { REPORT_TYPE_LABELS, LOST_MONEY_RANGE_LABELS, REPORT_TYPE_DETAIL_SHORT_LABELS, type ReportType } from '@/data/reports/api';
+import { REPORT_TYPE_LABELS, LOST_MONEY_RANGE_LABELS, REPORT_TYPE_DETAIL_SHORT_LABELS, REPORT_TYPE_ICONS, type ReportType } from '@/data/reports/api';
 import type { ReportResponseDto, GetReportByIdResponse } from '@/data/reports/api';
 import type { LostMoneyRange } from '@/data/reports/api';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
@@ -31,6 +31,7 @@ function ReportDetailInner() {
   const [fullReportUrl, setFullReportUrl] = useState<string>('');
   const [publicReportUrl, setPublicReportUrl] = useState<string>('');
   const [copied, setCopied] = useState(false);
+  const [copiedId, setCopiedId] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && reportId) {
@@ -80,6 +81,14 @@ function ReportDetailInner() {
       window.setTimeout(() => setCopied(false), 2000);
     });
   }, [publicReportUrl]);
+
+  const handleCopyId = useCallback(() => {
+    if (!reportId) return;
+    navigator.clipboard.writeText(reportId).then(() => {
+      setCopiedId(true);
+      window.setTimeout(() => setCopiedId(false), 2000);
+    });
+  }, [reportId]);
 
   if (!reportId) {
     return (
@@ -145,6 +154,18 @@ function ReportDetailInner() {
           <strong>Copy your report URL below and save it.</strong> This full view of your report will not be accessible again after you close or leave this page—we don’t email the link.
         </div>
       )}
+      {viewToken && (
+        <div className="report-detail-save-id-block" role="region" aria-labelledby="report-detail-save-id-heading">
+          <h2 id="report-detail-save-id-heading" className="report-detail-save-id-heading">Save your report ID for later reference</h2>
+          <p className="report-detail-save-id-intro">You can use this ID to look up your report later from the Scamenger website (use the &quot;Look up report&quot; link in the menu).</p>
+          <div className="report-detail-save-id-value-wrap">
+            <code className="report-detail-save-id-value">{fullReport.id}</code>
+            <button type="button" onClick={handleCopyId} className="report-detail-copy-btn report-detail-copy-id-btn" aria-label="Copy report ID">
+              {copiedId ? 'Copied!' : 'Copy ID'}
+            </button>
+          </div>
+        </div>
+      )}
       <section className="report-detail-meta-block" aria-label="Report details">
         <h2 className="report-detail-section-title">Report details</h2>
         <dl className="report-detail-meta">
@@ -154,7 +175,10 @@ function ReportDetailInner() {
           </div>
           <div className="report-detail-meta-row">
             <dt className="report-detail-meta-label">Type</dt>
-            <dd className="report-detail-meta-value">{reportTypeLabel}</dd>
+            <dd className="report-detail-meta-value">
+              <span className="report-detail-type-icon" aria-hidden="true">{REPORT_TYPE_ICONS[fullReport.report_type as ReportType] ?? '📋'}</span>{' '}
+              {reportTypeLabel}
+            </dd>
           </div>
           {categoryLabel && (
             <div className="report-detail-meta-row">
@@ -178,6 +202,10 @@ function ReportDetailInner() {
               </dd>
             </div>
           )}
+          <div className="report-detail-meta-row">
+            <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook)</dt>
+            <dd className="report-detail-meta-value">{fullReport.consent_share_social ? 'Yes' : 'No'}</dd>
+          </div>
           {showDetailRow && (
             <div className="report-detail-meta-row">
               <dt className="report-detail-meta-label">{detailLabel}</dt>

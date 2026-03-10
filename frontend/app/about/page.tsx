@@ -4,20 +4,21 @@ import Link from 'next/link';
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 
 export const metadata: Metadata = {
-  title: 'About',
-  description: 'About Scam Avenger: we build a community-based scam database to support users. Find where to report scams, fraud, and corruption. We point you to official channels (FTC, IC3, CFPB).',
-  keywords: 'Scam Avenger, report scam, report fraud, where to report scam, community scam database, consumer protection, FTC IC3 CFPB',
+  title: 'About Scam Avenger – Where to Report Scams & Fraud',
+  description: 'About Scam Avenger: we help you find where to report scams, fraud & corruption. Free guides to FTC, IC3, CFPB & official channels. Community-based scam reporting.',
+  keywords: 'about Scam Avenger, where to report scam, report fraud USA, FTC IC3 CFPB, consumer protection, scam reporting, fraud reporting',
   alternates: { canonical: `${siteUrl}/about/` },
   openGraph: {
-    title: 'About | Scam Avenger',
-    description: 'About Scam Avenger: we build a community-based scam database to support users. Find where to report scams, fraud, and corruption.',
+    title: 'About Scam Avenger – Where to Report Scams & Fraud',
+    description: 'About Scam Avenger: we help you find where to report scams, fraud & corruption. Free guides to FTC, IC3, CFPB.',
     url: `${siteUrl}/about/`,
-    images: [{ url: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&h=630&q=80', width: 1200, height: 630, alt: 'About Scam Avenger' }],
+    images: [{ url: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&h=630&q=80', width: 1200, height: 630, alt: 'About Scam Avenger – Where to report scams and fraud' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About | Scam Avenger',
-    description: 'About Scam Avenger: we build a community-based scam database to support users. Find where to report scams, fraud, and corruption.',
+    title: 'About Scam Avenger – Where to Report Scams & Fraud',
+    description: 'About Scam Avenger: we help you find where to report scams, fraud & corruption.',
+    images: ['https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&h=630&q=80'],
   },
 };
 

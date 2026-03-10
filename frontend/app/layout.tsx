@@ -3,13 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
 import { FabActions } from '@/components/FabActions';
+import { NavReportScamLink } from '@/components/NavReportScamLink';
 import { SocialLinks } from '@/components/SocialLinks';
 import './globals.css';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 const defaultOgImageFallback = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=630&auto=format&fit=crop';
-const siteDescription = 'Find where to report scams, fraud, and corruption in the USA. Report to FTC, IC3, CFPB, and official channels.';
-const siteTitle = 'Scam Avenger – Where to Report Scams, Fraud & Corruption';
+const siteTitle = 'Where to Report Scams, Fraud & Corruption | Scam Avenger';
+const siteDescription = 'Report scams, fraud & corruption in the USA. Free guides to FTC, IC3, CFPB & official channels. Report identity theft, phishing & consumer fraud. No sign-up required.';
+const siteKeywords = 'where to report scam, where to report fraud, report scam USA, report fraud USA, FTC report fraud, IC3 report internet crime, CFPB complaint, identity theft report, report phishing, report consumer fraud, report corruption, elder fraud report, scam reporting, fraud reporting USA';
 
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const adsenseSlotMain = process.env.NEXT_PUBLIC_ADSENSE_SLOT_MAIN;
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
     template: '%s | Scam Avenger',
   },
   description: siteDescription,
-  keywords: 'report scam, report fraud, consumer fraud, where to report scam, where to report fraud, FTC report fraud, IC3 internet crime, CFPB complaint, identity theft report, government corruption report, report corruption, elder fraud, phishing report, scam reporting USA',
+  keywords: siteKeywords,
   authors: [{ name: 'Scam Avenger', url: siteUrl }],
   creator: 'Scam Avenger',
   publisher: 'Scam Avenger',
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     url: siteUrl,
     images: [
-      { url: defaultOgImageFallback, width: 1200, height: 630, alt: 'Scam Avenger – Where to report scams, fraud & corruption' },
+      { url: defaultOgImageFallback, width: 1200, height: 630, alt: 'Where to report scams, fraud and corruption – Scam Avenger' },
     ],
   },
   twitter: {
@@ -120,6 +122,14 @@ export default function RootLayout({
                   logo: { '@type': 'ImageObject', url: `${siteUrl}/icon.png` },
                   description: siteDescription,
                 },
+                {
+                  '@type': 'Service',
+                  name: 'Scam & Fraud Reporting Guides',
+                  description: 'Free guides on where to report scams, fraud, and corruption in the USA. Links to FTC, IC3, CFPB and official reporting channels. Report anonymously with no sign-up.',
+                  provider: { '@id': `${siteUrl}/#organization` },
+                  areaServed: { '@type': 'Country', name: 'United States' },
+                  url: siteUrl,
+                },
               ],
             }),
           }}
@@ -132,10 +142,11 @@ export default function RootLayout({
                 <span className="site_nav_logo_text">Scam Avenger</span>
               </Link>
               <Link href="/">Home</Link>
+              <Link href="/lookup-report/">Look up report</Link>
               <Link href="/news/">News</Link>
               <Link href="/about/">About</Link>
               <Link href="/contact/">Contact</Link>
-              <Link href="/report/" className="site_nav_report">Report a scam</Link>
+              <NavReportScamLink />
             </nav>
           </div>
         </header>

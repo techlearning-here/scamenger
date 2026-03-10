@@ -15,19 +15,19 @@ const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL 
 const heroImagePhoto = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=400&auto=format&fit=crop&ixlib=rb-4.1.0';
 
 export const metadata: Metadata = {
-  title: 'Scam Avenger',
-  description: 'Find where to report scams, fraud, and corruption. Official reporting channels: FTC, IC3, CFPB. Report consumer fraud, identity theft, and internet crime in the USA.',
+  title: 'Where to Report Scams, Fraud & Corruption | Scam Avenger',
+  description: 'Report scams, fraud & corruption in the USA. Free guides to FTC, IC3, CFPB & official channels. Report identity theft, phishing & consumer fraud. No sign-up required.',
   alternates: { canonical: `${siteUrl}/` },
   openGraph: {
-    title: 'Scam Avenger – Where to Report Scams, Fraud & Corruption',
-    description: 'Find where to report scams, fraud, and corruption. Official reporting channels: FTC, IC3, CFPB.',
+    title: 'Where to Report Scams, Fraud & Corruption | Scam Avenger',
+    description: 'Report scams, fraud & corruption in the USA. Free guides to FTC, IC3, CFPB & official channels. Report identity theft, phishing & consumer fraud.',
     url: `${siteUrl}/`,
-    images: [{ url: heroImagePhoto, width: 1200, height: 400, alt: 'Scam Avenger' }],
+    images: [{ url: heroImagePhoto, width: 1200, height: 400, alt: 'Where to report scams, fraud and corruption – Scam Avenger' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Scam Avenger – Where to Report Scams, Fraud & Corruption',
-    description: 'Find where to report scams, fraud, and corruption. Official reporting channels: FTC, IC3, CFPB.',
+    title: 'Where to Report Scams, Fraud & Corruption | Scam Avenger',
+    description: 'Report scams, fraud & corruption in the USA. Free guides to FTC, IC3, CFPB & official channels.',
     images: [heroImagePhoto],
   },
 };
@@ -77,7 +77,7 @@ export default function HomePage() {
           loading="eager"
         />
         <div className="hero-overlay">
-          <h1 className="hero-tagline">You're not alone. Let's get you to the right help.<br />Report a scam, find official channels, and protect others.</h1>
+          <h1 className="hero-tagline">Where to Report a Scam – Get Official Links (FTC, IC3, CFPB)<br />Report fraud &amp; corruption. Free guides. No sign-up required.</h1>
         </div>
       </header>
 

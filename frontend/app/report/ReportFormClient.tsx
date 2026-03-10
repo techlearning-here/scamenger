@@ -7,11 +7,14 @@ import {
   REPORT_TYPE_LABELS,
   REPORT_TYPE_DETAIL_LABELS,
   REPORT_TYPE_DETAIL_SCAMMER_HINT,
+  REPORT_TYPE_ICONS,
   LOST_MONEY_RANGE_OPTIONS,
+  LOST_MONEY_RANGE_LABELS,
   type ReportCreatePayload,
   type ReportType,
   type LostMoneyRange,
 } from '@/data/reports/api';
+import { getConfig } from '@/data/config/api';
 import { COUNTRY_OPTIONS, getCountryFromLocale } from '@/data/reports/countries';
 import { SCAM_CATEGORY_LABELS, type ScamCategoryId } from '@/data/scams/types';
 
@@ -29,7 +32,10 @@ export function ReportFormClient() {
   const [category, setCategory] = useState<ScamCategoryId | ''>('');
   const [lostMoneyRange, setLostMoneyRange] = useState<LostMoneyRange>('none');
   const [narrative, setNarrative] = useState('');
+  const [consentShareSocial, setConsentShareSocial] = useState(false);
+  const [showFacebookConsentControl, setShowFacebookConsentControl] = useState<boolean | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -40,15 +46,21 @@ export function ReportFormClient() {
     }
   }, []);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  useEffect(() => {
+    getConfig().then((c) => setShowFacebookConsentControl(c.show_facebook_consent));
+  }, []);
+
+  async function handleSubmit(e?: React.FormEvent) {
+    if (e) e.preventDefault();
     setError(null);
     if (!countryOrigin.trim()) {
       setError('Please select the country of scam origin.');
+      setShowPreview(false);
       return;
     }
     if (!narrative.trim()) {
       setError('Please describe what happened.');
+      setShowPreview(false);
       return;
     }
     setSubmitting(true);
@@ -60,6 +72,7 @@ export function ReportFormClient() {
         category: category || null,
         lost_money_range: lostMoneyRange,
         narrative: narrative.trim(),
+        consent_share_social: showFacebookConsentControl === true ? consentShareSocial : false,
       };
       const report = await createReport(payload);
       const params = new URLSearchParams({ id: report.id });
@@ -72,7 +85,83 @@ export function ReportFormClient() {
     }
   }
 
+  function handlePreview() {
+    setError(null);
+    if (!countryOrigin.trim()) {
+      setError('Please select the country of scam origin.');
+      return;
+    }
+    if (!narrative.trim()) {
+      setError('Please describe what happened.');
+      return;
+    }
+    setShowPreview(true);
+  }
+
   return (
+    <>
+      {error && (
+        <div className="report-scam-error" role="alert">
+          {error}
+        </div>
+      )}
+      {showPreview ? (
+        <div className="report-preview-card" aria-label="Report preview">
+          <h2 className="report-preview-title">Review your report</h2>
+          <p className="report-preview-intro">Check the details below. You can go back to edit or submit.</p>
+          <dl className="report-detail-meta report-preview-meta">
+            <div className="report-detail-meta-row">
+              <dt className="report-detail-meta-label">Country of scam origin</dt>
+              <dd className="report-detail-meta-value">
+                {COUNTRY_OPTIONS.find((o) => o.value === countryOrigin)?.label ?? countryOrigin}
+              </dd>
+            </div>
+            {category && (
+              <div className="report-detail-meta-row">
+                <dt className="report-detail-meta-label">Scam category</dt>
+                <dd className="report-detail-meta-value">{SCAM_CATEGORY_LABELS[category] ?? category}</dd>
+              </div>
+            )}
+            <div className="report-detail-meta-row">
+              <dt className="report-detail-meta-label">Type</dt>
+              <dd className="report-detail-meta-value">
+                {REPORT_TYPE_ICONS[reportType] ?? '📋'} {REPORT_TYPE_LABELS[reportType]}
+              </dd>
+            </div>
+            {reportTypeDetail.trim() && (
+              <div className="report-detail-meta-row">
+                <dt className="report-detail-meta-label">{REPORT_TYPE_DETAIL_LABELS[reportType].label}</dt>
+                <dd className="report-detail-meta-value">{reportTypeDetail.trim()}</dd>
+              </div>
+            )}
+            <div className="report-detail-meta-row">
+              <dt className="report-detail-meta-label">I lost money</dt>
+              <dd className="report-detail-meta-value">{LOST_MONEY_RANGE_LABELS[lostMoneyRange]}</dd>
+            </div>
+            <div className="report-detail-meta-row">
+              <dt className="report-detail-meta-label">What happened?</dt>
+              <dd className="report-detail-meta-value report-preview-narrative">{narrative.trim()}</dd>
+            </div>
+            {showFacebookConsentControl === true && (
+            <div className="report-detail-meta-row">
+              <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook)</dt>
+              <dd className="report-detail-meta-value">{consentShareSocial ? 'Yes' : 'No'}</dd>
+            </div>
+            )}
+          </dl>
+          <div className="form-actions report-preview-actions">
+            <button type="button" onClick={() => setShowPreview(false)} className="report-scam-preview-back">
+              Back to edit
+            </button>
+            <button type="button" onClick={() => handleSubmit()} disabled={submitting} className="report-scam-submit">
+              {submitting ? 'Submitting…' : 'Submit report'}
+            </button>
+            <Link href="/" className="report-scam-cancel">
+              Cancel
+            </Link>
+          </div>
+        </div>
+      ) : (
     <form onSubmit={handleSubmit} className="report-scam-form" aria-labelledby="report-scam-heading">
       <p className="report-scam-intro">
         Report anonymously. No account needed—we don’t ask for your name or email. Your report gets a shareable link so you can share it with others or authorities.
@@ -80,12 +169,6 @@ export function ReportFormClient() {
       <p className="report-scam-pii-note" role="note">
         Please avoid including any personally identifiable information (e.g. your full name, address, phone number, or email) in your report. Describe what happened without revealing details that could identify you or others.
       </p>
-
-      {error && (
-        <div className="report-scam-error" role="alert">
-          {error}
-        </div>
-      )}
 
       <div className="form-group">
         <label htmlFor="country_origin">
@@ -117,6 +200,24 @@ export function ReportFormClient() {
       </div>
 
       <div className="form-group">
+        <label htmlFor="category">Scam category (optional)</label>
+        <select
+          id="category"
+          value={category}
+          onChange={(e) => setCategory((e.target.value || '') as ScamCategoryId | '')}
+          disabled={submitting}
+          className="form-control"
+        >
+          <option value="">Select category</option>
+          {CATEGORY_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="form-group">
         <label htmlFor="report_type">
           Report type <span className="required">*</span>
         </label>
@@ -130,7 +231,7 @@ export function ReportFormClient() {
         >
           {(Object.entries(REPORT_TYPE_LABELS) as [ReportType, string][]).map(([value, label]) => (
             <option key={value} value={value}>
-              {label}
+              {REPORT_TYPE_ICONS[value]} {label}
             </option>
           ))}
         </select>
@@ -155,24 +256,6 @@ export function ReportFormClient() {
           className="form-control"
           aria-describedby="report_type_detail_scammer_hint"
         />
-      </div>
-
-      <div className="form-group">
-        <label htmlFor="category">Scam category (optional)</label>
-        <select
-          id="category"
-          value={category}
-          onChange={(e) => setCategory((e.target.value || '') as ScamCategoryId | '')}
-          disabled={submitting}
-          className="form-control"
-        >
-          <option value="">Select category</option>
-          {CATEGORY_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
       </div>
 
       <div className="form-group">
@@ -201,7 +284,7 @@ export function ReportFormClient() {
           id="narrative"
           value={narrative}
           onChange={(e) => setNarrative(e.target.value)}
-          placeholder="How did you get in contact? What happened next?"
+          placeholder="Describe the incident: how you got in contact, what happened, and any details that might help others."
           rows={4}
           maxLength={NARRATIVE_MAX_LENGTH}
           required
@@ -219,11 +302,39 @@ export function ReportFormClient() {
         )}
       </div>
 
+      {showFacebookConsentControl === true && (
+      <div className="form-group form-group-switch">
+        <span className="form-switch-label" id="consent_share_social_label">
+          Do you want an anonymized summary of this report posted on Scam Avenger&apos;s Facebook page? <span className="form-optional">(optional)</span>
+        </span>
+        <label className="form-switch-wrap" htmlFor="consent_share_social_switch" aria-labelledby="consent_share_social_label">
+          <input
+            id="consent_share_social_switch"
+            type="checkbox"
+            className="form-switch-input"
+            checked={consentShareSocial}
+            onChange={(e) => setConsentShareSocial(e.target.checked)}
+            disabled={submitting}
+          />
+          <span className="form-switch-ends">
+            <span className="form-switch-no">No</span>
+            <span className="form-switch-track" aria-hidden="true">
+              <span className="form-switch-knob" />
+            </span>
+            <span className="form-switch-yes">Yes</span>
+          </span>
+        </label>
+      </div>
+      )}
+
       <p className="report-scam-disclaimer" role="note">
         <strong>Disclaimer:</strong> We will use this scam report for auditing and reporting purposes only. If you wish to report this scam to law enforcement or other authorities, please contact them directly.
       </p>
 
       <div className="form-actions">
+        <button type="button" onClick={handlePreview} disabled={submitting} className="report-scam-preview-btn">
+          Preview
+        </button>
         <button type="submit" disabled={submitting} className="report-scam-submit">
           {submitting ? 'Submitting…' : 'Submit'}
         </button>
@@ -232,5 +343,7 @@ export function ReportFormClient() {
         </Link>
       </div>
     </form>
+      )}
+    </>
   );
 }

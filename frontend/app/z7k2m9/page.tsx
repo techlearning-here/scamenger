@@ -8,13 +8,18 @@ import {
   clearStoredAdminToken,
   listAdminReports,
   getApprovedStats,
+  getSettings,
+  updateSettings,
   approveReport,
   rejectReport,
   deleteReport,
   type AdminReportDto,
   type AdminApprovedStatsResponse,
+  type SiteSettingsDto,
 } from '@/data/admin/api';
-import { REPORT_TYPE_LABELS } from '@/data/reports/api';
+import { invalidateConfigCache } from '@/data/config/api';
+import { FacebookShareModal } from './components/FacebookShareModal';
+import { REPORT_TYPE_LABELS, REPORT_TYPE_ICONS } from '@/data/reports/api';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
 
 function formatDate(iso: string): string {
@@ -49,6 +54,18 @@ export default function AdminDashboardPage() {
   const [error, setError] = useState<string | null>(null);
   const [actionId, setActionId] = useState<string | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const [reportForFacebook, setReportForFacebook] = useState<AdminReportDto | null>(null);
+  const [settings, setSettings] = useState<SiteSettingsDto | null>(null);
+  const [settingsSaving, setSettingsSaving] = useState(false);
+  const [draftShowReportScam, setDraftShowReportScam] = useState(true);
+  const [draftShowFacebookConsent, setDraftShowFacebookConsent] = useState(true);
+
+  useEffect(() => {
+    if (settings != null) {
+      setDraftShowReportScam(settings.show_report_scam);
+      setDraftShowFacebookConsent(settings.show_facebook_consent);
+    }
+  }, [settings]);
 
   useEffect(() => {
     const t = getStoredAdminToken();
@@ -64,8 +81,9 @@ export default function AdminDashboardPage() {
       listAdminReports(token, { status: 'rejected', page: rejectedPage, page_size: PAGE_SIZE }),
       listAdminReports(token, { status: 'approved', page: approvedPage, page_size: PAGE_SIZE }),
       getApprovedStats(token),
+      getSettings(token),
     ])
-      .then(([pendingRes, rejectedRes, approvedRes, statsRes]) => {
+      .then(([pendingRes, rejectedRes, approvedRes, statsRes, settingsRes]) => {
         if (cancelled) return;
         setPendingItems(pendingRes.items);
         setPendingTotal(pendingRes.total);
@@ -74,6 +92,7 @@ export default function AdminDashboardPage() {
         setApprovedItems(approvedRes.items);
         setApprovedTotal(approvedRes.total);
         setStats(statsRes);
+        setSettings(settingsRes);
       })
       .catch((err) => {
         if (!cancelled) {
@@ -156,6 +175,32 @@ export default function AdminDashboardPage() {
     router.replace('/z7k2m9/login/');
   }
 
+  function handleToggleShowFacebookConsent() {
+    setDraftShowFacebookConsent((prev) => !prev);
+  }
+
+  function handleToggleShowReportScam() {
+    setDraftShowReportScam((prev) => !prev);
+  }
+
+  async function handleApplySettings() {
+    if (!token) return;
+    setSettingsSaving(true);
+    setError(null);
+    try {
+      const updated = await updateSettings(token, {
+        show_report_scam: draftShowReportScam,
+        show_facebook_consent: draftShowFacebookConsent,
+      });
+      setSettings(updated);
+      invalidateConfigCache();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to update settings');
+    } finally {
+      setSettingsSaving(false);
+    }
+  }
+
   if (!token) return null;
 
   const pendingPages = Math.max(1, Math.ceil(pendingTotal / PAGE_SIZE));
@@ -189,6 +234,45 @@ export default function AdminDashboardPage() {
         <div className="report-scam-error" role="alert">
           {error}
         </div>
+      )}
+      {settings != null && (
+        <section className="admin-settings-block" aria-labelledby="admin-settings-heading">
+          <h2 id="admin-settings-heading" className="admin-settings-heading">Settings</h2>
+          <div className="admin-settings-row">
+            <label className="admin-settings-label">
+              <input
+                type="checkbox"
+                checked={draftShowReportScam}
+                onChange={handleToggleShowReportScam}
+                disabled={settingsSaving}
+                aria-describedby="admin-settings-report-desc"
+              />
+              <span id="admin-settings-report-desc">Enable &quot;Report a scam&quot; (nav button and menu item)</span>
+            </label>
+          </div>
+          <div className="admin-settings-row">
+            <label className="admin-settings-label">
+              <input
+                type="checkbox"
+                checked={draftShowFacebookConsent}
+                onChange={handleToggleShowFacebookConsent}
+                disabled={settingsSaving}
+                aria-describedby="admin-settings-fb-desc"
+              />
+              <span id="admin-settings-fb-desc">Show &quot;Share to Facebook&quot; consent on report form</span>
+            </label>
+          </div>
+          <div className="admin-settings-row">
+            <button
+              type="button"
+              onClick={handleApplySettings}
+              disabled={settingsSaving}
+              className="admin-settings-apply-btn"
+            >
+              {settingsSaving ? 'Applying…' : 'Apply'}
+            </button>
+          </div>
+        </section>
       )}
       {stats !== null && (
         <section className="admin-stats-section" aria-labelledby="admin-stats-heading">
@@ -228,9 +312,9 @@ export default function AdminDashboardPage() {
                 {pendingItems.map((r) => (
                   <li key={r.id} className="admin-report-item admin-report-item-pending">
                     <div className="admin-report-meta">
-                      <span className="admin-report-id">{r.id.slice(0, 8)}…</span>
+                      <span className="admin-report-id">{r.id}</span>
                       <span>{formatDate(r.created_at)}</span>
-                      <span>{REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</span>
+                      <span>{REPORT_TYPE_ICONS[r.report_type as keyof typeof REPORT_TYPE_ICONS] ?? '📋'} {REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</span>
                       <span>{r.country_origin}</span>
                     </div>
                     <div className="admin-report-actions">
@@ -267,6 +351,15 @@ export default function AdminDashboardPage() {
                       >
                         View full report
                       </a>
+                      {r.consent_share_social && (
+                        <button
+                          type="button"
+                          onClick={() => setReportForFacebook(r)}
+                          className="admin-fb-share-btn"
+                        >
+                          Share to Facebook
+                        </button>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -305,9 +398,9 @@ export default function AdminDashboardPage() {
                 {rejectedItems.map((r) => (
                   <li key={r.id} className="admin-report-item admin-report-item-rejected">
                     <div className="admin-report-meta">
-                      <span className="admin-report-id">{r.id.slice(0, 8)}…</span>
+                      <span className="admin-report-id">{r.id}</span>
                       <span>{formatDate(r.created_at)}</span>
-                      <span>{REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</span>
+                      <span>{REPORT_TYPE_ICONS[r.report_type as keyof typeof REPORT_TYPE_ICONS] ?? '📋'} {REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</span>
                       <span>{r.country_origin}</span>
                     </div>
                     {r.narrative && (
@@ -339,6 +432,15 @@ export default function AdminDashboardPage() {
                       >
                         View full report
                       </a>
+                      {r.consent_share_social && (
+                        <button
+                          type="button"
+                          onClick={() => setReportForFacebook(r)}
+                          className="admin-fb-share-btn"
+                        >
+                          Share to Facebook
+                        </button>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -377,14 +479,23 @@ export default function AdminDashboardPage() {
                 {approvedItems.map((r) => (
                   <li key={r.id} className="admin-report-item admin-report-item-approved">
                     <div className="admin-report-meta">
-                      <span className="admin-report-id">{r.id.slice(0, 8)}…</span>
+                      <span className="admin-report-id">{r.id}</span>
                       <span>{formatDate(r.created_at)}</span>
-                      <span>{REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</span>
+                      <span>{REPORT_TYPE_ICONS[r.report_type as keyof typeof REPORT_TYPE_ICONS] ?? '📋'} {REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</span>
                       <span>{r.country_origin}</span>
                     </div>
                     <div className="admin-report-actions">
                       <a href={`/z7k2m9/reports/${encodeURIComponent(r.id)}`} className="admin-report-link" target="_blank" rel="noopener noreferrer">View full report</a>
                       <a href={`/reports/?id=${encodeURIComponent(r.id)}`} target="_blank" rel="noopener noreferrer" className="admin-report-link">View as public</a>
+                      {r.consent_share_social && (
+                        <button
+                          type="button"
+                          onClick={() => setReportForFacebook(r)}
+                          className="admin-fb-share-btn"
+                        >
+                          Share to Facebook
+                        </button>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -399,6 +510,12 @@ export default function AdminDashboardPage() {
             </section>
           )}
         </>
+      )}
+      {reportForFacebook && (
+        <FacebookShareModal
+          report={reportForFacebook}
+          onClose={() => setReportForFacebook(null)}
+        />
       )}
     </>
   );

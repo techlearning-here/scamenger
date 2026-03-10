@@ -10,7 +10,7 @@ from app.auth.admin import (
     get_admin_from_token,
     verify_admin_credentials,
 )
-from app.cache import invalidate_report_cached, set_report_cached
+from app.cache import invalidate_config_cached, invalidate_report_cached, set_report_cached
 from app.db.supabase import get_supabase
 from app.models.report import (
     AdminReportResponse,
@@ -24,6 +24,7 @@ from app.models.contact import (
     ContactMessageResponse,
     ContactMessagesListResponse,
 )
+from app.models.settings import SiteSettingsResponse, SiteSettingsUpdate
 
 router = APIRouter(prefix="/z7k2m9", tags=["admin"])
 
@@ -169,6 +170,10 @@ def update_report(
     if not result.data or len(result.data) == 0:
         raise HTTPException(status_code=404, detail="Report not found")
     updates = payload.model_dump(exclude_unset=True)
+    # Never allow admin to change submitter consent flags
+    for key in list(updates.keys()):
+        if key.startswith("consent_"):
+            del updates[key]
     if not updates:
         return _admin_report_from_record(result.data[0])
     try:
@@ -266,6 +271,72 @@ def delete_report(
     except Exception:
         raise HTTPException(status_code=503, detail="Service unavailable") from None
     invalidate_report_cached(report_id)
+
+
+def _get_site_setting(sb, key: str, default: Any) -> Any:
+    """Read a single site_settings value."""
+    try:
+        result = sb.table("site_settings").select("value").eq("key", key).limit(1).execute()
+        if result.data and len(result.data) > 0:
+            val = result.data[0].get("value", default)
+            if isinstance(val, bool):
+                return val
+            if isinstance(val, str) and val.lower() in ("true", "1", "yes"):
+                return True
+            if val is not None:
+                return bool(val)
+    except Exception:
+        pass
+    return default
+
+
+@router.get("/settings", response_model=SiteSettingsResponse)
+def get_settings(
+    _admin: str = Depends(get_admin_from_token),
+) -> SiteSettingsResponse:
+    """Get site settings. Admin only."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    show_fb = _get_site_setting(sb, "show_facebook_consent", True)
+    show_report = _get_site_setting(sb, "show_report_scam", True)
+    return SiteSettingsResponse(show_facebook_consent=show_fb, show_report_scam=show_report)
+
+
+@router.patch("/settings", response_model=SiteSettingsResponse)
+def update_settings(
+    payload: SiteSettingsUpdate,
+    _admin: str = Depends(get_admin_from_token),
+) -> SiteSettingsResponse:
+    """Update site settings. Admin only. Only provided fields are updated."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    updates = payload.model_dump(exclude_unset=True)
+    if not updates:
+        show_fb = _get_site_setting(sb, "show_facebook_consent", True)
+        show_report = _get_site_setting(sb, "show_report_scam", True)
+        return SiteSettingsResponse(show_facebook_consent=show_fb, show_report_scam=show_report)
+    if "show_facebook_consent" in updates:
+        try:
+            sb.table("site_settings").upsert(
+                {"key": "show_facebook_consent", "value": updates["show_facebook_consent"]},
+                on_conflict="key",
+            ).execute()
+        except Exception:
+            raise HTTPException(status_code=503, detail="Service unavailable") from None
+    if "show_report_scam" in updates:
+        try:
+            sb.table("site_settings").upsert(
+                {"key": "show_report_scam", "value": updates["show_report_scam"]},
+                on_conflict="key",
+            ).execute()
+        except Exception:
+            raise HTTPException(status_code=503, detail="Service unavailable") from None
+    invalidate_config_cached()
+    show_fb = _get_site_setting(sb, "show_facebook_consent", True)
+    show_report = _get_site_setting(sb, "show_report_scam", True)
+    return SiteSettingsResponse(show_facebook_consent=show_fb, show_report_scam=show_report)
 
 
 def _contact_message_from_record(record: dict[str, Any]) -> ContactMessageResponse:

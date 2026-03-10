@@ -1,10 +1,20 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getConfig } from '@/data/config/api';
 
 /**
- * Floating action buttons: "Need help now?" (emergency contacts) and "Report a scam".
+ * Floating action buttons: "Need help now?" (emergency contacts) and "Report a scam" (when enabled).
  * Rendered on every page for quick access.
  */
 export function FabActions() {
+  const [showReportScam, setShowReportScam] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    getConfig().then((c) => setShowReportScam(c.show_report_scam));
+  }, []);
+
   return (
     <div className="fab_group" aria-label="Quick actions">
       <Link
@@ -15,14 +25,16 @@ export function FabActions() {
       >
         <span className="fab_help_now_text">Need help now?</span>
       </Link>
-      <Link
-        href="/report/"
-        className="fab_report"
-        aria-label="Report a scam"
-        title="Report a scam"
-      >
-        <span className="fab_report_text">Report a scam</span>
-      </Link>
+      {showReportScam === true && (
+        <Link
+          href="/report/"
+          className="fab_report"
+          aria-label="Report a scam"
+          title="Report a scam"
+        >
+          <span className="fab_report_text">Report a scam</span>
+        </Link>
+      )}
     </div>
   );
 }

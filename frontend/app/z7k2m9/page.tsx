@@ -59,6 +59,7 @@ export default function AdminDashboardPage() {
   const [settingsSaving, setSettingsSaving] = useState(false);
   const [draftShowReportScam, setDraftShowReportScam] = useState(true);
   const [draftShowFacebookConsent, setDraftShowFacebookConsent] = useState(true);
+  const [searchReportId, setSearchReportId] = useState('');
 
   useEffect(() => {
     if (settings != null) {
@@ -230,6 +231,32 @@ export default function AdminDashboardPage() {
       <p className="report-scam-lead">
         Review pending and rejected reports. Only approved reports are visible to the public; approved reports are not listed here.
       </p>
+      <section className="admin-search-report" aria-labelledby="admin-search-heading">
+        <h2 id="admin-search-heading" className="admin-section-title">Search by report ID</h2>
+        <form
+          className="admin-search-report-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const id = searchReportId.trim();
+            if (id) router.push(`/z7k2m9/reports/${encodeURIComponent(id)}`);
+          }}
+        >
+          <label htmlFor="admin-search-report-id" className="visually-hidden">Report ID</label>
+          <input
+            id="admin-search-report-id"
+            type="text"
+            value={searchReportId}
+            onChange={(e) => setSearchReportId(e.target.value)}
+            placeholder="e.g. ecfb0b4a-3398-433a-8a36-d1d519d6f4f7"
+            className="form-control admin-search-report-input"
+            aria-describedby="admin-search-report-desc"
+          />
+          <button type="submit" className="report-scam-submit admin-search-report-btn">
+            Go to report
+          </button>
+        </form>
+        <p id="admin-search-report-desc" className="admin-search-report-desc">Enter a report ID to view, edit, or delete that report.</p>
+      </section>
       {error && (
         <div className="report-scam-error" role="alert">
           {error}

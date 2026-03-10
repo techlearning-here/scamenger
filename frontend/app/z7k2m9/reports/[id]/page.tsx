@@ -10,6 +10,7 @@ import {
   updateAdminReport,
   approveReport,
   rejectReport,
+  deleteReport,
   type AdminReportDto,
   type AdminReportUpdateDto,
 } from '@/data/admin/api';
@@ -145,6 +146,21 @@ export default function AdminReportDetailPage() {
       setReport(updated);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to reject');
+    } finally {
+      setActionId(null);
+    }
+  }
+
+  async function handleDelete() {
+    if (!token || !reportId) return;
+    if (!window.confirm('Permanently delete this report? This cannot be undone.')) return;
+    setActionId(reportId);
+    setError(null);
+    try {
+      await deleteReport(reportId, token);
+      router.push('/z7k2m9/');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to delete');
     } finally {
       setActionId(null);
     }
@@ -340,6 +356,15 @@ export default function AdminReportDetailPage() {
               className="report-scam-submit"
             >
               Edit report
+            </button>
+            <button
+              type="button"
+              onClick={handleDelete}
+              disabled={!!actionId}
+              className="admin-report-delete-btn"
+              aria-label="Delete report"
+            >
+              {actionId ? 'Deleting…' : 'Delete'}
             </button>
             <a
               href={`/reports/?id=${encodeURIComponent(report.id)}`}

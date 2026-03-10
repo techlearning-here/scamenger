@@ -45,4 +45,18 @@ describe('ReportCard', () => {
     );
     expect(screen.queryByText(/What to prepare/)).not.toBeInTheDocument();
   });
+
+  it('renders estimated time when provided', () => {
+    render(
+      <ReportCard
+        who="Who"
+        when="When"
+        href="https://example.com"
+        label="Report"
+        estimatedTime="~5 min"
+      />
+    );
+    expect(screen.getByText('~5 min')).toBeInTheDocument();
+    expect(screen.getByLabelText('Estimated time to complete')).toHaveTextContent('~5 min');
+  });
 });

@@ -1,5 +1,5 @@
 🔥 High-Impact Features to Borrow
-#	Feature	ScamAdviser's Version	Your Adaptation
+#	Feature	Reference / Market	Your Adaptation
 1	Multi-type Checker	Check Website, Phone, Crypto wallet, IBAN	"Paste anything suspicious" — unified search bar
 2	Trust Score Algorithm	Algorithmic trust rating (106M+ pages in DB)	Start with curated trust indicators, grow with community data
 3	Community Scam Reports	User-submitted reports with carousel feed	"Latest Reports" feed — builds SEO + social proof
@@ -25,4 +25,4 @@ Phase 2: Blog/alerts (#6) + Live stats (#7) + Newsletter (#10)
 
 Phase 3: B2B claim your site (#11) + API (#12) + Mobile app (#13)
 
-Your unique angle remains the "I got scammed → what do I do now?" guided wizard, which ScamAdviser doesn't offer well.
+Your unique angle remains the "I got scammed → what do I do now?" guided wizard, which many scam-checker tools don't offer well.

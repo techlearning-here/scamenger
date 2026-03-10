@@ -101,8 +101,8 @@ export const US_SCAMS: UsScamType[] = [
       'Save any pop-up text, phone number, or email and report to the FTC and IC3.',
     ],
     reports: [
-      { who: 'The FTC collects reports of tech support scams.', when: 'Use when someone pretended to be tech support to get money or access.', prepare: ['How they contacted you', 'Company they claimed', 'What they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 tracks tech support fraud.', when: 'Use when the scam was online (pop-up, phone, or email).', prepare: ['Screenshots', 'Phone number or URL', 'Amount lost if any'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of tech support scams.', when: 'Use when someone pretended to be tech support to get money or access.', prepare: ['How they contacted you', 'Company they claimed', 'What they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 tracks tech support fraud.', when: 'Use when the scam was online (pop-up, phone, or email).', prepare: ['Screenshots', 'Phone number or URL', 'Amount lost if any'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'Microsoft, Apple, and other tech companies do not call or pop up to say your device is infected. Never give remote access or pay with gift cards.',
     relatedSlugs: ['phishing', 'smishing', 'extortion'],
@@ -129,8 +129,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to IC3 with email headers, transaction details, and recipient information.',
     ],
     reports: [
-      { who: 'The FBI\'s IC3 is the primary place to report BEC.', when: 'Use when someone used a compromised or fake email to request funds or data.', prepare: ['Email headers', 'Bank/transfer details', 'Recipient info'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
-      { who: 'The FTC also accepts reports of business-related fraud.', when: 'Use to report the scam in addition to IC3.', prepare: ['What happened', 'Amount', 'Emails'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FBI\'s IC3 is the primary place to report BEC.', when: 'Use when someone used a compromised or fake email to request funds or data.', prepare: ['Email headers', 'Bank/transfer details', 'Recipient info'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
+      { who: 'The FTC also accepts reports of business-related fraud.', when: 'Use to report the scam in addition to IC3.', prepare: ['What happened', 'Amount', 'Emails'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
     ],
     warning: 'Always confirm wire transfers and sensitive requests through a separate, known channel—call the real person on a number you already have—before sending anything.',
     statistics: ['BEC is one of the costliest online crimes; the FBI reports billions in losses annually.', 'Scammers often target employees with access to finances or payroll.'],
@@ -157,8 +157,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FBI IC3 and the FTC. Block the contact.',
     ],
     reports: [
-      { who: 'The FBI\'s IC3 handles extortion and blackmail reported online.', when: 'Use when someone threatened to release info or harm you unless you paid.', prepare: ['Messages or emails', 'How they contacted you', 'What they demanded'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
-      { who: 'The FTC collects reports of extortion and threats.', when: 'Use to report the scam.', prepare: ['What happened', 'Contact method'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FBI\'s IC3 handles extortion and blackmail reported online.', when: 'Use when someone threatened to release info or harm you unless you paid.', prepare: ['Messages or emails', 'How they contacted you', 'What they demanded'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
+      { who: 'The FTC collects reports of extortion and threats.', when: 'Use to report the scam.', prepare: ['What happened', 'Contact method'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
     ],
     warning: 'Do not pay. Paying does not make threats go away and often leads to more demands. Scammers rarely have the material they claim.',
     relatedSlugs: ['romance', 'phishing', 'tech-support'],
@@ -184,7 +184,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your state AG if the company will not stop charging or is deceptive.',
     ],
     reports: [
-      { who: 'The FTC tracks free trial and subscription scams.', when: 'Use when you were charged without clear consent or could not cancel.', prepare: ['Company name', 'Dates and amounts', 'What you tried'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC tracks free trial and subscription scams.', when: 'Use when you were charged without clear consent or could not cancel.', prepare: ['Company name', 'Dates and amounts', 'What you tried'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Your state Attorney General may handle deceptive billing complaints.', when: 'Use to report in your state.', prepare: ['Company', 'What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
     warning: 'Before signing up for a free trial, find the cancellation policy and how to cancel. Many trials auto-renew and make unsubscribing difficult.',
@@ -212,7 +212,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report using the links below.',
     ],
     reports: [
-      { who: 'The FTC collects reports of scam and unwanted calls.', when: 'Use for fraud attempts or illegal robocalls.', prepare: ['Phone number', 'Date and time', 'What was said'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
+      { who: 'The FTC collects reports of scam and unwanted calls.', when: 'Use for fraud attempts or illegal robocalls.', prepare: ['Phone number', 'Date and time', 'What was said'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'The FCC handles complaints about robocalls and spoofing.', when: 'Use for unwanted calls or caller ID spoofing.', prepare: ['Your number', 'Number that called', 'Carrier'], href: 'https://www.fcc.gov/complaints', label: 'FCC consumer complaints' },
     ],
     warning: 'The IRS, Social Security, and other government agencies do not call and demand payment by gift card, wire, or crypto. If someone does, it is a scam.',
@@ -242,8 +242,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the CFPB and your bank. For theft or fraud, also consider local police and IC3.',
     ],
     reports: [
-      { who: 'The CFPB takes complaints about banks and financial services.', when: 'Use for problems with your bank, Zelle, or other transfer services.', prepare: ['Bank or app name', 'Dates and amounts', 'What happened'], href: 'https://www.consumerfinance.gov/complaint/', label: 'Go to CFPB complaint portal' },
-      { who: 'The FBI\'s IC3 handles internet-related financial fraud.', when: 'Use when the scam involved an app, website, or online transfer.', prepare: ['How you sent money', 'Recipient details', 'Screenshots'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The CFPB takes complaints about banks and financial services.', when: 'Use for problems with your bank, Zelle, or other transfer services.', prepare: ['Bank or app name', 'Dates and amounts', 'What happened'], href: 'https://www.consumerfinance.gov/complaint/', label: 'Go to CFPB complaint portal', estimatedTime: '~10 min' },
+      { who: 'The FBI\'s IC3 handles internet-related financial fraud.', when: 'Use when the scam involved an app, website, or online transfer.', prepare: ['How you sent money', 'Recipient details', 'Screenshots'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'Never send money back to someone who claims they paid you by mistake. The "payment" is often fake; your refund is real and goes to the scammer.',
     relatedSlugs: ['romance', 'pig-butchering', 'fake-loans'],
@@ -271,8 +271,8 @@ export const US_SCAMS: UsScamType[] = [
     ],
     reports: [
       { who: 'The SEC handles investment-related fraud and scams.', when: 'Use when the scam involved stocks, investments, or securities.', prepare: ['Company or platform', 'How you invested', 'Amount lost'], href: 'https://www.sec.gov/tcr', label: 'SEC – Submit a tip or complaint' },
-      { who: 'The FTC tracks investment and crypto-related scams.', when: 'Use for consumer fraud involving investments or crypto.', prepare: ['What was promised', 'Amount lost', 'Platform or contact'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet crime including crypto fraud.', when: 'Use when the scam was online or involved cryptocurrency.', prepare: ['Wallet addresses', 'Platform', 'Transactions'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC tracks investment and crypto-related scams.', when: 'Use for consumer fraud involving investments or crypto.', prepare: ['What was promised', 'Amount lost', 'Platform or contact'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet crime including crypto fraud.', when: 'Use when the scam was online or involved cryptocurrency.', prepare: ['Wallet addresses', 'Platform', 'Transactions'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'If someone promises guaranteed or unusually high returns, it is likely a scam. Do not send more money or "fees" to withdraw—that is part of the scheme.',
     statistics: ['Investment fraud losses reported to the FTC topped billions in recent years.', 'Crypto-related scams are among the fastest-growing categories of fraud.'],
@@ -300,8 +300,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FBI IC3 and the FTC. Include wallet addresses and transaction IDs.',
     ],
     reports: [
-      { who: 'The FBI\'s IC3 is the main place to report pig butchering and crypto fraud.', when: 'Use when you were lured into a fake investment via a relationship.', prepare: ['Wallet addresses', 'Transaction hashes', 'Platform URL', 'Screenshots'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
-      { who: 'The FTC collects reports of romance and investment scams.', when: 'Use to report the scam.', prepare: ['What happened', 'Amount lost', 'How you met them'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FBI\'s IC3 is the main place to report pig butchering and crypto fraud.', when: 'Use when you were lured into a fake investment via a relationship.', prepare: ['Wallet addresses', 'Transaction hashes', 'Platform URL', 'Screenshots'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
+      { who: 'The FTC collects reports of romance and investment scams.', when: 'Use to report the scam.', prepare: ['What happened', 'Amount lost', 'How you met them'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
     ],
     warning: 'If someone you met online asks you to invest in crypto or a "private platform," it is almost certainly a scam. Do not send more money for "fees" or "tax" to withdraw.',
     statistics: ['Pig butchering scams have caused hundreds of millions in reported losses in the U.S. alone.', 'Scammers often build trust over weeks or months before suggesting "investments."'],
@@ -336,8 +336,8 @@ export const US_SCAMS: UsScamType[] = [
     ],
     reports: [
       { who: 'The SEC handles stock and securities fraud, including pump-and-dump schemes.', when: 'Use when the scam involved stocks or investment recommendations.', prepare: ['Group or platform name', 'What was recommended', 'Amount lost', 'Screenshots'], href: 'https://www.sec.gov/tcr', label: 'SEC – Submit a tip or complaint' },
-      { who: 'The FTC collects reports of investment and consumer fraud.', when: 'Use for any consumer loss from the scheme.', prepare: ['What happened', 'Amount lost', 'Platform or group'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet crime including fake platforms and crypto fraud.', when: 'Use when the scam was online or involved a fake website or crypto.', prepare: ['URLs', 'Wallet addresses', 'Chat or group info', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of investment and consumer fraud.', when: 'Use for any consumer loss from the scheme.', prepare: ['What happened', 'Amount lost', 'Platform or group'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet crime including fake platforms and crypto fraud.', when: 'Use when the scam was online or involved a fake website or crypto.', prepare: ['URLs', 'Wallet addresses', 'Chat or group info', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -354,8 +354,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and, if you lost money, to IC3.',
     ],
     reports: [
-      { who: 'The FTC tracks fake loan and advance-fee scams.', when: 'Use when someone promised a loan but asked for money first.', prepare: ['Who contacted you', 'Amount they asked for', 'What they promised'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet-related fraud.', when: 'Use when the scam was online and you lost money.', prepare: ['Website or contact', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC tracks fake loan and advance-fee scams.', when: 'Use when someone promised a loan but asked for money first.', prepare: ['Who contacted you', 'Amount they asked for', 'What they promised'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet-related fraud.', when: 'Use when the scam was online and you lost money.', prepare: ['Website or contact', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -372,8 +372,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and CFPB. If you paid, also report to your state AG.',
     ],
     reports: [
-      { who: 'The FTC takes complaints about debt collection practices.', when: 'Use when a collector threatened you or tried to collect a debt you do not owe.', prepare: ['Collector name and number', 'What they said', 'Debt they claimed'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
-      { who: 'The CFPB takes complaints about debt collectors.', when: 'Use for harassment or false debt claims.', prepare: ['Company name', 'What happened'], href: 'https://www.consumerfinance.gov/complaint/', label: 'CFPB complaint portal' },
+      { who: 'The FTC takes complaints about debt collection practices.', when: 'Use when a collector threatened you or tried to collect a debt you do not owe.', prepare: ['Collector name and number', 'What they said', 'Debt they claimed'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The CFPB takes complaints about debt collectors.', when: 'Use for harassment or false debt claims.', prepare: ['Company name', 'What happened'], href: 'https://www.consumerfinance.gov/complaint/', label: 'CFPB complaint portal', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -390,8 +390,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and CFPB.',
     ],
     reports: [
-      { who: 'The FTC takes complaints about deceptive credit repair and debt relief.', when: 'Use when a company charged upfront or made false promises.', prepare: ['Company name', 'What they promised', 'Amount paid'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The CFPB takes complaints about financial products and services.', when: 'Use for problems with debt relief or credit repair companies.', prepare: ['Company', 'What happened'], href: 'https://www.consumerfinance.gov/complaint/', label: 'CFPB complaint portal' },
+      { who: 'The FTC takes complaints about deceptive credit repair and debt relief.', when: 'Use when a company charged upfront or made false promises.', prepare: ['Company name', 'What they promised', 'Amount paid'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The CFPB takes complaints about financial products and services.', when: 'Use for problems with debt relief or credit repair companies.', prepare: ['Company', 'What happened'], href: 'https://www.consumerfinance.gov/complaint/', label: 'CFPB complaint portal', estimatedTime: '~10 min' },
     ],
   },
   // —— Insurance (financial) ——
@@ -410,9 +410,9 @@ export const US_SCAMS: UsScamType[] = [
       'Report to your state insurance commissioner (via OFRS or state DOI) and to the FTC.',
     ],
     reports: [
-      { who: 'Your state insurance commissioner handles complaints about insurers and agents.', when: 'Use when you bought a fake policy or an agent kept your premiums.', prepare: ['Company or agent name', 'Amount paid', 'Policy or documents'], href: 'https://content.naic.org/state-insurance-departments', label: 'NAIC – State insurance departments' },
-      { who: 'NAIC\'s Online Fraud Reporting System (OFRS) accepts insurance fraud reports.', when: 'Use to report fake policies, phantom insurers, or premium diversion.', prepare: ['What happened', 'Agent or company', 'Amount lost'], href: 'https://ofrs.naic.org', label: 'NAIC OFRS – Report insurance fraud' },
-      { who: 'The FTC collects reports of consumer fraud including fake insurance.', when: 'Use to report the scam.', prepare: ['What happened', 'Amount paid'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'Your state insurance commissioner handles complaints about insurers and agents.', when: 'Use when you bought a fake policy or an agent kept your premiums.', prepare: ['Company or agent name', 'Amount paid', 'Policy or documents'], href: 'https://content.naic.org/state-insurance-departments', label: 'NAIC – State insurance departments', estimatedTime: '~5 min' },
+      { who: 'NAIC\'s Online Fraud Reporting System (OFRS) accepts insurance fraud reports.', when: 'Use to report fake policies, phantom insurers, or premium diversion.', prepare: ['What happened', 'Agent or company', 'Amount lost'], href: 'https://ofrs.naic.org', label: 'NAIC OFRS – Report insurance fraud', estimatedTime: '~10 min' },
+      { who: 'The FTC collects reports of consumer fraud including fake insurance.', when: 'Use to report the scam.', prepare: ['What happened', 'Amount paid'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
     ],
   },
   {
@@ -430,9 +430,9 @@ export const US_SCAMS: UsScamType[] = [
       'Report to your state insurance commissioner, FTC, and HHS OIG if someone misused Medicare or sold a fake plan.',
     ],
     reports: [
-      { who: 'Your state insurance department handles health insurance and agent complaints.', when: 'Use when you were sold a fake health plan or someone misused your info.', prepare: ['Who contacted you', 'What they asked for', 'Amount if paid'], href: 'https://content.naic.org/state-insurance-departments', label: 'NAIC – State insurance departments' },
-      { who: 'HHS OIG investigates Medicare and Medicaid fraud.', when: 'Use when someone misused your Medicare/Medicaid number or posed as Medicare.', prepare: ['What happened', 'Dates', 'Any ID or numbers shared'], href: 'https://oig.hhs.gov/fraud/report-fraud/', label: 'HHS OIG – Report fraud' },
-      { who: 'The FTC collects reports of health and insurance-related fraud.', when: 'Use to report the scam.', prepare: ['What happened', 'Amount lost if any'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'Your state insurance department handles health insurance and agent complaints.', when: 'Use when you were sold a fake health plan or someone misused your info.', prepare: ['Who contacted you', 'What they asked for', 'Amount if paid'], href: 'https://content.naic.org/state-insurance-departments', label: 'NAIC – State insurance departments', estimatedTime: '~5 min' },
+      { who: 'HHS OIG investigates Medicare and Medicaid fraud.', when: 'Use when someone misused your Medicare/Medicaid number or posed as Medicare.', prepare: ['What happened', 'Dates', 'Any ID or numbers shared'], href: 'https://oig.hhs.gov/fraud/report-fraud/', label: 'HHS OIG – Report fraud', estimatedTime: '~10 min' },
+      { who: 'The FTC collects reports of health and insurance-related fraud.', when: 'Use to report the scam.', prepare: ['What happened', 'Amount lost if any'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
     ],
   },
   // —— Impersonation ——
@@ -451,8 +451,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the IRS and FTC using the links below.',
     ],
     reports: [
-      { who: 'The IRS accepts reports of phishing and impersonation.', when: 'Use when someone claimed to be the IRS to get money or information.', prepare: ['Forward the email or note the phone number', 'What they asked for'], href: 'https://www.irs.gov/privacy-disclosure/report-phishing', label: 'IRS – Report phishing' },
-      { who: 'The FTC tracks government imposter scams.', when: 'Use for any caller or message pretending to be the IRS or tax authority.', prepare: ['How they contacted you', 'What they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The IRS accepts reports of phishing and impersonation.', when: 'Use when someone claimed to be the IRS to get money or information.', prepare: ['Forward the email or note the phone number', 'What they asked for'], href: 'https://www.irs.gov/privacy-disclosure/report-phishing', label: 'IRS – Report phishing', estimatedTime: '~5 min' },
+      { who: 'The FTC tracks government imposter scams.', when: 'Use for any caller or message pretending to be the IRS or tax authority.', prepare: ['How they contacted you', 'What they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
     ],
     warning: 'The real IRS never demands immediate payment by phone, and never asks for gift cards, wire, or cryptocurrency. They contact by mail first.',
     statistics: ['IRS impersonation is one of the most reported government imposter scams to the FTC.', 'Scammers often use spoofed caller ID to show "IRS" or a local number.'],
@@ -480,8 +480,8 @@ export const US_SCAMS: UsScamType[] = [
       'Save evidence and report using the links below.',
     ],
     reports: [
-      { who: 'The FTC collects reports of government imposter scams.', when: 'Use when someone pretended to be any government agency.', prepare: ['Agency they claimed', 'How they contacted you', 'What they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet-related fraud and impersonation.', when: 'Use when the contact was by email, phone, or online.', prepare: ['Dates', 'Contact method', 'Amount if any'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of government imposter scams.', when: 'Use when someone pretended to be any government agency.', prepare: ['Agency they claimed', 'How they contacted you', 'What they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet-related fraud and impersonation.', when: 'Use when the contact was by email, phone, or online.', prepare: ['Dates', 'Contact method', 'Amount if any'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -498,7 +498,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your state Attorney General.',
     ],
     reports: [
-      { who: 'The FTC collects reports of utility and imposter scams.', when: 'Use when someone pretended to be a utility to get payment.', prepare: ['Phone number', 'What they said', 'Amount if paid'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC collects reports of utility and imposter scams.', when: 'Use when someone pretended to be a utility to get payment.', prepare: ['Phone number', 'What they said', 'Amount if paid'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Your state Attorney General may handle utility-related fraud.', when: 'Use to report in your state.', prepare: ['What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
   },
@@ -516,8 +516,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC.',
     ],
     reports: [
-      { who: 'The FTC tracks government grant and imposter scams.', when: 'Use when someone claimed you won a grant but asked for money first.', prepare: ['How they contacted you', 'What they promised', 'Amount they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet-related grant fraud.', when: 'Use when the scam was online and you lost money.', prepare: ['Emails or website', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC tracks government grant and imposter scams.', when: 'Use when someone claimed you won a grant but asked for money first.', prepare: ['How they contacted you', 'What they promised', 'Amount they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet-related grant fraud.', when: 'Use when the scam was online and you lost money.', prepare: ['Emails or website', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -535,8 +535,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and IC3. Block the person.',
     ],
     reports: [
-      { who: 'The FTC collects reports of romance scams.', when: 'Use when someone you met online asked for money under false pretenses.', prepare: ['Where you met', 'Username or profile', 'Amount sent', 'How you paid'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles romance and confidence fraud.', when: 'Use when the scam was online and you lost money.', prepare: ['Platform', 'Screenshots', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of romance scams.', when: 'Use when someone you met online asked for money under false pretenses.', prepare: ['Where you met', 'Username or profile', 'Amount sent', 'How you paid'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles romance and confidence fraud.', when: 'Use when the scam was online and you lost money.', prepare: ['Platform', 'Screenshots', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'Never send money to someone you have not met in person. Romance scammers build trust for weeks or months before asking for cash.',
     statistics: ['Romance scams cause among the highest reported losses to the FTC each year.', 'Scammers often claim to be in the military, overseas, or in crisis to explain why they cannot meet.'],
@@ -564,8 +564,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your local police or IC3 if you lost money.',
     ],
     reports: [
-      { who: 'The FTC collects reports of family emergency and grandparent scams.', when: 'Use when someone pretended to be a relative to get money.', prepare: ['What they said', 'Phone number', 'Amount if sent'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles elder fraud and impersonation.', when: 'Use when you lost money in this type of scam.', prepare: ['How they contacted you', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of family emergency and grandparent scams.', when: 'Use when someone pretended to be a relative to get money.', prepare: ['What they said', 'Phone number', 'Amount if sent'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles elder fraud and impersonation.', when: 'Use when you lost money in this type of scam.', prepare: ['How they contacted you', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -582,8 +582,8 @@ export const US_SCAMS: UsScamType[] = [
       'Save the message and report to the FTC.',
     ],
     reports: [
-      { who: 'The FTC collects reports of delivery and package impersonation.', when: 'Use when a fake delivery message asked for money or personal info.', prepare: ['Screenshot of message', 'Sender number or email'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'USPS recommends reporting fake USPS messages to the Postal Inspection Service.', when: 'Use when the scammer claimed to be USPS.', prepare: ['Message', 'Any link'], href: 'https://www.uspis.gov/report', label: 'USPS – Report fraud' },
+      { who: 'The FTC collects reports of delivery and package impersonation.', when: 'Use when a fake delivery message asked for money or personal info.', prepare: ['Screenshot of message', 'Sender number or email'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'USPS recommends reporting fake USPS messages to the Postal Inspection Service.', when: 'Use when the scammer claimed to be USPS.', prepare: ['Message', 'Any link'], href: 'https://www.uspis.gov/report', label: 'USPS – Report fraud', estimatedTime: '~5 min' },
     ],
   },
   // —— Employment & opportunity ——
@@ -602,8 +602,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and, if you lost money, to IC3.',
     ],
     reports: [
-      { who: 'The FTC tracks job and employment scams.', when: 'Use when a "employer" asked for money or stole your info.', prepare: ['Job posting or contact', 'What they asked for', 'Amount lost if any'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet-related job fraud.', when: 'Use when the scam was online and you lost money or identity.', prepare: ['Website or email', 'What happened'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC tracks job and employment scams.', when: 'Use when a "employer" asked for money or stole your info.', prepare: ['Job posting or contact', 'What they asked for', 'Amount lost if any'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet-related job fraud.', when: 'Use when the scam was online and you lost money or identity.', prepare: ['Website or email', 'What happened'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'Legitimate employers do not ask you to pay for training, equipment, or "fees" to start a job. Never wire part of a "paycheck" to a "vendor."',
     relatedSlugs: ['fake-loans', 'rental-housing', 'business-email-compromise'],
@@ -630,8 +630,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your local police or housing authority.',
     ],
     reports: [
-      { who: 'The FTC collects reports of rental and housing scams.', when: 'Use when you paid for a rental that did not exist or was misrepresented.', prepare: ['Listing or contact', 'Amount paid', 'Address if any'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles rental fraud conducted online.', when: 'Use when the scam was run online and you lost money.', prepare: ['Website or email', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of rental and housing scams.', when: 'Use when you paid for a rental that did not exist or was misrepresented.', prepare: ['Listing or contact', 'Amount paid', 'Address if any'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles rental fraud conducted online.', when: 'Use when the scam was run online and you lost money.', prepare: ['Website or email', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
     warning: 'Do not pay rent or a deposit before you have seen the property in person (or via a verified video tour) and signed a real lease with a verified owner or manager.',
     statistics: ['Rental scams often use stolen photos from real listings; the "landlord" is someone you will never meet.', 'Wire transfers and cash are common in rental scams—once sent, the money is hard to recover.'],
@@ -658,7 +658,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your state Attorney General.',
     ],
     reports: [
-      { who: 'The FTC tracks timeshare and resale scams.', when: 'Use when a company took money and did not deliver.', prepare: ['Company name', 'Amount paid', 'What they promised'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC tracks timeshare and resale scams.', when: 'Use when a company took money and did not deliver.', prepare: ['Company name', 'Amount paid', 'What they promised'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Your state Attorney General may handle real estate and timeshare fraud.', when: 'Use to report in your state.', prepare: ['Company', 'What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
   },
@@ -676,7 +676,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your state AG or consumer protection office.',
     ],
     reports: [
-      { who: 'The FTC collects reports of home repair and contractor fraud.', when: 'Use when you paid and work was not done or was substandard.', prepare: ['Company or person', 'Amount paid', 'What was agreed'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC collects reports of home repair and contractor fraud.', when: 'Use when you paid and work was not done or was substandard.', prepare: ['Company or person', 'Amount paid', 'What was agreed'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Your state Attorney General or consumer office often handles contractor complaints.', when: 'Use to report in your state.', prepare: ['Contractor name', 'What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
   },
@@ -694,7 +694,7 @@ export const US_SCAMS: UsScamType[] = [
       'File a complaint with the FTC and your state consumer protection or AG.',
     ],
     reports: [
-      { who: 'The FTC collects reports of moving company fraud.', when: 'Use when a mover demanded more money or held your goods.', prepare: ['Company name', 'What happened', 'Amount'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC collects reports of moving company fraud.', when: 'Use when a mover demanded more money or held your goods.', prepare: ['Company name', 'What happened', 'Amount'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'FMCSA regulates interstate movers and takes complaints.', when: 'Use for interstate moves.', prepare: ['Mover name', 'Details'], href: 'https://www.fmcsa.dot.gov/protect-your-move', label: 'FMCSA – Protect Your Move' },
       { who: 'Your state Attorney General often handles intrastate moving complaints.', when: 'Use to report in your state.', prepare: ['What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
@@ -713,7 +713,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your state AG.',
     ],
     reports: [
-      { who: 'The FTC collects reports of fake tenant and background-check scams.', when: 'Use when you paid for a fake screening or lost money.', prepare: ['Website or contact', 'Amount', 'What was promised'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC collects reports of fake tenant and background-check scams.', when: 'Use when you paid for a fake screening or lost money.', prepare: ['Website or contact', 'Amount', 'What was promised'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Your state Attorney General may handle rental and consumer fraud.', when: 'Use to report in your state.', prepare: ['What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
   },
@@ -732,8 +732,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and, if you lost money, to IC3.',
     ],
     reports: [
-      { who: 'The FTC tracks prize and sweepstakes scams.', when: 'Use when someone said you won but asked for money first.', prepare: ['How they contacted you', 'What they said you won', 'Amount they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles lottery and prize fraud online.', when: 'Use when the scam was online and you lost money.', prepare: ['Emails or website', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC tracks prize and sweepstakes scams.', when: 'Use when someone said you won but asked for money first.', prepare: ['How they contacted you', 'What they said you won', 'Amount they asked for'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles lottery and prize fraud online.', when: 'Use when the scam was online and you lost money.', prepare: ['Emails or website', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -750,7 +750,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your state Attorney General.',
     ],
     reports: [
-      { who: 'The FTC collects reports of charity and donation scams.', when: 'Use when a "charity" was fake or misrepresented.', prepare: ['Name of organization', 'How they contacted you', 'Amount if given'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
+      { who: 'The FTC collects reports of charity and donation scams.', when: 'Use when a "charity" was fake or misrepresented.', prepare: ['Name of organization', 'How they contacted you', 'Amount if given'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Your state Attorney General often handles charity fraud.', when: 'Use to report fake charities in your state.', prepare: ['Charity name', 'What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
   },
@@ -768,7 +768,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and your state AG.',
     ],
     reports: [
-      { who: 'The FTC collects reports of pet and adoption scams.', when: 'Use when you paid for a pet you did not receive.', prepare: ['Website or contact', 'Amount paid', 'Screenshots'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC collects reports of pet and adoption scams.', when: 'Use when you paid for a pet you did not receive.', prepare: ['Website or contact', 'Amount paid', 'Screenshots'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Your state Attorney General may handle consumer and charity fraud.', when: 'Use to report in your state.', prepare: ['What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
   },
@@ -786,8 +786,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and, if you paid, to IC3.',
     ],
     reports: [
-      { who: 'The FTC tracks vacation and travel scams.', when: 'Use when you paid for a trip that did not exist or was misrepresented.', prepare: ['Company name', 'Amount paid', 'What was promised'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet-related travel fraud.', when: 'Use when the scam was online and you lost money.', prepare: ['Website or email', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC tracks vacation and travel scams.', when: 'Use when you paid for a trip that did not exist or was misrepresented.', prepare: ['Company name', 'Amount paid', 'What was promised'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet-related travel fraud.', when: 'Use when the scam was online and you lost money.', prepare: ['Website or email', 'Amount lost'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -804,7 +804,7 @@ export const US_SCAMS: UsScamType[] = [
       'If you donated to a fake campaign, report to the FTC.',
     ],
     reports: [
-      { who: 'The FTC collects reports of charity and crowdfunding fraud.', when: 'Use when a campaign was fake or misused funds.', prepare: ['Campaign link', 'Organizer', 'Amount if given'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC collects reports of charity and crowdfunding fraud.', when: 'Use when a campaign was fake or misused funds.', prepare: ['Campaign link', 'Organizer', 'Amount if given'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Report to the crowdfunding platform (e.g. GoFundMe) so they can take action.', when: 'Use to report the specific campaign.', prepare: ['Campaign URL', 'What you know'], href: 'https://www.gofundme.com/safety', label: 'GoFundMe – Safety' },
     ],
   },
@@ -825,7 +825,7 @@ export const US_SCAMS: UsScamType[] = [
     ],
     reports: [
       { who: 'The FTC runs IdentityTheft.gov for reporting and recovery.', when: 'Use when someone used your identity to open accounts or commit fraud.', prepare: ['What was used', 'When you noticed', 'Accounts affected'], href: 'https://identitytheft.gov/', label: 'IdentityTheft.gov' },
-      { who: 'The FTC ReportFraud also accepts identity theft reports.', when: 'Use to report the scam or fraud that led to identity theft.', prepare: ['What happened', 'Dates', 'Any evidence'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC ReportFraud also accepts identity theft reports.', when: 'Use to report the scam or fraud that led to identity theft.', prepare: ['What happened', 'Dates', 'Any evidence'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
     ],
     warning: 'Act quickly. Place a fraud alert or credit freeze, and use IdentityTheft.gov for a step-by-step recovery plan.',
     statistics: ['Identity theft affects millions of Americans each year; reporting early helps limit damage.', 'Data breaches and phishing are common ways thieves get the information they need.'],
@@ -853,8 +853,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and CFPB.',
     ],
     reports: [
-      { who: 'The FTC tracks student loan and debt relief scams.', when: 'Use when someone charged a fee for loan help or made false promises.', prepare: ['Company name', 'What they promised', 'Amount paid'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The CFPB takes complaints about student loans and servicers.', when: 'Use for problems with your loan or a company that contacted you.', prepare: ['Servicer or company', 'What happened'], href: 'https://www.consumerfinance.gov/complaint/', label: 'CFPB complaint portal' },
+      { who: 'The FTC tracks student loan and debt relief scams.', when: 'Use when someone charged a fee for loan help or made false promises.', prepare: ['Company name', 'What they promised', 'Amount paid'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The CFPB takes complaints about student loans and servicers.', when: 'Use for problems with your loan or a company that contacted you.', prepare: ['Servicer or company', 'What happened'], href: 'https://www.consumerfinance.gov/complaint/', label: 'CFPB complaint portal', estimatedTime: '~10 min' },
     ],
   },
   // —— Government & oversight ——
@@ -891,8 +891,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and IC3.',
     ],
     reports: [
-      { who: 'The FTC collects reports of fake legal and government threats.', when: 'Use when you received a fake lawsuit or legal threat.', prepare: ['Email or message', 'Sender', 'What they demanded'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 handles internet-based impersonation and fraud.', when: 'Use when the threat came by email or online and you lost money.', prepare: ['What happened', 'Contact method'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of fake legal and government threats.', when: 'Use when you received a fake lawsuit or legal threat.', prepare: ['Email or message', 'Sender', 'What they demanded'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 handles internet-based impersonation and fraud.', when: 'Use when the threat came by email or online and you lost money.', prepare: ['What happened', 'Contact method'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -909,7 +909,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report notario fraud to your state AG and the FTC.',
     ],
     reports: [
-      { who: 'The FTC collects reports of immigration and notario fraud.', when: 'Use when you paid for immigration services that were fake or deceptive.', prepare: ['Name of person or business', 'Amount paid', 'What was promised'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC collects reports of immigration and notario fraud.', when: 'Use when you paid for immigration services that were fake or deceptive.', prepare: ['Name of person or business', 'Amount paid', 'What was promised'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'Your state bar association can confirm if someone is a licensed attorney and take complaints.', when: 'Use if someone claimed to be a lawyer.', prepare: ['Name', 'What they did'], href: 'https://www.americanbar.org/groups/legal_services/flh/flh-free-legal-answers/', label: 'American Bar – Find legal help' },
       { who: 'Your state Attorney General often handles notario and consumer fraud.', when: 'Use to report in your state.', prepare: ['What happened'], href: 'https://www.usa.gov/state-attorney-general', label: 'USA.gov – State AGs' },
     ],
@@ -928,7 +928,7 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and FDA.',
     ],
     reports: [
-      { who: 'The FTC collects reports of health and supplement fraud.', when: 'Use when you were deceived or harmed by a fake cure or supplement.', prepare: ['Product name', 'Where you bought it', 'What was claimed'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
+      { who: 'The FTC collects reports of health and supplement fraud.', when: 'Use when you were deceived or harmed by a fake cure or supplement.', prepare: ['Product name', 'Where you bought it', 'What was claimed'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
       { who: 'The FDA investigates false health claims and dangerous products.', when: 'Use for fake cures, unapproved drugs, or unsafe supplements.', prepare: ['Product', 'Claims made', 'Adverse effects if any'], href: 'https://www.fda.gov/safety/report-problem-fda', label: 'FDA – Report a problem' },
     ],
   },
@@ -946,8 +946,8 @@ export const US_SCAMS: UsScamType[] = [
       'Report to the FTC and IC3.',
     ],
     reports: [
-      { who: 'The FTC collects reports of impersonation and AI-related scams.', when: 'Use when AI or deepfake was used to impersonate someone.', prepare: ['How you were contacted', 'What they asked for', 'Any recording or link'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 tracks emerging tech fraud.', when: 'Use when you lost money or shared sensitive info.', prepare: ['What happened', 'Contact method'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects reports of impersonation and AI-related scams.', when: 'Use when AI or deepfake was used to impersonate someone.', prepare: ['How you were contacted', 'What they asked for', 'Any recording or link'], href: 'https://reportfraud.ftc.gov/', label: 'Go to FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 tracks emerging tech fraud.', when: 'Use when you lost money or shared sensitive info.', prepare: ['What happened', 'Contact method'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
   {
@@ -965,8 +965,8 @@ export const US_SCAMS: UsScamType[] = [
     ],
     reports: [
       { who: 'The National Elder Fraud Hotline helps report and get resources.', when: 'Use when you or a senior you know was targeted by fraud.', prepare: ['What happened', 'When', 'Who contacted them'], href: 'https://www.justice.gov/elderjustice/national-elder-fraud-hotline', label: 'National Elder Fraud Hotline' },
-      { who: 'The FTC collects elder fraud reports.', when: 'Use to report the scam.', prepare: ['What happened', 'Amount lost if any'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud' },
-      { who: 'The FBI\'s IC3 has an elder fraud focus.', when: 'Use when the scam was online and the victim is 60+.', prepare: ['Details of the scam', 'Losses'], href: 'https://www.ic3.gov/', label: 'Go to IC3' },
+      { who: 'The FTC collects elder fraud reports.', when: 'Use to report the scam.', prepare: ['What happened', 'Amount lost if any'], href: 'https://reportfraud.ftc.gov/', label: 'FTC ReportFraud', estimatedTime: '~5 min' },
+      { who: 'The FBI\'s IC3 has an elder fraud focus.', when: 'Use when the scam was online and the victim is 60+.', prepare: ['Details of the scam', 'Losses'], href: 'https://www.ic3.gov/', label: 'Go to IC3', estimatedTime: '~10 min' },
     ],
   },
 ];

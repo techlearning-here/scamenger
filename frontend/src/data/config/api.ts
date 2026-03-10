@@ -1,12 +1,19 @@
 /**
  * Public config API. Used by report form to know e.g. whether to show Facebook consent.
  * Cached in memory (2 min TTL) to avoid repeated backend calls.
+ * When cache is not there or fetch fails, we use true as default for both settings.
  */
 
 const API_BASE =
   typeof process !== 'undefined' ? (process.env.NEXT_PUBLIC_API_URL || '') : '';
 
 const CONFIG_CACHE_TTL_MS = 2 * 60 * 1000; // 2 minutes
+
+/** Default when cache is missing or backend unavailable. */
+const DEFAULT_CONFIG: PublicConfigDto = {
+  show_facebook_consent: true,
+  show_report_scam: true,
+};
 
 export interface PublicConfigDto {
   show_facebook_consent: boolean;
@@ -26,13 +33,12 @@ export async function getConfig(): Promise<PublicConfigDto> {
   }
   const res = await fetch(`${API_BASE}/config`);
   if (!res.ok) {
-    const fallback: PublicConfigDto = { show_facebook_consent: true, show_report_scam: true };
-    return fallback;
+    return DEFAULT_CONFIG;
   }
   const data = await res.json();
   const result: PublicConfigDto = {
-    show_facebook_consent: Boolean(data.show_facebook_consent !== false),
-    show_report_scam: Boolean(data.show_report_scam !== false),
+    show_facebook_consent: data.show_facebook_consent !== false,
+    show_report_scam: data.show_report_scam !== false,
   };
   cachedConfig = result;
   cachedAt = Date.now();

@@ -25,7 +25,11 @@ export function ReportCard({ who, when, prepare = [], href, label, estimatedTime
       )}
       <p className="report-link-wrap">
         <a href={href} className="report-link" target="_blank" rel="noopener noreferrer">{label}</a>
-        {estimatedTime && <span className="report-estimated-time">{estimatedTime}</span>}
+        {estimatedTime && (
+          <span className="report-estimated-time" aria-label="Estimated time to complete">
+            {estimatedTime}
+          </span>
+        )}
       </p>
     </article>
   );

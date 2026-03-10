@@ -1,6 +1,6 @@
 # Scam Avenger — Feature List
 
-Consolidated feature list from NewFeatures.md (ScamAdviser-inspired) and readme_New_UX.md (UX/design). **Status** reflects current implementation (from MISSING_FEATURES_FROM_NEW_UX.md): **Done** = implemented, **Partial** = partly there, **Missing** = not built, **Unverified** = not audited, **Planned** = backlog.
+Consolidated feature list from NewFeatures.md, readme_New_UX.md (UX/design), **newfeatures2.md**, and **newfeature3.md**. **Status** reflects current implementation: **Done** = implemented, **Partial** = partly there, **Missing** = not built, **Unverified** = not audited, **Planned** = backlog.
 
 ---
 
@@ -21,10 +21,11 @@ User-reported scams with shareable links; **anyone can submit a report without s
 
 | # | Feature | Description | Status |
 |---|---------|-------------|--------|
-| 1 | **Unified scam checker** | "Paste anything suspicious" — single search bar instead of dropdown. Users paste website, phone, crypto wallet, or IBAN. | Missing |
+| 1 | **Unified scam checker** | "Paste anything suspicious" — single search bar for URLs, phone numbers, emails, crypto wallets, or IBAN. **High impact:** main traffic driver we lack. | Missing |
 | 2 | **Search-first approach** | Prominent search bar: "What happened to you?" — natural-language input so users describe their scam instead of browsing categories. Reduces stress for victims who don't know category names. | Missing |
 | 2b | **Replace category dropdown with search** | Report form uses search/natural language to suggest categories or reporting channels instead of (or in addition to) Scam category + Report type dropdowns. | Missing |
 | 3 | **Country auto-detection** | Use `navigator.language` or IP geolocation to pre-select country and reduce friction. | Done |
+| 3b | **Multi-country support** | Beyond US: add country selector and localized reporting authorities for UK, AU, CA, India, EU. Key differentiator; currently US-only. | Missing |
 
 ---
 
@@ -32,10 +33,10 @@ User-reported scams with shareable links; **anyone can submit a report without s
 
 | # | Feature | Description | Status |
 |---|---------|-------------|--------|
-| 4 | **Wizard / guided flow** | Step-by-step questionnaire (e.g. "Did you lose money? → Was it online or by phone? → …") that routes users to the right reporting channel. Reduces cognitive load. *Unique angle vs ScamAdviser.* | Missing |
+| 4 | **Wizard / guided flow** | Step-by-step interactive flow: "What happened? → What did you lose? → Here's exactly what to do." More empathetic than static guides; routes users to the right reporting channel. Reduces cognitive load. *Unique differentiator.* | Missing |
 | 4b | **Route to right reporting channel via questions** | Wizard or flow that asks questions and then recommends a specific scam guide or reporting link (e.g. FTC, IC3). Scam type pages already list links; no question-based routing yet. | Partial |
 | 5 | **Progress indication** | After selecting a scam type, show clear "what happens next": Report → Track → Prevent. | Missing |
-| 6 | **Estimated time to report** | Add labels like "~5 min" next to reporting links to set expectations. | Missing |
+| 6 | **Estimated time to report** | Add labels like "~5 min" next to reporting links to set expectations. | Done |
 
 ---
 
@@ -54,11 +55,19 @@ User-reported scams with shareable links; **anyone can submit a report without s
 
 | # | Feature | Description | Status |
 |---|---------|-------------|--------|
-| 11 | **Community scam reports** | User-submitted reports with a "Latest Reports" feed — builds SEO and social proof. | Partial |
+| 11 | **Community scam reports feed** | User-submitted reports in a **Reddit-style feed**: recent scams, upvotes, warnings. Browse and submit; builds SEO content organically. | Partial |
 | 12 | **Report scams form** | "Seen something suspicious? Share to protect!" — form to submit scam details: **country of scam origin** (required), report type (website, phone, crypto address, or IBAN; "+ Add more" for multiple), scam category + subcategory dropdowns, "Lost money?" option, free-text narrative ("How did you get in contact? What happened next?"), and optional consent to share the report with police and crime-fighting agencies. Feeds into the community reports feed (#11). | Done |
 | 13 | **Live stats dashboard** | Public metrics (e.g. "X reports, Y scam types, Z visits") to build authority. | Partial |
 | 14 | **Press / review badges** | Press logos (e.g. Time, Yahoo Finance) and links to Trustpilot, SiteJabber, Google Reviews for credibility. | Planned |
 | 15 | **Newsletter signup** | Email list for recurring traffic and monetizable audience. | Planned |
+| 15b | **Real-time scam alerts & newsletter** | Trending scams ticker on site; email alerts for new scam types in user's region. Drives recurring traffic. | Missing |
+| 15c | **Scam alert subscription** | Users **follow specific scam types** (e.g. romance, crypto) and get **email/push alerts** when new reports or trends match. Recurring engagement + email list for monetization. *From newfeature3.* | Missing |
+| 11b | **"Did this help?" voting** | Upvote/downvote on reports or guides. Social proof + content ranking for SEO. Complements ratings (#P0). *From newfeature3.* | Missing |
+| 13b | **Scam heatmap** | **Visual map** showing scam density by region. Viral shareable content; strong for press coverage. *From newfeature3.* | Missing |
+| 11c | **Verified recovery stories** | Users post **outcomes** (e.g. "I got $500 back via chargeback"). Hope-driven engagement; unique differentiator. *From newfeature3.* | Missing |
+| 1b | **Scam similarity matching** | When viewing a URL/number: "**X other users reported this same number/URL**." Validates victims' experiences; encourages more reports. *From newfeature3.* | Missing |
+| 16b | **Monthly scam trends report** | **Auto-generated** newsletter or blog post from aggregated data. SEO content machine + newsletter growth. *From newfeature3.* | Missing |
+| 11d | **Reward / gamification** | Badges for reporting (e.g. "Scam Hunter", "Community Guardian"). Incentivizes repeat contributions. *From newfeature3.* | Missing |
 
 ---
 
@@ -76,6 +85,7 @@ User-reported scams with shareable links; **anyone can submit a report without s
 |---|---------|-------------|--------|
 | 16 | **Scam alerts blog** | Trending scam articles (e.g. Amazon, Coinbase, crypto) as SEO traffic driver and ad revenue. | Partial |
 | 17 | **Global country guide** | Per-country pages for long-tail SEO. | Partial |
+| 17b | **SEO & monetization foundations** | JSON-LD structured data for each scam type page; defined ad placement zones for future revenue; "Claim Your Business" portal (B2B). | Partial |
 
 ---
 
@@ -85,9 +95,18 @@ User-reported scams with shareable links; **anyone can submit a report without s
 |---|---------|-------------|--------|
 | 18 | **Warmer, reassuring tone** | Calming colors (teal/green), empathetic copy ("You're not alone — let's fix this"), trust indicators (shield icons, "100% free, no data collected"). | Missing |
 | 18b | **Trust indicators** | Visible "100% free, no data collected" or shield-style trust badges on report flow or hero. | Partial |
-| 19 | **Hero section redesign** | Replace generic stock photo with bold illustration or icon-driven hero: "report → get help → stay safe." | Missing |
+| 19 | **Hero section redesign** | Replace generic stock photo with **custom illustration or icon-driven hero**: "report → get help → stay safe." More branded than generic imagery. | Missing |
 | 20 | **Sticky "Need help now?" CTA** | Floating button to emergency contacts (e.g. bank fraud hotlines) for users in active crisis. | Done |
 | 21 | **Breadcrumb trail** | Inner pages show path (Home → US → Phishing) for easy backtracking. | Partial |
+| 21b | **Dark mode & mobile UX** | Dark mode (not currently available). Tighter mobile nav; ensure hero and key flows work well on small screens. | Missing |
+
+---
+
+## 7a. Emotional Support & Resources
+
+| # | Feature | Description | Status |
+|---|---------|-------------|--------|
+| 27c | **Emotional support resources** | Links to **mental health hotlines** and **scam victim support groups**. Human touch competitors often lack; helps users in distress. | Missing |
 
 ---
 
@@ -97,7 +116,8 @@ User-reported scams with shareable links; **anyone can submit a report without s
 |---|---------|-------------|--------|
 | 22 | **Mobile-first layout** | Single-column stack with large touch targets (48px+ height); fix 2-column grid break on small screens. | Unverified |
 | 22b | **Large touch targets (48px+)** | Audit and ensure buttons/links meet 48px+ height for touch. | Unverified |
-| 23 | **Trust score / indicators** | Start with curated trust indicators; grow with community data (lighter version of algorithmic trust rating). | Partial |
+| 23 | **Trust score / risk rating** | Score websites or phone numbers with a **visual trust meter** (e.g. 0–100). Even a basic heuristic (domain age, SSL, WHOIS) adds huge value. | Partial |
+| 23b | **Trust score (algorithmic)** | Full trust/risk score for URLs and phone numbers; surface in unified checker and reports. | Missing |
 
 ---
 
@@ -105,9 +125,10 @@ User-reported scams with shareable links; **anyone can submit a report without s
 
 | # | Feature | Revenue model | Status |
 |---|---------|----------------|--------|
-| 24 | **Claim your business** | Businesses pay to verify or manage their listing (B2B). | Planned |
-| 25 | **Data services / API** | Sell scam data to ad networks, law enforcement, brands. | Planned |
+| 24 | **Claim your business** | Businesses pay to verify or manage their listing (B2B; e.g. claim-your-business portals). | Planned |
+| 25 | **Data services / API** | Sell scam data to ad networks, law enforcement, brands. Public or partner API for lookups. | Planned |
 | 26 | **Mobile app** | App installs for push notifications and higher engagement. | Planned |
+| 27b | **Browser extension** | Chrome (or other) extension that **warns users on suspicious sites** — huge growth channel. May consume API (#25). | Planned |
 
 ---
 
@@ -120,18 +141,18 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | **Phase 2** | Blog/alerts (#16) + Live stats (#13) + Newsletter (#15) + **Facebook — post approved reports (#27)** |
 | **Phase 3** | B2B "Claim your site" (#24) + API (#25) + Mobile app (#26) |
 
-**Differentiator:** The "I got scammed → what do I do now?" guided wizard (#4) remains a unique angle vs ScamAdviser.
+**Differentiator:** The "I got scammed → what do I do now?" guided wizard (#4) remains a unique angle in the space.
 
 ---
 
-## Status summary (from MISSING_FEATURES_FROM_NEW_UX.md)
+## Status summary (from MISSING_FEATURES_FROM_NEW_UX.md + newfeatures2.md)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| Done | 7 | P0 report + shareable URL, auth ratings, Stack, Report form (#12), Scam category education (#8), "Need help now?" CTA (#20), Country auto-detection (#3) |
-| Partial | 10 | Aggregated trends, Card-based categories (#7), Route to channel (#4b), Trust indicators (#18b), Breadcrumb (#21), Community reports (#11), Live stats (#13), Blog (#16), Country guide (#17), Trust score (#23) |
-| Missing | 12 | Search-first (#2), Replace dropdown (#2b), Wizard (#4), Progress (#5), Estimated time (#6), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Unified scam checker (#1) |
+| Done | 8 | P0 report + shareable URL, auth ratings, Stack, Report form (#12), Scam category education (#8), "Need help now?" CTA (#20), Country auto-detection (#3), Estimated time (#6) |
+| Partial | 12+ | Aggregated trends, Card-based categories (#7), Route to channel (#4b), Trust indicators (#18b), Breadcrumb (#21), Community reports (#11), Live stats (#13), Blog (#16), Country guide (#17), Trust score (#23), SEO/monetization (#17b) |
+| Missing | 20+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Multi-country (#3b), Wizard (#4), Progress (#5), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), Emotional support (#27c), **Scam alert subscription (#15c)**, **"Did this help?" voting (#11b)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Similarity matching (#1b)**, **Monthly trends report (#16b)**, **Gamification (#11d)** |
 | Unverified | 2 | Mobile-first (#22), 48px touch targets (#22b) |
-| Planned | 6 | Niche tools (#9), Press badges (#14), Newsletter (#15), **Facebook post approved reports (#27)**, Revenue (#24–26) |
+| Planned | 7+ | Niche tools (#9), Press badges (#14), Newsletter (#15), Facebook post (#27), Revenue (#24–26), Browser extension (#27b) |
 
-*Last updated from NewFeatures.md, readme_New_UX.md, and MISSING_FEATURES_FROM_NEW_UX.md.*
+*Last updated from NewFeatures.md, readme_New_UX.md, MISSING_FEATURES_FROM_NEW_UX.md, **newfeatures2.md**, and **newfeature3.md**.*

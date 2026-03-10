@@ -1335,6 +1335,10 @@ ul.scam-cards-grid {
   color: var(--color-text-muted);
   font-weight: 500;
 }
+.report-estimated-time::before {
+  content: ' — ';
+  color: var(--color-text-muted);
+}
 
 .note {
   font-size: 0.9rem;
@@ -2198,6 +2202,11 @@ ul.scam-cards-grid {
 .admin-settings-apply-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 .admin-section { margin-top: var(--space-xl); }
 .admin-section-title { font-size: 1.1rem; margin: 0 0 var(--space-md); color: var(--color-text-muted); }
+.admin-search-report { margin-bottom: var(--space-lg); }
+.admin-search-report-form { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xs); }
+.admin-search-report-input { flex: 1; min-width: 16rem; max-width: 28rem; font-family: monospace; font-size: 0.9rem; }
+.admin-search-report-btn { flex-shrink: 0; }
+.admin-search-report-desc { font-size: 0.85rem; color: var(--color-text-muted); margin: 0; }
 .admin-report-list { list-style: none; margin: 0; padding: 0; }
 .admin-report-item { padding: var(--space-md); margin-bottom: var(--space-md); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); }
 .admin-report-item-pending { border-left: 4px solid #b45309; }

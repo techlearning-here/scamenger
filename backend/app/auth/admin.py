@@ -5,9 +5,10 @@ from typing import Annotated
 import jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 
-from app.core.config import ADMIN_PASSWORD, ADMIN_SECRET, ADMIN_USERNAME
+from app.core.config import ADMIN_PASSWORD, ADMIN_SECRET, ADMIN_USERNAME, ENCRYPTION_KEY_B64
+from app.utils.crypto import decrypt_password
 
 ALGORITHM = "HS256"
 TOKEN_EXPIRY_SECONDS = 86400  # 24 hours
@@ -16,10 +17,17 @@ _security = HTTPBearer(auto_error=False)
 
 
 class AdminLoginPayload(BaseModel):
-    """Login request body."""
+    """Login request body. Send either password (plaintext) or password_encrypted (when ENCRYPTION_KEY is set)."""
 
     username: str
-    password: str
+    password: str | None = None
+    password_encrypted: str | None = None
+
+    @model_validator(mode="after")
+    def require_password_or_encrypted(self) -> "AdminLoginPayload":
+        if not self.password and not self.password_encrypted:
+            raise ValueError("Either password or password_encrypted is required")
+        return self
 
 
 class AdminTokenResponse(BaseModel):
@@ -41,7 +49,9 @@ def create_admin_token(username: str) -> str:
 
 
 def verify_admin_credentials(username: str, password: str) -> bool:
-    """Return True if username and password match configured admin."""
+    """Return True if username and password match configured admin (from env)."""
+    if not ADMIN_USERNAME or not ADMIN_PASSWORD or not ADMIN_SECRET:
+        return False
     return username == ADMIN_USERNAME and password == ADMIN_PASSWORD
 
 

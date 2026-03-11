@@ -1,0 +1,15 @@
+{
+  "description": "Canonical seed data for Scam Avenger. Single source of truth for initial DB state. Run supabase/scripts/seed.sql to apply.",
+  "site_settings": [
+    {
+      "key": "show_facebook_consent",
+      "value": true,
+      "description": "When true, report form shows the Facebook share consent checkbox."
+    },
+    {
+      "key": "show_report_scam",
+      "value": true,
+      "description": "When true, Report a scam is shown in nav and FAB; /report/ is available."
+    }
+  ]
+}

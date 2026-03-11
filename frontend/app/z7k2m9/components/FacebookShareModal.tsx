@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import type { AdminReportDto } from '@/data/admin/api';
+import { getFacebookStatus, postReportToFacebook } from '@/data/admin/api';
 import { REPORT_TYPE_LABELS, REPORT_TYPE_ICONS, LOST_MONEY_RANGE_LABELS } from '@/data/reports/api';
 import { COUNTRY_OPTIONS } from '@/data/reports/countries';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
@@ -36,13 +37,24 @@ function buildDefaultPostText(report: AdminReportDto): string {
 
 export interface FacebookShareModalProps {
   report: AdminReportDto;
+  token: string;
   onClose: () => void;
 }
 
-export function FacebookShareModal({ report, onClose }: FacebookShareModalProps) {
+export function FacebookShareModal({ report, token, onClose }: FacebookShareModalProps) {
   const [postText, setPostText] = useState('');
   const [showPreview, setShowPreview] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [fbEnabled, setFbEnabled] = useState<boolean | null>(null);
+  const [postLoading, setPostLoading] = useState(false);
+  const [postResult, setPostResult] = useState<{ post_id: string; permalink: string } | null>(null);
+  const [postError, setPostError] = useState<string | null>(null);
+
+  useEffect(() => {
+    getFacebookStatus(token)
+      .then((res) => setFbEnabled(res.enabled))
+      .catch(() => setFbEnabled(false));
+  }, [token]);
 
   useEffect(() => {
     setPostText(buildDefaultPostText(report));
@@ -59,6 +71,23 @@ export function FacebookShareModal({ report, onClose }: FacebookShareModalProps)
   const handleOpenFacebook = useCallback(() => {
     window.open('https://www.facebook.com/', 'facebook-share', 'width=600,height=400');
   }, []);
+
+  const handlePostToFacebook = useCallback(() => {
+    if (!postText.trim() || postLoading) return;
+    setPostLoading(true);
+    setPostError(null);
+    setPostResult(null);
+    postReportToFacebook(report.id, token, postText.trim())
+      .then((res) => {
+        setPostResult(res);
+        setPostError(null);
+      })
+      .catch((err) => {
+        setPostError(err instanceof Error ? err.message : 'Post failed');
+        setPostResult(null);
+      })
+      .finally(() => setPostLoading(false));
+  }, [report.id, token, postText, postLoading]);
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) onClose();
@@ -121,14 +150,41 @@ export function FacebookShareModal({ report, onClose }: FacebookShareModalProps)
           >
             {copied ? 'Copied!' : 'Copy to clipboard'}
           </button>
-          <button
-            type="button"
-            onClick={handleOpenFacebook}
-            className="admin-fb-btn admin-fb-btn-primary"
-          >
-            Open Facebook to share
-          </button>
+          {fbEnabled === true && (
+            <button
+              type="button"
+              onClick={handlePostToFacebook}
+              disabled={!postText.trim() || postLoading}
+              className="admin-fb-btn admin-fb-btn-primary"
+            >
+              {postLoading ? 'Posting…' : 'Post to Facebook'}
+            </button>
+          )}
+          {fbEnabled !== true && (
+            <button
+              type="button"
+              onClick={handleOpenFacebook}
+              className="admin-fb-btn admin-fb-btn-primary"
+            >
+              Open Facebook to share
+            </button>
+          )}
         </div>
+        {fbEnabled === false && (
+          <p className="admin-fb-not-configured" role="status">
+            Facebook posting is not configured. Set FACEBOOK_PAGE_ID and FACEBOOK_PAGE_ACCESS_TOKEN in the backend to post directly.
+          </p>
+        )}
+        {postError && (
+          <p className="admin-fb-error" role="alert">
+            {postError}
+          </p>
+        )}
+        {postResult && (
+          <p className="admin-fb-success" role="status">
+            Posted. <a href={postResult.permalink} target="_blank" rel="noopener noreferrer">View on Facebook</a>
+          </p>
+        )}
         {showPreview && (
           <div className="admin-fb-preview-wrap">
             <p className="admin-fb-preview-label">Preview (how it may look on Facebook)</p>

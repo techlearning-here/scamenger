@@ -2547,6 +2547,10 @@ ul.scam-cards-grid {
 .admin-fb-preview-page-name { font-size: 0.95rem; }
 .admin-fb-preview-meta { font-size: 0.9rem; color: var(--color-text-muted); }
 .admin-fb-preview-body { font-size: 0.95rem; line-height: 1.4; white-space: pre-wrap; word-break: break-word; margin-bottom: var(--space-sm); }
+.admin-fb-not-configured { margin: 0 0 var(--space-md); font-size: 0.9rem; color: var(--color-text-muted); }
+.admin-fb-error { margin: 0 0 var(--space-md); font-size: 0.9rem; color: var(--color-error, #c00); }
+.admin-fb-success { margin: 0 0 var(--space-md); font-size: 0.9rem; color: var(--color-success, #0a0); }
+.admin-fb-success a { color: inherit; text-decoration: underline; }
 .admin-fb-preview-link { font-size: 0.85rem; }
 .admin-fb-preview-link a { color: var(--color-accent); }
 .admin-fb-share-btn { font-size: 0.9rem; padding: var(--space-xs) var(--space-sm); background: #1877f2; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; }

@@ -25,7 +25,12 @@ from app.models.contact import (
     ContactMessageResponse,
     ContactMessagesListResponse,
 )
+from app.models.facebook import FacebookPostRequest, FacebookPostResponse, FacebookStatusResponse
 from app.models.settings import SiteSettingsResponse, SiteSettingsUpdate
+from app.services.facebook import post_to_facebook_page
+from app.utils.facebook import build_post_message
+from app.core.config import ENCRYPTION_KEY_B64, FACEBOOK_POSTING_ENABLED
+from app.utils.crypto import decrypt_password
 
 router = APIRouter(prefix="/z7k2m9", tags=["admin"])
 
@@ -48,8 +53,13 @@ def _admin_report_from_record(record: dict[str, Any]) -> AdminReportResponse:
 
 @router.post("/login", response_model=AdminTokenResponse)
 def admin_login(payload: AdminLoginPayload) -> AdminTokenResponse:
-    """Authenticate admin with username and password. Returns JWT for admin endpoints."""
-    if not verify_admin_credentials(payload.username, payload.password):
+    """Authenticate admin with username and password. Returns JWT for admin endpoints. Accepts plaintext password or password_encrypted when ENCRYPTION_KEY is set."""
+    password: str | None = None
+    if payload.password_encrypted and ENCRYPTION_KEY_B64:
+        password = decrypt_password(payload.password_encrypted, ENCRYPTION_KEY_B64)
+    elif payload.password is not None:
+        password = payload.password
+    if not password or not verify_admin_credentials(payload.username, password):
         raise HTTPException(status_code=401, detail="Invalid username or password")
     token = create_admin_token(payload.username)
     return AdminTokenResponse(access_token=token)
@@ -120,6 +130,14 @@ def update_settings(
     show_fb = _get_site_setting(sb, "show_facebook_consent", True)
     show_report = _get_site_setting(sb, "show_report_scam", True)
     return SiteSettingsResponse(show_facebook_consent=show_fb, show_report_scam=show_report)
+
+
+@router.get("/facebook/status", response_model=FacebookStatusResponse)
+def get_facebook_status(
+    _admin: str = Depends(get_admin_from_token),
+) -> FacebookStatusResponse:
+    """Return whether Facebook posting is configured. Admin only."""
+    return FacebookStatusResponse(enabled=FACEBOOK_POSTING_ENABLED)
 
 
 def _contact_message_from_record(record: dict[str, Any]) -> ContactMessageResponse:
@@ -343,6 +361,41 @@ def get_report(
     if not result.data or len(result.data) == 0:
         raise HTTPException(status_code=404, detail="Report not found")
     return _admin_report_from_record(result.data[0])
+
+
+@router.post("/reports/{report_id}/post-to-facebook", response_model=FacebookPostResponse)
+def post_report_to_facebook(
+    report_id: str,
+    payload: FacebookPostRequest = FacebookPostRequest(),
+    _admin: str = Depends(get_admin_from_token),
+) -> FacebookPostResponse:
+    """Post an anonymized summary of the report to the Scam Avenger Facebook Page. Admin only. Optional body: { \"message\": \"...\" }. If message is omitted, backend builds the summary from report data. Requires FACEBOOK_PAGE_ID and FACEBOOK_PAGE_ACCESS_TOKEN to be set."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    try:
+        result = sb.table("reports").select("id, report_type, country_origin, category, lost_money, lost_money_range").eq("id", report_id).limit(1).execute()
+    except Exception:
+        raise HTTPException(status_code=503, detail="Service unavailable") from None
+    if not result.data or len(result.data) == 0:
+        raise HTTPException(status_code=404, detail="Report not found")
+    record = result.data[0]
+    message = (payload.message and payload.message.strip()) or build_post_message(record)
+    try:
+        out = post_to_facebook_page(message)
+        return FacebookPostResponse(post_id=out["id"], permalink=out.get("permalink", ""))
+    except ValueError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+    except Exception as e:
+        if hasattr(e, "response") and getattr(e, "response") is not None:
+            resp = e.response
+            try:
+                err_data = resp.json()
+                msg = err_data.get("error", {}).get("message", resp.text)
+            except Exception:
+                msg = resp.text or str(e)
+            raise HTTPException(status_code=502, detail=f"Facebook API error: {msg}") from e
+        raise HTTPException(status_code=502, detail="Failed to post to Facebook") from e
 
 
 @router.patch("/reports/{report_id}", response_model=AdminReportResponse)

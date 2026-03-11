@@ -11,7 +11,16 @@ SUPABASE_ANON_KEY = os.environ.get("SUPABASE_ANON_KEY", "")
 SUPABASE_KEY = SUPABASE_SERVICE_ROLE_KEY or SUPABASE_ANON_KEY
 SUPABASE_CONFIGURED = bool(SUPABASE_URL and SUPABASE_KEY)
 
-# Admin (UUID as username, UUID as password; set in env or use these defaults)
-ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "11111111-1111-4111-a111-111111111111")
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "22222222-2222-4222-a222-222222222222")
-ADMIN_SECRET = os.environ.get("ADMIN_SECRET", "dev-secret-change-in-production")
+# Admin: set via environment variables (required for admin login).
+# Use strong values; UUIDs are fine for username/password. ADMIN_SECRET must be at least 32 chars for JWT.
+ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "").strip()
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
+ADMIN_SECRET = os.environ.get("ADMIN_SECRET", "").strip()
+
+# Facebook: optional. When set, admin can post approved report summaries to the Scam Avenger Facebook Page.
+FACEBOOK_PAGE_ID = os.environ.get("FACEBOOK_PAGE_ID", "").strip()
+FACEBOOK_PAGE_ACCESS_TOKEN = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "").strip()
+FACEBOOK_POSTING_ENABLED = bool(FACEBOOK_PAGE_ID and FACEBOOK_PAGE_ACCESS_TOKEN)
+
+# Optional: 32-byte key (base64-encoded) for symmetric decryption of login password. When set, login accepts password_encrypted.
+ENCRYPTION_KEY_B64 = (os.environ.get("ENCRYPTION_KEY", "") or "").strip()

@@ -66,9 +66,12 @@ export function clearStoredAdminToken(): void {
 
 /**
  * Admin login. Returns access token on success.
+ * From the browser, uses same-origin /api/z7k2m9/login so the server can encrypt the password when ENCRYPTION_KEY is set; the route forwards to the backend.
  */
 export async function adminLogin(username: string, password: string): Promise<string> {
-  const res = await fetch(`${API_BASE}/z7k2m9/login`, {
+  const loginUrl =
+    typeof window !== 'undefined' ? '/api/z7k2m9/login' : `${API_BASE}/z7k2m9/login`;
+  const res = await fetch(loginUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password }),
@@ -292,6 +295,38 @@ export async function updateSettings(
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     body: JSON.stringify(payload),
+  });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+  return res.json();
+}
+
+/** Facebook posting status (admin). True when FACEBOOK_PAGE_ID and token are set. */
+export async function getFacebookStatus(token: string): Promise<{ enabled: boolean }> {
+  const res = await fetch(`${API_BASE}/z7k2m9/facebook/status`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+  return res.json();
+}
+
+/** Post report summary to Scam Avenger Facebook Page. Admin. Optional message; if omitted backend builds anonymized summary. */
+export async function postReportToFacebook(
+  reportId: string,
+  token: string,
+  message?: string,
+): Promise<{ post_id: string; permalink: string }> {
+  const res = await fetch(`${API_BASE}/z7k2m9/reports/${encodeURIComponent(reportId)}/post-to-facebook`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify(message != null && message.trim() !== '' ? { message: message.trim() } : {}),
   });
   if (res.status === 401) throw new Error('Unauthorized');
   if (!res.ok) {

@@ -54,6 +54,10 @@ We use **two Supabase projects**: one for **production** (used by Render and Ver
 
    **Important for standard deployment:** Do **not** set `ROOT_PATH` on Render. Routes (e.g. `/z7k2m9/messages`, `/config`) are served at the root. Only set `ROOT_PATH` if you put the API behind a proxy that adds a path prefix (e.g. `/api`); then set `NEXT_PUBLIC_API_URL` on Vercel to include that path (e.g. `https://scamenger.onrender.com/api`).
 
+   **Optional – Facebook posting:** To let admins post approved reports to your Scam Avenger Facebook Page from the admin UI, set:
+   - `FACEBOOK_PAGE_ID` – the numeric Page ID (from Meta Business Suite → Page settings, or Graph API).
+   - `FACEBOOK_PAGE_ACCESS_TOKEN` – a Page access token with `pages_manage_posts` and `pages_read_engagement`. To obtain one: create an app at [developers.facebook.com](https://developers.facebook.com), add the **Facebook Login** product, then use **Graph API Explorer** or your app’s **Tools** to generate a User token, exchange it for a long-lived token, and then request the Page token via `GET /me/accounts`. Store the token in Render (and optionally in `backend/.env` for local testing). If either variable is unset, the “Post to Facebook” button is hidden and the API returns 503 for post requests.
+
 5. Deploy. After the first successful deploy, copy the **service URL** (e.g. `https://scam-avenger-api.onrender.com`). You will use this as the frontend’s API base URL.
 
 ---
@@ -127,7 +131,23 @@ If submitting a scam report from the Vercel site returns **"Reports service unav
    In Vercel → Project → **Settings → Environment Variables**, ensure **`NEXT_PUBLIC_API_URL`** is exactly your Render service URL (e.g. `https://scam-avenger-api.onrender.com`) with no trailing slash. Redeploy the frontend after changing it.
 
 4. **Render service up**  
-   If the backend is on Render’s free tier, it may spin down after inactivity. Open `https://<your-render-url>/health` in a browser; if it loads (even slowly), the service is up. The first request after spin-down can take 30–60 seconds.
+   If the backend is on Render’s free tier, it may spin down after inactivity. Open `https://<your-render-url>/health` in a browser; if it loads (even slowly), the service is up.    The first request after spin-down can take 30–60 seconds.
+
+### Troubleshooting: 503 Service Unavailable (admin reports, messages, or report submit)
+
+If **`GET /z7k2m9/reports`** or other admin/report endpoints return **503 (Service Unavailable)**, the backend cannot reach Supabase or the database call failed. Do the following:
+
+1. **Render environment variables**  
+   In Render → your backend service → **Environment**:
+   - **`SUPABASE_URL`** must be your Supabase project URL (e.g. `https://xxxxx.supabase.co`), no trailing slash.
+   - **`SUPABASE_SERVICE_ROLE_KEY`** must be the **service_role** key from Supabase → Project Settings → API (not the anon key). Copy the full key; no extra spaces.
+   - Save and **redeploy** after any change.
+
+2. **Supabase migration**  
+   The `reports` (and related) tables must exist. In Supabase → **SQL Editor**, run **`supabase/migrations/001_full_schema.sql`** for the same project whose URL and key you use on Render.
+
+3. **Render logs**  
+   In Render → your service → **Logs**, check for Python tracebacks or Supabase/connection errors when the 503 occurs. That will confirm whether it's missing env, wrong key, or a DB/network error.
 
 ### Troubleshooting: Admin page / `GET /z7k2m9/messages` 404 (Not Found)
 

@@ -476,6 +476,7 @@ export default function AdminReportDetailPage() {
       {reportForFacebook && report && (
         <FacebookShareModal
           report={reportForFacebook}
+          token={token}
           onClose={() => setReportForFacebook(null)}
         />
       )}

@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers import admin, contact, reports
-from app.routers.config import router as config_router
+from app.routers.config import router as config_router, get_config as get_config_response
 
 # When behind a proxy that does not strip the path (e.g. /api), set ROOT_PATH so routes match.
 # Example: ROOT_PATH=/api → admin at /api/z7k2m9, reports at /api/reports.
@@ -47,6 +47,12 @@ def health_head():
 def root():
     """API root."""
     return {"service": "Scam Avenger API", "docs": "/docs"}
+
+
+@app.get("/config")
+def config():
+    """Public config (show_facebook_consent, show_report_scam). Also on config router when ROOT_PATH is set."""
+    return get_config_response()
 
 
 if PATH_PREFIX:

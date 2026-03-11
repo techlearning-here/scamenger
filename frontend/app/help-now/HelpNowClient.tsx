@@ -51,6 +51,10 @@ export function HelpNowClient({ countryFromUrl }: HelpNowClientProps) {
         If you’ve been targeted by a scam or lost money, use these official links to report and get help. Showing links for{' '}
         <strong>{countryLabel}</strong>.
       </p>
+      <p className="emotional-support-cta">
+        <strong>Feeling overwhelmed?</strong>{' '}
+        <Link href="/emotional-support/">Mental health hotlines and scam victim support resources</Link> are available.
+      </p>
       <div className="help-now-country-wrap form-group">
         <label htmlFor="help-now-country" className="form-optional">
           Change country / region
@@ -92,7 +96,7 @@ export function HelpNowClient({ countryFromUrl }: HelpNowClientProps) {
         ))}
       </ul>
       <p className="help-now-footer">
-        <Link href="/">Back to home</Link> · <Link href="/report/">Report a scam</Link>
+        <Link href="/emotional-support/">Emotional support &amp; victim resources</Link> · <Link href="/">Back to home</Link> · <Link href="/report/">Report a scam</Link>
       </p>
     </>
   );

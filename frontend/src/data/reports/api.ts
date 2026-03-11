@@ -78,6 +78,10 @@ export interface ReportResponseDto {
   message?: string;
   /** Only present in create response; use in URL as view_token to see full report while pending. */
   submitter_view_token?: string;
+  /** Present when GET is with auth and user has rated; allows pre-fill and update. */
+  user_rating?: RatePayloadDto | null;
+  /** Number of other approved reports with same URL/number. Omitted or 0 when not applicable. */
+  similar_count?: number | null;
 }
 
 /** Response when report exists but is not yet approved (no report content). */
@@ -119,14 +123,20 @@ export async function createReport(payload: ReportCreatePayload): Promise<Report
 /**
  * Fetch a single report by its id (UUID).
  * Pass viewToken (from create response) to see full details while report is pending.
+ * Pass accessToken (Supabase session) to get user_rating when logged in (for pre-fill and update).
  */
 export async function getReportById(
   id: string,
   viewToken?: string | null,
+  accessToken?: string | null,
 ): Promise<GetReportByIdResponse | null> {
   const path = `/reports/${encodeURIComponent(id)}`;
-  const q = viewToken ? `?view_token=${encodeURIComponent(viewToken)}` : '';
-  const res = await fetch(`${API_BASE}${path}${q}`);
+  const params = new URLSearchParams();
+  if (viewToken) params.set('view_token', viewToken);
+  const q = params.toString() ? `?${params.toString()}` : '';
+  const headers: HeadersInit = {};
+  if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
+  const res = await fetch(`${API_BASE}${path}${q}`, { headers });
   if (res.status === 404) return null;
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: res.statusText }));
@@ -150,6 +160,54 @@ export async function submitRating(
       Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || `Request failed: ${res.status}`);
+  }
+  return res.json();
+}
+
+/** Response from GET/POST /reports/{id}/helpful */
+export interface HelpfulCountsResponse {
+  helpful_count: number;
+  not_helpful_count: number;
+  user_vote: boolean | null;
+}
+
+/**
+ * Fetch "Did this help?" counts (and optional user vote if authenticated).
+ */
+export async function getReportHelpful(
+  reportId: string,
+  accessToken?: string | null,
+): Promise<HelpfulCountsResponse> {
+  const headers: HeadersInit = {};
+  if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
+  const res = await fetch(`${API_BASE}/reports/${encodeURIComponent(reportId)}/helpful`, { headers });
+  if (res.status === 404) throw new Error('Report not found');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || `Request failed: ${res.status}`);
+  }
+  return res.json();
+}
+
+/**
+ * Submit or update "Did this help?" vote (authenticated). Requires Bearer token.
+ */
+export async function submitHelpfulVote(
+  reportId: string,
+  helpful: boolean,
+  accessToken: string,
+): Promise<HelpfulCountsResponse> {
+  const res = await fetch(`${API_BASE}/reports/${encodeURIComponent(reportId)}/helpful`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({ helpful }),
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: res.statusText }));

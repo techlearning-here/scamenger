@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { CategoryIntro } from '@/components/CategoryIntro';
+import { ProgressSteps } from '@/components/ProgressSteps';
 import { ReportCard } from '@/components/ReportCard';
 import { ScamCard } from '@/components/ScamCard';
 import { getUsScamTypes } from '@/data/us-scams';
@@ -25,6 +26,8 @@ export default function GovernmentImpersonationTaxPage() {
   return (
     <>
       <h1>Government impersonation and tax scams</h1>
+
+      <ProgressSteps preventHref="#scam-types-in-category" preventLabel="Browse scam guides" />
 
       <CategoryIntro
         intro="If someone pretended to be the IRS, Treasury, or another government agency to pressure you into paying or sharing personal information, report it using the official links below. For other government imposter scams, the FTC and IC3 also accept reports."
@@ -66,7 +69,7 @@ export default function GovernmentImpersonationTaxPage() {
         Older adults targeted by fraud can also contact the <a href="https://www.justice.gov/elderjustice/national-elder-fraud-hotline" target="_blank" rel="noopener noreferrer">National Elder Fraud Hotline</a>.
       </p>
 
-      <h2>Scam types in this category</h2>
+      <h2 id="scam-types-in-category">Scam types in this category</h2>
       <p>Detailed guides and where to report each:</p>
       <ul className="scam-cards-grid">
         {impersonationScams.map((scam) => (

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { CategoryIntro } from '@/components/CategoryIntro';
+import { ProgressSteps } from '@/components/ProgressSteps';
 import { ReportCard } from '@/components/ReportCard';
 import { ScamCard } from '@/components/ScamCard';
 import { getUsScamTypes } from '@/data/us-scams';
@@ -25,6 +26,8 @@ export default function CorruptionFraudWastePage() {
   return (
     <>
       <h1>Corruption, fraud, and waste in government</h1>
+
+      <ProgressSteps preventHref="#scam-types-in-category" preventLabel="Browse scam guides" />
 
       <CategoryIntro
         intro="To report fraud, waste, abuse, or retaliation involving federal programs or employees, use the links below. Oversight.gov is the main entry point; specific Inspector General (OIG) hotlines handle issues for their agencies."
@@ -73,7 +76,7 @@ export default function CorruptionFraudWastePage() {
         We help you find the right official channels to report scams and corruption.
       </p>
 
-      <h2>Scam types in this category</h2>
+      <h2 id="scam-types-in-category">Scam types in this category</h2>
       <p>Detailed guides and where to report each:</p>
       <ul className="scam-cards-grid">
         {governmentScams.map((scam) => (

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { CategoryIntro } from '@/components/CategoryIntro';
+import { ProgressSteps } from '@/components/ProgressSteps';
 import { ReportCard } from '@/components/ReportCard';
 import { ScamCard } from '@/components/ScamCard';
 import { getUsScamTypes } from '@/data/us-scams';
@@ -25,6 +26,8 @@ export default function FinancialBankingPage() {
   return (
     <>
       <h1>Financial and banking scams</h1>
+
+      <ProgressSteps preventHref="#scam-types-in-category" preventLabel="Browse scam guides" />
 
       <CategoryIntro
         intro="For issues with bank accounts, credit cards, loans, mortgages, or debt collectors—including scams like fake bank texts or Zelle/transfer fraud—report to the agencies below. If money was stolen, also contact your bank and local police or the FBI as appropriate."
@@ -58,7 +61,7 @@ export default function FinancialBankingPage() {
         If money was stolen or you are a victim of fraud, also contact your local police and consider <a href="https://www.ic3.gov/" target="_blank" rel="noopener noreferrer">IC3</a> for internet-related theft.
       </p>
 
-      <h2>Scam types in this category</h2>
+      <h2 id="scam-types-in-category">Scam types in this category</h2>
       <p>Detailed guides and where to report each:</p>
       <ul className="scam-cards-grid">
         {financialScams.map((scam) => (

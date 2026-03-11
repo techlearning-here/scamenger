@@ -57,9 +57,9 @@ This document lists features described in **readme_New_UX.md**, **newfeatures2.m
 |------|--------|--------|
 | **Sticky "Need help now?" CTA** | **Missing** | There is a **floating "Report a scam"** FAB (`FabReport`), not a **"Need help now?"** CTA linking to **emergency contacts** (e.g. bank fraud hotlines, crisis links). |
 | **Breadcrumb trail** | **Partial** | Some pages have a **back** nav (e.g. "Home / Report a scam / Report"). No full path like **Home → US → Phishing** on inner scam pages. |
-| **Progress indication ("what happens next")** | **Missing** | No explicit **Report → Track → Prevent** (or similar) steps after selecting a scam type or submitting a report. |
+| **Progress indication ("what happens next")** | **Done** | **Report → Track → Prevent** block shown on every scam type page (`/us/scams/[slug]/`) and on category pages (financial-banking, online-phone-scams, government-impersonation-tax, corruption-fraud-waste) via `ProgressSteps` component. |
 
-**To implement:** (1) Add a second FAB or replace FAB with a menu: "Report a scam" + "Need help now?" (link to a page with emergency hotlines/links). (2) Add structured breadcrumbs (e.g. Home → US → [Category] → [Scam type]) on scam and category pages. (3) Add a "What happens next" block (e.g. Report → Track → Prevent) on confirmation or scam type pages.
+**To implement:** (1) Add a second FAB or replace FAB with a menu: "Report a scam" + "Need help now?" (link to a page with emergency hotlines/links). (2) Add structured breadcrumbs (e.g. Home → US → [Category] → [Scam type]) on scam and category pages. (3) ~~Add a "What happens next" block (e.g. Report → Track → Prevent) on confirmation or scam type pages.~~ **Done** — see ProgressSteps component.
 
 ---
 
@@ -91,7 +91,7 @@ This document lists features described in **readme_New_UX.md**, **newfeatures2.m
 | Mobile | Multi-country support (UK, AU, CA, India, EU + localized authorities) | Missing |
 | Nav | "Need help now?" sticky CTA | Done |
 | Nav | Full breadcrumb (Home → US → Phishing) | Partial |
-| Nav | Progress: Report → Track → Prevent | Missing |
+| Nav | Progress: Report → Track → Prevent | Done |
 | Content | "Most reported" / "Trending" badges | Missing |
 | Content | **Estimated time to report (~5 min)** | **Done** — shown next to reporting links on scam guides when `estimatedTime` is set in data. |
 
@@ -119,7 +119,7 @@ This document lists features described in **readme_New_UX.md**, **newfeatures2.m
 | # | Feature from newfeature3 | Why it works | FeatureList ID | Status |
 |---|---------------------------|--------------|-----------------|--------|
 | 1 | **Scam Alert Subscription** — users follow specific scam types (romance, crypto), get email/push alerts | Recurring engagement + email list for monetization | #15c | Missing |
-| 2 | **"Did This Help?" Voting** — upvote/downvote on reports | Social proof + content ranking for SEO | #11b | Missing |
+| 2 | **"Did This Help?" Voting** — upvote/downvote on reports | Social proof + content ranking for SEO | #11b | Done — Yes/No voting on report detail page; one vote per user per report (auth); GET/POST /reports/{id}/helpful |
 | 3 | **Scam Heatmap** — visual map showing scam density by region | Viral shareable content; great for press coverage | #13b | Missing |
 | 4 | **Verified Recovery Stories** — users post outcomes ("I got $500 back via chargeback") | Hope-driven engagement; unique differentiator | #11c | Missing |
 | 5 | **Browser Extension** — warns users before visiting flagged URLs | Persistent daily engagement + trust score distribution | #27b | Planned |

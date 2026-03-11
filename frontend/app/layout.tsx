@@ -143,6 +143,7 @@ export default function RootLayout({
               </Link>
               <Link href="/">Home</Link>
               <Link href="/lookup-report/">Look up report</Link>
+              <Link href="/emotional-support/">Emotional support</Link>
               <Link href="/news/">News</Link>
               <Link href="/about/">About</Link>
               <Link href="/contact/">Contact</Link>
@@ -181,6 +182,7 @@ export default function RootLayout({
           <div className="layout_container">
             <SocialLinks />
             <nav className="site_footer_legal" aria-label="Legal">
+              <Link href="/emotional-support/">Emotional support</Link>
               <Link href="/privacy/">Privacy Policy</Link>
               <Link href="/terms/">Terms &amp; Conditions</Link>
               <Link href="/disclaimer/">Disclaimer</Link>

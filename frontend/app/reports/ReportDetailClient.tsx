@@ -9,6 +9,9 @@ import { REPORT_TYPE_LABELS, LOST_MONEY_RANGE_LABELS, REPORT_TYPE_DETAIL_SHORT_L
 import type { ReportResponseDto, GetReportByIdResponse } from '@/data/reports/api';
 import type { LostMoneyRange } from '@/data/reports/api';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
+import { DidThisHelpVote } from './DidThisHelpVote';
+import { RateReportForm } from './RateReportForm';
+import { supabase } from '@/lib/supabase';
 
 function formatDate(iso: string): string {
   try {
@@ -50,19 +53,23 @@ function ReportDetailInner() {
     }
     setError(null);
     let cancelled = false;
-    getReportById(reportId, viewToken || undefined)
-      .then((data) => {
+    const load = async () => {
+      const session = supabase ? (await supabase.auth.getSession()).data?.session : null;
+      const token = session?.access_token ?? undefined;
+      try {
+        const data = await getReportById(reportId, viewToken || undefined, token ?? undefined);
         if (!cancelled) {
           setReport(data ?? null);
           setError(null);
         }
-      })
-      .catch((err) => {
+      } catch (err) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : 'Failed to load report');
           setReport(null);
         }
-      });
+      }
+    };
+    load();
     return () => { cancelled = true; };
   }, [reportId, viewToken]);
 
@@ -89,6 +96,10 @@ function ReportDetailInner() {
       window.setTimeout(() => setCopiedId(false), 2000);
     });
   }, [reportId]);
+
+  const handleRated = useCallback((updated: ReportResponseDto) => {
+    setReport(updated);
+  }, []);
 
   if (!reportId) {
     return (
@@ -141,6 +152,7 @@ function ReportDetailInner() {
   const detailLabel =
     REPORT_TYPE_DETAIL_SHORT_LABELS[fullReport.report_type as ReportType] ?? fullReport.report_type;
   const isUrl = !!detailValue && /^https?:\/\//i.test(detailValue);
+  const similarCount = typeof fullReport.similar_count === 'number' ? fullReport.similar_count : 0;
 
   return (
     <article className="report-detail-card">
@@ -153,6 +165,11 @@ function ReportDetailInner() {
         <div className="report-detail-copy-notice" role="alert">
           <strong>Copy your report URL below and save it.</strong> This full view of your report will not be accessible again after you close or leave this page—we don’t email the link.
         </div>
+      )}
+      {!isPending && similarCount > 0 && (
+        <p className="report-detail-similar" role="status">
+          <strong>{similarCount} other {similarCount === 1 ? 'user has' : 'users have'} reported this same {detailLabel.toLowerCase()}.</strong>
+        </p>
       )}
       {viewToken && (
         <div className="report-detail-save-id-block" role="region" aria-labelledby="report-detail-save-id-heading">
@@ -203,7 +220,7 @@ function ReportDetailInner() {
             </div>
           )}
           <div className="report-detail-meta-row">
-            <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook)</dt>
+            <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook, X)</dt>
             <dd className="report-detail-meta-value">{fullReport.consent_share_social ? 'Yes' : 'No'}</dd>
           </div>
           {showDetailRow && (
@@ -304,6 +321,31 @@ function ReportDetailInner() {
           </>
         )}
       </section>
+
+      {!isPending && fullReport.status !== 'pending' && (
+        <DidThisHelpVote reportId={fullReport.id} visible />
+      )}
+
+      {!isPending && fullReport.status !== 'pending' && (
+        <section className="report-detail-ratings" aria-labelledby="report-detail-ratings-heading">
+          <h2 id="report-detail-ratings-heading" className="report-detail-ratings-heading">
+            Rate this report
+          </h2>
+          {(fullReport.rating_count ?? 0) > 0 && (
+            <p className="report-detail-ratings-count">
+              {fullReport.rating_count} {fullReport.rating_count === 1 ? 'person has' : 'people have'} rated this report.
+              {typeof fullReport.avg_credibility === 'number' && (
+                <> Credibility {fullReport.avg_credibility.toFixed(1)} · Usefulness {(fullReport.avg_usefulness ?? 0).toFixed(1)} · Completeness {(fullReport.avg_completeness ?? 0).toFixed(1)} · Relevance {(fullReport.avg_relevance ?? 0).toFixed(1)} (avg 1–5)</>
+              )}
+            </p>
+          )}
+          <RateReportForm
+            reportId={fullReport.id}
+            onRated={handleRated}
+            initialRating={('user_rating' in fullReport && fullReport.user_rating) ? fullReport.user_rating : undefined}
+          />
+        </section>
+      )}
 
       <p className="report-detail-back">
         <Link href="/report/">Report another scam</Link>

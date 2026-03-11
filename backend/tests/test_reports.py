@@ -175,6 +175,119 @@ def test_get_report_returns_200_with_report(client, mock_supabase):
     assert data["country_origin"] == "US"
     assert data["report_type"] == "website"
     assert data["lost_money"] is True
+    # No report_type_detail so similar_count not queried; may be 0 or absent
+    assert data.get("similar_count") in (0, None)
+
+
+def test_get_report_includes_similar_count_when_others_exist(client, mock_supabase):
+    """GET /reports/{id} returns similar_count when approved report has report_type_detail and other matches exist."""
+    report_id = "550e8400-e29b-41d4-a716-446655440010"
+    approved_record = {
+        "id": report_id,
+        "slug": "abc123",
+        "country_origin": "US",
+        "report_type": "phone",
+        "report_type_detail": "+1 234 567 8900",
+        "report_type_detail_normalized": "12345678900",
+        "category": None,
+        "lost_money": False,
+        "narrative": "Scam call.",
+        "consent_share_authorities": False,
+        "created_at": "2025-01-15T12:00:00Z",
+        "rating_count": 0,
+        "sum_credibility": 0,
+        "sum_usefulness": 0,
+        "sum_completeness": 0,
+        "sum_relevance": 0,
+        "status": "approved",
+    }
+    mock_table = MagicMock()
+    main_chain = MagicMock()
+    main_chain.eq.return_value.limit.return_value.execute.return_value = MagicMock(data=[approved_record])
+    similar_chain = MagicMock()
+    similar_chain.eq.return_value.eq.return_value.eq.return_value.neq.return_value.execute.return_value = MagicMock(
+        data=[{"id": "other-1"}, {"id": "other-2"}]
+    )
+    mock_table.select.side_effect = [main_chain, similar_chain]
+    mock_supabase.return_value = MagicMock()
+    mock_supabase.return_value.table.return_value = mock_table
+    with patch("app.routers.reports.get_report_cached", return_value=None):
+        response = client.get(f"/reports/{report_id}")
+    assert response.status_code == 200
+    data = response.json()
+    assert data.get("similar_count") == 2
+
+
+def test_get_report_similar_count_zero_when_no_others(client, mock_supabase):
+    """GET /reports/{id} returns similar_count 0 when no other reports match."""
+    report_id = "550e8400-e29b-41d4-a716-446655440011"
+    approved_record = {
+        "id": report_id,
+        "slug": "abc124",
+        "country_origin": "US",
+        "report_type": "website",
+        "report_type_detail": "https://unique.com",
+        "report_type_detail_normalized": "unique.com",
+        "category": None,
+        "lost_money": False,
+        "narrative": "Only report.",
+        "consent_share_authorities": False,
+        "created_at": "2025-01-15T12:00:00Z",
+        "rating_count": 0,
+        "sum_credibility": 0,
+        "sum_usefulness": 0,
+        "sum_completeness": 0,
+        "sum_relevance": 0,
+        "status": "approved",
+    }
+    mock_table = MagicMock()
+    main_chain = MagicMock()
+    main_chain.eq.return_value.limit.return_value.execute.return_value = MagicMock(data=[approved_record])
+    similar_chain = MagicMock()
+    similar_chain.eq.return_value.eq.return_value.eq.return_value.neq.return_value.execute.return_value = MagicMock(data=[])
+    mock_table.select.side_effect = [main_chain, similar_chain]
+    mock_supabase.return_value = MagicMock()
+    mock_supabase.return_value.table.return_value = mock_table
+    with patch("app.routers.reports.get_report_cached", return_value=None):
+        response = client.get(f"/reports/{report_id}")
+    assert response.status_code == 200
+    data = response.json()
+    assert data.get("similar_count") == 0
+
+
+def test_get_report_from_cache_includes_similar_count(client, mock_supabase):
+    """GET /reports/{id} from cache with report_type_detail includes similar_count when similar query returns matches."""
+    report_id = "550e8400-e29b-41d4-a716-446655440013"
+    cached_record = {
+        "id": report_id,
+        "slug": "cachedslug",
+        "country_origin": "US",
+        "report_type": "phone",
+        "report_type_detail": "+1 555 123 4567",
+        "report_type_detail_normalized": "15551234567",
+        "category": None,
+        "lost_money": False,
+        "narrative": "Cached.",
+        "consent_share_authorities": False,
+        "created_at": "2025-02-01T10:00:00Z",
+        "rating_count": 0,
+        "sum_credibility": 0,
+        "sum_usefulness": 0,
+        "sum_completeness": 0,
+        "sum_relevance": 0,
+        "status": "approved",
+    }
+    mock_table = MagicMock()
+    mock_table.select.return_value.eq.return_value.eq.return_value.eq.return_value.neq.return_value.execute.return_value = MagicMock(
+        data=[{"id": "other-a"}]
+    )
+    mock_supabase.return_value = MagicMock()
+    mock_supabase.return_value.table.return_value = mock_table
+    with patch("app.routers.reports.get_report_cached", return_value=cached_record):
+        response = client.get(f"/reports/{report_id}")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["similar_count"] == 1
 
 
 def test_get_report_includes_rating_aggregates(client, mock_supabase):
@@ -262,6 +375,81 @@ def test_create_report_returns_201_and_report(client, mock_supabase):
     assert data["country_origin"] == "US"
     assert data["report_type"] == "phone"
     assert data["lost_money"] is True
+    call_args = mock_insert.insert.call_args
+    assert call_args is not None
+    row = call_args[0][0]
+    assert "report_type_detail_normalized" in row
+    assert row["report_type_detail_normalized"] is None
+
+
+def test_create_report_sends_normalized_phone(client, mock_supabase):
+    """POST /reports with report_type=phone and report_type_detail sends digits-only normalized value."""
+    mock_insert = MagicMock()
+    mock_insert.insert.return_value.execute.return_value = MagicMock(
+        data=[{
+            "id": "550e8400-e29b-41d4-a716-446655440001",
+            "slug": "a1b2c3d4e5f7",
+            "country_origin": "US",
+            "report_type": "phone",
+            "report_type_detail": "+1 234 567 8900",
+            "lost_money": False,
+            "narrative": "Scam call.",
+            "consent_share_authorities": False,
+            "created_at": "2025-01-15T12:00:00Z",
+        }]
+    )
+    mock_supabase.return_value = MagicMock()
+    mock_supabase.return_value.table.return_value = mock_insert
+    response = client.post(
+        "/reports",
+        json={
+            "country_origin": "US",
+            "report_type": "phone",
+            "report_type_detail": "+1 234 567 8900",
+            "lost_money": False,
+            "narrative": "Scam call.",
+            "consent_share_authorities": False,
+        },
+    )
+    assert response.status_code == 201
+    call_args = mock_insert.insert.call_args
+    row = call_args[0][0]
+    assert row["report_type_detail_normalized"] == "12345678900"
+
+
+def test_create_report_sends_normalized_website(client, mock_supabase):
+    """POST /reports with report_type=website and URL sends normalized URL (lowercase, no protocol)."""
+    mock_insert = MagicMock()
+    mock_insert.insert.return_value.execute.return_value = MagicMock(
+        data=[{
+            "id": "550e8400-e29b-41d4-a716-446655440002",
+            "slug": "a1b2c3d4e5f8",
+            "country_origin": "US",
+            "report_type": "website",
+            "report_type_detail": "https://Evil.COM/",
+            "lost_money": False,
+            "narrative": "Phishing site.",
+            "consent_share_authorities": False,
+            "created_at": "2025-01-15T12:00:00Z",
+        }]
+    )
+    mock_supabase.return_value = MagicMock()
+    mock_supabase.return_value.table.return_value = mock_insert
+    response = client.post(
+        "/reports",
+        json={
+            "country_origin": "US",
+            "report_type": "website",
+            "report_type_detail": "https://Evil.COM/",
+            "lost_money": False,
+            "narrative": "Phishing site.",
+            "consent_share_authorities": False,
+        },
+    )
+    assert response.status_code == 201
+    call_args = mock_insert.insert.call_args
+    row = call_args[0][0]
+    assert row["report_type_detail_normalized"] == "evil.com"
 
 
 def test_create_report_validates_country_origin_required(client, mock_supabase):

@@ -22,6 +22,8 @@ import {
   type ReportType,
   type LostMoneyRange,
 } from '@/data/reports/api';
+import { FacebookShareModal } from '../../components/FacebookShareModal';
+import { XShareModal } from '../../components/XShareModal';
 import { COUNTRY_OPTIONS } from '@/data/reports/countries';
 import { SCAM_CATEGORY_LABELS, type ScamCategoryId } from '@/data/scams/types';
 
@@ -62,6 +64,8 @@ export default function AdminReportDetailPage() {
   const [saving, setSaving] = useState(false);
   const [actionId, setActionId] = useState<string | null>(null);
   const [form, setForm] = useState<AdminReportUpdateDto>({});
+  const [reportForFacebook, setReportForFacebook] = useState<AdminReportDto | null>(null);
+  const [reportForX, setReportForX] = useState<AdminReportDto | null>(null);
 
   useEffect(() => {
     setToken(getStoredAdminToken());
@@ -374,6 +378,24 @@ export default function AdminReportDetailPage() {
             >
               View as public
             </a>
+            {report.consent_share_social && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setReportForFacebook(report)}
+                  className="admin-fb-share-btn"
+                >
+                  Share to Facebook
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setReportForX(report)}
+                  className="admin-x-share-btn"
+                >
+                  Share to X
+                </button>
+              </>
+            )}
           </div>
           <article className="report-detail-card admin-report-detail-card">
             <p className="report-detail-meta-row">
@@ -435,7 +457,7 @@ export default function AdminReportDetailPage() {
                 </dd>
               </div>
               <div className="report-detail-meta-row">
-                <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook)</dt>
+                <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook, X)</dt>
                 <dd className="report-detail-meta-value">{report.consent_share_social ? 'Yes' : 'No'}</dd>
               </div>
             </dl>
@@ -450,6 +472,18 @@ export default function AdminReportDetailPage() {
             </p>
           </article>
         </>
+      )}
+      {reportForFacebook && report && (
+        <FacebookShareModal
+          report={reportForFacebook}
+          onClose={() => setReportForFacebook(null)}
+        />
+      )}
+      {reportForX && report && (
+        <XShareModal
+          report={reportForX}
+          onClose={() => setReportForX(null)}
+        />
       )}
     </div>
   );

@@ -257,6 +257,39 @@ def test_admin_patch_report_does_not_accept_consent(client):
     assert passed_updates.get("narrative") == "Updated"
 
 
+def test_admin_patch_report_sets_report_type_detail_normalized(client):
+    """PATCH with report_type or report_type_detail includes report_type_detail_normalized in update."""
+    report_id = "550e8400-e29b-41d4-a716-446655440000"
+    login = client.post("/z7k2m9/login", json={"username": ADMIN_USER, "password": ADMIN_PASS})
+    token = login.json()["access_token"]
+    record = {
+        "id": report_id, "slug": "abc", "country_origin": "US", "report_type": "website",
+        "category": None, "report_type_detail": "https://Evil.COM/", "lost_money": False,
+        "lost_money_range": None, "narrative": "Original", "consent_share_authorities": False,
+        "created_at": "2025-01-15T12:00:00Z", "status": "pending", "rating_count": 0,
+        "sum_credibility": 0, "sum_usefulness": 0, "sum_completeness": 0, "sum_relevance": 0,
+    }
+    updated_record = {**record, "report_type_detail": "https://Evil.COM/", "report_type_detail_normalized": "evil.com"}
+    mock_table = MagicMock()
+    mock_table.select.return_value.eq.return_value.limit.return_value.execute.side_effect = [
+        MagicMock(data=[record]),
+        MagicMock(data=[updated_record]),
+    ]
+    mock_table.update.return_value.eq.return_value.execute.return_value = MagicMock()
+    with patch("app.routers.admin.get_supabase") as mock_sb:
+        mock_sb.return_value.table.return_value = mock_table
+        response = client.patch(
+            f"/z7k2m9/reports/{report_id}",
+            json={"report_type_detail": "https://Evil.COM/"},
+            headers={"Authorization": f"Bearer {token}"},
+        )
+    assert response.status_code == 200
+    call_args = mock_table.update.call_args
+    assert call_args is not None
+    passed_updates = call_args[0][0]
+    assert passed_updates.get("report_type_detail_normalized") == "evil.com"
+
+
 def test_admin_settings_requires_auth(client):
     """GET /z7k2m9/settings returns 401 without Bearer token."""
     response = client.get("/z7k2m9/settings")

@@ -35,7 +35,7 @@ User-reported scams with shareable links; **anyone can submit a report without s
 |---|---------|-------------|--------|
 | 4 | **Wizard / guided flow** | Step-by-step interactive flow: "What happened? → What did you lose? → Here's exactly what to do." More empathetic than static guides; routes users to the right reporting channel. Reduces cognitive load. *Unique differentiator.* | Missing |
 | 4b | **Route to right reporting channel via questions** | Wizard or flow that asks questions and then recommends a specific scam guide or reporting link (e.g. FTC, IC3). Scam type pages already list links; no question-based routing yet. | Partial |
-| 5 | **Progress indication** | After selecting a scam type, show clear "what happens next": Report → Track → Prevent. | Missing |
+| 5 | **Progress indication** | After selecting a scam type, show clear "what happens next": Report → Track → Prevent. | Done |
 | 6 | **Estimated time to report** | Add labels like "~5 min" next to reporting links to set expectations. | Done |
 
 ---
@@ -62,10 +62,10 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | 15 | **Newsletter signup** | Email list for recurring traffic and monetizable audience. | Planned |
 | 15b | **Real-time scam alerts & newsletter** | Trending scams ticker on site; email alerts for new scam types in user's region. Drives recurring traffic. | Missing |
 | 15c | **Scam alert subscription** | Users **follow specific scam types** (e.g. romance, crypto) and get **email/push alerts** when new reports or trends match. Recurring engagement + email list for monetization. *From newfeature3.* | Missing |
-| 11b | **"Did this help?" voting** | Upvote/downvote on reports or guides. Social proof + content ranking for SEO. Complements ratings (#P0). *From newfeature3.* | Missing |
+| 11b | **"Did this help?" voting** | Upvote/downvote on reports or guides. Social proof + content ranking for SEO. Complements ratings (#P0). *From newfeature3.* | Done |
 | 13b | **Scam heatmap** | **Visual map** showing scam density by region. Viral shareable content; strong for press coverage. *From newfeature3.* | Missing |
 | 11c | **Verified recovery stories** | Users post **outcomes** (e.g. "I got $500 back via chargeback"). Hope-driven engagement; unique differentiator. *From newfeature3.* | Missing |
-| 1b | **Scam similarity matching** | When viewing a URL/number: "**X other users reported this same number/URL**." Validates victims' experiences; encourages more reports. *From newfeature3.* | Missing |
+| 1b | **Scam similarity matching** | When viewing a URL/number: "**X other users reported this same number/URL**." Validates victims' experiences; encourages more reports. *From newfeature3.* | Done |
 | 16b | **Monthly scam trends report** | **Auto-generated** newsletter or blog post from aggregated data. SEO content machine + newsletter growth. *From newfeature3.* | Missing |
 | 11d | **Reward / gamification** | Badges for reporting (e.g. "Scam Hunter", "Community Guardian"). Incentivizes repeat contributions. *From newfeature3.* | Missing |
 
@@ -106,7 +106,7 @@ User-reported scams with shareable links; **anyone can submit a report without s
 
 | # | Feature | Description | Status |
 |---|---------|-------------|--------|
-| 27c | **Emotional support resources** | Links to **mental health hotlines** and **scam victim support groups**. Human touch competitors often lack; helps users in distress. | Missing |
+| 27c | **Emotional support resources** | Links to **mental health hotlines** and **scam victim support groups**. Human touch competitors often lack; helps users in distress. | Done |
 
 ---
 
@@ -149,9 +149,9 @@ User-reported scams with shareable links; **anyone can submit a report without s
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| Done | 8 | P0 report + shareable URL, auth ratings, Stack, Report form (#12), Scam category education (#8), "Need help now?" CTA (#20), Country auto-detection (#3), Estimated time (#6) |
+| Done | 12 | P0 report + shareable URL, auth ratings, Stack, Report form (#12), Scam category education (#8), "Need help now?" CTA (#20), Country auto-detection (#3), Estimated time (#6), **Emotional support (#27c)**, **Progress indication (#5)**, **"Did this help?" voting (#11b)**, **Scam similarity matching (#1b)** |
 | Partial | 12+ | Aggregated trends, Card-based categories (#7), Route to channel (#4b), Trust indicators (#18b), Breadcrumb (#21), Community reports (#11), Live stats (#13), Blog (#16), Country guide (#17), Trust score (#23), SEO/monetization (#17b) |
-| Missing | 20+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Multi-country (#3b), Wizard (#4), Progress (#5), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), Emotional support (#27c), **Scam alert subscription (#15c)**, **"Did this help?" voting (#11b)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Similarity matching (#1b)**, **Monthly trends report (#16b)**, **Gamification (#11d)** |
+| Missing | 17+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Multi-country (#3b), Wizard (#4), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), **Scam alert subscription (#15c)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Monthly trends report (#16b)**, **Gamification (#11d)** |
 | Unverified | 2 | Mobile-first (#22), 48px touch targets (#22b) |
 | Planned | 7+ | Niche tools (#9), Press badges (#14), Newsletter (#15), Facebook post (#27), Revenue (#24–26), Browser extension (#27b) |
 

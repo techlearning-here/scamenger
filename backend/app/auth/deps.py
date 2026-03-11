@@ -1,5 +1,5 @@
 """Verify Supabase JWT and return user id for authenticated requests."""
-from typing import Annotated
+from typing import Annotated, Optional
 
 import jwt
 from fastapi import Depends, HTTPException, status
@@ -59,3 +59,26 @@ def get_current_user_id(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid or expired token",
         ) from e
+
+
+def get_current_user_id_optional(
+    credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(_security)],
+) -> Optional[str]:
+    """Return user id if valid Bearer token present, else None. Never raises."""
+    if not SUPABASE_URL or not credentials or not credentials.credentials:
+        return None
+    token = credentials.credentials
+    try:
+        client = _get_jwks_client()
+        signing_key = client.get_signing_key_from_jwt(token)
+        payload = jwt.decode(
+            token,
+            signing_key.key,
+            algorithms=["RS256", "ES256"],
+            issuer=ISSUER,
+            audience="authenticated",
+        )
+        user_id = payload.get("sub")
+        return str(user_id) if user_id else None
+    except jwt.PyJWTError:
+        return None

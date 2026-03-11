@@ -50,6 +50,20 @@ class RatePayload(BaseModel):
     relevance: int = Field(..., ge=1, le=5)
 
 
+class HelpfulVotePayload(BaseModel):
+    """Payload for "Did this help?" vote (authenticated)."""
+
+    helpful: bool
+
+
+class HelpfulCountsResponse(BaseModel):
+    """Response for GET/POST report helpful: counts and optional current user vote."""
+
+    helpful_count: int = 0
+    not_helpful_count: int = 0
+    user_vote: Optional[bool] = None  # True = Yes, False = No, None = not voted / not auth
+
+
 class ReportResponse(BaseModel):
     """Single report as returned by GET /reports/{report_id} or after POST."""
 
@@ -75,6 +89,10 @@ class ReportResponse(BaseModel):
     status: Optional[Literal["pending", "approved"]] = None
     message: Optional[str] = None
     submitter_view_token: Optional[str] = None
+    # Number of other approved reports with same report_type_detail (URL/number). None if not applicable.
+    similar_count: Optional[int] = None
+    # Present when GET is authenticated and user has rated; allows pre-fill and update.
+    user_rating: Optional[RatePayload] = None
 
 
 ReportStatus = Literal["pending", "approved", "rejected"]

@@ -144,7 +144,7 @@ export function ReportFormClient() {
             </div>
             {showFacebookConsentControl === true && (
             <div className="report-detail-meta-row">
-              <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook)</dt>
+              <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook, X)</dt>
               <dd className="report-detail-meta-value">{consentShareSocial ? 'Yes' : 'No'}</dd>
             </div>
             )}
@@ -305,7 +305,7 @@ export function ReportFormClient() {
       {showFacebookConsentControl === true && (
       <div className="form-group form-group-switch">
         <span className="form-switch-label" id="consent_share_social_label">
-          Do you want an anonymized summary of this report posted on Scam Avenger&apos;s Facebook page? <span className="form-optional">(optional)</span>
+          Do you want an anonymized summary of this report posted on Scam Avenger&apos;s Facebook and X (Twitter) pages? <span className="form-optional">(optional)</span>
         </span>
         <label className="form-switch-wrap" htmlFor="consent_share_social_switch" aria-labelledby="consent_share_social_label">
           <input

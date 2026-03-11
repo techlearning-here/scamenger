@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { CategoryIntro } from '@/components/CategoryIntro';
+import { ProgressSteps } from '@/components/ProgressSteps';
 import { ReportCard } from '@/components/ReportCard';
 import { ScamCard } from '@/components/ScamCard';
 import { getUsScamTypes } from '@/data/us-scams';
@@ -25,6 +26,8 @@ export default function OnlinePhoneScamsPage() {
   return (
     <>
       <h1>Online and phone scams</h1>
+
+      <ProgressSteps preventHref="#scam-types-in-category" preventLabel="Browse scam guides" />
 
       <CategoryIntro
         intro="If you were targeted by an online or phone scam—phishing, fake shopping, robocalls, spoofing, or someone trying to trick you into sending money or personal info—use the links below to report to the right U.S. agency."
@@ -65,7 +68,7 @@ export default function OnlinePhoneScamsPage() {
         See also <a href="https://www.usa.gov/phone-scams" target="_blank" rel="noopener noreferrer">USA.gov – Phone scams</a> for more on reporting phone and text scams.
       </p>
 
-      <h2>Scam types in this category</h2>
+      <h2 id="scam-types-in-category">Scam types in this category</h2>
       <p>Detailed guides and where to report each:</p>
       <ul className="scam-cards-grid">
         {onlinePhoneScams.map((scam) => (

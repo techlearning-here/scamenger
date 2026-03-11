@@ -20,6 +20,7 @@ from app.models.report import (
     AdminApprovedStatsResponse,
     ReportResponse,
 )
+from app.utils.normalize import normalize_report_type_detail
 from app.models.contact import (
     ContactMessageResponse,
     ContactMessagesListResponse,
@@ -174,6 +175,12 @@ def update_report(
     for key in list(updates.keys()):
         if key.startswith("consent_"):
             del updates[key]
+    if "report_type" in updates or "report_type_detail" in updates:
+        report_type = updates.get("report_type", result.data[0].get("report_type"))
+        report_type_detail = updates.get("report_type_detail", result.data[0].get("report_type_detail"))
+        updates["report_type_detail_normalized"] = normalize_report_type_detail(
+            report_type, report_type_detail
+        )
     if not updates:
         return _admin_report_from_record(result.data[0])
     try:

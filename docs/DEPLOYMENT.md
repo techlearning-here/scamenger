@@ -52,6 +52,8 @@ We use **two Supabase projects**: one for **production** (used by Render and Ver
    | `SUPABASE_URL` | Your Supabase project URL | From Supabase → Project Settings → API |
    | `SUPABASE_SERVICE_ROLE_KEY` | Your Supabase service_role key | Backend only; keep secret |
 
+   **Optional:** If the API is served behind a proxy that does **not** strip the path (e.g. all requests arrive as `https://your-domain.com/api/...`), set `ROOT_PATH=api` so that routes are mounted under `/api` (e.g. `/api/z7k2m9/messages`). In that case, set the frontend’s `NEXT_PUBLIC_API_URL` to the full base including the path (e.g. `https://your-domain.com/api`). If the backend is reached at the root (e.g. `https://scam-avenger-api.onrender.com/z7k2m9/...`), leave `ROOT_PATH` unset.
+
 5. Deploy. After the first successful deploy, copy the **service URL** (e.g. `https://scam-avenger-api.onrender.com`). You will use this as the frontend’s API base URL.
 
 ---
@@ -145,10 +147,7 @@ If submitting a scam report from the Vercel site returns **"Reports service unav
 
 ## 7. Local development
 
-- **Backend:** `cd backend && uvicorn app.main:app --reload --port 8000`  
-  Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `backend/.env`.
-- **Frontend:** `cd frontend && npm run dev`  
-  Set `NEXT_PUBLIC_API_URL=http://localhost:8000` (and Supabase vars if needed) in `frontend/.env.local` or Vercel env.
+See **[docs/LOCAL_DEVELOPMENT.md](LOCAL_DEVELOPMENT.md)** for step-by-step instructions to run the backend and frontend locally, including env setup and Supabase migration.
 
 ---
 

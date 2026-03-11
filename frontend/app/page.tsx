@@ -96,6 +96,9 @@ export default function HomePage() {
         <p className="mission-text">
           <strong>You&apos;re not alone.</strong> We help people who&apos;ve been targeted by scams find the right place to report and get support. Our community-based scam report and guidance point you to official channels in your country so you can take action—and help others avoid the same traps.
         </p>
+        <p className="mission-regions" role="note">
+          Official reporting links and support for <strong>United States</strong>, <strong>United Kingdom</strong>, <strong>Canada</strong>, <strong>Australia</strong>, <strong>India</strong>, and the <strong>European Union</strong> (plus Germany, France, and more). Choose your country on <Link href="/help-now/">Need help now?</Link> or when <Link href="/report/">reporting a scam</Link>.
+        </p>
       </section>
 
       <section className="top-scam-stats" aria-labelledby="top-scam-stats-heading">
@@ -120,7 +123,7 @@ export default function HomePage() {
 
       <section className="popular-guides" aria-labelledby="popular-guides-heading">
         <h2 id="popular-guides-heading">Popular reporting guides</h2>
-        <p className="popular-guides-intro">Quick links to where to report common scams in the USA:</p>
+        <p className="popular-guides-intro">Quick links to where to report common scams. Guides below are for the <strong>USA</strong>; use <Link href="/help-now/">Need help now?</Link> for official links in the UK, Canada, Australia, India, EU, and other supported regions.</p>
         <ul className="scam-cards-grid popular-guides-list">
           {popularGuides.map((scam) => (
             <ScamCard

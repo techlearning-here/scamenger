@@ -39,7 +39,7 @@ export default function AdminLoginPage() {
       </nav>
       <h1 className="report-scam-title">Admin login</h1>
       <p className="report-scam-lead">Sign in to moderate reports.</p>
-      <form onSubmit={handleSubmit} className="report-scam-form">
+      <form onSubmit={handleSubmit} className="report-scam-form" suppressHydrationWarning>
         <div className="form-group">
           <label htmlFor="admin-username">Username</label>
           <input
@@ -51,6 +51,7 @@ export default function AdminLoginPage() {
             disabled={submitting}
             className="form-control"
             autoComplete="username"
+            suppressHydrationWarning
           />
         </div>
         <div className="form-group">
@@ -64,6 +65,7 @@ export default function AdminLoginPage() {
             disabled={submitting}
             className="form-control"
             autoComplete="current-password"
+            suppressHydrationWarning
           />
         </div>
         {error && (
@@ -72,7 +74,7 @@ export default function AdminLoginPage() {
           </div>
         )}
         <div className="form-actions">
-          <button type="submit" disabled={submitting} className="report-scam-submit">
+          <button type="submit" disabled={submitting} className="report-scam-submit" suppressHydrationWarning>
             {submitting ? 'Signing in…' : 'Sign in'}
           </button>
           <Link href="/">Cancel</Link>

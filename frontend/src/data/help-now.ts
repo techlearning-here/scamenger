@@ -46,6 +46,12 @@ export const HELP_LINKS_BY_COUNTRY: Record<string, HelpLink[]> = {
   ],
   IN: [
     { label: 'National Cyber Crime Portal', href: 'https://cybercrime.gov.in/', description: 'Report cyber crime to the Government of India.', external: true },
+    { label: 'National Consumer Helpline', href: 'https://consumerhelpline.gov.in/', description: 'Consumer complaints and scam reporting. 1915 or 1800-11-4000.', external: true },
+    { label: 'Report a scam to Scam Avenger', href: '/report/', description: 'Share your experience with our community and get a shareable report link.', external: false },
+  ],
+  EU: [
+    { label: 'European Consumer Centre Network', href: 'https://ec.europa.eu/info/live-work-travel-eu/consumer-rights-and-complaints/enforcement-consumer-protection/consumer-centres_en', description: 'Find your national consumer centre in the EU for cross-border complaints and scams.', external: true },
+    { label: 'European Commission – Report a scam', href: 'https://ec.europa.eu/consumers/odr/', description: 'Online dispute resolution and consumer complaints in the EU.', external: true },
     { label: 'Report a scam to Scam Avenger', href: '/report/', description: 'Share your experience with our community and get a shareable report link.', external: false },
   ],
   NG: [

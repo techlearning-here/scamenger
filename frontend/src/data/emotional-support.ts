@@ -155,7 +155,28 @@ const IN_SECTIONS: SupportSection[] = [
     intro: 'Organizations that help scam victims.',
     links: [
       { label: 'National Cyber Crime Portal', href: 'https://cybercrime.gov.in/', description: 'Report cyber crime and get guidance (Government of India).', external: true },
+      { label: 'National Consumer Helpline', href: 'https://consumerhelpline.gov.in/', description: 'Consumer complaints and scam reporting. 1915 or 1800-11-4000.', external: true },
       { label: 'Scam Survivors', href: 'https://www.scamsurvivors.com/', description: 'Peer support and recovery resources for scam victims.', external: true },
+    ],
+  },
+];
+
+const EU_SECTIONS: SupportSection[] = [
+  {
+    heading: 'Mental health & crisis support',
+    intro: 'If you\'re in distress after a scam or for any reason, these services offer confidential support. Select your country for local helplines.',
+    links: [
+      { label: 'European Alliance Against Depression', href: 'https://www.eaad.net/', description: 'Information on depression and crisis resources across Europe.', external: true },
+      { label: 'International Association for Suicide Prevention', href: 'https://www.iasp.info/resources/Crisis_Centres/', description: 'Directory of crisis centres worldwide.', external: true },
+    ],
+  },
+  {
+    heading: 'Scam & fraud victim support',
+    intro: 'EU-level and national consumer centres can help with reporting scams and disputes.',
+    links: [
+      { label: 'European Consumer Centres', href: 'https://ec.europa.eu/info/live-work-travel-eu/consumer-rights-and-complaints/enforcement-consumer-protection/consumer-centres_en', description: 'Find your national consumer centre for cross-border complaints and scams.', external: true },
+      { label: 'Scam Survivors', href: 'https://www.scamsurvivors.com/', description: 'Peer support and recovery resources for scam victims.', external: true },
+      { label: 'Report a scam to Scam Avenger', href: '/report/', description: 'Share your experience and get a shareable report link.', external: false },
     ],
   },
 ];
@@ -254,6 +275,7 @@ const SUPPORT_SECTIONS_BY_COUNTRY: SupportSectionsByCountry = {
   DE: DE_SECTIONS,
   FR: FR_SECTIONS,
   IN: IN_SECTIONS,
+  EU: EU_SECTIONS,
   ZA: ZA_SECTIONS,
   PH: PH_SECTIONS,
   NG: NG_SECTIONS,

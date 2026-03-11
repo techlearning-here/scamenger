@@ -25,7 +25,7 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | 2 | **Search-first approach** | Prominent search bar: "What happened to you?" — natural-language input so users describe their scam instead of browsing categories. Reduces stress for victims who don't know category names. | Missing |
 | 2b | **Replace category dropdown with search** | Report form uses search/natural language to suggest categories or reporting channels instead of (or in addition to) Scam category + Report type dropdowns. | Missing |
 | 3 | **Country auto-detection** | Use `navigator.language` or IP geolocation to pre-select country and reduce friction. | Done |
-| 3b | **Multi-country support** | Beyond US: add country selector and localized reporting authorities for UK, AU, CA, India, EU. Key differentiator; currently US-only. | Missing |
+| 3b | **Multi-country support** | Country selector and localized reporting authorities for UK, AU, CA, India, EU (plus DE, FR, and others). Need help now? and Report form offer country dropdown with locale detection; emotional support and help links are localized per country. | Done |
 
 ---
 
@@ -149,9 +149,9 @@ User-reported scams with shareable links; **anyone can submit a report without s
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| Done | 12 | P0 report + shareable URL, auth ratings, Stack, Report form (#12), Scam category education (#8), "Need help now?" CTA (#20), Country auto-detection (#3), Estimated time (#6), **Emotional support (#27c)**, **Progress indication (#5)**, **"Did this help?" voting (#11b)**, **Scam similarity matching (#1b)** |
+| Done | 13 | P0 report + shareable URL, auth ratings, Stack, Report form (#12), Scam category education (#8), "Need help now?" CTA (#20), Country auto-detection (#3), Estimated time (#6), **Emotional support (#27c)**, **Progress indication (#5)**, **"Did this help?" voting (#11b)**, **Scam similarity matching (#1b)**, **Multi-country support (#3b)** |
 | Partial | 12+ | Aggregated trends, Card-based categories (#7), Route to channel (#4b), Trust indicators (#18b), Breadcrumb (#21), Community reports (#11), Live stats (#13), Blog (#16), Country guide (#17), Trust score (#23), SEO/monetization (#17b) |
-| Missing | 17+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Multi-country (#3b), Wizard (#4), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), **Scam alert subscription (#15c)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Monthly trends report (#16b)**, **Gamification (#11d)** |
+| Missing | 16+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Wizard (#4), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), **Scam alert subscription (#15c)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Monthly trends report (#16b)**, **Gamification (#11d)** |
 | Unverified | 2 | Mobile-first (#22), 48px touch targets (#22b) |
 | Planned | 7+ | Niche tools (#9), Press badges (#14), Newsletter (#15), Facebook post (#27), Revenue (#24–26), Browser extension (#27b) |
 

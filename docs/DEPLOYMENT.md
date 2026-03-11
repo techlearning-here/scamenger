@@ -52,7 +52,7 @@ We use **two Supabase projects**: one for **production** (used by Render and Ver
    | `SUPABASE_URL` | Your Supabase project URL | From Supabase → Project Settings → API |
    | `SUPABASE_SERVICE_ROLE_KEY` | Your Supabase service_role key | Backend only; keep secret |
 
-   **Optional:** If the API is served behind a proxy that does **not** strip the path (e.g. all requests arrive as `https://your-domain.com/api/...`), set `ROOT_PATH=api` so that routes are mounted under `/api` (e.g. `/api/z7k2m9/messages`). In that case, set the frontend’s `NEXT_PUBLIC_API_URL` to the full base including the path (e.g. `https://your-domain.com/api`). If the backend is reached at the root (e.g. `https://scam-avenger-api.onrender.com/z7k2m9/...`), leave `ROOT_PATH` unset.
+   **Important for standard deployment:** Do **not** set `ROOT_PATH` on Render. Routes (e.g. `/z7k2m9/messages`, `/config`) are served at the root. Only set `ROOT_PATH` if you put the API behind a proxy that adds a path prefix (e.g. `/api`); then set `NEXT_PUBLIC_API_URL` on Vercel to include that path (e.g. `https://scamenger.onrender.com/api`).
 
 5. Deploy. After the first successful deploy, copy the **service URL** (e.g. `https://scam-avenger-api.onrender.com`). You will use this as the frontend’s API base URL.
 
@@ -128,6 +128,25 @@ If submitting a scam report from the Vercel site returns **"Reports service unav
 
 4. **Render service up**  
    If the backend is on Render’s free tier, it may spin down after inactivity. Open `https://<your-render-url>/health` in a browser; if it loads (even slowly), the service is up. The first request after spin-down can take 30–60 seconds.
+
+### Troubleshooting: Admin page / `GET /z7k2m9/messages` 404 (Not Found)
+
+If the admin page on Vercel shows “Not Found” or the browser reports **`GET https://scamenger.onrender.com/z7k2m9/messages 404 (Not Found)`**:
+
+1. **Render: remove `ROOT_PATH`**  
+   In [Render](https://render.com) → your backend service (e.g. scamenger) → **Environment**:
+   - If **`ROOT_PATH`** is set (e.g. to `api`), **delete it** or leave it blank. With `ROOT_PATH` set, the API only serves routes under that path (e.g. `/api/z7k2m9/messages`), so `https://scamenger.onrender.com/z7k2m9/messages` returns 404.
+   - Save and **redeploy** the service so the change takes effect.
+
+2. **Vercel: `NEXT_PUBLIC_API_URL`**  
+   In Vercel → Project → **Settings → Environment Variables**:
+   - **`NEXT_PUBLIC_API_URL`** must be exactly your Render URL with **no** path and **no** trailing slash (e.g. `https://scamenger.onrender.com`).  
+   - If you intentionally use a path prefix on Render (e.g. `ROOT_PATH=api`), then set `NEXT_PUBLIC_API_URL` to `https://scamenger.onrender.com/api`. For the usual setup, do not set `ROOT_PATH` and use the root URL.
+   - Redeploy the frontend after changing env vars.
+
+3. **Verify**  
+   Open `https://scamenger.onrender.com/health` — should return `{"status":"ok"}`.  
+   Open `https://scamenger.onrender.com/docs` — admin routes are under `/z7k2m9/...`. If `/health` works but `/z7k2m9/messages` 404s, `ROOT_PATH` is still set on Render; remove it and redeploy.
 
 ---
 

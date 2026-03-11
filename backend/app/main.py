@@ -49,7 +49,13 @@ def root():
     return {"service": "Scam Avenger API", "docs": "/docs"}
 
 
-app.include_router(reports.router, prefix=PATH_PREFIX)
-app.include_router(config_router, prefix=PATH_PREFIX)
-app.include_router(contact.router, prefix=PATH_PREFIX)
-app.include_router(admin.router, prefix=PATH_PREFIX)
+if PATH_PREFIX:
+    app.include_router(reports.router, prefix=PATH_PREFIX)
+    app.include_router(config_router, prefix=PATH_PREFIX)
+    app.include_router(contact.router, prefix=PATH_PREFIX)
+    app.include_router(admin.router, prefix=PATH_PREFIX)
+else:
+    app.include_router(reports.router)
+    app.include_router(config_router)
+    app.include_router(contact.router)
+    app.include_router(admin.router)

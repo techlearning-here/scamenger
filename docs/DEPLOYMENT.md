@@ -144,7 +144,8 @@ If **`GET /z7k2m9/reports`** or other admin/report endpoints return **503 (Servi
    - Save and **redeploy** after any change.
 
 2. **Supabase migration**  
-   The `reports` (and related) tables must exist. In Supabase → **SQL Editor**, run **`supabase/migrations/001_full_schema.sql`** for the same project whose URL and key you use on Render.
+   The `reports` (and related) tables must exist. In Supabase → **SQL Editor**, run **`supabase/migrations/001_full_schema.sql`** for the same project whose URL and key you use on Render.  
+   To record when reports are posted to Facebook (admin view), also run **`supabase/migrations/002_facebook_post_tracking.sql`** (adds `facebook_post_id`, `facebook_posted_at`, `facebook_permalink` to `reports`).
 
 3. **Render logs**  
    In Render → your service → **Logs**, check for Python tracebacks or Supabase/connection errors when the 503 occurs. That will confirm whether it's missing env, wrong key, or a DB/network error.

@@ -24,6 +24,7 @@ import {
 } from '@/data/reports/api';
 import { FacebookShareModal } from '../../components/FacebookShareModal';
 import { XShareModal } from '../../components/XShareModal';
+import { FacebookIcon, XIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, EditIcon } from '../../components/SocialShareIcons';
 import { COUNTRY_OPTIONS } from '@/data/reports/countries';
 import { SCAM_CATEGORY_LABELS, type ScamCategoryId } from '@/data/scams/types';
 
@@ -341,16 +342,20 @@ export default function AdminReportDetailPage() {
                   onClick={handleApprove}
                   disabled={!!actionId}
                   className="report-scam-submit"
+                  aria-label={actionId ? 'Approving…' : 'Approve'}
+                  data-tooltip={actionId ? 'Approving…' : 'Approve'}
                 >
-                  {actionId ? 'Approving…' : 'Approve'}
+                  <CheckIcon className="admin-btn-icon" />
                 </button>
                 <button
                   type="button"
                   onClick={handleReject}
                   disabled={!!actionId}
                   className="admin-report-reject-btn"
+                  aria-label={actionId ? 'Rejecting…' : 'Reject'}
+                  data-tooltip={actionId ? 'Rejecting…' : 'Reject'}
                 >
-                  {actionId ? 'Rejecting…' : 'Reject'}
+                  <RejectIcon className="admin-btn-icon" />
                 </button>
               </>
             )}
@@ -358,41 +363,50 @@ export default function AdminReportDetailPage() {
               type="button"
               onClick={() => setEditing(true)}
               className="report-scam-submit"
+              aria-label="Edit report"
+              data-tooltip="Edit report"
             >
-              Edit report
+              <EditIcon className="admin-btn-icon" />
             </button>
             <button
               type="button"
               onClick={handleDelete}
               disabled={!!actionId}
               className="admin-report-delete-btn"
-              aria-label="Delete report"
+              aria-label={actionId ? 'Deleting…' : 'Delete report'}
+              data-tooltip={actionId ? 'Deleting…' : 'Delete'}
             >
-              {actionId ? 'Deleting…' : 'Delete'}
+              <TrashIcon className="admin-btn-icon" />
             </button>
             <a
               href={`/reports/?id=${encodeURIComponent(report.id)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="admin-report-link"
+              aria-label="View as public"
+              data-tooltip="View as public"
             >
-              View as public
+              <GlobeIcon className="admin-report-link-icon" />
             </a>
             {report.consent_share_social && (
               <>
                 <button
                   type="button"
                   onClick={() => setReportForFacebook(report)}
-                  className="admin-fb-share-btn"
+                  className={`admin-fb-share-btn${report.facebook_posted_at ? ' admin-fb-share-btn-posted' : ''}`}
+                  aria-label={report.facebook_posted_at ? 'Shared to Facebook' : 'Share to Facebook'}
+                  data-tooltip={report.facebook_posted_at ? 'Shared to Facebook' : 'Share to Facebook'}
                 >
-                  Share to Facebook
+                  <FacebookIcon />
                 </button>
                 <button
                   type="button"
                   onClick={() => setReportForX(report)}
                   className="admin-x-share-btn"
+                  aria-label="Share to X"
+                  data-tooltip="Share to X"
                 >
-                  Share to X
+                  <XIcon />
                 </button>
               </>
             )}
@@ -478,6 +492,7 @@ export default function AdminReportDetailPage() {
           report={reportForFacebook}
           token={token}
           onClose={() => setReportForFacebook(null)}
+          onPostedToFacebook={loadReport}
         />
       )}
       {reportForX && report && (

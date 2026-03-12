@@ -24,6 +24,7 @@ import {
 import { invalidateConfigCache } from '@/data/config/api';
 import { FacebookShareModal } from './components/FacebookShareModal';
 import { XShareModal } from './components/XShareModal';
+import { FacebookIcon, XIcon, ExternalLinkIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, CopyIcon } from './components/SocialShareIcons';
 import { REPORT_TYPE_LABELS, REPORT_TYPE_ICONS } from '@/data/reports/api';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
 
@@ -39,6 +40,12 @@ function formatDate(iso: string): string {
   } catch {
     return iso;
   }
+}
+
+/** Short report ID for list display (first 8 chars); full ID available on hover. */
+function shortReportId(id: string, maxLength = 8): string {
+  if (!id || id.length <= maxLength) return id;
+  return id.slice(0, maxLength);
 }
 
 const PAGE_SIZE = 20;
@@ -75,6 +82,19 @@ export default function AdminDashboardPage() {
   const [expandedMessageId, setExpandedMessageId] = useState<string | null>(null);
   const [messageDetail, setMessageDetail] = useState<ContactMessageDto | null>(null);
   const [messageActionId, setMessageActionId] = useState<string | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  async function copyReportIdToClipboard(id: string) {
+    try {
+      await navigator.clipboard.writeText(id);
+      setCopiedId(id);
+      const t = setTimeout(() => setCopiedId(null), 1500);
+      return () => clearTimeout(t);
+    } catch {
+      setCopiedId(null);
+    }
+  }
 
   useEffect(() => {
     if (settings != null) {
@@ -123,7 +143,7 @@ export default function AdminDashboardPage() {
         if (!cancelled) setLoading(false);
       });
     return () => { cancelled = true; };
-  }, [token, router, pendingPage, rejectedPage, approvedPage]);
+  }, [token, router, pendingPage, rejectedPage, approvedPage, refreshKey]);
 
   useEffect(() => {
     if (!token || activeTab !== 'messages') return;
@@ -514,8 +534,8 @@ export default function AdminDashboardPage() {
                     className="form-control admin-search-report-input"
                     aria-describedby="admin-search-report-desc"
                   />
-                  <button type="submit" className="report-scam-submit admin-search-report-btn">
-                    Go to report
+                  <button type="submit" className="report-scam-submit admin-search-report-btn" aria-label="Go to report" data-tooltip="Go to report">
+                    <ExternalLinkIcon className="admin-btn-icon" />
                   </button>
                 </form>
                 <p id="admin-search-report-desc" className="admin-search-report-desc">Enter a report ID to view, edit, or delete that report.</p>
@@ -563,9 +583,10 @@ export default function AdminDashboardPage() {
                             onClick={() => handleDeleteMessage(m.id)}
                             disabled={messageActionId === m.id}
                             className="admin-report-delete-btn"
-                            aria-label="Delete message"
+                            aria-label={messageActionId === m.id ? 'Deleting…' : 'Delete message'}
+                            data-tooltip={messageActionId === m.id ? 'Deleting…' : 'Delete'}
                           >
-                            {messageActionId === m.id ? 'Deleting…' : 'Delete'}
+                            <TrashIcon className="admin-btn-icon" />
                           </button>
                         </div>
                         {expandedMessageId === m.id && messageDetail?.id === m.id && (
@@ -612,7 +633,18 @@ export default function AdminDashboardPage() {
                   ) : (
                     pendingItems.map((r) => (
                       <tr key={r.id} className="admin-report-item-pending">
-                        <td className="admin-table-id">{r.id}</td>
+                        <td className="admin-table-id" title={r.id}>
+                          <span className="admin-report-id-short">{shortReportId(r.id)}</span>
+                          <button
+                            type="button"
+                            onClick={() => copyReportIdToClipboard(r.id)}
+                            className="admin-copy-id-btn"
+                            aria-label={copiedId === r.id ? 'Copied!' : 'Copy full report ID'}
+                            data-tooltip={copiedId === r.id ? 'Copied!' : 'Copy ID'}
+                          >
+                            {copiedId === r.id ? <CheckIcon className="admin-copy-id-icon" /> : <CopyIcon className="admin-copy-id-icon" />}
+                          </button>
+                        </td>
                         <td>{formatDate(r.created_at)}</td>
                         <td>{REPORT_TYPE_ICONS[r.report_type as keyof typeof REPORT_TYPE_ICONS] ?? '📋'} {REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</td>
                         <td>{r.country_origin}</td>
@@ -622,50 +654,64 @@ export default function AdminDashboardPage() {
                             onClick={() => handleApprove(r.id)}
                             disabled={actionId === r.id}
                             className="report-scam-submit"
+                            aria-label={actionId === r.id ? 'Approving…' : 'Approve'}
+                            data-tooltip={actionId === r.id ? 'Approving…' : 'Approve'}
                           >
-                            {actionId === r.id ? 'Approving…' : 'Approve'}
+                            <CheckIcon className="admin-btn-icon" />
                           </button>
                           <button
                             type="button"
                             onClick={() => handleReject(r.id)}
                             disabled={actionId === r.id}
                             className="admin-report-reject-btn"
+                            aria-label={actionId === r.id ? 'Rejecting…' : 'Reject'}
+                            data-tooltip={actionId === r.id ? 'Rejecting…' : 'Reject'}
                           >
-                            {actionId === r.id ? 'Rejecting…' : 'Reject'}
+                            <RejectIcon className="admin-btn-icon" />
                           </button>
                           <button
                             type="button"
                             onClick={() => handleDelete(r.id)}
                             disabled={actionId === r.id}
                             className="admin-report-delete-btn"
-                            aria-label="Delete report"
+                            aria-label={actionId === r.id ? 'Deleting…' : 'Delete report'}
+                            data-tooltip={actionId === r.id ? 'Deleting…' : 'Delete'}
                           >
-                            {actionId === r.id ? 'Deleting…' : 'Delete'}
+                            <TrashIcon className="admin-btn-icon" />
                           </button>
                           <a
                             href={`/z7k2m9/reports/${encodeURIComponent(r.id)}`}
                             className="admin-report-link"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="View full report"
+                            data-tooltip="View full report"
                           >
-                            View full report
+                            <ExternalLinkIcon className="admin-report-link-icon" />
                           </a>
                           {r.consent_share_social && (
-                            <button
-                              type="button"
-                              onClick={() => setReportForFacebook(r)}
-                              className="admin-fb-share-btn"
-                            >
-                              Share to Facebook
-                            </button>
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => setReportForFacebook(r)}
+                                className={`admin-fb-share-btn${r.facebook_posted_at ? ' admin-fb-share-btn-posted' : ''}`}
+                                aria-label={r.facebook_posted_at ? 'Shared to Facebook' : 'Share to Facebook'}
+                                data-tooltip={r.facebook_posted_at ? 'Shared to Facebook' : 'Share to Facebook'}
+                              >
+                                <FacebookIcon />
+                              </button>
+                            </>
                           )}
                                 {r.consent_share_social && (
                             <button
                               type="button"
                               onClick={() => setReportForX(r)}
                               className="admin-x-share-btn"
+                              aria-label="Share to X"
+                              data-tooltip="Share to X"
+                              data-tooltip="Share to X"
                             >
-                              Share to X
+                              <XIcon />
                             </button>
                           )}
                         </td>
@@ -733,7 +779,18 @@ export default function AdminDashboardPage() {
                   ) : (
                     rejectedItems.map((r) => (
                       <tr key={r.id} className="admin-report-item-rejected">
-                        <td className="admin-table-id">{r.id}</td>
+                        <td className="admin-table-id" title={r.id}>
+                          <span className="admin-report-id-short">{shortReportId(r.id)}</span>
+                          <button
+                            type="button"
+                            onClick={() => copyReportIdToClipboard(r.id)}
+                            className="admin-copy-id-btn"
+                            aria-label={copiedId === r.id ? 'Copied!' : 'Copy full report ID'}
+                            data-tooltip={copiedId === r.id ? 'Copied!' : 'Copy ID'}
+                          >
+                            {copiedId === r.id ? <CheckIcon className="admin-copy-id-icon" /> : <CopyIcon className="admin-copy-id-icon" />}
+                          </button>
+                        </td>
                         <td>{formatDate(r.created_at)}</td>
                         <td>{REPORT_TYPE_ICONS[r.report_type as keyof typeof REPORT_TYPE_ICONS] ?? '📋'} {REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</td>
                         <td>{r.country_origin}</td>
@@ -744,42 +801,54 @@ export default function AdminDashboardPage() {
                             onClick={() => handleApprove(r.id)}
                             disabled={actionId === r.id}
                             className="report-scam-submit"
+                            aria-label={actionId === r.id ? 'Approving…' : 'Approve'}
+                            data-tooltip={actionId === r.id ? 'Approving…' : 'Approve'}
                           >
-                            {actionId === r.id ? 'Approving…' : 'Approve'}
+                            <CheckIcon className="admin-btn-icon" />
                           </button>
                           <button
                             type="button"
                             onClick={() => handleDelete(r.id)}
                             disabled={actionId === r.id}
                             className="admin-report-delete-btn"
-                            aria-label="Delete report"
+                            aria-label={actionId === r.id ? 'Deleting…' : 'Delete report'}
+                            data-tooltip={actionId === r.id ? 'Deleting…' : 'Delete'}
                           >
-                            {actionId === r.id ? 'Deleting…' : 'Delete'}
+                            <TrashIcon className="admin-btn-icon" />
                           </button>
                           <a
                             href={`/z7k2m9/reports/${encodeURIComponent(r.id)}`}
                             className="admin-report-link"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="View full report"
+                            data-tooltip="View full report"
                           >
-                            View full report
+                            <ExternalLinkIcon className="admin-report-link-icon" />
                           </a>
                           {r.consent_share_social && (
-                            <button
-                              type="button"
-                              onClick={() => setReportForFacebook(r)}
-                              className="admin-fb-share-btn"
-                            >
-                              Share to Facebook
-                            </button>
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => setReportForFacebook(r)}
+                                className={`admin-fb-share-btn${r.facebook_posted_at ? ' admin-fb-share-btn-posted' : ''}`}
+                                aria-label={r.facebook_posted_at ? 'Shared to Facebook' : 'Share to Facebook'}
+                                data-tooltip={r.facebook_posted_at ? 'Shared to Facebook' : 'Share to Facebook'}
+                              >
+                                <FacebookIcon />
+                              </button>
+                            </>
                           )}
                                 {r.consent_share_social && (
                             <button
                               type="button"
                               onClick={() => setReportForX(r)}
                               className="admin-x-share-btn"
+                              aria-label="Share to X"
+                              data-tooltip="Share to X"
+                              data-tooltip="Share to X"
                             >
-                              Share to X
+                              <XIcon />
                             </button>
                           )}
                         </td>
@@ -846,29 +915,47 @@ export default function AdminDashboardPage() {
                   ) : (
                     approvedItems.map((r) => (
                       <tr key={r.id} className="admin-report-item-approved">
-                        <td className="admin-table-id">{r.id}</td>
+                        <td className="admin-table-id" title={r.id}>
+                          <span className="admin-report-id-short">{shortReportId(r.id)}</span>
+                          <button
+                            type="button"
+                            onClick={() => copyReportIdToClipboard(r.id)}
+                            className="admin-copy-id-btn"
+                            aria-label={copiedId === r.id ? 'Copied!' : 'Copy full report ID'}
+                            data-tooltip={copiedId === r.id ? 'Copied!' : 'Copy ID'}
+                          >
+                            {copiedId === r.id ? <CheckIcon className="admin-copy-id-icon" /> : <CopyIcon className="admin-copy-id-icon" />}
+                          </button>
+                        </td>
                         <td>{formatDate(r.created_at)}</td>
                         <td>{REPORT_TYPE_ICONS[r.report_type as keyof typeof REPORT_TYPE_ICONS] ?? '📋'} {REPORT_TYPE_LABELS[r.report_type as keyof typeof REPORT_TYPE_LABELS] ?? r.report_type}</td>
                         <td>{r.country_origin}</td>
                         <td className="admin-table-actions">
-                          <a href={`/z7k2m9/reports/${encodeURIComponent(r.id)}`} className="admin-report-link" target="_blank" rel="noopener noreferrer">View full report</a>
-                          <a href={`/reports/?id=${encodeURIComponent(r.id)}`} target="_blank" rel="noopener noreferrer" className="admin-report-link">View as public</a>
+                          <a href={`/z7k2m9/reports/${encodeURIComponent(r.id)}`} className="admin-report-link" target="_blank" rel="noopener noreferrer" aria-label="View full report" data-tooltip="View full report"><ExternalLinkIcon className="admin-report-link-icon" /></a>
+                          <a href={`/reports/?id=${encodeURIComponent(r.id)}`} target="_blank" rel="noopener noreferrer" className="admin-report-link" aria-label="View as public" data-tooltip="View as public"><GlobeIcon className="admin-report-link-icon" /></a>
                           {r.consent_share_social && (
-                            <button
-                              type="button"
-                              onClick={() => setReportForFacebook(r)}
-                              className="admin-fb-share-btn"
-                            >
-                              Share to Facebook
-                            </button>
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => setReportForFacebook(r)}
+                                className={`admin-fb-share-btn${r.facebook_posted_at ? ' admin-fb-share-btn-posted' : ''}`}
+                                aria-label={r.facebook_posted_at ? 'Shared to Facebook' : 'Share to Facebook'}
+                                data-tooltip={r.facebook_posted_at ? 'Shared to Facebook' : 'Share to Facebook'}
+                              >
+                                <FacebookIcon />
+                              </button>
+                            </>
                           )}
                                 {r.consent_share_social && (
                             <button
                               type="button"
                               onClick={() => setReportForX(r)}
                               className="admin-x-share-btn"
+                              aria-label="Share to X"
+                              data-tooltip="Share to X"
+                              data-tooltip="Share to X"
                             >
-                              Share to X
+                              <XIcon />
                             </button>
                           )}
                         </td>
@@ -897,6 +984,7 @@ export default function AdminDashboardPage() {
           report={reportForFacebook}
           token={token}
           onClose={() => setReportForFacebook(null)}
+          onPostedToFacebook={() => setRefreshKey((k) => k + 1)}
         />
       )}
       {reportForX && (

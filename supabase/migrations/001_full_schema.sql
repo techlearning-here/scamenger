@@ -1,6 +1,6 @@
 -- Scam Avenger: full schema (single combined migration).
 -- Run in Supabase SQL Editor or via Supabase CLI. Requires Supabase Auth for report_raters.
--- Combines: 001_full_schema, 002_report_helpful_votes, 003_report_raters_scores, 004_report_type_detail_normalized.
+-- Includes: reports, report_raters, report_helpful_votes, contact_messages, site_settings, and Facebook post tracking on reports.
 
 -- =============================================================================
 -- REPORTS TABLE
@@ -30,7 +30,10 @@ CREATE TABLE IF NOT EXISTS public.reports (
   sum_completeness INTEGER NOT NULL DEFAULT 0,
   sum_relevance INTEGER NOT NULL DEFAULT 0,
   status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
-  submitter_view_token TEXT
+  submitter_view_token TEXT,
+  facebook_post_id TEXT,
+  facebook_posted_at TIMESTAMPTZ,
+  facebook_permalink TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_reports_slug ON public.reports (slug);
@@ -57,6 +60,9 @@ COMMENT ON COLUMN public.reports.report_type IS 'One of: website, phone, crypto,
 COMMENT ON COLUMN public.reports.status IS 'pending = awaiting approval; approved = visible to public; rejected = declined by admin, not visible.';
 COMMENT ON COLUMN public.reports.submitter_view_token IS 'Secret token returned on create; include as view_token in GET to see full report while pending.';
 COMMENT ON COLUMN public.reports.consent_share_social IS 'Submitter consent to share an anonymized summary on Scam Avenger social (e.g. Facebook) after admin approval.';
+COMMENT ON COLUMN public.reports.facebook_post_id IS 'Facebook Graph API post id (e.g. page_id_post_id) when report was posted to Scam Avenger Page.';
+COMMENT ON COLUMN public.reports.facebook_posted_at IS 'When the report was posted to Facebook (admin action).';
+COMMENT ON COLUMN public.reports.facebook_permalink IS 'Permalink URL of the Facebook post.';
 
 -- =============================================================================
 -- REPORT_RATERS TABLE

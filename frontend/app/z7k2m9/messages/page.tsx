@@ -11,6 +11,7 @@ import {
   deleteContactMessage,
   type ContactMessageDto,
 } from '@/data/admin/api';
+import { TrashIcon } from '../components/SocialShareIcons';
 
 function formatDate(iso: string): string {
   try {
@@ -161,9 +162,10 @@ export default function AdminMessagesPage() {
                     onClick={() => handleDelete(m.id)}
                     disabled={actionId === m.id}
                     className="admin-report-delete-btn"
-                    aria-label="Delete message"
+                    aria-label={actionId === m.id ? 'Deleting…' : 'Delete message'}
+                    data-tooltip={actionId === m.id ? 'Deleting…' : 'Delete'}
                   >
-                    {actionId === m.id ? 'Deleting…' : 'Delete'}
+                    <TrashIcon className="admin-btn-icon" />
                   </button>
                 </div>
                 {expandedId === m.id && detail?.id === m.id && (

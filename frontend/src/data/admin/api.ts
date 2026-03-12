@@ -26,6 +26,9 @@ export interface AdminReportDto {
   avg_completeness: number;
   avg_relevance: number;
   status: 'pending' | 'approved' | 'rejected';
+  facebook_post_id?: string | null;
+  facebook_posted_at?: string | null;
+  facebook_permalink?: string | null;
 }
 
 /** Paginated list response from GET /z7k2m9/reports */

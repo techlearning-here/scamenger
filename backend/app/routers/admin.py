@@ -1,4 +1,5 @@
 """Admin API: login and report moderation."""
+from datetime import datetime, timezone
 from typing import Any, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -43,11 +44,14 @@ def _report_from_record(record: dict[str, Any]) -> ReportResponse:
 
 
 def _admin_report_from_record(record: dict[str, Any]) -> AdminReportResponse:
-    """Build AdminReportResponse including status."""
+    """Build AdminReportResponse including status and Facebook post info."""
     base = _report_from_record(record)
     status = record.get("status") or "pending"
     data = base.model_dump()
     data["status"] = status
+    data["facebook_post_id"] = record.get("facebook_post_id")
+    data["facebook_posted_at"] = record.get("facebook_posted_at")
+    data["facebook_permalink"] = record.get("facebook_permalink")
     return AdminReportResponse(**data)
 
 
@@ -383,7 +387,18 @@ def post_report_to_facebook(
     message = (payload.message and payload.message.strip()) or build_post_message(record)
     try:
         out = post_to_facebook_page(message)
-        return FacebookPostResponse(post_id=out["id"], permalink=out.get("permalink", ""))
+        permalink = out.get("permalink", "")
+        posted_at = datetime.now(timezone.utc).isoformat()
+        try:
+            sb.table("reports").update({
+                "facebook_post_id": out["id"],
+                "facebook_posted_at": posted_at,
+                "facebook_permalink": permalink or None,
+            }).eq("id", report_id).execute()
+        except Exception:
+            pass
+        invalidate_report_cached(report_id)
+        return FacebookPostResponse(post_id=out["id"], permalink=permalink)
     except ValueError as e:
         raise HTTPException(status_code=503, detail=str(e)) from e
     except Exception as e:

@@ -39,9 +39,11 @@ export interface FacebookShareModalProps {
   report: AdminReportDto;
   token: string;
   onClose: () => void;
+  /** Called after a successful post so the parent can refetch the report. */
+  onPostedToFacebook?: () => void;
 }
 
-export function FacebookShareModal({ report, token, onClose }: FacebookShareModalProps) {
+export function FacebookShareModal({ report, token, onClose, onPostedToFacebook }: FacebookShareModalProps) {
   const [postText, setPostText] = useState('');
   const [showPreview, setShowPreview] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -81,6 +83,7 @@ export function FacebookShareModal({ report, token, onClose }: FacebookShareModa
       .then((res) => {
         setPostResult(res);
         setPostError(null);
+        onPostedToFacebook?.();
       })
       .catch((err) => {
         setPostError(err instanceof Error ? err.message : 'Post failed');

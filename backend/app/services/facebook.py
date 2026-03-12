@@ -24,7 +24,11 @@ def post_to_facebook_page(message: str) -> dict[str, Any]:
         raise ValueError("Message cannot be empty")
 
     url = f"{GRAPH_API_BASE}/{FACEBOOK_PAGE_ID}/feed"
-    payload = {"message": message, "access_token": FACEBOOK_PAGE_ACCESS_TOKEN}
+    payload = {
+        "message": message,
+        "access_token": FACEBOOK_PAGE_ACCESS_TOKEN,
+        "published": True,
+    }
 
     with httpx.Client(timeout=30.0) as client:
         response = client.post(url, json=payload)

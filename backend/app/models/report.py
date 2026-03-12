@@ -110,6 +110,9 @@ class AdminReportResponse(ReportResponse):
     """Report with status for admin list."""
 
     status: ReportStatus
+    facebook_post_id: Optional[str] = None
+    facebook_posted_at: Optional[datetime] = None
+    facebook_permalink: Optional[str] = None
 
 
 class AdminReportUpdate(BaseModel):

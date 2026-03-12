@@ -1911,9 +1911,13 @@ ul.scam-cards-grid {
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 .report-scam-submit:hover:not(:disabled) { background: var(--color-accent-hover); }
 .report-scam-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+.report-scam-submit .admin-btn-icon { width: 1.1em; height: 1.1em; flex-shrink: 0; }
 .report-scam-cancel { font-size: 0.95rem; color: var(--color-text-muted); padding: var(--space-sm) 0; min-height: 2.75rem; display: inline-flex; align-items: center; }
 .report-scam-cancel:hover { color: var(--color-accent); }
 
@@ -2409,7 +2413,7 @@ ul.scam-cards-grid {
 .admin-search-report { margin-bottom: var(--space-lg); }
 .admin-search-report-form { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xs); }
 .admin-search-report-input { flex: 1; min-width: 16rem; max-width: 28rem; font-family: monospace; font-size: 0.9rem; }
-.admin-search-report-btn { flex-shrink: 0; }
+.admin-search-report-btn { flex-shrink: 0; min-width: 2.25rem; min-height: 2.25rem; width: 2.25rem; height: 2.25rem; justify-content: center; padding: 0; }
 .admin-search-report-desc { font-size: 0.85rem; color: var(--color-text-muted); margin: 0; }
 .admin-table-wrap { overflow-x: auto; margin-top: var(--space-sm); }
 .admin-table {
@@ -2422,7 +2426,7 @@ ul.scam-cards-grid {
 }
 .admin-table th,
 .admin-table td {
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm) var(--space-sm);
   text-align: left;
   border-bottom: 1px solid var(--color-border);
   vertical-align: top;
@@ -2431,13 +2435,40 @@ ul.scam-cards-grid {
   font-weight: 600;
   color: var(--color-text-muted);
   background: var(--color-bg);
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+}
+.admin-table.admin-settings-table th,
+.admin-table.admin-settings-table td {
+  padding: var(--space-sm) var(--space-md);
+}
+.admin-table.admin-settings-table thead th {
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
 }
 .admin-table tbody tr:last-child td { border-bottom: none; }
 .admin-table tbody tr:hover { background: var(--color-bg); }
-.admin-table tbody tr.admin-report-item-pending td:first-child { border-left: 4px solid #b45309; }
-.admin-table tbody tr.admin-report-item-rejected td:first-child { border-left: 4px solid var(--color-text-muted); }
-.admin-table tbody tr.admin-report-item-approved td:first-child { border-left: 4px solid #059669; }
-.admin-table-id { font-family: monospace; word-break: break-all; max-width: 12rem; }
+.admin-table tbody tr.admin-report-item-pending td:first-child { border-left: none; }
+.admin-table tbody tr.admin-report-item-rejected td:first-child { border-left: none; }
+.admin-table tbody tr.admin-report-item-approved td:first-child { border-left: none; }
+.admin-table-id { font-family: monospace; word-break: break-all; max-width: 12rem; display: flex; align-items: center; gap: var(--space-xs); }
+.admin-report-id-short { flex-shrink: 0; }
+.admin-copy-id-btn {
+  padding: 2px;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.admin-copy-id-btn:hover { color: var(--color-accent); border-color: var(--color-accent); background: var(--color-bg); }
+.admin-copy-id-icon { width: 0.9rem; height: 0.9rem; }
 .admin-table-actions { white-space: nowrap; }
 .admin-table-actions .report-scam-submit {
   padding: var(--space-sm) var(--space-md);
@@ -2449,19 +2480,108 @@ ul.scam-cards-grid {
 .admin-table-actions .admin-report-delete-btn,
 .admin-table-actions .admin-report-link,
 .admin-table-actions .admin-fb-share-btn { margin-right: var(--space-sm); margin-bottom: var(--space-xs); }
+.admin-table-actions .admin-fb-share-btn.admin-fb-share-btn-posted { background: #25a34a; color: #fff; }
+.admin-table-actions .admin-fb-share-btn.admin-fb-share-btn-posted:hover { background: #1e8a3d; }
 .admin-table-actions .admin-x-share-btn { margin-right: var(--space-sm); margin-bottom: var(--space-xs); }
+/* Tooltips for admin icon buttons and links */
+.admin-fb-share-btn[data-tooltip],
+.admin-x-share-btn[data-tooltip],
+.admin-report-link[data-tooltip],
+.report-scam-submit[data-tooltip],
+.admin-report-reject-btn[data-tooltip],
+.admin-report-delete-btn[data-tooltip],
+.admin-copy-id-btn[data-tooltip] {
+  position: relative;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.admin-fb-share-btn[data-tooltip]:hover,
+.admin-fb-share-btn[data-tooltip]:focus-visible,
+.admin-x-share-btn[data-tooltip]:hover,
+.admin-x-share-btn[data-tooltip]:focus-visible,
+.report-scam-submit[data-tooltip]:hover,
+.report-scam-submit[data-tooltip]:focus-visible,
+.admin-report-reject-btn[data-tooltip]:hover,
+.admin-report-reject-btn[data-tooltip]:focus-visible,
+.admin-report-delete-btn[data-tooltip]:hover,
+.admin-report-delete-btn[data-tooltip]:focus-visible,
+.admin-copy-id-btn[data-tooltip]:hover,
+.admin-copy-id-btn[data-tooltip]:focus-visible {
+  transform: scale(1.08);
+}
+.admin-report-link[data-tooltip]:hover,
+.admin-report-link[data-tooltip]:focus-visible {
+  transform: scale(1.08);
+  opacity: 0.9;
+}
+.admin-fb-share-btn[data-tooltip]::after,
+.admin-x-share-btn[data-tooltip]::after,
+.admin-report-link[data-tooltip]::after,
+.report-scam-submit[data-tooltip]::after,
+.admin-report-reject-btn[data-tooltip]::after,
+.admin-report-delete-btn[data-tooltip]::after,
+.admin-copy-id-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px) scale(0.92);
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-surface);
+  background: var(--color-text);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  transition-delay: 0s;
+  z-index: 10;
+}
+.admin-fb-share-btn[data-tooltip]:hover::after,
+.admin-fb-share-btn[data-tooltip]:focus-visible::after,
+.admin-x-share-btn[data-tooltip]:hover::after,
+.admin-x-share-btn[data-tooltip]:focus-visible::after,
+.admin-report-link[data-tooltip]:hover::after,
+.admin-report-link[data-tooltip]:focus-visible::after,
+.report-scam-submit[data-tooltip]:hover::after,
+.report-scam-submit[data-tooltip]:focus-visible::after,
+.admin-report-reject-btn[data-tooltip]:hover::after,
+.admin-report-reject-btn[data-tooltip]:focus-visible::after,
+.admin-report-delete-btn[data-tooltip]:hover::after,
+.admin-report-delete-btn[data-tooltip]:focus-visible::after,
+.admin-copy-id-btn[data-tooltip]:hover::after,
+.admin-copy-id-btn[data-tooltip]:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-8px) scale(1);
+  transition-delay: 0.2s;
+}
+.admin-fb-share-btn[data-tooltip]:not(:hover):not(:focus-visible)::after,
+.admin-x-share-btn[data-tooltip]:not(:hover):not(:focus-visible)::after,
+.admin-report-link[data-tooltip]:not(:hover):not(:focus-visible)::after,
+.report-scam-submit[data-tooltip]:not(:hover):not(:focus-visible)::after,
+.admin-report-reject-btn[data-tooltip]:not(:hover):not(:focus-visible)::after,
+.admin-report-delete-btn[data-tooltip]:not(:hover):not(:focus-visible)::after,
+.admin-copy-id-btn[data-tooltip]:not(:hover):not(:focus-visible)::after {
+  transition-delay: 0s;
+}
 .admin-table-empty { color: var(--color-text-muted); font-style: italic; padding: var(--space-lg); text-align: center; }
-.admin-settings-table { max-width: 36rem; }
+.admin-settings-table { max-width: 48rem; }
 .admin-settings-table th { width: 40%; }
 .admin-report-list { list-style: none; margin: 0; padding: 0; }
 .admin-report-item { padding: var(--space-md); margin-bottom: var(--space-md); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); }
-.admin-report-item-pending { border-left: 4px solid #b45309; }
+.admin-report-item-pending { border-left: none; }
 .admin-report-meta { display: flex; flex-wrap: wrap; gap: var(--space-md); font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--space-xs); }
 .admin-report-id { font-family: monospace; word-break: break-all; }
 .admin-report-narrative { font-size: 0.95rem; color: var(--color-text); margin: var(--space-sm) 0; line-height: 1.5; }
 .admin-report-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); margin-top: var(--space-sm); }
-.admin-report-link { font-size: 0.9rem; color: var(--color-accent); }
+.admin-report-actions .report-scam-submit[data-tooltip] { min-width: 2.25rem; min-height: 2.25rem; width: 2.25rem; height: 2.25rem; padding: 0; justify-content: center; }
+.admin-report-link { font-size: 0.9rem; color: var(--color-accent); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); min-width: 2rem; min-height: 2rem; border: 1px solid var(--color-border); border-radius: var(--radius); }
 .admin-report-link:hover { text-decoration: underline; }
+.admin-report-link-icon { width: 1.1em; height: 1.1em; flex-shrink: 0; }
 .admin-report-reject-btn {
   padding: var(--space-sm) var(--space-md);
   font-size: 0.9rem;
@@ -2470,7 +2590,20 @@ ul.scam-cards-grid {
   color: var(--color-text);
   border-radius: var(--radius);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
+.admin-table-actions .report-scam-submit,
+.admin-table-actions .admin-report-reject-btn,
+.admin-table-actions .admin-report-delete-btn {
+  min-width: 2.25rem;
+  min-height: 2rem;
+  justify-content: center;
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+}
+.admin-report-reject-btn .admin-btn-icon { width: 1.1em; height: 1.1em; flex-shrink: 0; }
 .admin-report-reject-btn:hover:not(:disabled) { background: var(--color-bg); border-color: #b45309; color: #b45309; }
 .admin-report-reject-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 .admin-report-delete-btn {
@@ -2481,11 +2614,15 @@ ul.scam-cards-grid {
   color: var(--color-text-muted);
   border-radius: var(--radius);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
+.admin-report-delete-btn .admin-btn-icon { width: 1.1em; height: 1.1em; flex-shrink: 0; }
 .admin-report-delete-btn:hover:not(:disabled) { border-color: #c53030; color: #c53030; background: #fef2f2; }
 .admin-report-delete-btn:disabled { opacity: 0.7; cursor: not-allowed; }
-.admin-report-item-rejected { border-left: 4px solid var(--color-text-muted); opacity: 0.9; }
-.admin-report-item-approved { border-left: 4px solid #059669; }
+.admin-report-item-rejected { border-left: none; opacity: 0.9; }
+.admin-report-item-approved { border-left: none; }
 
 /* Admin Facebook share modal */
 .admin-fb-modal-backdrop {
@@ -2553,9 +2690,11 @@ ul.scam-cards-grid {
 .admin-fb-success a { color: inherit; text-decoration: underline; }
 .admin-fb-preview-link { font-size: 0.85rem; }
 .admin-fb-preview-link a { color: var(--color-accent); }
-.admin-fb-share-btn { font-size: 0.9rem; padding: var(--space-xs) var(--space-sm); background: #1877f2; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; }
+.admin-fb-share-btn { font-size: 0.9rem; padding: var(--space-xs) var(--space-sm); min-width: 2.25rem; min-height: 2rem; background: #1877f2; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
+.admin-fb-share-btn svg { width: 1.1em; height: 1.1em; flex-shrink: 0; }
 .admin-fb-share-btn:hover { background: #166fe5; }
-
+.admin-fb-share-btn.admin-fb-share-btn-posted { background: #25a34a; color: #fff; }
+.admin-fb-share-btn.admin-fb-share-btn-posted:hover { background: #1e8a3d; }
 /* Admin X share modal and button */
 .admin-x-modal-backdrop {
   position: fixed;
@@ -2615,7 +2754,8 @@ ul.scam-cards-grid {
   color: #e7e9ea;
 }
 .admin-x-preview-body { font-size: 0.95rem; line-height: 1.4; white-space: pre-wrap; word-break: break-word; }
-.admin-x-share-btn { font-size: 0.9rem; padding: var(--space-xs) var(--space-sm); background: #0f1419; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; }
+.admin-x-share-btn { font-size: 0.9rem; padding: var(--space-xs) var(--space-sm); min-width: 2.25rem; min-height: 2rem; background: #0f1419; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
+.admin-x-share-btn svg { width: 1.1em; height: 1.1em; flex-shrink: 0; }
 .admin-x-share-btn:hover { background: #272c30; }
 
 .admin-report-detail-wrap { max-width: 48rem; margin: 0 auto; padding: var(--space-md); }

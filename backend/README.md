@@ -27,14 +27,14 @@ We use **two Supabase projects**: one for development, one for production. Same 
 
 **Local development**
 
-1. Create a **development** Supabase project (e.g. scamenger-dev) and run `supabase/migrations/001_schema.sql` in its SQL Editor.
+1. Create a **development** Supabase project (e.g. scamenger-dev) and run `supabase/migrations/001_full_schema.sql` in its SQL Editor.
 2. Copy `backend/.env.example` to `backend/.env` and set:
    - **SUPABASE_URL** – Dev project URL (Project Settings → API)
    - **SUPABASE_SERVICE_ROLE_KEY** – Dev project service_role key (keep secret)
 
 **Production (e.g. Render)**
 
-Set **SUPABASE_URL** and **SUPABASE_SERVICE_ROLE_KEY** to the **production** Supabase project’s values in the service Environment tab. Run `001_schema.sql` on that project once if you haven’t already.
+Set **SUPABASE_URL** and **SUPABASE_SERVICE_ROLE_KEY** to the **production** Supabase project’s values in the service Environment tab. Run `001_full_schema.sql` on that project once if you haven’t already.
 
 Do not commit `.env`; it holds secrets. The app starts without these; Supabase is required for report-scams endpoints.
 

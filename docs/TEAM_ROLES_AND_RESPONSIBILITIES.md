@@ -25,7 +25,7 @@ This document defines roles and responsibilities for running and growing the Sca
 
 | Responsibility | Details | Owner |
 |----------------|--------|--------|
-| **Deployment & infrastructure** | Deploy and maintain frontend (Vercel), backend (Render), and database (Supabase). Run migrations (`001_schema.sql`, `002_contact_messages.sql`) in each environment. Ensure env vars are set correctly (see [DEPLOYMENT.md](./DEPLOYMENT.md)). | Tech lead / DevOps |
+| **Deployment & infrastructure** | Deploy and maintain frontend (Vercel), backend (Render), and database (Supabase). Run migration `001_full_schema.sql` in each environment. Ensure env vars are set correctly (see [DEPLOYMENT.md](./DEPLOYMENT.md)). | Tech lead / DevOps |
 | **Monitoring & uptime** | Check health endpoints (`/health` on frontend and backend). Set up alerts for downtime or errors. Monitor Render spin-down on free tier and response times. | Tech / DevOps |
 | **Security** | Keep dependencies updated. Protect admin routes (`/z7k2m9/*`), service keys, and PII. Review rate limiting (contact and reports) and CORS if needed. | Tech lead |
 | **Development & features** | Implement new features (e.g. search, public report list, email on approval). Write tests (TDD where applicable). Fix bugs and improve performance. | Developers |

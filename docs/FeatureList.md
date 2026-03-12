@@ -1,6 +1,6 @@
 # Scam Avenger — Feature List
 
-Consolidated feature list from NewFeatures.md, readme_New_UX.md (UX/design), **newfeatures2.md**, and **newfeature3.md**. **Status** reflects current implementation: **Done** = implemented, **Partial** = partly there, **Missing** = not built, **Unverified** = not audited, **Planned** = backlog.
+Consolidated feature list from NewFeatures.md, readme_New_UX.md (UX/design), **newfeatures2.md**, **newfeature3.md**, and **post_scam_recovery.md**. **Status** reflects current implementation: **Done** = implemented, **Partial** = partly there, **Missing** = not built, **Unverified** = not audited, **Planned** = backlog.
 
 ---
 
@@ -68,6 +68,50 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | 1b | **Scam similarity matching** | When viewing a URL/number: "**X other users reported this same number/URL**." Validates victims' experiences; encourages more reports. *From newfeature3.* | Done |
 | 16b | **Monthly scam trends report** | **Auto-generated** newsletter or blog post from aggregated data. SEO content machine + newsletter growth. *From newfeature3.* | Missing |
 | 11d | **Reward / gamification** | Badges for reporting (e.g. "Scam Hunter", "Community Guardian"). Incentivizes repeat contributions. *From newfeature3.* | Missing |
+
+---
+
+## 10. Post-scam recovery & victim journey
+
+*From **docs/post_scam_recovery.md**: roadmap for the post-scam experience (immediate response → recovery → awareness).*
+
+### 10a. Immediate response (0–24 hours post-scam)
+
+| # | Feature | Description | Status |
+|---|---------|-------------|--------|
+| 28 | **Emergency Action Checklist** | Auto-generated, scam-type-specific steps (freeze cards, change passwords, enable 2FA) with tap-to-complete tracking. | Missing |
+| 29 | **One-Click Bank Alert Generator** | Pre-filled dispute letter/email templates for major banks, customized by scam type and amount. | Missing |
+| 30 | **Evidence Collection Wizard** | Guided tool to screenshot, save URLs, export call logs, and package everything into a downloadable "evidence kit". | Missing |
+| 31 | **Instant Authority Router** | Based on scam type + location, auto-identify the correct agencies (FTC, IC3, Action Fraud, ACCC) with direct filing links. | Partial (help-now links by country exist; no auto-route by type) |
+
+### 10b. Recovery phase (1–30 days)
+
+| # | Feature | Description | Status |
+|---|---------|-------------|--------|
+| 32 | **Recovery Timeline Tracker** | Visual dashboard showing where your case stands (reported → acknowledged → investigating → resolved) across all agencies. | Missing |
+| 33 | **Credit Monitoring Alerts** | Integration with free credit monitoring services; AI flags suspicious new accounts. | Missing |
+| 34 | **Identity Restoration Checklist** | Step-by-step guide for identity theft victims (credit freezes, IRS PIN, SSA alerts) with progress tracking. | Missing |
+| 35 | **Legal Options Advisor** | AI assessment of whether small claims court, class action, or chargeback is the best recovery path based on amount/type. | Missing |
+
+### 10c. Awareness & prevention (ongoing)
+
+| # | Feature | Description | Status |
+|---|---------|-------------|--------|
+| 36 | **Scam Immunity Score** | Gamified quiz system that tests users on recognizing scams, building awareness over time. | Missing |
+| 37 | **Personalized Scam Alerts** | Based on demographic, location, and past reports, AI pushes relevant emerging scam warnings. | Missing |
+| 38 | **Family Protection Dashboard** | Add elderly parents or teens; get alerts when scams targeting their demographic surge in their area. | Missing |
+| 39 | **Recovery Story Publishing** | Verified, anonymized success stories ("I got $2,400 back from PayPal dispute") to give hope and teach tactics. Overlaps with #11c Verified recovery stories. | Missing |
+
+### 10d. Community & advocacy
+
+| # | Feature | Description | Status |
+|---|---------|-------------|--------|
+| 40 | **Victim Support Forum** | Moderated, anonymous peer support grouped by scam type. | Missing |
+| 41 | **Scam Impact Calculator** | Quantify total financial + emotional + time cost; aggregate data for advocacy reports. | Missing |
+| 42 | **"Warn Others" One-Click** | After reporting, instantly push anonymized alert to social media + Scamenger community feed. Overlaps with #27 (Facebook) and X share; extends to one-click multi-channel. | Partial (admin can post to FB/X; no user one-click "Warn others" flow) |
+| 43 | **Monthly Recovery Report** | Auto-generated PDF showing all actions taken, agencies contacted, and recovery status — useful for insurance/tax claims. | Missing |
+
+**Highest impact first (from roadmap):** Start with **Emergency Action Checklist (#28)** + **Evidence Collection Wizard (#30)** + **Authority Router (#31)** — these solve the most urgent pain: "I just got scammed, what do I do RIGHT NOW?"
 
 ---
 
@@ -141,7 +185,7 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | **Phase 2** | Blog/alerts (#16) + Live stats (#13) + Newsletter (#15) + **Facebook — post approved reports (#27)** |
 | **Phase 3** | B2B "Claim your site" (#24) + API (#25) + Mobile app (#26) |
 
-**Differentiator:** The "I got scammed → what do I do now?" guided wizard (#4) remains a unique angle in the space.
+**Differentiator:** The "I got scammed → what do I do now?" guided wizard (#4) remains a unique angle in the space. **Post-scam recovery** (Section 10): highest-impact first = Emergency Action Checklist (#28) + Evidence Collection Wizard (#30) + Authority Router (#31).
 
 ---
 
@@ -151,8 +195,8 @@ User-reported scams with shareable links; **anyone can submit a report without s
 |--------|-------|----------|
 | Done | 13 | P0 report + shareable URL, auth ratings, Stack, Report form (#12), Scam category education (#8), "Need help now?" CTA (#20), Country auto-detection (#3), Estimated time (#6), **Emotional support (#27c)**, **Progress indication (#5)**, **"Did this help?" voting (#11b)**, **Scam similarity matching (#1b)**, **Multi-country support (#3b)** |
 | Partial | 12+ | Aggregated trends, Card-based categories (#7), Route to channel (#4b), Trust indicators (#18b), Breadcrumb (#21), Community reports (#11), Live stats (#13), Blog (#16), Country guide (#17), Trust score (#23), SEO/monetization (#17b) |
-| Missing | 16+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Wizard (#4), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), **Scam alert subscription (#15c)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Monthly trends report (#16b)**, **Gamification (#11d)** |
+| Missing | 16+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Wizard (#4), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), **Scam alert subscription (#15c)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Monthly trends report (#16b)**, **Gamification (#11d)** — plus **post-scam recovery (#28–43)**: Emergency Checklist, Bank Alert Generator, Evidence Wizard, Recovery Tracker, Credit Monitoring, Identity Checklist, Legal Advisor, Scam Immunity Score, Personalized Alerts, Family Dashboard, Victim Forum, Impact Calculator, Monthly Recovery Report |
 | Unverified | 2 | Mobile-first (#22), 48px touch targets (#22b) |
 | Planned | 7+ | Niche tools (#9), Press badges (#14), Newsletter (#15), Facebook post (#27), Revenue (#24–26), Browser extension (#27b) |
 
-*Last updated from NewFeatures.md, readme_New_UX.md, MISSING_FEATURES_FROM_NEW_UX.md, **newfeatures2.md**, and **newfeature3.md**.*
+*Last updated from NewFeatures.md, readme_New_UX.md, MISSING_FEATURES_FROM_NEW_UX.md, **newfeatures2.md**, **newfeature3.md**, and **post_scam_recovery.md**.*

@@ -78,7 +78,15 @@ export async function adminLogin(username: string, password: string): Promise<st
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: res.statusText }));
-    throw new Error(err.detail || 'Login failed');
+    let message = 'Login failed';
+    if (typeof err.detail === 'string') {
+      message = err.detail;
+    } else if (Array.isArray(err.detail) && err.detail.length > 0) {
+      message = err.detail.map((e: { msg?: string }) => e?.msg ?? 'Validation error').join('. ');
+    } else if (err.detail && typeof err.detail === 'object' && 'msg' in err.detail) {
+      message = (err.detail as { msg: string }).msg;
+    }
+    throw new Error(message);
   }
   const data = await res.json();
   return data.access_token;

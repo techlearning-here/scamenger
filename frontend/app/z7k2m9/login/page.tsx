@@ -24,7 +24,9 @@ export default function AdminLoginPage() {
       setStoredAdminToken(token);
       router.replace('/z7k2m9/');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed');
+      setError(
+        err instanceof Error ? err.message : typeof err === 'string' ? err : 'Login failed',
+      );
     } finally {
       setSubmitting(false);
     }

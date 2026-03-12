@@ -12,6 +12,9 @@ const siteTitle = 'Scam & Fraud Awareness | Scam Avenger';
 const siteDescription = 'Learn about scams and fraud. Free guides, awareness resources, and official links by country and scam type. Build awareness and get support — no sign-up required.';
 const siteKeywords = 'scam awareness, fraud awareness, learn about scams, learn about fraud, scam guides, fraud guides, phishing awareness, identity theft awareness, consumer fraud, avoid scams';
 
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const showGa = Boolean(gaMeasurementId);
+
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const adsenseSlotMain = process.env.NEXT_PUBLIC_ADSENSE_SLOT_MAIN;
 const adsenseSlotTop = process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP;
@@ -90,6 +93,17 @@ export default function RootLayout({
             strategy="afterInteractive"
             crossOrigin="anonymous"
           />
+        )}
+        {showGa && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-config" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaMeasurementId}');`}
+            </Script>
+          </>
         )}
       </head>
       <body suppressHydrationWarning>

@@ -189,8 +189,8 @@ export default function RootLayout({
               <Link href="/content-guidelines/">Content Guidelines</Link>
               <Link href="/notice-takedown/">Notice and Take Down</Link>
             </nav>
-            <p className="disclaimer">We help you find the right official channels to report scams and corruption.</p>
-            <p className="copy">&copy; {new Date().getFullYear()} Scam Avenger. Links go to official government and trusted sites.</p>
+            <p className="disclaimer">One free platform: detect what happened, get guided to the right place to report, and find support to recover. We help you report scams and warn others.</p>
+            <p className="copy">&copy; {new Date().getFullYear()} Scam Avenger. 100% free. Links go to official government and trusted sites.</p>
           </div>
         </footer>
         <FabActions />

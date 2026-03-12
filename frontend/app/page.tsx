@@ -82,22 +82,37 @@ export default function HomePage() {
       </header>
 
       <section className="trust-indicators" aria-label="Trust and privacy">
-        <span className="trust-indicators-item">
-          <span className="trust-indicators-icon" aria-hidden="true">🛡️</span>
-          <strong>100% free</strong> — no cost to report or browse
-        </span>
-        <span className="trust-indicators-item">
-          <span className="trust-indicators-icon" aria-hidden="true">🔒</span>
-          <strong>No sign-up required</strong> — submit a report without an account
-        </span>
+        <div className="trust-indicators-inner">
+          <div className="trust-indicators-item">
+            <span className="trust-indicators-icon" aria-hidden="true">🎭</span>
+            <div className="trust-indicators-content">
+              <strong>Report scams and fraud anonymously</strong>
+              <span className="trust-indicators-desc">Your identity stays private when you report</span>
+            </div>
+          </div>
+          <div className="trust-indicators-item">
+            <span className="trust-indicators-icon" aria-hidden="true">🛡️</span>
+            <div className="trust-indicators-content">
+              <strong>100% free</strong>
+              <span className="trust-indicators-desc">No cost to report or browse</span>
+            </div>
+          </div>
+          <div className="trust-indicators-item">
+            <span className="trust-indicators-icon" aria-hidden="true">🔒</span>
+            <div className="trust-indicators-content">
+              <strong>No sign-up required</strong>
+              <span className="trust-indicators-desc">Submit a report without an account</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="mission-block" aria-label="Our mission">
         <p className="mission-text">
-          <strong>You&apos;re not alone.</strong> We help people who&apos;ve been targeted by scams find the right place to report and get support. Our community-based scam report and guidance point you to official channels in your country so you can take action—and help others avoid the same traps.
+          <strong>You&apos;re not alone.</strong> Every day, <strong>over 1.6 million people</strong> fall victim to scams and fraud worldwide. Scam Avenger is your one free place to figure out what happened with scams and fraud, get guided to the right place to report, and find support to recover. We&apos;re community-driven: report scams and fraud, check if others saw the same thing, and use official links and guides by country and scam type—so you can take action and help others avoid the same traps.
         </p>
         <p className="mission-regions" role="note">
-          Official reporting links and support for <strong>United States</strong>, <strong>United Kingdom</strong>, <strong>Canada</strong>, <strong>Australia</strong>, <strong>India</strong>, and the <strong>European Union</strong> (plus Germany, France, and more). Choose your country on <Link href="/help-now/">Need help now?</Link> or when <Link href="/report/">reporting a scam</Link>.
+          Official reporting links and support for many countries. Choose your country on <Link href="/help-now/">Need help now?</Link> or when <Link href="/report/">reporting a scam</Link>.
         </p>
       </section>
 

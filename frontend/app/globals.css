@@ -330,35 +330,68 @@ ul.scam-cards-grid {
 
 /* Trust indicators – reassuring, low-friction messaging */
 .trust-indicators {
+  margin: var(--space-xl) 0;
+  padding: 0 var(--space-lg);
+}
+
+.trust-indicators-inner {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-wrap: nowrap;
+  align-items: stretch;
   justify-content: center;
-  gap: var(--space-md) var(--space-xl);
-  margin: var(--space-lg) 0 var(--space-xl);
-  padding: var(--space-md) var(--space-lg);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  gap: var(--space-lg);
+  max-width: 64rem;
+  margin: 0 auto;
 }
 
 .trust-indicators-item {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.trust-indicators-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-calm);
 }
 
 .trust-indicators-icon {
   flex-shrink: 0;
-  font-size: 1.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
   line-height: 1;
+  background: var(--color-calm-muted);
+  border-radius: 50%;
 }
 
-.trust-indicators strong {
+.trust-indicators-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.trust-indicators-content strong {
   color: var(--color-trust);
   font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.trust-indicators-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.35;
 }
 
 .report-id-search-block {

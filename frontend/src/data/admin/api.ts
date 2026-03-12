@@ -347,6 +347,38 @@ export async function postReportToFacebook(
   return res.json();
 }
 
+/** Threads posting status (admin). True when THREADS_USER_ID and token are set. */
+export async function getThreadsStatus(token: string): Promise<{ enabled: boolean }> {
+  const res = await fetch(`${API_BASE}/z7k2m9/threads/status`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+  return res.json();
+}
+
+/** Post report summary to Scam Avenger Threads account. Admin. Optional message; if omitted backend builds anonymized summary (truncated to 500 chars). */
+export async function postReportToThreads(
+  reportId: string,
+  token: string,
+  message?: string,
+): Promise<{ post_id: string; permalink: string }> {
+  const res = await fetch(`${API_BASE}/z7k2m9/reports/${encodeURIComponent(reportId)}/post-to-threads`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify(message != null && message.trim() !== '' ? { message: message.trim() } : {}),
+  });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Request failed');
+  }
+  return res.json();
+}
+
 /** List contact messages (admin). Optional filter by read. */
 export async function listContactMessages(
   token: string,

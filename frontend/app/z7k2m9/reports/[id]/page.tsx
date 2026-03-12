@@ -24,7 +24,8 @@ import {
 } from '@/data/reports/api';
 import { FacebookShareModal } from '../../components/FacebookShareModal';
 import { XShareModal } from '../../components/XShareModal';
-import { FacebookIcon, XIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, EditIcon } from '../../components/SocialShareIcons';
+import { ThreadsShareModal } from '../../components/ThreadsShareModal';
+import { FacebookIcon, XIcon, ThreadsIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, EditIcon } from '../../components/SocialShareIcons';
 import { COUNTRY_OPTIONS } from '@/data/reports/countries';
 import { SCAM_CATEGORY_LABELS, type ScamCategoryId } from '@/data/scams/types';
 
@@ -67,6 +68,7 @@ export default function AdminReportDetailPage() {
   const [form, setForm] = useState<AdminReportUpdateDto>({});
   const [reportForFacebook, setReportForFacebook] = useState<AdminReportDto | null>(null);
   const [reportForX, setReportForX] = useState<AdminReportDto | null>(null);
+  const [reportForThreads, setReportForThreads] = useState<AdminReportDto | null>(null);
 
   useEffect(() => {
     setToken(getStoredAdminToken());
@@ -408,6 +410,15 @@ export default function AdminReportDetailPage() {
                 >
                   <XIcon />
                 </button>
+                <button
+                  type="button"
+                  onClick={() => setReportForThreads(report)}
+                  className="admin-threads-share-btn"
+                  aria-label="Share to Threads"
+                  data-tooltip="Share to Threads"
+                >
+                  <ThreadsIcon />
+                </button>
               </>
             )}
           </div>
@@ -499,6 +510,14 @@ export default function AdminReportDetailPage() {
         <XShareModal
           report={reportForX}
           onClose={() => setReportForX(null)}
+        />
+      )}
+      {reportForThreads && report && token && (
+        <ThreadsShareModal
+          report={reportForThreads}
+          token={token}
+          onClose={() => setReportForThreads(null)}
+          onPostedToThreads={loadReport}
         />
       )}
     </div>

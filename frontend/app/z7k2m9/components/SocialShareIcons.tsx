@@ -15,6 +15,21 @@ export function FacebookIcon({ className }: { className?: string }) {
   );
 }
 
+/** Threads (Meta) logo for Share to Threads button. */
+export function ThreadsIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden
+    >
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c1.94 0 3.71.78 5 2.05V6c0 .55-.45 1-1 1s-1-.45-1-1v-.61A7.95 7.95 0 0012 4zm-4.9 2.34A7.98 7.98 0 004 12c0 1.54.43 2.98 1.18 4.21L4.2 14.8A9.96 9.96 0 012 12a9.96 9.96 0 012.2-6.2L7.1 6.34zM12 20c-1.94 0-3.71-.78-5-2.05V18c0 .55.45 1 1 1s1-.45 1-1v.61A7.95 7.95 0 0012 20zm4.9-2.34A7.98 7.98 0 0020 12c0-1.54-.43-2.98-1.18-4.21l1.02-1.01A9.96 9.96 0 0122 12a9.96 9.96 0 01-2.2 6.2l-4.9-4.86zM9 10h6c.55 0 1 .45 1 1s-.45 1-1 1H9c-.55 0-1-.45-1-1s.45-1 1-1zm0 4h6c.55 0 1 .45 1 1s-.45 1-1 1H9c-.55 0-1-.45-1-1s.45-1 1-1z" />
+    </svg>
+  );
+}
+
 /** X (Twitter) logo for Share to X button. */
 export function XIcon({ className }: { className?: string }) {
   return (

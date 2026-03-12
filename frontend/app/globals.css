@@ -97,7 +97,7 @@ li {
   margin-top: var(--space-sm);
 }
 
-/* Card-based scam category lists (#7) – small cards, 3 columns (2 on narrow only) */
+/* Card-based scam category lists (#7) – small cards, 3 columns on desktop; 1 column on mobile */
 .scam-cards-grid,
 ul.scam-cards-grid {
   list-style: none;
@@ -108,10 +108,10 @@ ul.scam-cards-grid {
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 479px) {
+@media (max-width: 767px) {
   .scam-cards-grid,
   ul.scam-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--space-sm);
   }
 }
@@ -264,6 +264,22 @@ ul.scam-cards-grid {
   font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  line-height: 1.25;
+}
+
+.hero-tagline-main {
+  display: block;
+}
+
+.hero-tagline-sub {
+  display: block;
+  font-size: 0.65em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.01em;
 }
 
 @media (min-width: 480px) {
@@ -313,6 +329,22 @@ ul.scam-cards-grid {
 
 .mission-regions a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .mission-block {
+    margin-bottom: var(--space-md);
+    padding: var(--space-md) var(--space-sm);
+  }
+  .mission-text {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .mission-regions {
+    margin-top: var(--space-sm);
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
 }
 
 @media (min-width: 480px) {
@@ -392,6 +424,17 @@ ul.scam-cards-grid {
   font-size: 0.85rem;
   color: var(--color-text-muted);
   line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+  .trust-indicators-inner {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .trust-indicators-item {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
 }
 
 .report-id-search-block {
@@ -676,9 +719,9 @@ ul.scam-cards-grid {
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 479px) {
+@media (max-width: 767px) {
   .popular-guides-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--space-sm);
   }
 }
@@ -744,6 +787,63 @@ ul.scam-cards-grid {
   flex-wrap: wrap;
   gap: var(--space-md);
   align-items: center;
+}
+
+.site_nav_mobile_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+@media (min-width: 641px) {
+  .site_nav_mobile_header {
+    width: auto;
+    justify-content: flex-start;
+  }
+}
+
+.site_nav_toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius);
+  color: var(--color-header-text);
+  cursor: pointer;
+}
+
+.site_nav_toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.site_nav_toggle_bar {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.site_nav_menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+@media (min-width: 641px) {
+  .site_nav_toggle {
+    display: none;
+  }
 }
 
 .site_nav_logo {
@@ -836,24 +936,39 @@ ul.scam-cards-grid {
     gap: 0;
   }
 
-  .site_nav a {
+  .site_nav_menu {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .site_nav_menu[data-open="true"] {
+    display: flex;
+  }
+
+  .site_nav_menu a {
     min-height: 2.75rem;
     padding: var(--space-md) 0;
     justify-content: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
 
-  .site_nav a:not(.site_nav_logo):not(.site_nav_report)::after {
+  .site_nav_menu a:not(.site_nav_report)::after {
     display: none;
   }
 
   .site_nav_logo {
-    justify-content: center;
+    justify-content: flex-start;
     margin-right: 0;
   }
 
-  .site_nav a:last-child {
+  .site_nav_menu a:last-child {
     border-bottom: none;
+  }
+
+  .site_nav_menu .site_nav_report {
+    display: none;
   }
 }
 
@@ -901,6 +1016,21 @@ ul.scam-cards-grid {
   margin-bottom: var(--space-xs);
 }
 
+@media (max-width: 640px) {
+  .site_footer .disclaimer-long {
+    display: none;
+  }
+  .site_footer .disclaimer-short {
+    display: block;
+  }
+}
+
+@media (min-width: 641px) {
+  .site_footer .disclaimer-short {
+    display: none;
+  }
+}
+
 .site_footer .copy {
   font-size: 0.8rem;
   color: rgba(255,255,255,0.8);
@@ -928,6 +1058,83 @@ ul.scam-cards-grid {
   gap: var(--space-sm) var(--space-md);
   margin-bottom: var(--space-md);
   font-size: 0.9rem;
+}
+
+.footer_legal_mobile {
+  display: none;
+}
+
+.footer_legal_collapse {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.footer_legal_summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.footer_legal_summary::-webkit-details-marker {
+  display: none;
+}
+
+.footer_legal_summary_text {
+  flex: 1;
+}
+
+.footer_legal_summary_icon {
+  transition: transform 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.footer_legal_collapse[open] .footer_legal_summary_icon {
+  transform: rotate(-180deg);
+}
+
+.footer_legal_collapse_nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 var(--space-md) var(--space-sm);
+}
+
+.footer_legal_collapse_nav a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: var(--space-xs) 0;
+  font-size: 0.95rem;
+}
+
+.footer_legal_collapse_nav a:hover {
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .footer_legal_mobile {
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+  .footer_legal_desktop {
+    display: none !important;
+  }
+}
+
+@media (min-width: 641px) {
+  .footer_legal_mobile {
+    display: none;
+  }
+  .footer_legal_desktop {
+    display: flex;
+  }
 }
 
 .site_footer_legal a {
@@ -1047,6 +1254,34 @@ ul.scam-cards-grid {
   color: #fff;
 }
 
+@media (max-width: 640px) {
+  .fab_group {
+    left: var(--space-sm);
+    right: var(--space-sm);
+    bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    flex-direction: row;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+  }
+
+  .fab_report,
+  .fab_help_now {
+    flex: 0 1 auto;
+    max-width: 10rem;
+    min-height: 2.5rem;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .fab_help_now_text,
+  .fab_report_text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+}
+
 /* Help now page */
 .help-now-list {
   list-style: none;
@@ -1094,6 +1329,70 @@ ul.scam-cards-grid {
   border-top: 1px solid var(--color-border);
   font-size: 0.95rem;
 }
+
+/* Immediate response (0–24 hours) page */
+.immediate-help-form { margin-bottom: var(--space-xl); }
+.immediate-help-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+.immediate-help-fields > div { flex: 1; min-width: 12rem; }
+.immediate-help-fields label { display: block; font-weight: 500; margin-bottom: var(--space-xs); }
+.immediate-help-h2 { font-size: 1.2rem; margin: var(--space-xl) 0 var(--space-sm); }
+.immediate-help-h3 { font-size: 1.05rem; margin: var(--space-lg) 0 var(--space-sm); }
+.immediate-help-intro { margin: 0 0 var(--space-md); color: var(--color-text-muted); font-size: 0.95rem; }
+.immediate-help-checklist,
+.immediate-help-authority,
+.immediate-help-evidence { margin-bottom: var(--space-xl); }
+.immediate-help-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.immediate-help-step {
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.immediate-help-step:last-child { border-bottom: none; }
+.immediate-help-step-label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  cursor: pointer;
+  font-weight: 500;
+}
+.immediate-help-step-checkbox { flex-shrink: 0; margin-top: 0.2rem; }
+.immediate-help-step-detail {
+  margin: var(--space-xs) 0 0 2rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+.immediate-help-evidence-item { padding-bottom: var(--space-md); }
+.immediate-help-evidence-note-wrap { margin: var(--space-xs) 0 0 2rem; }
+.immediate-help-evidence-note {
+  width: 100%;
+  resize: vertical;
+  min-height: 2.5rem;
+  font-size: 0.9rem;
+}
+.immediate-help-notes { width: 100%; resize: vertical; min-height: 5rem; }
+.immediate-help-evidence-completeness {
+  margin: 0 0 var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-calm-muted);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+
+.immediate-help-incident-sections { margin-bottom: var(--space-xl); }
+.immediate-help-incident-field { margin-bottom: var(--space-md); }
+.immediate-help-incident-field label { display: block; font-weight: 500; margin-bottom: var(--space-xs); }
+.immediate-help-incident-input { width: 100%; resize: vertical; min-height: 2.5rem; font-size: 0.95rem; }
+
+.immediate-help-additional-details { margin-top: var(--space-lg); }
 
 .help-now-footer a {
   margin-right: 0.25rem;
@@ -2516,9 +2815,11 @@ ul.scam-cards-grid {
 .admin-table-actions .admin-fb-share-btn.admin-fb-share-btn-posted { background: #25a34a; color: #fff; }
 .admin-table-actions .admin-fb-share-btn.admin-fb-share-btn-posted:hover { background: #1e8a3d; }
 .admin-table-actions .admin-x-share-btn { margin-right: var(--space-sm); margin-bottom: var(--space-xs); }
+.admin-table-actions .admin-threads-share-btn { margin-right: var(--space-sm); margin-bottom: var(--space-xs); }
 /* Tooltips for admin icon buttons and links */
 .admin-fb-share-btn[data-tooltip],
 .admin-x-share-btn[data-tooltip],
+.admin-threads-share-btn[data-tooltip],
 .admin-report-link[data-tooltip],
 .report-scam-submit[data-tooltip],
 .admin-report-reject-btn[data-tooltip],
@@ -2531,6 +2832,8 @@ ul.scam-cards-grid {
 .admin-fb-share-btn[data-tooltip]:focus-visible,
 .admin-x-share-btn[data-tooltip]:hover,
 .admin-x-share-btn[data-tooltip]:focus-visible,
+.admin-threads-share-btn[data-tooltip]:hover,
+.admin-threads-share-btn[data-tooltip]:focus-visible,
 .report-scam-submit[data-tooltip]:hover,
 .report-scam-submit[data-tooltip]:focus-visible,
 .admin-report-reject-btn[data-tooltip]:hover,
@@ -2548,6 +2851,7 @@ ul.scam-cards-grid {
 }
 .admin-fb-share-btn[data-tooltip]::after,
 .admin-x-share-btn[data-tooltip]::after,
+.admin-threads-share-btn[data-tooltip]::after,
 .admin-report-link[data-tooltip]::after,
 .report-scam-submit[data-tooltip]::after,
 .admin-report-reject-btn[data-tooltip]::after,
@@ -2577,6 +2881,8 @@ ul.scam-cards-grid {
 .admin-fb-share-btn[data-tooltip]:focus-visible::after,
 .admin-x-share-btn[data-tooltip]:hover::after,
 .admin-x-share-btn[data-tooltip]:focus-visible::after,
+.admin-threads-share-btn[data-tooltip]:hover::after,
+.admin-threads-share-btn[data-tooltip]:focus-visible::after,
 .admin-report-link[data-tooltip]:hover::after,
 .admin-report-link[data-tooltip]:focus-visible::after,
 .report-scam-submit[data-tooltip]:hover::after,
@@ -2594,6 +2900,7 @@ ul.scam-cards-grid {
 }
 .admin-fb-share-btn[data-tooltip]:not(:hover):not(:focus-visible)::after,
 .admin-x-share-btn[data-tooltip]:not(:hover):not(:focus-visible)::after,
+.admin-threads-share-btn[data-tooltip]:not(:hover):not(:focus-visible)::after,
 .admin-report-link[data-tooltip]:not(:hover):not(:focus-visible)::after,
 .report-scam-submit[data-tooltip]:not(:hover):not(:focus-visible)::after,
 .admin-report-reject-btn[data-tooltip]:not(:hover):not(:focus-visible)::after,
@@ -2790,6 +3097,9 @@ ul.scam-cards-grid {
 .admin-x-share-btn { font-size: 0.9rem; padding: var(--space-xs) var(--space-sm); min-width: 2.25rem; min-height: 2rem; background: #0f1419; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
 .admin-x-share-btn svg { width: 1.1em; height: 1.1em; flex-shrink: 0; }
 .admin-x-share-btn:hover { background: #272c30; }
+.admin-threads-share-btn { font-size: 0.9rem; padding: var(--space-xs) var(--space-sm); min-width: 2.25rem; min-height: 2rem; background: #78350f; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; }
+.admin-threads-share-btn svg { width: 1.1em; height: 1.1em; flex-shrink: 0; }
+.admin-threads-share-btn:hover { background: #92400e; }
 
 .admin-report-detail-wrap { max-width: 48rem; margin: 0 auto; padding: var(--space-md); }
 .admin-report-actions-top { margin-bottom: var(--space-md); }

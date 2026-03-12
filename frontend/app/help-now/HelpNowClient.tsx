@@ -55,6 +55,10 @@ export function HelpNowClient({ countryFromUrl }: HelpNowClientProps) {
         <strong>Feeling overwhelmed?</strong>{' '}
         <Link href="/emotional-support/">Mental health hotlines and scam victim support resources</Link> are available.
       </p>
+      <p className="emotional-support-cta">
+        <strong>Just been scammed?</strong>{' '}
+        <Link href="/immediate-help/">Use our Immediate response (0–24 hours) checklist and evidence collection list</Link> — step-by-step what to do right now.
+      </p>
       <div className="help-now-country-wrap form-group">
         <label htmlFor="help-now-country" className="form-optional">
           Change country / region
@@ -96,7 +100,13 @@ export function HelpNowClient({ countryFromUrl }: HelpNowClientProps) {
         ))}
       </ul>
       <p className="help-now-footer">
-        <Link href="/emotional-support/">Emotional support &amp; victim resources</Link> · <Link href="/">Back to home</Link> · <Link href="/report/">Report a scam</Link>
+        <Link href="/immediate-help/">Immediate response (0–24 hours)</Link>
+        {' · '}
+        <Link href="/emotional-support/">Emotional support &amp; victim resources</Link>
+        {' · '}
+        <Link href="/">Back to home</Link>
+        {' · '}
+        <Link href="/report/">Report a scam</Link>
       </p>
     </>
   );

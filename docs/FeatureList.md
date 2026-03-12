@@ -120,6 +120,7 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | # | Feature | Description | Status |
 |---|---------|-------------|--------|
 | 27 | **Facebook — Post approved reports** | When a report submitter gives **consent to share on social** (separate from "share with authorities") and an admin **approves** the report, post an **anonymized summary** (e.g. scam type, country, link to report) to the Scam Avenger Facebook Page via Meta Graph API. No per-post fee from Meta; requires Meta App, Facebook Page, and Page access token. Sub-features: (1) Add `consent_share_social` to report form and DB; (2) Backend job or webhook on approval to build summary and call Graph API `POST /{page-id}/feed`; (3) Optional admin toggle per report "Post to Facebook" at approval time. | Partial (3 done: admin can post from Share modal when FACEBOOK_PAGE_ID + token set) |
+| 27d | **Threads (Meta) — Post approved reports** | Post anonymized scam report summaries to the Scam Avenger **Threads** account when an admin approves a report (with user consent to share on social). Same flow as Facebook (#27): admin chooses "Post to Threads" from the share modal; backend builds summary and publishes via Meta's Threads API (or applicable API). Extends "Warn others" reach to Threads. | Missing |
 
 ---
 

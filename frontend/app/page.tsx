@@ -15,19 +15,19 @@ const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL 
 const heroImagePhoto = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=400&auto=format&fit=crop&ixlib=rb-4.1.0';
 
 export const metadata: Metadata = {
-  title: 'Report Scams & Fraud | Scam Avenger',
-  description: 'Report scams and fraud. Free guides with official reporting links by country and scam type. No sign-up required.',
+  title: 'Scam & Fraud Awareness | Scam Avenger',
+  description: 'Learn about scams and fraud. Free guides, awareness resources, and official links by country and scam type. Build awareness and get support — no sign-up required.',
   alternates: { canonical: `${siteUrl}/` },
   openGraph: {
-    title: 'Report Scams & Fraud | Scam Avenger',
-    description: 'Report scams and fraud. Free guides with official reporting links. No sign-up required.',
+    title: 'Scam & Fraud Awareness | Scam Avenger',
+    description: 'Learn about scams and fraud. Free guides and awareness resources. No sign-up required.',
     url: `${siteUrl}/`,
-    images: [{ url: heroImagePhoto, width: 1200, height: 400, alt: 'Report scams and fraud – Scam Avenger' }],
+    images: [{ url: heroImagePhoto, width: 1200, height: 400, alt: 'Scam and fraud awareness – Scam Avenger' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Report Scams & Fraud | Scam Avenger',
-    description: 'Report scams and fraud. Free guides with official reporting links.',
+    title: 'Scam & Fraud Awareness | Scam Avenger',
+    description: 'Learn about scams and fraud. Free guides and awareness resources.',
     images: [heroImagePhoto],
   },
 };
@@ -77,7 +77,10 @@ export default function HomePage() {
           loading="eager"
         />
         <div className="hero-overlay">
-          <h1 className="hero-tagline">Report Scams the Right Way — Official Links &amp; Guides<br />Free step-by-step guides by scam type.</h1>
+          <h1 className="hero-tagline">
+            <span className="hero-tagline-main">Learn about scams and fraud — stay aware, stay safe</span>
+            <span className="hero-tagline-sub">Build awareness, find official guides, and get support when you need it</span>
+          </h1>
         </div>
       </header>
 
@@ -86,22 +89,22 @@ export default function HomePage() {
           <div className="trust-indicators-item">
             <span className="trust-indicators-icon" aria-hidden="true">🎭</span>
             <div className="trust-indicators-content">
-              <strong>Report scams and fraud anonymously</strong>
-              <span className="trust-indicators-desc">Your identity stays private when you report</span>
+              <strong>Share scams and fraud anonymously</strong>
+              <span className="trust-indicators-desc">Your identity stays private when you share</span>
             </div>
           </div>
           <div className="trust-indicators-item">
             <span className="trust-indicators-icon" aria-hidden="true">🛡️</span>
             <div className="trust-indicators-content">
               <strong>100% free</strong>
-              <span className="trust-indicators-desc">No cost to report or browse</span>
+              <span className="trust-indicators-desc">No cost to learn, share, or browse</span>
             </div>
           </div>
           <div className="trust-indicators-item">
             <span className="trust-indicators-icon" aria-hidden="true">🔒</span>
             <div className="trust-indicators-content">
               <strong>No sign-up required</strong>
-              <span className="trust-indicators-desc">Submit a report without an account</span>
+              <span className="trust-indicators-desc">Share what you&apos;ve seen without an account</span>
             </div>
           </div>
         </div>
@@ -109,10 +112,10 @@ export default function HomePage() {
 
       <section className="mission-block" aria-label="Our mission">
         <p className="mission-text">
-          <strong>You&apos;re not alone.</strong> Every day, <strong>over 1.6 million people</strong> fall victim to scams and fraud worldwide. Scam Avenger is your one free place to figure out what happened with scams and fraud, get guided to the right place to report, and find support to recover. We&apos;re community-driven: report scams and fraud, check if others saw the same thing, and use official links and guides by country and scam type—so you can take action and help others avoid the same traps.
+          <strong>You&apos;re not alone.</strong> Every day, <strong>over 1.6 million people</strong> fall victim to scams and fraud worldwide. Scam Avenger helps you <strong>learn and build awareness</strong> about scams and fraud—so you can spot and avoid them. We also help you figure out what happened, get guided to the right place to report if you choose to, and find support to recover. We&apos;re community-driven: share what you&apos;ve seen, check if others saw the same thing, and use our free guides and official links by country and scam type to take action and help others avoid the same traps.
         </p>
         <p className="mission-regions" role="note">
-          Official reporting links and support for many countries. Choose your country on <Link href="/help-now/">Need help now?</Link> or when <Link href="/report/">reporting a scam</Link>.
+          Official links and support for many countries. Choose your country on <Link href="/help-now/">Need help now?</Link> or when <Link href="/report/">sharing a scam</Link>. In the first 0–24 hours? Use our <Link href="/immediate-help/">Immediate response checklist and evidence collection list</Link>.
         </p>
       </section>
 
@@ -137,8 +140,8 @@ export default function HomePage() {
       </section>
 
       <section className="popular-guides" aria-labelledby="popular-guides-heading">
-        <h2 id="popular-guides-heading">Popular reporting guides</h2>
-        <p className="popular-guides-intro">Quick links to where to report common scams. Guides below are for the <strong>USA</strong>; use <Link href="/help-now/">Need help now?</Link> for official links in the UK, Canada, Australia, India, EU, and other supported regions.</p>
+        <h2 id="popular-guides-heading">Popular scam &amp; fraud guides</h2>
+        <p className="popular-guides-intro">Learn about common scams and where to get help. Guides below are for the <strong>USA</strong>; use <Link href="/help-now/">Need help now?</Link> for official links in other supported regions.</p>
         <ul className="scam-cards-grid popular-guides-list">
           {popularGuides.map((scam) => (
             <ScamCard

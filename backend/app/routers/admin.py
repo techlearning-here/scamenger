@@ -27,10 +27,12 @@ from app.models.contact import (
     ContactMessagesListResponse,
 )
 from app.models.facebook import FacebookPostRequest, FacebookPostResponse, FacebookStatusResponse
+from app.models.threads import ThreadsPostRequest, ThreadsPostResponse, ThreadsStatusResponse
 from app.models.settings import SiteSettingsResponse, SiteSettingsUpdate
 from app.services.facebook import post_to_facebook_page
+from app.services.threads import post_to_threads
 from app.utils.facebook import build_post_message
-from app.core.config import ENCRYPTION_KEY_B64, FACEBOOK_POSTING_ENABLED
+from app.core.config import ENCRYPTION_KEY_B64, FACEBOOK_POSTING_ENABLED, THREADS_POSTING_ENABLED
 from app.utils.crypto import decrypt_password
 
 router = APIRouter(prefix="/z7k2m9", tags=["admin"])
@@ -142,6 +144,14 @@ def get_facebook_status(
 ) -> FacebookStatusResponse:
     """Return whether Facebook posting is configured. Admin only."""
     return FacebookStatusResponse(enabled=FACEBOOK_POSTING_ENABLED)
+
+
+@router.get("/threads/status", response_model=ThreadsStatusResponse)
+def get_threads_status(
+    _admin: str = Depends(get_admin_from_token),
+) -> ThreadsStatusResponse:
+    """Return whether Threads posting is configured. Admin only."""
+    return ThreadsStatusResponse(enabled=THREADS_POSTING_ENABLED)
 
 
 def _contact_message_from_record(record: dict[str, Any]) -> ContactMessageResponse:
@@ -411,6 +421,41 @@ def post_report_to_facebook(
                 msg = resp.text or str(e)
             raise HTTPException(status_code=502, detail=f"Facebook API error: {msg}") from e
         raise HTTPException(status_code=502, detail="Failed to post to Facebook") from e
+
+
+@router.post("/reports/{report_id}/post-to-threads", response_model=ThreadsPostResponse)
+def post_report_to_threads(
+    report_id: str,
+    payload: ThreadsPostRequest = ThreadsPostRequest(),
+    _admin: str = Depends(get_admin_from_token),
+) -> ThreadsPostResponse:
+    """Post an anonymized summary of the report to the Scam Avenger Threads account. Admin only. Optional body: { \"message\": \"...\" }. If message is omitted, backend builds the summary from report data. Text is truncated to 500 chars for Threads. Requires THREADS_USER_ID and THREADS_ACCESS_TOKEN to be set."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    try:
+        result = sb.table("reports").select("id, report_type, country_origin, category, lost_money, lost_money_range").eq("id", report_id).limit(1).execute()
+    except Exception:
+        raise HTTPException(status_code=503, detail="Service unavailable") from None
+    if not result.data or len(result.data) == 0:
+        raise HTTPException(status_code=404, detail="Report not found")
+    record = result.data[0]
+    message = (payload.message and payload.message.strip()) or build_post_message(record)
+    try:
+        out = post_to_threads(message)
+        return ThreadsPostResponse(post_id=out["id"], permalink=out.get("permalink", ""))
+    except ValueError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+    except Exception as e:
+        if hasattr(e, "response") and getattr(e, "response") is not None:
+            resp = e.response
+            try:
+                err_data = resp.json()
+                msg = err_data.get("error", {}).get("message", resp.text)
+            except Exception:
+                msg = resp.text or str(e)
+            raise HTTPException(status_code=502, detail=f"Threads API error: {msg}") from e
+        raise HTTPException(status_code=502, detail="Failed to post to Threads") from e
 
 
 @router.patch("/reports/{report_id}", response_model=AdminReportResponse)

@@ -22,5 +22,10 @@ FACEBOOK_PAGE_ID = os.environ.get("FACEBOOK_PAGE_ID", "").strip()
 FACEBOOK_PAGE_ACCESS_TOKEN = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "").strip()
 FACEBOOK_POSTING_ENABLED = bool(FACEBOOK_PAGE_ID and FACEBOOK_PAGE_ACCESS_TOKEN)
 
+# Threads (Meta): optional. When set, admin can post approved report summaries to the Scam Avenger Threads account.
+THREADS_USER_ID = os.environ.get("THREADS_USER_ID", "").strip()
+THREADS_ACCESS_TOKEN = os.environ.get("THREADS_ACCESS_TOKEN", "").strip()
+THREADS_POSTING_ENABLED = bool(THREADS_USER_ID and THREADS_ACCESS_TOKEN)
+
 # Optional: 32-byte key (base64-encoded) for symmetric decryption of login password. When set, login accepts password_encrypted.
 ENCRYPTION_KEY_B64 = (os.environ.get("ENCRYPTION_KEY", "") or "").strip()

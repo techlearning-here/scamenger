@@ -24,7 +24,8 @@ import {
 import { invalidateConfigCache } from '@/data/config/api';
 import { FacebookShareModal } from './components/FacebookShareModal';
 import { XShareModal } from './components/XShareModal';
-import { FacebookIcon, XIcon, ExternalLinkIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, CopyIcon } from './components/SocialShareIcons';
+import { ThreadsShareModal } from './components/ThreadsShareModal';
+import { FacebookIcon, XIcon, ThreadsIcon, ExternalLinkIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, CopyIcon } from './components/SocialShareIcons';
 import { REPORT_TYPE_LABELS, REPORT_TYPE_ICONS } from '@/data/reports/api';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
 
@@ -68,6 +69,7 @@ export default function AdminDashboardPage() {
   const [token, setToken] = useState<string | null>(null);
   const [reportForFacebook, setReportForFacebook] = useState<AdminReportDto | null>(null);
   const [reportForX, setReportForX] = useState<AdminReportDto | null>(null);
+  const [reportForThreads, setReportForThreads] = useState<AdminReportDto | null>(null);
   const [settings, setSettings] = useState<SiteSettingsDto | null>(null);
   const [settingsSaving, setSettingsSaving] = useState(false);
   const [draftShowReportScam, setDraftShowReportScam] = useState(true);
@@ -713,6 +715,17 @@ export default function AdminDashboardPage() {
                               <XIcon />
                             </button>
                           )}
+                          {r.consent_share_social && (
+                            <button
+                              type="button"
+                              onClick={() => setReportForThreads(r)}
+                              className="admin-threads-share-btn"
+                              aria-label="Share to Threads"
+                              data-tooltip="Share to Threads"
+                            >
+                              <ThreadsIcon />
+                            </button>
+                          )}
                         </td>
                       </tr>
                     ))
@@ -849,6 +862,17 @@ export default function AdminDashboardPage() {
                               <XIcon />
                             </button>
                           )}
+                          {r.consent_share_social && (
+                            <button
+                              type="button"
+                              onClick={() => setReportForThreads(r)}
+                              className="admin-threads-share-btn"
+                              aria-label="Share to Threads"
+                              data-tooltip="Share to Threads"
+                            >
+                              <ThreadsIcon />
+                            </button>
+                          )}
                         </td>
                       </tr>
                     ))
@@ -955,6 +979,17 @@ export default function AdminDashboardPage() {
                               <XIcon />
                             </button>
                           )}
+                          {r.consent_share_social && (
+                            <button
+                              type="button"
+                              onClick={() => setReportForThreads(r)}
+                              className="admin-threads-share-btn"
+                              aria-label="Share to Threads"
+                              data-tooltip="Share to Threads"
+                            >
+                              <ThreadsIcon />
+                            </button>
+                          )}
                         </td>
                       </tr>
                     ))
@@ -988,6 +1023,14 @@ export default function AdminDashboardPage() {
         <XShareModal
           report={reportForX}
           onClose={() => setReportForX(null)}
+        />
+      )}
+      {reportForThreads && token && (
+        <ThreadsShareModal
+          report={reportForThreads}
+          token={token}
+          onClose={() => setReportForThreads(null)}
+          onPostedToThreads={() => setRefreshKey((k) => k + 1)}
         />
       )}
     </div>

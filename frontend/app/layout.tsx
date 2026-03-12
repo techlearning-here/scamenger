@@ -1,17 +1,16 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import Script from 'next/script';
 import { FabActions } from '@/components/FabActions';
-import { NavReportScamLink } from '@/components/NavReportScamLink';
+import { SiteNav } from '@/components/SiteNav';
 import { SocialLinks } from '@/components/SocialLinks';
 import './globals.css';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 const defaultOgImageFallback = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=630&auto=format&fit=crop';
-const siteTitle = 'Report Scams & Fraud | Scam Avenger';
-const siteDescription = 'Report scams and fraud. Free guides with official reporting links by country and scam type. No sign-up required.';
-const siteKeywords = 'where to report scam, where to report fraud, report scam, report fraud, report phishing, identity theft report, consumer fraud report, scam reporting, fraud reporting, official scam report';
+const siteTitle = 'Scam & Fraud Awareness | Scam Avenger';
+const siteDescription = 'Learn about scams and fraud. Free guides, awareness resources, and official links by country and scam type. Build awareness and get support — no sign-up required.';
+const siteKeywords = 'scam awareness, fraud awareness, learn about scams, learn about fraud, scam guides, fraud guides, phishing awareness, identity theft awareness, consumer fraud, avoid scams';
 
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const adsenseSlotMain = process.env.NEXT_PUBLIC_ADSENSE_SLOT_MAIN;
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     url: siteUrl,
     images: [
-      { url: defaultOgImageFallback, width: 1200, height: 630, alt: 'Report scams and fraud – Scam Avenger' },
+      { url: defaultOgImageFallback, width: 1200, height: 630, alt: 'Scam and fraud awareness – Scam Avenger' },
     ],
   },
   twitter: {
@@ -124,8 +123,8 @@ export default function RootLayout({
                 },
                 {
                   '@type': 'Service',
-                  name: 'Scam & Fraud Reporting Guides',
-                  description: 'Free guides on where to report scams and fraud. Official reporting links by country and scam type. Report anonymously with no sign-up.',
+                  name: 'Scam & Fraud Awareness',
+                  description: 'Learn about scams and fraud. Free guides, awareness resources, and official links by country and scam type. Share anonymously with no sign-up.',
                   provider: { '@id': `${siteUrl}/#organization` },
                   areaServed: { '@type': 'Country', name: 'United States' },
                   url: siteUrl,
@@ -136,19 +135,7 @@ export default function RootLayout({
         />
         <header className="site_header">
           <div className="layout_container">
-            <nav className="site_nav" aria-label="Main">
-              <Link href="/" className="site_nav_logo" aria-label="Scam Avenger – Home">
-                <Image src="/icon.png" alt="" width={40} height={40} className="site_nav_logo_img" />
-                <span className="site_nav_logo_text">Scam Avenger</span>
-              </Link>
-              <Link href="/">Home</Link>
-              <Link href="/lookup-report/">Look up report</Link>
-              <Link href="/emotional-support/">Emotional support</Link>
-              <Link href="/news/">News</Link>
-              <Link href="/about/">About</Link>
-              <Link href="/contact/">Contact</Link>
-              <NavReportScamLink />
-            </nav>
+            <SiteNav />
           </div>
         </header>
         <main className="main">
@@ -181,7 +168,23 @@ export default function RootLayout({
         <footer className="site_footer">
           <div className="layout_container">
             <SocialLinks />
-            <nav className="site_footer_legal" aria-label="Legal">
+            <div className="footer_legal_mobile" aria-label="Legal and support">
+              <details className="footer_legal_collapse">
+                <summary className="footer_legal_summary">
+                  <span className="footer_legal_summary_text">Emotional support &amp; legal</span>
+                  <span className="footer_legal_summary_icon" aria-hidden="true">▾</span>
+                </summary>
+                <nav className="footer_legal_collapse_nav" aria-label="Legal">
+                  <Link href="/emotional-support/">Emotional support</Link>
+                  <Link href="/privacy/">Privacy Policy</Link>
+                  <Link href="/terms/">Terms &amp; Conditions</Link>
+                  <Link href="/disclaimer/">Disclaimer</Link>
+                  <Link href="/content-guidelines/">Content Guidelines</Link>
+                  <Link href="/notice-takedown/">Notice and Take Down</Link>
+                </nav>
+              </details>
+            </div>
+            <nav className="site_footer_legal footer_legal_desktop" aria-label="Legal">
               <Link href="/emotional-support/">Emotional support</Link>
               <Link href="/privacy/">Privacy Policy</Link>
               <Link href="/terms/">Terms &amp; Conditions</Link>
@@ -189,7 +192,8 @@ export default function RootLayout({
               <Link href="/content-guidelines/">Content Guidelines</Link>
               <Link href="/notice-takedown/">Notice and Take Down</Link>
             </nav>
-            <p className="disclaimer">One free platform: detect what happened, get guided to the right place to report, and find support to recover. We help you report scams and warn others.</p>
+            <p className="disclaimer disclaimer-long">One free platform to learn about scams and fraud, get guided to the right place to report if you need to, and find support to recover. We help you build awareness and warn others.</p>
+            <p className="disclaimer disclaimer-short">Free platform to learn, report, and recover. We help you build awareness and warn others.</p>
             <p className="copy">&copy; {new Date().getFullYear()} Scam Avenger. 100% free. Links go to official government and trusted sites.</p>
           </div>
         </footer>

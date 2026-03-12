@@ -116,6 +116,13 @@ ul.scam-cards-grid {
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .scam-cards-grid,
+  ul.scam-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .scam-card-wrap {
   margin: 0;
 }
@@ -313,6 +320,11 @@ ul.scam-cards-grid {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
+}
+
+.brand-av {
+  color: #ff4444;
+  font-weight: 700;
 }
 
 .mission-regions {
@@ -726,6 +738,12 @@ ul.scam-cards-grid {
   }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .popular-guides-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 768px) {
   .popular-guides-list {
     gap: var(--space-md);
@@ -925,6 +943,84 @@ ul.scam-cards-grid {
   text-decoration: none;
 }
 
+.site_nav_dropdown {
+  position: relative;
+}
+
+.site_nav_dropdown_trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: var(--space-sm) 0;
+  min-height: 2.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--color-header-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.site_nav_dropdown_trigger:hover {
+  color: #a4d4f4;
+}
+
+.site_nav_dropdown_trigger::after {
+  content: "|";
+  margin-left: var(--space-md);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+  pointer-events: none;
+}
+
+.site_nav_dropdown_icon {
+  font-size: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.site_nav_dropdown_trigger[aria-expanded="true"] .site_nav_dropdown_icon {
+  transform: rotate(-180deg);
+}
+
+.site_nav_dropdown_menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 2px;
+  min-width: 12rem;
+  padding: var(--space-xs) 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.site_nav_dropdown_menu[data-open="true"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.site_nav_dropdown_menu a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  text-decoration: none;
+  min-height: auto;
+}
+
+.site_nav_dropdown_menu a::after {
+  display: none !important;
+}
+
+.site_nav_dropdown_menu a:hover {
+  background: var(--color-bg);
+  color: var(--color-accent);
+}
+
 @media (max-width: 640px) {
   .site_header {
     padding: var(--space-sm) 0;
@@ -950,7 +1046,7 @@ ul.scam-cards-grid {
   .site_nav_menu a {
     min-height: 2.75rem;
     padding: var(--space-md) 0;
-    justify-content: center;
+    justify-content: flex-start;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
 
@@ -969,6 +1065,43 @@ ul.scam-cards-grid {
 
   .site_nav_menu .site_nav_report {
     display: none;
+  }
+
+  .site_nav_dropdown {
+    width: 100%;
+  }
+
+  .site_nav_dropdown_trigger {
+    width: 100%;
+    justify-content: flex-start;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .site_nav_dropdown_trigger::after {
+    display: none;
+  }
+
+  .site_nav_dropdown_menu {
+    position: static;
+    margin-top: 0;
+    min-width: 0;
+    padding: 0 0 var(--space-xs) var(--space-md);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .site_nav_dropdown_menu a {
+    padding: var(--space-sm) 0;
+    color: var(--color-header-text);
+    border-bottom: none;
+  }
+
+  .site_nav_dropdown_menu a:hover {
+    color: #a4d4f4;
+    background: transparent;
   }
 }
 

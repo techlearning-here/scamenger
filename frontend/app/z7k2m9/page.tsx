@@ -709,7 +709,6 @@ export default function AdminDashboardPage() {
                               className="admin-x-share-btn"
                               aria-label="Share to X"
                               data-tooltip="Share to X"
-                              data-tooltip="Share to X"
                             >
                               <XIcon />
                             </button>
@@ -846,7 +845,6 @@ export default function AdminDashboardPage() {
                               className="admin-x-share-btn"
                               aria-label="Share to X"
                               data-tooltip="Share to X"
-                              data-tooltip="Share to X"
                             >
                               <XIcon />
                             </button>
@@ -952,7 +950,6 @@ export default function AdminDashboardPage() {
                               onClick={() => setReportForX(r)}
                               className="admin-x-share-btn"
                               aria-label="Share to X"
-                              data-tooltip="Share to X"
                               data-tooltip="Share to X"
                             >
                               <XIcon />

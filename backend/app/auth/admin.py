@@ -5,7 +5,7 @@ from typing import Annotated
 import jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, field_validator, model_validator
 
 from app.core.config import ADMIN_PASSWORD, ADMIN_SECRET, ADMIN_USERNAME, ENCRYPTION_KEY_B64
 from app.utils.crypto import decrypt_password
@@ -22,6 +22,16 @@ class AdminLoginPayload(BaseModel):
     username: str
     password: str | None = None
     password_encrypted: str | None = None
+
+    @field_validator("password", "password_encrypted", mode="before")
+    @classmethod
+    def empty_str_to_none(cls, v: str | None) -> str | None:
+        """Treat empty or whitespace-only strings as None so validation is consistent."""
+        if v is None:
+            return None
+        if isinstance(v, str) and not v.strip():
+            return None
+        return v
 
     @model_validator(mode="after")
     def require_password_or_encrypted(self) -> "AdminLoginPayload":

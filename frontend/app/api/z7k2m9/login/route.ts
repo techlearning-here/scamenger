@@ -64,7 +64,14 @@ export async function POST(request: NextRequest) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(backendBody),
+    redirect: 'manual',
   });
+  if (res.type === 'opaqueredirect' || (res.status >= 300 && res.status < 400)) {
+    return NextResponse.json(
+      { detail: 'Backend URL redirected. Set NEXT_PUBLIC_API_URL to the final backend URL (no trailing slash).' },
+      { status: 502 },
+    );
+  }
   const data = await res.json().catch(() => ({ detail: res.statusText }));
   return NextResponse.json(data, { status: res.status });
 }

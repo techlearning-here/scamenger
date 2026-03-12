@@ -39,6 +39,40 @@ def test_admin_login_invalid_username(client):
     assert response.status_code == 401
 
 
+def test_admin_login_missing_password_and_encrypted(client):
+    """POST /z7k2m9/login returns 422 when neither password nor password_encrypted is provided."""
+    response = client.post(
+        "/z7k2m9/login",
+        json={"username": ADMIN_USER},
+    )
+    assert response.status_code == 422
+
+
+def test_admin_login_empty_password_returns_422(client):
+    """POST /z7k2m9/login returns 422 when password is empty string and password_encrypted not set."""
+    response = client.post(
+        "/z7k2m9/login",
+        json={"username": ADMIN_USER, "password": ""},
+    )
+    assert response.status_code == 422
+
+
+def test_admin_login_with_password_encrypted_success(client):
+    """POST /z7k2m9/login returns 200 when password_encrypted is valid and ENCRYPTION_KEY is set."""
+    with patch("app.routers.admin.ENCRYPTION_KEY_B64", "dGVzdC1rZXktMzItYnl0ZXMtbG9uZy0xMjM0NQ=="):
+        with patch("app.routers.admin.decrypt_password") as mock_decrypt:
+            mock_decrypt.return_value = ADMIN_PASS
+            response = client.post(
+                "/z7k2m9/login",
+                json={"username": ADMIN_USER, "password_encrypted": "fake-encrypted-base64"},
+            )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["token_type"] == "bearer"
+    assert "access_token" in data
+    mock_decrypt.assert_called_once_with("fake-encrypted-base64", "dGVzdC1rZXktMzItYnl0ZXMtbG9uZy0xMjM0NQ==")
+
+
 def test_admin_reports_requires_auth(client):
     """GET /z7k2m9/reports returns 401 without Bearer token."""
     response = client.get("/z7k2m9/reports")
@@ -369,3 +403,85 @@ def test_admin_settings_patch_invalidates_config_cache(client):
             headers={"Authorization": f"Bearer {token}"},
         )
     assert get_config_cached() is None
+
+
+def test_admin_facebook_status_requires_auth(client):
+    """GET /z7k2m9/facebook/status returns 401 without Bearer token."""
+    response = client.get("/z7k2m9/facebook/status")
+    assert response.status_code == 401
+
+
+def test_admin_facebook_status_returns_enabled(client):
+    """GET /z7k2m9/facebook/status returns 200 with enabled true/false when authenticated."""
+    login = client.post("/z7k2m9/login", json={"username": ADMIN_USER, "password": ADMIN_PASS})
+    token = login.json()["access_token"]
+    response = client.get(
+        "/z7k2m9/facebook/status",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert "enabled" in data
+    assert isinstance(data["enabled"], bool)
+
+
+def test_admin_post_to_facebook_requires_auth(client):
+    """POST /z7k2m9/reports/{id}/post-to-facebook returns 401 without Bearer token."""
+    report_id = "550e8400-e29b-41d4-a716-446655440000"
+    response = client.post(f"/z7k2m9/reports/{report_id}/post-to-facebook", json={})
+    assert response.status_code == 401
+
+
+def test_admin_post_to_facebook_503_when_disabled(client):
+    """POST /z7k2m9/reports/{id}/post-to-facebook returns 503 when Facebook posting is not configured."""
+    report_id = "550e8400-e29b-41d4-a716-446655440000"
+    login = client.post("/z7k2m9/login", json={"username": ADMIN_USER, "password": ADMIN_PASS})
+    token = login.json()["access_token"]
+    record = {
+        "id": report_id, "report_type": "website", "country_origin": "US", "category": None,
+        "lost_money": False, "lost_money_range": None,
+    }
+    with patch("app.routers.admin.get_supabase") as mock_sb:
+        mock_table = MagicMock()
+        mock_table.select.return_value.eq.return_value.limit.return_value.execute.return_value = MagicMock(
+            data=[record]
+        )
+        mock_sb.return_value.table.return_value = mock_table
+        with patch("app.routers.admin.post_to_facebook_page") as mock_post:
+            mock_post.side_effect = ValueError("Facebook posting is not configured")
+            response = client.post(
+                f"/z7k2m9/reports/{report_id}/post-to-facebook",
+                json={},
+                headers={"Authorization": f"Bearer {token}"},
+            )
+    assert response.status_code == 503
+    assert "not configured" in response.json()["detail"].lower() or "facebook" in response.json()["detail"].lower()
+
+
+def test_admin_post_to_facebook_200_when_enabled(client):
+    """POST /z7k2m9/reports/{id}/post-to-facebook returns 200 and post_id/permalink when configured."""
+    report_id = "550e8400-e29b-41d4-a716-446655440000"
+    login = client.post("/z7k2m9/login", json={"username": ADMIN_USER, "password": ADMIN_PASS})
+    token = login.json()["access_token"]
+    record = {
+        "id": report_id, "report_type": "website", "country_origin": "US", "category": None,
+        "lost_money": False, "lost_money_range": None,
+    }
+    with patch("app.routers.admin.get_supabase") as mock_sb:
+        mock_table = MagicMock()
+        mock_table.select.return_value.eq.return_value.limit.return_value.execute.return_value = MagicMock(
+            data=[record]
+        )
+        mock_sb.return_value.table.return_value = mock_table
+        with patch("app.routers.admin.post_to_facebook_page") as mock_post:
+            mock_post.return_value = {"id": "fb_post_123", "permalink": "https://facebook.com/123"}
+            response = client.post(
+                f"/z7k2m9/reports/{report_id}/post-to-facebook",
+                json={},
+                headers={"Authorization": f"Bearer {token}"},
+            )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["post_id"] == "fb_post_123"
+    assert data["permalink"] == "https://facebook.com/123"
+    mock_post.assert_called_once()

@@ -12,7 +12,7 @@ _report_cache: LRUCache[str, dict[str, Any]] = LRUCache(maxsize=REPORT_CACHE_MAX
 _cache_lock = threading.Lock()
 
 # Public config cache (GET /config) to avoid DB hit on every request.
-CONFIG_CACHE_TTL_SECONDS = 60
+CONFIG_CACHE_TTL_SECONDS = 300  # 5 minutes; invalidated on admin PATCH settings
 _config_cache: dict[str, Any] | None = None
 _config_cache_expires_at: float = 0.0
 _config_lock = threading.Lock()

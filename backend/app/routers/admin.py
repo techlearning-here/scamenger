@@ -11,7 +11,7 @@ from app.auth.admin import (
     get_admin_from_token,
     verify_admin_credentials,
 )
-from app.cache import invalidate_config_cached, invalidate_report_cached, set_report_cached
+from app.cache import get_config_cached, invalidate_config_cached, invalidate_report_cached, set_config_cached, set_report_cached
 from app.db.supabase import get_supabase
 from app.models.report import (
     AdminReportResponse,
@@ -93,12 +93,19 @@ def _get_site_setting(sb, key: str, default: Any) -> Any:
 def get_settings(
     _admin: str = Depends(get_admin_from_token),
 ) -> SiteSettingsResponse:
-    """Get site settings. Admin only."""
+    """Get site settings. Admin only. Uses config cache when present to avoid DB."""
+    cached = get_config_cached()
+    if cached is not None:
+        return SiteSettingsResponse(
+            show_facebook_consent=cached.get("show_facebook_consent", True),
+            show_report_scam=cached.get("show_report_scam", True),
+        )
     sb = get_supabase()
     if not sb:
         raise HTTPException(status_code=503, detail="Service unavailable")
     show_fb = _get_site_setting(sb, "show_facebook_consent", True)
     show_report = _get_site_setting(sb, "show_report_scam", True)
+    set_config_cached({"show_facebook_consent": show_fb, "show_report_scam": show_report})
     return SiteSettingsResponse(show_facebook_consent=show_fb, show_report_scam=show_report)
 
 

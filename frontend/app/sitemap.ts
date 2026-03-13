@@ -10,6 +10,7 @@ const STATIC_PATHS: { path: string; priority: number; changeFreq: 'weekly' | 'mo
   { path: '/help-now/', priority: 0.95, changeFreq: 'weekly' },
   { path: '/immediate-help/', priority: 0.9, changeFreq: 'monthly' },
   { path: '/emotional-support/', priority: 0.9, changeFreq: 'monthly' },
+  { path: '/tools/', priority: 0.9, changeFreq: 'monthly' },
   { path: '/about/', priority: 0.85, changeFreq: 'monthly' },
   { path: '/contact/', priority: 0.85, changeFreq: 'monthly' },
   { path: '/news/', priority: 0.9, changeFreq: 'weekly' },

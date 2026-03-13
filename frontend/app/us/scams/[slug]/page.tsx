@@ -2,7 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getUsScamBySlug, getUsScamTypes, SCAM_CATEGORY_LABELS } from '@/data/us-scams';
-import { getPrevalenceBadge } from '@/data/scams/icons';
+import { getPrevalenceBadge, PREVALENCE_BADGE_LABELS } from '@/data/scams/icons';
 import { CategoryIntro } from '@/components/CategoryIntro';
 import { ProgressSteps } from '@/components/ProgressSteps';
 import { ReportCard } from '@/components/ReportCard';
@@ -88,7 +88,7 @@ export default async function ScamSlugPage({ params }: PageProps) {
         <h1>{scam.name}</h1>
         {prevalenceBadge && (
           <span className={`scam-prevalence-badge scam-prevalence-badge--${prevalenceBadge}`}>
-            {prevalenceBadge === 'most-reported' ? 'Most reported' : 'Trending'}
+            {prevalenceBadge ? PREVALENCE_BADGE_LABELS[prevalenceBadge] : null}
           </span>
         )}
       </div>

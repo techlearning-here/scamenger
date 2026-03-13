@@ -29,14 +29,14 @@ describe('ScamCard', () => {
     render(
       <ScamCard slug="phishing" name="Phishing" category="online" />,
     );
-    expect(screen.getByText('Most reported')).toBeInTheDocument();
+    expect(screen.getByText('Frequently reported')).toBeInTheDocument();
   });
 
   it('renders without prevalence badge when slug has none', () => {
     render(
       <ScamCard slug="unknown-slug-xyz" name="Other" category="other" />,
     );
-    expect(screen.queryByText('Most reported')).not.toBeInTheDocument();
+    expect(screen.queryByText('Frequently reported')).not.toBeInTheDocument();
     expect(screen.queryByText('Trending')).not.toBeInTheDocument();
   });
 });

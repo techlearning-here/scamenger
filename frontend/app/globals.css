@@ -188,11 +188,11 @@ ul.scam-cards-grid {
 
 .scam-card-badge {
   flex-shrink: 0;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  padding: 0.15rem 0.4rem;
+  padding: 0.1rem 0.3rem;
   border-radius: 3px;
 }
 
@@ -438,7 +438,8 @@ ul.scam-cards-grid {
   line-height: 1.35;
 }
 
-@media (max-width: 640px) {
+/* Single column on tablet (e.g. iPad) and smaller */
+@media (max-width: 1024px) {
   .trust-indicators-inner {
     flex-direction: column;
     flex-wrap: wrap;
@@ -1463,6 +1464,270 @@ ul.scam-cards-grid {
   font-size: 0.95rem;
 }
 
+/* Tools page: tags legend at top */
+.tool-tags-legend {
+  margin: var(--space-lg) 0;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.tool-tags-legend-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-xs);
+}
+.tool-tags-legend-intro {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-md);
+}
+.tool-tags-legend-list {
+  display: grid;
+  gap: var(--space-sm);
+  margin: 0;
+}
+.tool-tags-legend-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+.tool-tags-legend-item dt { margin: 0; }
+.tool-tags-legend-item dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+.tool-tags-legend-badge { margin-top: 0.1rem; }
+
+/* Tools page: section CTA, badges, free badge and benefits */
+.tool-section-cta {
+  margin: -0.25rem 0 var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(13, 122, 111, 0.08);
+  border-left: 4px solid var(--color-calm);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+.tool-card-label-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.tool-card-site-name {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  letter-spacing: 0.01em;
+}
+.tools-list .tool-card .help-now-card-label {
+  margin-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.tool-card-favicon {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  object-fit: contain;
+  background: var(--color-surface);
+}
+.tool-card-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: 0.25rem;
+}
+.tool-card-important-star {
+  color: #b8860b;
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.tool-card-badges {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-left: auto;
+}
+/* Shared tag shape: pill with balanced padding */
+.tool-card-prevent-badge,
+.tool-card-free-badge,
+.tool-card-victim-badge,
+.tool-card-report-badge,
+.tool-card-third-party-badge {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  line-height: 1.2;
+}
+.tool-card-prevent-badge {
+  background: var(--color-calm);
+  color: var(--color-bg);
+}
+.tool-card-free-badge {
+  background: rgba(45, 125, 94, 0.18);
+  color: #1d5c45;
+}
+.tool-card-victim-badge {
+  background: rgba(120, 80, 60, 0.15);
+  color: var(--color-text);
+}
+.tool-card-report-badge {
+  background: var(--color-border);
+  color: var(--color-text-muted);
+}
+.tool-card-third-party-badge {
+  background: rgba(100, 100, 100, 0.12);
+  color: var(--color-text-muted);
+}
+.tool-card-benefits {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  padding-left: 0.15rem;
+  border-left: 3px solid var(--color-calm-muted);
+}
+/* Tools page: count, jump links, print, filters */
+.tool-count-line {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+.tool-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+.tool-jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.tool-jump-label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-right: var(--space-xs);
+}
+.tool-jump-link {
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.tool-jump-link:hover {
+  text-decoration: underline;
+}
+.tool-jump-link:not(:last-child)::after {
+  content: ' · ';
+  color: var(--color-text-muted);
+  margin-left: var(--space-xs);
+  text-decoration: none;
+}
+.tool-print-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+}
+.tool-print-btn svg {
+  display: block;
+}
+.tool-print-btn:hover {
+  background: var(--color-bg-subtle, #f1f5f9);
+}
+.tool-filter-wrap {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+}
+.tool-filter-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+}
+.tool-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+.tool-filter-pill {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+}
+.tool-filter-pill:hover {
+  background: var(--color-bg-subtle, #f1f5f9);
+}
+.tool-filter-pill-on {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+.tool-filter-pill-on:hover {
+  background: var(--color-accent);
+  color: #fff;
+  opacity: 0.95;
+}
+.tool-filter-clear {
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: var(--space-xs);
+}
+.tool-filter-clear:hover {
+  text-decoration: underline;
+}
+
+@media print {
+  .site_header,
+  .tool-actions-row,
+  .tool-filter-wrap,
+  .tool-count-line,
+  .tool-intro-cta,
+  .fab_group,
+  .site_footer_social,
+  .footer_legal_mobile,
+  .site_footer_legal,
+  .site_footer .disclaimer,
+  .help-now-footer {
+    display: none !important;
+  }
+}
+
 /* Immediate response (0–24 hours) page */
 .immediate-help-form { margin-bottom: var(--space-xl); }
 .immediate-help-fields {
@@ -1895,11 +2160,11 @@ ul.scam-cards-grid {
 }
 
 .scam-prevalence-badge {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  padding: 0.2rem 0.5rem;
+  padding: 0.12rem 0.35rem;
   border-radius: 3px;
 }
 
@@ -2223,6 +2488,8 @@ ul.scam-cards-grid {
 /* Report a scam form */
 .report-scam-title { margin-bottom: var(--space-xs); }
 .report-scam-lead { margin-bottom: var(--space-lg); color: var(--color-text-muted); }
+.report-scam-lead-multiline br { display: block; content: ''; margin-top: 0.15em; }
+.tool-country-note { margin: 0 0 var(--space-xs); color: var(--color-text-muted); font-size: 0.95rem; }
 
 .legal-content { margin-bottom: var(--space-xl); }
 .legal-content h2:first-child { margin-top: 0; }

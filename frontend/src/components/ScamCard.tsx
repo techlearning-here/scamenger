@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getScamIcon, getPrevalenceBadge } from '@/data/scams/icons';
+import { getScamIcon, getPrevalenceBadge, PREVALENCE_BADGE_LABELS } from '@/data/scams/icons';
 import type { ScamCategoryId } from '@/data/scams/types';
 
 export interface ScamCardProps {
@@ -26,7 +26,7 @@ export function ScamCard({ slug, name, category, href }: ScamCardProps) {
         <span className="scam-card-name">{name}</span>
         {badge && (
           <span className={`scam-card-badge scam-card-badge--${badge}`}>
-            {badge === 'most-reported' ? 'Most reported' : 'Trending'}
+            {badge ? PREVALENCE_BADGE_LABELS[badge] : null}
           </span>
         )}
       </Link>

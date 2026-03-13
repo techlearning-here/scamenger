@@ -332,6 +332,9 @@ def test_admin_settings_requires_auth(client):
 
 def test_admin_settings_get_returns_200_with_settings(client):
     """GET /z7k2m9/settings returns 200 with show_facebook_consent and show_report_scam when authenticated."""
+    from app.cache import invalidate_config_cached
+
+    invalidate_config_cached()
     login = client.post("/z7k2m9/login", json={"username": ADMIN_USER, "password": ADMIN_PASS})
     token = login.json()["access_token"]
     with patch("app.routers.admin.get_supabase") as mock_sb:

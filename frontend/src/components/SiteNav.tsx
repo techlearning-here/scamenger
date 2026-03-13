@@ -87,6 +87,7 @@ export function SiteNav() {
             <Link href="/immediate-help/" role="menuitem">Immediate response</Link>
           </div>
         </div>
+        <Link href="/tools/">Tools</Link>
         <Link href="/news/">News</Link>
         <Link href="/about/">About</Link>
         <Link href="/contact/">Contact</Link>

@@ -49,7 +49,7 @@ export function getScamIcon(slug: string, category: ScamCategoryId): string {
   return SLUG_ICONS[slug] ?? SCAM_CATEGORY_ICONS[category] ?? '📋';
 }
 
-/** Slugs with high report volume – show "Most reported" badge */
+/** Slugs with high report volume – show "Frequently reported" badge */
 export const MOST_REPORTED_SLUGS = new Set([
   'phishing', 'romance', 'irs-tax-impersonation', 'identity-theft', 'fake-shopping',
   'robocalls-phone', 'bank-zelle-transfer', 'job-employment',
@@ -61,6 +61,12 @@ export const TRENDING_SLUGS = new Set([
 ]);
 
 export type PrevalenceBadgeType = 'most-reported' | 'trending';
+
+/** Display labels for prevalence badges (single source of truth for UI). */
+export const PREVALENCE_BADGE_LABELS: Record<PrevalenceBadgeType, string> = {
+  'most-reported': 'Frequently reported',
+  trending: 'Trending',
+};
 
 /**
  * Returns the prevalence badge type for a scam slug, or null if none.

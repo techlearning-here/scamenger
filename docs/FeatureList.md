@@ -131,6 +131,13 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | 16 | **Scam alerts blog** | Trending scam articles (e.g. Amazon, Coinbase, crypto) as SEO traffic driver and ad revenue. | Partial |
 | 17 | **Global country guide** | Per-country pages for long-tail SEO. | Partial |
 | 17b | **SEO & monetization foundations** | JSON-LD structured data for each scam type page; defined ad placement zones for future revenue; "Claim Your Business" portal (B2B). | Partial |
+| 17c | **Submit to other search engines** | Register site and submit sitemap in **Bing Webmaster Tools** and **Yandex Webmaster** so the site is discoverable on Bing, DuckDuckGo, and Yandex. Use same sitemap URL: `https://scamenger.com/sitemap.xml`. Verify ownership via DNS (TXT) or HTML file/meta tag per provider. | Planned |
+| 17d | **Tools & online services** | Nav item **Tools** and page listing official tools and services by country: **Protect & avoid** (scam alerts, awareness), **Recover** (report fraud, complaint portals), **Identity & credit** (free credit report, freeze, identity theft recovery). Supports all major countries (US, UK, CA, AU, IN, EU, DE, FR, NG, PH, ZA). No dependency on Scamenger report DB. | Done |
+| 17e | **Tools page — Filter by tag** | Filter tools by tag (Prevent, Free, For victims, Report, Third party, Important). Pills or checkboxes above the list; only tools matching selected tags show. When none selected, show all. | Done |
+| 17f | **Tools page — Jump links** | In-page links at top: "Jump to: Identity & credit · Protect & avoid scams · Recover" for quick navigation. | Done |
+| 17g | **Tools page — Print** | "Print this page" button to print or save as PDF for offline use (e.g. take to bank or support worker). | Done |
+| 17h | **Tools page — External link indicator** | Visual indicator (icon or "opens in new tab") on external tool links so users know they leave the site. | Done |
+| 17i | **Tools page — Tool count** | Line under lead or country: "X tools for [Country]" (or "Y official, Z third-party") to set expectations. | Done |
 
 ---
 
@@ -174,6 +181,57 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | 25 | **Data services / API** | Sell scam data to ad networks, law enforcement, brands. Public or partner API for lookups. | Planned |
 | 26 | **Mobile app** | App installs for push notifications and higher engagement. | Planned |
 | 27b | **Browser extension** | Chrome (or other) extension that **warns users on suspicious sites** — huge growth channel. May consume API (#25). | Planned |
+
+---
+
+## Data-dependent vs now: what to build first
+
+**Current situation:** We do not yet have a large database of scams/fraud (user reports). Features that rely on that data will be low-value until the database grows. **Defer data-dependent features to a later stage** and focus on features that work without report volume.
+
+### Defer until DB has grown (later stage)
+
+| # | Feature | Why data-dependent |
+|---|---------|--------------------|
+| 1 | **Unified scam checker** | Lookup URLs/phones/crypto/IBAN against reported data; needs volume to be useful. |
+| 1b | **Scam similarity matching** | Already built; gets more valuable with more reports. No new work needed; value grows with data. |
+| P0 | **Aggregated public trends** | Needs enough reports to show meaningful trends (types, regions, over time). |
+| 13 | **Live stats dashboard** | "X reports, Y scam types" only compelling with real volume. |
+| 13b | **Scam heatmap** | Geographic density requires many reports with location. |
+| 23 / 23b | **Trust score / risk rating** | Algorithmic scoring benefits from more URLs/numbers in DB. |
+| 16b | **Monthly scam trends report** | Auto-generated from aggregate data. |
+| 15b / 15c | **Real-time scam alerts, Scam alert subscription** | Need trend/report data to alert on. |
+| 11c | **Verified recovery stories** | User-generated; need volume and submissions. |
+| 11d | **Gamification / badges for reporting** | More meaningful when report volume is higher. |
+| 41 | **Scam Impact Calculator** | Aggregate financial/emotional cost; needs data. |
+| 32 | **Recovery Timeline Tracker** | Per-user case tracking; can defer. |
+| 37 / 38 | **Personalized / Family Protection alerts** | Depend on trend and report data. |
+
+### Focus now (no or minimal reliance on report DB)
+
+| # | Feature | Why OK now |
+|---|---------|------------|
+| 4 | **Wizard / guided flow** | "What happened? → Here’s what to do." Uses existing guides and help-now links; no lookup DB. |
+| 4b | **Route to right reporting channel via questions** | Question flow → recommend existing scam guides and official links. |
+| 2 / 2b | **Search-first, Replace dropdown with search** | Search over existing static content (guides, categories); suggest categories from current site. |
+| 7 | **Card-based scam categories** | UX improvement; content already exists. |
+| 28 | **Emergency Action Checklist** | Scam-type-specific steps (freeze cards, 2FA, etc.); static or from existing guide data. |
+| 30 | **Evidence Collection Wizard** | Guided UI to collect screenshots, URLs, call logs → evidence kit; no DB lookup. |
+| 31 | **Instant Authority Router** | Map scam type + country → FTC, IC3, Action Fraud, etc.; use existing help-now/country data. |
+| 29 | **One-Click Bank Alert Generator** | Pre-filled dispute templates; static content per bank. |
+| 34 | **Identity Restoration Checklist** | Step-by-step static guide for identity theft. |
+| 16 | **Scam alerts blog** | Content; SEO and traffic. |
+| 17 | **Global country guide** | Per-country content pages. |
+| 15 | **Newsletter signup** | Collect emails; no report data needed. |
+| 18 / 19 | **Warmer tone, Hero redesign** | Design and copy. |
+| 21 / 21b | **Breadcrumbs, Dark mode & mobile UX** | UX and accessibility. |
+| 22 / 22b | **Mobile-first, 48px touch targets** | Audit and fix; no data. |
+| 17c | **Submit to other search engines** | Bing, Yandex; already planned. |
+| 17d | **Tools & online services** | Nav “Tools” + page with official tools by country (protect, recover, identity). Done. |
+| 9 | **Niche scam tools** (e.g. Romance Scam Checker) | Can start as educational content / flow; no lookup required. |
+| 14 | **Press / review badges** | Static links and logos. |
+| 27 / 27d | **Facebook, Threads — post approved reports** | Already partial; admin posts; not dependent on DB size. |
+
+Use the list above to pick the next feature to implement; revisit data-dependent items once report volume is meaningful.
 
 ---
 

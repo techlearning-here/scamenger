@@ -5,6 +5,7 @@ import { SCAM_STORY_ENTRIES, getRelatedStories, getHardshipTag, HARDSHIP_TAG_LAB
 import { getStorySeo } from '@/data/scam-stories-seo';
 import { SCAM_CATEGORY_ICONS } from '@/data/scams/icons';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
+import { AdUnitMid } from '@/components/AdUnitMid';
 import { StoryShareButtons } from './StoryShareButtons';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
@@ -112,6 +113,8 @@ export default async function StorySlugPage({ params }: Props) {
         <p className="story-page-coming">Story content will be added here. Check back later or <Link href="/report/">report your own scam</Link>.</p>
         <p><Link href="/stories/">← All scam stories</Link></p>
       </article>
+
+      <AdUnitMid />
 
       {related.length > 0 && (
         <aside className="story-related" aria-label="Related stories">

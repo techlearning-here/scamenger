@@ -18,21 +18,34 @@ import { BookCover } from './BookCover';
 import { BooksCategoryFilter } from './BooksCategoryFilter';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
+const booksOgImage = 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=1200&h=630&q=80';
 
 export const metadata: Metadata = {
   title: 'Recommended reading & resources: financial literacy & fraud awareness | Scam Avenger',
   description: 'Curated books and free websites on financial literacy, fraud awareness, and protecting your money and identity. We may earn a commission from qualifying book purchases.',
+  keywords: [
+    'financial literacy books',
+    'fraud awareness books',
+    'identity theft prevention',
+    'scam prevention reading',
+    'personal finance books',
+    'consumer protection resources',
+    'free financial education',
+  ].join(', '),
   alternates: { canonical: `${siteUrl}/tools/books/` },
   openGraph: {
     title: 'Recommended reading & resources: financial literacy & fraud awareness | Scam Avenger',
     description: 'Curated books and free websites on financial literacy and fraud awareness. We may earn a commission from qualifying book purchases.',
     url: `${siteUrl}/tools/books/`,
+    images: [{ url: booksOgImage, width: 1200, height: 630, alt: 'Recommended reading: financial literacy & fraud awareness' }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Recommended reading & resources: financial literacy & fraud awareness | Scam Avenger',
     description: 'Curated books and free websites on financial literacy and fraud awareness.',
+    images: [booksOgImage],
   },
+  robots: { index: true, follow: true },
 };
 
 export default function ToolsBooksPage() {

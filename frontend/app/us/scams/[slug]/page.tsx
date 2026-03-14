@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getUsScamBySlug, getUsScamTypes, SCAM_CATEGORY_LABELS } from '@/data/us-scams';
 import { getPrevalenceBadge, PREVALENCE_BADGE_LABELS } from '@/data/scams/icons';
+import { AdUnitMid } from '@/components/AdUnitMid';
 import { CategoryIntro } from '@/components/CategoryIntro';
 import { ProgressSteps } from '@/components/ProgressSteps';
 import { ReportCard } from '@/components/ReportCard';
@@ -161,6 +162,8 @@ export default async function ScamSlugPage({ params }: PageProps) {
           </div>
         </section>
       ) : null}
+
+      <AdUnitMid />
 
       <CategoryIntro intro={scam.intro} steps={scam.steps} />
 

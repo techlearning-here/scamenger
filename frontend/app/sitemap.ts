@@ -1,8 +1,14 @@
 import type { MetadataRoute } from 'next';
+import { BOOKS_LIST_LAST_UPDATED } from '@/data/books';
 import { SCAM_STORY_ENTRIES } from '@/data/scam-stories';
 import { getUsScamSlugs } from '@/data/us-scams';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
+
+/** Paths with a known content last-modified date (ISO date string). Used for accurate lastmod in sitemap. */
+const PATH_LAST_MODIFIED: Record<string, string> = {
+  '/tools/books/': BOOKS_LIST_LAST_UPDATED,
+};
 
 const STATIC_PATHS: { path: string; priority: number; changeFreq: 'weekly' | 'monthly' }[] = [
   { path: '/', priority: 1.0, changeFreq: 'weekly' },
@@ -50,11 +56,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly' as const,
     priority: 0.75,
   }));
-  const staticEntries = STATIC_PATHS.map(({ path, priority, changeFreq }) => ({
-    url: path === '/' ? siteUrl : `${siteUrl}${path}`,
-    lastModified: now,
-    changeFrequency: changeFreq,
-    priority,
-  }));
+  const staticEntries = STATIC_PATHS.map(({ path, priority, changeFreq }) => {
+    const lastMod = PATH_LAST_MODIFIED[path] ? new Date(PATH_LAST_MODIFIED[path]) : now;
+    return {
+      url: path === '/' ? siteUrl : `${siteUrl}${path}`,
+      lastModified: lastMod,
+      changeFrequency: changeFreq,
+      priority,
+    };
+  });
   return [...staticEntries, ...scamUrls, ...storyUrls];
 }

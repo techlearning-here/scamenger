@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
+import { ConditionalAdBottom, ConditionalAdTop } from '@/components/ConditionalAdSlots';
 import { FabActions } from '@/components/FabActions';
 import { SiteNav } from '@/components/SiteNav';
 import { SocialLinks } from '@/components/SocialLinks';
@@ -15,11 +16,10 @@ const siteKeywords = 'scam awareness, fraud awareness, learn about scams, learn 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const showGa = Boolean(gaMeasurementId);
 
-const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
-const adsenseSlotMain = process.env.NEXT_PUBLIC_ADSENSE_SLOT_MAIN;
-const adsenseSlotTop = process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP;
+const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? '';
+const adsenseSlotMain = process.env.NEXT_PUBLIC_ADSENSE_SLOT_MAIN ?? '';
+const adsenseSlotTop = process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP ?? adsenseSlotMain;
 const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
-const showTopAd = showAdsense && Boolean(adsenseSlotTop ?? adsenseSlotMain);
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -63,8 +63,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
   verification: {
-    // Optional: add when you have them
-    // google: 'google-site-verification-code',
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
     // yandex: 'yandex-verification-code',
   },
   alternates: {
@@ -155,31 +154,11 @@ export default function RootLayout({
           </div>
         </header>
         <main className="main">
-          {showTopAd && (
-            <div className="layout_container ad_container ad_container_top">
-              <ins
-                className="adsbygoogle ad_block"
-                data-ad-client={adsenseClient}
-                data-ad-slot={adsenseSlotTop ?? adsenseSlotMain}
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              />
-            </div>
-          )}
+          {showAdsense && <ConditionalAdTop client={adsenseClient} slot={adsenseSlotTop} />}
           <div className="layout_container">
             {children}
           </div>
-          {showAdsense && (
-            <div className="layout_container ad_container">
-              <ins
-                className="adsbygoogle ad_block"
-                data-ad-client={adsenseClient}
-                data-ad-slot={adsenseSlotMain}
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              />
-            </div>
-          )}
+          {showAdsense && <ConditionalAdBottom client={adsenseClient} slot={adsenseSlotMain} />}
         </main>
         <footer className="site_footer">
           <div className="layout_container">

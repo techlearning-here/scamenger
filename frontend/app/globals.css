@@ -1148,6 +1148,13 @@ ul.scam-cards-grid {
   margin-bottom: 0;
 }
 
+.ad_container_mid {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
 .ad_block {
   display: block;
 }

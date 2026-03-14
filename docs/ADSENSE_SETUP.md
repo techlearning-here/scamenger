@@ -12,25 +12,21 @@ When AdSense asks you to **Select verification method**, you’ll see:
 |--------|------------|------------------------|
 | **AdSense code snippet** | A `<script>` tag that loads AdSense. | Use if you prefer one snippet for both verification and ads. Once you add `NEXT_PUBLIC_ADSENSE_CLIENT` and deploy, the app already injects this script, so verification may succeed without extra steps. |
 | **Ads.txt snippet** | A line in a file at `https://yourdomain.com/ads.txt` that authorizes Google to sell ads on your site. | Use **after** verification if AdSense asks for it (often required for payment). See [Ads.txt](#4-ads-txt-optional-after-approval) below. |
-| **Meta tag** | A `<meta name="google-site-verification" content="...">` in your site’s `<head>`. | **Recommended.** Easiest with Next.js: add the code to env and the app puts the tag in the layout. No extra files. |
+| **Meta tag** | A `<meta name="google-adsense-account" content="ca-pub-...">` in your site’s `<head>`. AdSense may also show a `google-site-verification` variant. | **Recommended.** This app outputs the **google-adsense-account** meta automatically when `NEXT_PUBLIC_ADSENSE_CLIENT` is set (your publisher ID). Set that env, deploy, then click **Verify** in AdSense. |
 
-**Recommendation:** Choose **Meta tag**. Google will show you a meta tag like:
+**Recommendation:** Choose **Meta tag**. AdSense expects:
 
 ```html
-<meta name="google-site-verification" content="AbCdEfGhIjKlMnOpQrStUvWxYz1234567890" />
+<meta name="google-adsense-account" content="ca-pub-5507538725083433">
 ```
 
-Copy only the **content** value (the long string). Then either:
+This app adds that tag automatically whenever `NEXT_PUBLIC_ADSENSE_CLIENT` is set to your publisher ID (e.g. `ca-pub-5507538725083433`). No extra env or code needed.
 
-- Add it to `.env.local` (and your host’s env) as:
-  ```bash
-  NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=AbCdEfGhIjKlMnOpQrStUvWxYz1234567890
-  ```
-  The app will output the meta tag in the root layout. Redeploy and click **Verify** in AdSense.
+1. Set `NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-XXXXXXXX` in `.env.local` and your host’s env.
+2. Deploy the site.
+3. In AdSense, click **Verify**. Google will look for the meta tag in your page’s `<head>`.
 
-- Or add it in code: in `app/layout.tsx`, set `metadata.verification.google` to that string (see layout file).
-
-After you add the meta tag and deploy, go back to AdSense and click **Verify**.
+If AdSense instead shows a **google-site-verification** meta (different from the publisher ID), add that value to `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`; the app outputs that tag too for Search Console / other Google verification.
 
 ---
 

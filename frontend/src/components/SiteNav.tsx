@@ -88,6 +88,7 @@ export function SiteNav() {
           </div>
         </div>
         <Link href="/tools/">Tools</Link>
+        <Link href="/stories/">Stories</Link>
         <Link href="/news/">News</Link>
         <Link href="/about/">About</Link>
         <Link href="/contact/">Contact</Link>

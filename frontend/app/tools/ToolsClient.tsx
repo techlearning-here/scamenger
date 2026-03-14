@@ -207,11 +207,11 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
       </div>
       <div className="tool-how-to-guide" aria-label="How to use these tools">
         <h2 className="tool-how-to-title">How to use these tools</h2>
+        <p className="tool-how-to-intro">Use the list below to find official and trusted services. In three steps:</p>
         <ol className="tool-how-to-list">
-          <li><strong>Pick your region</strong> — Use the country selector below so the list shows services for your area.</li>
-          <li><strong>Filter by tag</strong> — Click Prevent, For victims, Report, etc. to show only tools that match.</li>
-          <li><strong>Click a card</strong> — Opens the official site or our report page. External links open in a new tab.</li>
-          <li><strong>“Why use this?”</strong> — Expand on any card to see why we recommend that tool.</li>
+          <li><strong>Pick your region</strong> — Use the country selector so the list shows services for your area.</li>
+          <li><strong>Filter by tag</strong> — Click Prevent, For victims, Report, or Free to show only matching tools.</li>
+          <li><strong>Open a tool</strong> — Click a card to go to the official site or our report page (external links open in a new tab). Expand a card for “Why use this?” details.</li>
         </ol>
       </div>
       <div className="help-now-country-wrap form-group tool-country-block">

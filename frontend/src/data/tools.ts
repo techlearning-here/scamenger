@@ -39,9 +39,14 @@ const US_SECTIONS: ToolSection[] = [
     links: [
       { label: 'FTC Consumer Advice', href: 'https://consumer.ftc.gov/', description: 'Tips, scam alerts, and how to avoid fraud.', free: true, important: true, benefits: 'Stay updated on new scams; no sign-up required. Official U.S. government resource.', external: true },
       { label: 'FTC Scam Alerts', href: 'https://consumer.ftc.gov/scams', description: 'Latest scam alerts from the Federal Trade Commission.', free: true, benefits: 'Get alerts on trending scams so you can warn others and avoid falling for the same tricks.', external: true },
-      { label: 'BBB Scam Tracker', href: 'https://www.bbb.org/scamtracker', description: 'Search and report scams (Better Business Bureau).', free: true, forReporting: true, important: true, thirdParty: true, benefits: 'Search by URL, phone, or keyword to see if others reported it; report new scams to help the community.', external: true },
       { label: 'AARP Fraud Watch', href: 'https://www.aarp.org/money/scams-fraud/', description: 'Education and resources; free for everyone.', free: true, thirdParty: true, benefits: 'Free for all ages. Helpline, scam-tracking map, and tips to protect yourself and family.', external: true },
       { label: 'CISA – Avoid phishing', href: 'https://www.cisa.gov/uscert/ncas/tips/ST04-014', description: 'U.S. government tips on avoiding phishing and cyber fraud.', free: true, benefits: 'Official cybersecurity guidance; learn how to spot and avoid phishing emails and links.', external: true },
+      { label: 'Scamnetic (KnowScam)', href: 'https://scamnetic.com/', description: 'AI-based scam detection and protection; Scan&Score, identity verification, scam education, and live support. Typically offered through banks and partners (paid/subscription).', free: false, thirdParty: true, benefits: 'Real-time scam protection; Scam Score™, identity checks, and scam intervention. Check if your bank or employer offers KnowScam.', external: true },
+      { label: 'Norton Genie', href: 'https://us.norton.com/products/genie-scam-detector', description: 'Free AI-powered scam detector; paste text or upload screenshots of messages, emails, or links for instant analysis.', free: true, thirdParty: true, benefits: 'Free web tool and mobile app. Covers phishing, smishing, fake alerts, dating scams. From Norton (Genius Group).', external: true },
+      { label: 'Sardine Shield', href: 'https://www.sardine.ai/shield', description: 'Real-time scam and fraud protection app; blocks scam calls, phishing links, suspicious messages, and malicious apps.', free: true, thirdParty: true, benefits: 'Privacy-focused; monitors calls, SMS, and browsing. iOS and Android. From Sardine.', external: true },
+      { label: 'Truecaller', href: 'https://www.truecaller.com/', description: 'Caller ID and spam-call blocker; identifies and blocks fraud and spam calls and flags suspicious SMS.', free: true, thirdParty: true, benefits: 'Auto-block spam/fraud calls; SMS fraud detection. Free tier available. Popular globally.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages (email, SMS, DM) for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing, urgency tricks, suspicious requests.', external: true },
+      { label: 'Malwarebytes Scam Guard', href: 'https://www.malwarebytes.com/solutions/scam-guard', description: 'Real-time scam detection; AI analysis of texts, emails, URLs, and screenshots. Requires Malwarebytes Premium subscription.', free: false, thirdParty: true, benefits: '24/7 protection on Windows, Mac, iOS, Android. Included in paid Malwarebytes Premium Security only.', external: true },
     ],
   },
   {
@@ -81,6 +86,9 @@ const GB_SECTIONS: ToolSection[] = [
       { label: 'NCSC – Phishing', href: 'https://www.ncsc.gov.uk/guidance/suspicious-email-actions', description: 'What to do with suspicious emails (National Cyber Security Centre).', free: true, benefits: 'Official guidance on handling suspicious emails and links; report phishing.', external: true },
       { label: 'Get Safe Online', href: 'https://www.getsafeonline.org/', description: 'UK online safety advice; check a website, spot scams, and use free tools.', free: true, thirdParty: true, benefits: 'Website checker, "Is it a scam?" tool, and practical guidance. Not run by government.', external: true },
       { label: 'Ask Silver', href: 'https://www.asksilver.com/', description: 'Free scam checker via website or WhatsApp; AI and trusted sources.', free: true, thirdParty: true, benefits: 'Check screenshots, photos, phone numbers, and links; response in under 30 seconds. UK-based.', external: true },
+      { label: 'Trend Micro ScamCheck', href: 'https://www.trendmicro.com/en_us/forHome/products/trend-micro-scam-check.html', description: 'AI scam detector app; check messages, links, and deepfakes; SMS and call blocking. 30-day free trial, then subscription.', free: false, thirdParty: true, benefits: 'Scam Radar, deepfake detection on video calls, spam blocking. 30-day free trial; in-app subscription after. iOS and Android.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
+      { label: 'ScamAvert', href: 'https://scamavert.com/', description: 'AI-powered real-time protection across email, texts, browser, and links; optional Guardian alerts. Free during open beta.', free: true, thirdParty: true, benefits: 'Free during open beta. Contextual analysis, URL intelligence; protect yourself and alert trusted contacts.', external: true },
     ],
   },
   {
@@ -92,7 +100,6 @@ const GB_SECTIONS: ToolSection[] = [
       { label: 'FCA – Report a scam', href: 'https://www.fca.org.uk/consumers/report-scam', description: 'Report financial scams to the Financial Conduct Authority.', free: true, benefits: 'Report unauthorised firms and scams; helps FCA warn others and take action.', external: true },
       { label: 'Citizens Advice – Reporting a scam', href: 'https://www.citizensadvice.org.uk/consumer/scams/reporting-a-scam/', description: 'Get advice and report scams.', free: true, benefits: 'Free advice on reporting and next steps; signpost to right agencies.', external: true },
       { label: 'Report a scam to Scam Avenger', href: '/report/', description: 'Share your experience and get a shareable report link.', free: true, important: true, benefits: 'No sign-up. Get a link to share and help warn your community.', external: false },
-      { label: 'Which? Scam Sharer', href: 'https://www.which.co.uk/tool/scam-sharer', description: 'Report scams to Which? (consumer group); help warn others.', free: true, thirdParty: true, forReporting: true, benefits: 'Free tool; report how you were contacted (phone, email, WhatsApp, etc.).', external: true },
     ],
   },
   {
@@ -114,6 +121,10 @@ const CA_SECTIONS: ToolSection[] = [
       { label: 'Canadian Anti-Fraud Centre (CAFC)', href: 'https://www.antifraudcentre-centreantifraude.ca/index-eng.htm', description: 'Fraud prevention tips and alerts. 1-888-495-8501.', free: true, important: true, benefits: 'Government-run; fraud alerts, prevention tips, and reporting. Free helpline.', external: true },
       { label: 'FCAC', href: 'https://www.canada.ca/en/financial-consumer-agency.html', description: 'Financial literacy and consumer protection.', free: true, benefits: 'Free tools and info to understand financial products and avoid fraud.', external: true },
       { label: 'Competition Bureau – Scams', href: 'https://www.competitionbureau.gc.ca/eic/site/cb-bc.nsf/eng/04348.html', description: 'Learn about common scams and how to protect yourself.', free: true, benefits: 'Official info on scams and deceptive practices; report to help investigations.', external: true },
+      { label: 'Scamnetic (KnowScam)', href: 'https://scamnetic.com/', description: 'AI-based scam detection and protection; Scan&Score, identity verification, scam education, and live support. Typically offered through banks and partners (paid/subscription).', free: false, thirdParty: true, benefits: 'Real-time scam protection; Scam Score™, identity checks, and scam intervention. Check if your bank or employer offers KnowScam.', external: true },
+      { label: 'Norton Genie', href: 'https://us.norton.com/products/genie-scam-detector', description: 'Free AI-powered scam detector; paste text or upload screenshots for instant analysis.', free: true, thirdParty: true, benefits: 'Free web and app. Covers phishing, smishing, fake alerts, dating scams. From Norton.', external: true },
+      { label: 'Trend Micro ScamCheck', href: 'https://www.trendmicro.com/en_us/forHome/products/trend-micro-scam-check.html', description: 'AI scam detector app; check messages, links, deepfakes; SMS and call blocking. 30-day free trial, then subscription.', free: false, thirdParty: true, benefits: 'Scam Radar, deepfake detection, spam blocking. 30-day free trial; in-app subscription after. iOS and Android.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
     ],
   },
   {
@@ -146,6 +157,9 @@ const AU_SECTIONS: ToolSection[] = [
       { label: 'Moneysmart (ASIC)', href: 'https://moneysmart.gov.au/', description: 'Financial literacy and scam awareness.', free: true, benefits: 'Official ASIC site; learn about scams and protect your money.', external: true },
       { label: 'CheckScam (Australia)', href: 'https://www.checkscam.com.au/', description: 'Free AI email scam detector; forward suspicious emails for a risk assessment.', free: true, thirdParty: true, benefits: 'Not-for-profit. Send to check@checkscam.com.au; get detailed recommendations.', external: true },
       { label: 'OziShield', href: 'https://ozishield.com/', description: 'Free scam and link checker for Australia and other regions.', free: true, thirdParty: true, benefits: 'Analyzes links in real-time; education on job, delivery, and banking scams.', external: true },
+      { label: 'Norton Genie', href: 'https://us.norton.com/products/genie-scam-detector', description: 'Free AI-powered scam detector; paste text or upload screenshots for instant analysis.', free: true, thirdParty: true, benefits: 'Free web and app. Covers phishing, smishing, fake alerts, dating scams. From Norton.', external: true },
+      { label: 'Trend Micro ScamCheck', href: 'https://www.trendmicro.com/en_us/forHome/products/trend-micro-scam-check.html', description: 'AI scam detector app; check messages, links, deepfakes; SMS and call blocking. 30-day free trial, then subscription.', free: false, thirdParty: true, benefits: 'Scam Radar, deepfake detection, spam blocking. 30-day free trial; in-app subscription after. iOS and Android.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
     ],
   },
   {
@@ -179,6 +193,8 @@ const IN_SECTIONS: ToolSection[] = [
       { label: 'PIB Fact Check', href: 'https://pib.gov.in/Factcheck.aspx', description: 'Government fact-checking of viral claims.', free: true, benefits: 'Verify viral messages and avoid sharing or acting on fake news.', external: true },
       { label: 'Chetana (ActiveMirror)', href: 'https://chetana.activemirror.ai/', description: 'AI scam protection; check calls, messages, links, photos, QR codes. 12 Indian languages.', free: true, thirdParty: true, benefits: 'Color-coded results (safe/caution/danger); optional family alerts via WhatsApp.', external: true },
       { label: 'ScamCheck India', href: 'https://scamcheckindia.com/', description: 'Check suspicious websites and e-commerce sites; chatbot and awareness.', free: true, thirdParty: true, benefits: 'Supported by BIG FM / SAFECOM; verify before you buy or share.', external: true },
+      { label: 'Truecaller', href: 'https://www.truecaller.com/', description: 'Caller ID and spam/fraud call blocker; identify and block scam calls and suspicious SMS.', free: true, thirdParty: true, benefits: 'Very popular in India. Auto-block spam; SMS fraud detection. Free tier available.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
     ],
   },
   {
@@ -209,6 +225,8 @@ const EU_SECTIONS: ToolSection[] = [
     links: [
       { label: 'European Consumer Centre Network', href: 'https://ec.europa.eu/info/live-work-travel-eu/consumer-rights-and-complaints/enforcement-consumer-protection/consumer-centres_en', description: 'Find your national consumer centre for advice.', free: true, benefits: 'Free advice from your country’s centre; cross-border scam help.', external: true },
       { label: 'European Commission – Consumer safety', href: 'https://ec.europa.eu/safety-gate/', description: 'Product safety alerts (including scams).', free: true, benefits: 'Rapid alerts on dangerous products and related scams across the EU.', external: true },
+      { label: 'ScamAvert', href: 'https://scamavert.com/', description: 'AI-powered real-time protection across email, texts, browser, and links; optional Guardian alerts. Free during open beta.', free: true, thirdParty: true, benefits: 'Free during open beta. Contextual analysis, URL intelligence; protect yourself and alert trusted contacts.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
     ],
   },
   {
@@ -236,6 +254,7 @@ const DE_SECTIONS: ToolSection[] = [
     links: [
       { label: 'BSI – Bürger', href: 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/verbraucherinnen-und-verbraucher_node.html', description: 'Cybersicherheit und Phishing-Tipps (Bundesamt für Sicherheit).', free: true, benefits: 'Offizielle Tipps zu Phishing und Cybersicherheit; kostenlos.', external: true },
       { label: 'Verbraucherzentrale', href: 'https://www.verbraucherzentrale.de/', description: 'Verbraucherberatung und Betrugsprävention.', free: true, thirdParty: true, benefits: 'Kostenlose Beratung; Betrug erkennen und melden. Fakeshop-Checker für Shop-URLs.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
     ],
   },
   {
@@ -264,6 +283,7 @@ const FR_SECTIONS: ToolSection[] = [
       { label: 'Signalement – Pharos', href: 'https://www.internet-signalement.gouv.fr/', description: 'Signaler contenus illégaux et arnaques (PHAROS).', free: true, benefits: 'Service public gratuit; signaler et consulter les conseils.', external: true },
       { label: 'DGCCRF – Arnaques', href: 'https://www.economie.gouv.fr/dgccrf', description: 'Conseils et signalement des arnaques (Conso).', free: true, benefits: 'Conseils et signalement des arnaques; protection des consommateurs.', external: true },
       { label: 'FranceVerif', href: 'https://franceverif.fr/fr/checker', description: 'Détecteur d’arnaques e-commerce; vérifier un site ou un numéro de téléphone.', free: true, thirdParty: true, benefits: 'Premier détecteur e-commerce en France; service gratuit (WebVerif SAS).', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
     ],
   },
   {
@@ -291,7 +311,7 @@ const NG_SECTIONS: ToolSection[] = [
     links: [
       { label: 'EFCC', href: 'https://efcc.gov.ng/', description: 'Economic and Financial Crimes Commission – awareness.', free: true, benefits: 'Official body; awareness and reporting of economic and financial crime.', external: true },
       { label: 'CBN – Consumer protection', href: 'https://www.cbn.gov.ng/', description: 'Central Bank of Nigeria – consumer alerts.', free: true, benefits: 'Central bank consumer info and alerts to avoid banking fraud.', external: true },
-      { label: 'Scamwatch Nigeria', href: 'https://www.scamwatch.ng/', description: 'Fraud awareness and scam reporting; community and cybersecurity info.', free: true, thirdParty: true, benefits: 'Report scams and access awareness; covers advance fee, investment, job, rental scams.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
     ],
   },
   {
@@ -320,6 +340,7 @@ const PH_SECTIONS: ToolSection[] = [
       { label: 'BSP – Consumer protection', href: 'https://www.bsp.gov.ph/', description: 'Bangko Sentral – consumer alerts.', free: true, benefits: 'Central bank alerts and consumer protection info.', external: true },
       { label: 'NPC – Privacy', href: 'https://www.privacy.gov.ph/', description: 'National Privacy Commission.', free: true, benefits: 'Data privacy guidance and complaint options.', external: true },
       { label: 'PNP-ACG', href: 'https://acg.pnp.gov.ph/', description: 'Anti-Cybercrime Group – awareness.', free: true, benefits: 'Awareness and reporting of cybercrime.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; paste text and get instant analysis. Covers phishing and suspicious requests.', external: true },
     ],
   },
   {
@@ -350,7 +371,6 @@ const ZA_SECTIONS: ToolSection[] = [
       { label: 'SAPS – Crime prevention', href: 'https://www.saps.gov.za/', description: 'South African Police Service.', free: true, benefits: 'Crime prevention info and how to report.', external: true },
       { label: 'NCR', href: 'https://www.ncr.org.za/', description: 'National Credit Regulator – consumer info.', free: true, benefits: 'Consumer rights and credit awareness; free resources.', external: true },
       { label: 'ScamChecker.co.za', href: 'https://scamchecker.co.za/', description: 'Free AI-powered scam detection; paste messages or upload screenshots for analysis.', free: true, thirdParty: true, benefits: 'Identifies advance fee, investment, phishing, romance, job scams. Confirm with FSCA when needed.', external: true },
-      { label: 'ScamCheckerSA', href: 'https://www.scamcheckersa.co.za/', description: 'Verify scam sellers and phone numbers; search database and report suspicious activity.', free: true, thirdParty: true, benefits: 'Tracks 1,000+ reported scammers; verify 500+ businesses.', external: true },
     ],
   },
   {
@@ -368,6 +388,7 @@ const ZA_SECTIONS: ToolSection[] = [
     intro: 'Identity and credit protection.',
     links: [
       { label: 'Information Regulator (POPIA)', href: 'https://www.justice.gov.za/inforeg/', description: 'Data protection and complaints.', free: true, benefits: 'Complain about misuse of your personal information under POPIA.', external: true },
+      { label: 'SAFPS', href: 'https://www.safps.org.za/Home/OurServices', description: 'South African Fraud Prevention Service – protective registration and victim support.', free: true, benefits: 'Free protective registration to reduce identity theft; victim support.', external: true },
       { label: 'Experian / TransUnion / Compuscan', href: 'https://www.mycredit.co.za/', description: 'Free credit report and dispute (e.g. MyCredit).', free: true, benefits: 'One free credit report per year; dispute errors and fraud.', external: true },
     ],
   },
@@ -380,6 +401,7 @@ const OTHER_SECTIONS: ToolSection[] = [
     links: [
       { label: 'FTC Consumer Advice (USA)', href: 'https://consumer.ftc.gov/', description: 'If the scam targeted the U.S., use FTC for tips and alerts.', free: true, benefits: 'Free U.S. government resource; scam alerts and prevention tips.', external: true },
       { label: 'European Consumer Centres', href: 'https://ec.europa.eu/info/live-work-travel-eu/consumer-rights-and-complaints/enforcement-consumer-protection/consumer-centres_en', description: 'If you are in the EU, find your national centre.', free: true, benefits: 'Free advice from your EU country’s consumer centre.', external: true },
+      { label: 'ScamProbe', href: 'https://scamprobe.com/', description: 'Free AI scam detector; paste messages for analysis—highlights red flags, fake links, spoofed domains.', free: true, thirdParty: true, benefits: 'No sign-up; works globally. Paste text and get instant analysis.', external: true },
     ],
   },
   {

@@ -94,10 +94,13 @@ export default function RootLayout({
           <meta name="google-adsense-account" content={adsenseClient} />
         ) : null}
         {loadAdsenseScript && (
-          <Script
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-            strategy="beforeInteractive"
-            crossOrigin="anonymous"
+          <div
+            dangerouslySetInnerHTML={{
+              // Escaped so JSX doesn't treat the closing tag as end of element
+              __html: `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}" crossorigin="anonymous"><\/script>`,
+            }}
+            hidden
+            aria-hidden="true"
           />
         )}
         {showGa && (

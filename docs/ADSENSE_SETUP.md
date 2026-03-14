@@ -209,7 +209,9 @@ If AdSense says it couldn’t verify your site:
    The URL you add in AdSense must be reachable by Google without login (no auth wall, no “under construction” blocking crawlers).
 
 4. **Confirm in View Source**  
-   Open the live site URL, right‑click → **View Page Source**, and search for `pagead2.googlesyndication.com` or `ca-pub-`. You should see the script (and optionally the meta tag) in `<head>`. If they’re missing, the build didn’t have the env var or the deploy is stale.
+   Open the live site URL, right‑click → **View Page Source**, and search for `pagead2.googlesyndication.com` or `ca-pub-`. You must see the **actual script tag**:  
+   `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-..." crossorigin="anonymous"></script>`  
+   A `rel="preload"` link alone is not enough for AdSense verification. This app injects the full script tag in the server-rendered HTML so crawlers see it. If only a preload appears, clear cache and redeploy.
 
 5. **Wait and retry**  
    After a new deploy, wait a few minutes, then click **Verify** again in AdSense.

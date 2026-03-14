@@ -213,6 +213,10 @@ export default async function ScamSlugPage({ params }: PageProps) {
           </ul>
         </section>
       ) : null}
+
+      <p className="scam-recommended-reading">
+        Build your knowledge: <Link href="/tools/books/">Recommended reading — books &amp; free websites on financial literacy and fraud awareness</Link>
+      </p>
     </>
   );
 }

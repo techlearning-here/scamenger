@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { SCAM_STORY_ENTRIES } from '@/data/scam-stories';
 import { getUsScamSlugs } from '@/data/us-scams';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
@@ -11,6 +12,12 @@ const STATIC_PATHS: { path: string; priority: number; changeFreq: 'weekly' | 'mo
   { path: '/immediate-help/', priority: 0.9, changeFreq: 'monthly' },
   { path: '/emotional-support/', priority: 0.9, changeFreq: 'monthly' },
   { path: '/tools/', priority: 0.9, changeFreq: 'monthly' },
+  { path: '/tools/protect-phone/', priority: 0.85, changeFreq: 'monthly' },
+  { path: '/tools/protect-laptop/', priority: 0.85, changeFreq: 'monthly' },
+  { path: '/tools/protect-bank-account/', priority: 0.85, changeFreq: 'monthly' },
+  { path: '/tools/protect-credit-card/', priority: 0.85, changeFreq: 'monthly' },
+  { path: '/tools/books/', priority: 0.8, changeFreq: 'monthly' },
+  { path: '/stories/', priority: 0.9, changeFreq: 'weekly' },
   { path: '/about/', priority: 0.85, changeFreq: 'monthly' },
   { path: '/contact/', priority: 0.85, changeFreq: 'monthly' },
   { path: '/news/', priority: 0.9, changeFreq: 'weekly' },
@@ -37,11 +44,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
+  const storyUrls = SCAM_STORY_ENTRIES.map((entry) => ({
+    url: `${siteUrl}/stories/${entry.slug}/`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.75,
+  }));
   const staticEntries = STATIC_PATHS.map(({ path, priority, changeFreq }) => ({
     url: path === '/' ? siteUrl : `${siteUrl}${path}`,
     lastModified: now,
     changeFrequency: changeFreq,
     priority,
   }));
-  return [...staticEntries, ...scamUrls];
+  return [...staticEntries, ...scamUrls, ...storyUrls];
 }

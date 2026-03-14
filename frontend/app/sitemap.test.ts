@@ -23,6 +23,27 @@ describe('sitemap', () => {
     expect(urls.some((u) => u.includes('/about'))).toBe(true);
     expect(urls.some((u) => u.includes('/contact'))).toBe(true);
     expect(urls.some((u) => u.includes('/tools'))).toBe(true);
+    expect(urls.some((u) => u.includes('/stories') && u.endsWith('/stories/'))).toBe(true);
+  });
+
+  it('includes tools sub-pages for device and account protection', () => {
+    const result = sitemap();
+    const urls = result.map((e) => e.url);
+    const base = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
+    expect(urls).toContain(`${base}/tools/`);
+    expect(urls).toContain(`${base}/tools/protect-phone/`);
+    expect(urls).toContain(`${base}/tools/protect-laptop/`);
+    expect(urls).toContain(`${base}/tools/protect-bank-account/`);
+    expect(urls).toContain(`${base}/tools/protect-credit-card/`);
+    expect(urls).toContain(`${base}/tools/books/`);
+  });
+
+  it('includes story index and story slug pages', () => {
+    const result = sitemap();
+    const urls = result.map((e) => e.url);
+    const base = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
+    expect(urls).toContain(`${base}/stories/`);
+    expect(urls.some((u) => u.startsWith(`${base}/stories/`) && u !== `${base}/stories/`)).toBe(true);
   });
 
   it('includes legal and policy pages', () => {

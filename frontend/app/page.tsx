@@ -78,8 +78,14 @@ export default function HomePage() {
         />
         <div className="hero-overlay">
           <h1 className="hero-tagline">
-            <span className="hero-tagline-main">Learn about scams and fraud — stay aware, stay safe</span>
-            <span className="hero-tagline-sub">Build awareness, find official guides, and get support when you need it</span>
+            <span className="hero-tagline-main">Scam & fraud awareness — learn, protect, warn others</span>
+            <span className="hero-tagline-sub">
+              <Link href="/stories/" className="hero-tagline-link">Real stories</Link>
+              {' '}from people who were targeted. Learn from red flags, see how others recovered,{' '}
+              <Link href="/tools/" className="hero-tagline-link">protect yourself</Link>
+              , and help others by{' '}
+              <Link href="/report/" className="hero-tagline-link">sharing your experience</Link>.
+            </span>
           </h1>
         </div>
       </header>

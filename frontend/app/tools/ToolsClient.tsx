@@ -6,8 +6,10 @@ import { useSearchParams } from 'next/navigation';
 import { COUNTRY_OPTIONS } from '@/data/reports/countries';
 import { getCountryFromLocale } from '@/data/reports/countries';
 import { getToolsForCountry, type ToolLink, type ToolSection } from '@/data/tools';
+import { ChevronUpIcon } from '../stories/StickyIcons';
 
 const DEFAULT_COUNTRY = 'US';
+
 
 /** Favicon URL: our site favicon for internal links, Google favicon service for external. */
 function getFaviconUrl(href: string, external: boolean): string | null {
@@ -84,6 +86,10 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
     const detected = getCountryFromLocale();
     if (detected) setCountry(detected);
   }, [urlCountry]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const sections = getToolsForCountry(country);
   const countryLabel = COUNTRY_OPTIONS.find((o) => o.value === country)?.label ?? 'Your region';
@@ -162,9 +168,10 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
           Tools &amp; online services
         </h1>
         <p className="tool-page-intro">
-          Trusted, official resources to <strong>protect yourself</strong>, <strong>recover after fraud</strong>, and <strong>safeguard your identity</strong>—all in one place. We’ve grouped them by region so you can quickly find the right government and consumer services. Stay ahead of scams, check a link or company before you act, or get step-by-step help when something goes wrong. Everything here is free to use.
+          Trusted, official resources to <strong>protect yourself</strong>, <strong>recover after fraud</strong>, and <strong>safeguard your identity</strong>—all in one place. We’ve grouped them by region so you can quickly find the right government and consumer services. Step-by-step guides help you protect your <strong>phone</strong>, <strong>laptop</strong>, <strong>bank account</strong>, and <strong>credit card</strong> from hackers and scams, plus recommended <strong>books and free websites</strong> for financial literacy and fraud awareness. Stay ahead of fraud, check a link or company before you act, or get help when something goes wrong. Everything here is free to use.
         </p>
-        <ul className="tool-page-highlights" aria-label="What you’ll find on this page">
+        <ul className="tool-page-highlights" aria-label="What you'll find on this page">
+          <li>Step-by-step guides: protect your phone, laptop, bank account, and credit card; plus books and free websites for financial literacy</li>
           <li>Freeze credit, get your free credit report, and protect your identity</li>
           <li>Scam alerts and tips to stay informed and avoid fraud</li>
           <li>Check URLs, phone numbers, or firms before you act</li>
@@ -173,6 +180,10 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
         <p className="tool-page-cta emotional-support-cta tool-intro-cta">
           <strong>Need to report a scam or get emergency support?</strong>{' '}
           <Link href="/help-now/">Need help now?</Link> lists emergency contacts and official reporting links by country.
+        </p>
+        <p className="tool-page-cta tool-stories-cta">
+          <strong>Learn from people who&apos;ve been there.</strong>{' '}
+          <Link href="/stories/" className="tool-stories-link">Read real scam stories — red flags, recovery, and how others are fighting back</Link>
         </p>
       </header>
       <div className="tool-tags-legend" aria-label="Meaning of tags on tool cards">
@@ -214,6 +225,43 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
           <li><strong>Open a tool</strong> — Click a card to go to the official site or our report page (external links open in a new tab). Expand a card for “Why use this?” details.</li>
         </ol>
       </div>
+
+      <section className="tool-device-protection" aria-labelledby="tool-device-protection-heading">
+        <div className="tool-device-protection-inner">
+          <h2 id="tool-device-protection-heading" className="tool-device-protection-title">Protect yourself from hackers</h2>
+          <p className="tool-device-protection-intro">
+            Simple settings and habits can greatly reduce the risk of someone accessing your devices or accounts. Build financial literacy and fraud awareness with our curated <strong>recommended books and free websites</strong>.
+          </p>
+          <div className="tool-device-protection-cards">
+            <Link href="/tools/protect-phone/" className="tool-device-protection-card">
+              <span className="tool-device-protection-card-icon" aria-hidden>📱</span>
+              <span className="tool-device-protection-card-label">Protect your phone</span>
+              <span className="tool-device-protection-card-desc">Detailed steps &amp; settings</span>
+            </Link>
+            <Link href="/tools/protect-laptop/" className="tool-device-protection-card">
+              <span className="tool-device-protection-card-icon" aria-hidden>💻</span>
+              <span className="tool-device-protection-card-label">Protect your laptop</span>
+              <span className="tool-device-protection-card-desc">Detailed steps &amp; settings</span>
+            </Link>
+            <Link href="/tools/protect-bank-account/" className="tool-device-protection-card">
+              <span className="tool-device-protection-card-icon" aria-hidden>🏦</span>
+              <span className="tool-device-protection-card-label">Protect your bank account</span>
+              <span className="tool-device-protection-card-desc">Detailed steps &amp; settings</span>
+            </Link>
+            <Link href="/tools/protect-credit-card/" className="tool-device-protection-card">
+              <span className="tool-device-protection-card-icon" aria-hidden>💳</span>
+              <span className="tool-device-protection-card-label">Protect your credit card</span>
+              <span className="tool-device-protection-card-desc">Detailed steps &amp; settings</span>
+            </Link>
+            <Link href="/tools/books/" className="tool-device-protection-card tool-device-protection-card--books">
+              <span className="tool-device-protection-card-icon" aria-hidden>📚</span>
+              <span className="tool-device-protection-card-label">Recommended: books &amp; free websites</span>
+              <span className="tool-device-protection-card-desc">Financial literacy &amp; fraud awareness — curated reading list and resources</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <div className="help-now-country-wrap form-group tool-country-block">
         <p className="tool-country-note">
           All links below are for <strong>{countryLabel}</strong>. Change the region if needed.
@@ -268,25 +316,27 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
         </button>
       </div>
       <div className="tool-filter-wrap">
-        <span className="tool-filter-label">Show tools with tag:</span>
-        <div className="tool-filter-pills">
-          {(['prevent', 'free', 'forVictim', 'report', 'thirdParty', 'important'] as const).map((tag) => (
-            <button
-              key={tag}
-              type="button"
-              onClick={() => toggleTagFilter(tag)}
-              className={`tool-filter-pill ${tagFilters.has(tag) ? 'tool-filter-pill-on' : ''}`}
-              aria-pressed={tagFilters.has(tag)}
-            >
-              {tag === 'forVictim' ? 'For victims' : tag === 'thirdParty' ? 'Third party' : tag === 'prevent' ? 'Prevent' : tag === 'report' ? 'Report' : tag === 'important' ? '★ Important' : 'Free'}
-            </button>
-          ))}
-        </div>
-        {tagFilters.size > 0 && (
-          <button type="button" onClick={() => setTagFilters(new Set())} className="tool-filter-clear">
-            Clear filter
-          </button>
-        )}
+        <label htmlFor="tools-tag-filter" className="tool-filter-label">
+          Show tools with tag:
+        </label>
+        <select
+          id="tools-tag-filter"
+          className="tool-filter-select form-control"
+          value={tagFilters.size === 0 ? '' : Array.from(tagFilters)[0]}
+          onChange={(e) => {
+            const v = e.target.value as ToolTagFilter | '';
+            setTagFilters(v ? new Set([v]) : new Set());
+          }}
+          aria-label="Filter tools by tag"
+        >
+          <option value="">All tags</option>
+          <option value="prevent">Prevent</option>
+          <option value="free">Free</option>
+          <option value="forVictim">For victims</option>
+          <option value="report">Report</option>
+          <option value="thirdParty">Third party</option>
+          <option value="important">★ Important</option>
+        </select>
       </div>
       {sections.map((section: ToolSection, index: number) => {
         const isPreventiveSection = section.heading.startsWith('Protect & avoid scams');
@@ -464,6 +514,16 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
           )}
         </section>
       );})}
+      <p className="tool-back-to-top-wrap">
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="tool-back-to-top-inline"
+          aria-label="Back to top"
+        >
+          <ChevronUpIcon className="tool-back-to-top-inline-icon" />
+        </button>
+      </p>
       <p className="help-now-footer">
         <Link href="/help-now/">Need help now?</Link>
         {' · '}

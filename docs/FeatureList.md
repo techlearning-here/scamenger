@@ -140,6 +140,10 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | 17g | **Tools page — Print** | "Print this page" button to print or save as PDF for offline use (e.g. take to bank or support worker). | Done |
 | 17h | **Tools page — External link indicator** | Visual indicator (icon or "opens in new tab") on external tool links so users know they leave the site. | Done |
 | 17i | **Tools page — Tool count** | Line under lead or country: "X tools for [Country]" (or "Y official, Z third-party") to set expectations. | Done |
+| 17i1 | **Tools — Protect your phone** | Dedicated page at `/tools/protect-phone/` with detailed steps, settings, and tips to protect phone from hackers. Linked from Tools page device-protection section. | Planned — create content later |
+| 17i2 | **Tools — Protect your laptop** | Dedicated page at `/tools/protect-laptop/` with detailed steps, settings, and tips to protect laptop from hackers. Linked from Tools page device-protection section. | Planned — create content later |
+| 17i3 | **Tools — Protect your bank account** | Dedicated page at `/tools/protect-bank-account/` with detailed steps, settings, and tips to protect bank account from hackers and scams. Linked from Tools page device-protection section. | Planned — create content later |
+| 17i4 | **Tools — Protect your credit card** | Dedicated page at `/tools/protect-credit-card/` with detailed steps, settings, and tips to protect credit card from hackers and scams. Linked from Tools page device-protection section. | Planned — create content later |
 
 ### 5b. Scam Stories page
 
@@ -151,19 +155,19 @@ Stories index at `/stories/` and per-story pages at `/stories/[slug]`. Real, ano
 | 17k | **Stories — Story/category count** | Show total story count and category count in hero or toolbar (e.g. "152 stories across 11 categories") to set expectations and build trust. | Done |
 | 17l | **Stories — CTA after grid** | After the story grid, add a CTA block: "Been targeted? Your story can help others" with link to Report. Drives reporting. | Done |
 | 17m | **Stories — Icons in category pills** | Show category emoji/icon next to each filter pill (e.g. 💳 Financial) so filter bar matches cards. | Done |
-| 17n | **Stories — Sort options** | Let users sort filtered list (e.g. by title A–Z, or by category then title). | Done |
-| 17o | **Stories — Search / filter by text** | Search box to filter cards by title (and later by story body when content exists). | Missing |
-| 17p | **Stories — Featured / Start here** | Pin 3–6 high-impact stories at top or in a separate row as entry point. | Missing |
-| 17q | **Stories — Related stories on story page** | On `/stories/[slug]`, show 3–4 related stories (same or related category) with small cards and links. | Missing |
+| 17n | **Stories — Sort options** | Let users sort by Default, Newest first, Title A–Z, or Category A–Z. | Done |
+| 17o | **Stories — Search / filter by text** | Search box to filter cards by title (and later by story body when content exists). | Done |
+| 17p | **Stories — Featured / Start here** | Pin 3–6 high-impact stories at top or in a separate row as entry point. | Done |
+| 17q | **Stories — Related stories on story page** | On `/stories/[slug]`, show 3–4 related stories (same or related category) with small cards and links. | Done |
 | 17r | **Stories — Real story content** | Replace "Story content will be added here" with real narratives; optional excerpt on cards, "Key takeaway" or "Red flags" bullets. | Missing |
 | 17s | **Stories — Excerpt on cards** | When stories have body content, show 1–2 line excerpt on card. | Missing |
 | 17t | **Stories — Reading time** | Show "~2 min read" on card or story page when body content exists. | Missing |
-| 17u | **Stories — JSON-LD (Article/CollectionPage)** | Structured data for index and each story page for SEO and rich results. | Missing |
-| 17v | **Stories — Share on story page** | Share buttons on `/stories/[slug]` (e.g. Twitter, LinkedIn, WhatsApp) to share a specific story. | Missing |
-| 17w | **Stories — Jump link to grid** | After intro, "Browse stories ↓" or in-page link that scrolls to the toolbar/cards. | Missing |
-| 17x | **Stories — Sticky toolbar or Back to top** | On long scroll, make category filter sticky or add "Back to top" button. | Missing |
-| 17y | **Stories — "Why read" strip** | Under intro, 2–3 one-line benefits with icons (e.g. "Learn from real red flags", "See how others recovered"). | Missing |
-| 17z | **Stories — RSS or Latest feed** | RSS or "Latest stories" section for returning visitors / newsletter. | Missing |
+| 17u | **Stories — JSON-LD (Article/CollectionPage)** | Structured data for index and each story page for SEO and rich results. | Done |
+| 17v | **Stories — Share on story page** | Share buttons on `/stories/[slug]` (e.g. Twitter, LinkedIn, WhatsApp) to share a specific story. | Done |
+| 17w | **Stories — Jump link to grid** | After intro, "Browse stories ↓" or in-page link that scrolls to the toolbar/cards. | Done |
+| 17x | **Stories — Sticky toolbar or Back to top** | On long scroll, make category filter sticky or add "Back to top" button. | Done |
+| 17y | **Stories — "Why read" strip** | Under intro, 2–3 one-line benefits with icons (e.g. "Learn from real red flags", "See how others recovered"). | Done |
+| 17z | **Stories — RSS or Latest feed** | RSS or "Latest stories" section for returning visitors / newsletter. | Done |
 
 ---
 

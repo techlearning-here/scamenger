@@ -33,6 +33,7 @@ Use this list to build story pages incrementally (one page per story). Each titl
 - I thought I was day-trading; I was being scammed — *financial*
 - Forex scam: the account that never let me withdraw — *financial*
 - How a "recovery lawyer" tried to scam me again — *financial*
+- The "guru" and the pump-and-dump group that cleaned me out — *financial* (pump-and-dump & fake guru investment groups)
 
 ## Phishing, emails & fake links
 - The email that looked like it was from my bank — *online / financial*

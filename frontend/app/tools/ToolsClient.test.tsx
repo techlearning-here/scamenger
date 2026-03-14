@@ -41,9 +41,11 @@ describe('ToolsClient', () => {
   it('renders filter by tag controls', () => {
     render(<ToolsClient countryFromUrl="US" />);
     expect(screen.getByText(/Show tools with tag:/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Prevent/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Free/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /For victims/i })).toBeInTheDocument();
+    const select = screen.getByRole('combobox', { name: /Filter tools by tag/i });
+    expect(select).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: /Prevent/i })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: /Free/i })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: /For victims/i })).toBeInTheDocument();
   });
 
   it('renders tool count for country', () => {
@@ -56,5 +58,21 @@ describe('ToolsClient', () => {
     const link = screen.getByRole('link', { name: /Report a scam to Scam Avenger/i });
     expect(link).toHaveAttribute('href', '/report/');
     expect(screen.getByText('Scamenger.com')).toBeInTheDocument();
+  });
+
+  it('renders device and account protection section with four guide links', () => {
+    render(<ToolsClient countryFromUrl="US" />);
+    expect(screen.getByRole('heading', { name: /Protect yourself from hackers/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Protect your phone/i })).toHaveAttribute('href', '/tools/protect-phone/');
+    expect(screen.getByRole('link', { name: /Protect your laptop/i })).toHaveAttribute('href', '/tools/protect-laptop/');
+    expect(screen.getByRole('link', { name: /Protect your bank account/i })).toHaveAttribute('href', '/tools/protect-bank-account/');
+    expect(screen.getByRole('link', { name: /Protect your credit card/i })).toHaveAttribute('href', '/tools/protect-credit-card/');
+  });
+
+  it('renders books card in device-protection section with link to books page', () => {
+    render(<ToolsClient countryFromUrl="US" />);
+    expect(screen.getByRole('heading', { name: /Protect yourself from hackers/i })).toBeInTheDocument();
+    const booksLink = screen.getByRole('link', { name: /Books.*free websites/i });
+    expect(booksLink).toHaveAttribute('href', '/tools/books/');
   });
 });

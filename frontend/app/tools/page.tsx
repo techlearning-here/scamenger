@@ -7,19 +7,19 @@ const defaultOgImage = 'https://images.unsplash.com/photo-1454165804606-c3d57bc8
 
 export const metadata: Metadata = {
   title: 'Tools & Online Services – Protect, Recover, Identity | Scam Avenger',
-  description: 'Official tools and services by country: protect yourself from scams, recover after fraud, and protect your identity and credit. FTC, Action Fraud, Scamwatch, CAFC, and more.',
-  keywords: 'scam protection tools, fraud recovery, identity theft protection, credit freeze, report fraud, FTC, Action Fraud, Scamwatch, official resources by country',
+  description: 'Official tools and services by country: protect yourself from scams, recover after fraud, and protect your identity and credit. Step-by-step guides to protect your phone, laptop, bank account, and credit card. FTC, Action Fraud, Scamwatch, CAFC, and more.',
+  keywords: 'scam protection tools, fraud recovery, identity theft protection, credit freeze, report fraud, protect phone laptop bank account credit card, FTC, Action Fraud, Scamwatch, official resources by country',
   alternates: { canonical: `${siteUrl}/tools/` },
   openGraph: {
     title: 'Tools & Online Services | Scam Avenger',
-    description: 'Official tools by country: protect, recover, and protect your identity.',
+    description: 'Official tools by country: protect, recover, identity. Guides for phone, laptop, bank & credit card.',
     url: `${siteUrl}/tools/`,
     images: [{ url: defaultOgImage, width: 1200, height: 630, alt: 'Tools & online services – Scam Avenger' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Tools & Online Services | Scam Avenger',
-    description: 'Official tools and services by country: protect, recover, identity.',
+    description: 'Official tools by country: protect, recover, identity. Guides for phone, laptop, bank & credit card.',
     images: [defaultOgImage],
   },
 };

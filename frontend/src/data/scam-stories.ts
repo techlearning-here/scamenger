@@ -5,11 +5,35 @@
 
 import type { ScamCategoryId } from '@/data/scams/types';
 
+/** Hardship/impact tag shown on story cards and pages. */
+export type HardshipTag = 'major_loss' | 'emotional' | 'recovery' | 'identity' | 'moderate';
+
+export const HARDSHIP_TAG_LABELS: Record<HardshipTag, string> = {
+  major_loss: 'Major loss',
+  emotional: 'Emotional impact',
+  recovery: 'Recovery & lessons',
+  identity: 'Identity impact',
+  moderate: 'Moderate impact',
+};
+
 export interface ScamStoryEntry {
   slug: string;
   title: string;
   category: ScamCategoryId;
+  /** Optional hardship tag; if omitted, derived from category. */
+  hardshipTag?: HardshipTag;
 }
+
+/** Slugs of stories to show in the "Start here" / featured row (high-impact entry points). */
+export const FEATURED_STORY_SLUGS: string[] = [
+  'how-i-lost-12000-someone-i-never-met',
+  'too-good-to-be-true-investment-life-savings',
+  'pump-and-dump-fake-guru-investment-group',
+  'what-i-wish-id-known-before-lost-money',
+  'fake-recruiter-lost-money-before-day-one',
+  'i-clicked-the-link-phishing-story',
+  'scammed-twice-recovery-scam',
+];
 
 /** All story titles with slug and primary category. Used by /stories index; slugs for future story pages. */
 export const SCAM_STORY_ENTRIES: ScamStoryEntry[] = [
@@ -39,6 +63,7 @@ export const SCAM_STORY_ENTRIES: ScamStoryEntry[] = [
   { slug: 'thought-day-trading-was-being-scammed', title: 'I thought I was trading. I was the mark.', category: 'financial' },
   { slug: 'forex-scam-account-never-withdraw', title: 'My balance kept growing. Withdraw? "Technical issue."', category: 'financial' },
   { slug: 'recovery-lawyer-tried-to-scam-again', title: 'A "recovery lawyer" tried to scam me—after I\'d already been scammed', category: 'financial' },
+  { slug: 'pump-and-dump-fake-guru-investment-group', title: 'The "guru" and the pump-and-dump group that cleaned me out', category: 'financial' },
   // Phishing, emails & fake links
   { slug: 'email-looked-like-from-my-bank', title: 'The email looked exactly like my bank\'s. It wasn\'t.', category: 'online' },
   { slug: 'i-clicked-the-link-phishing-story', title: 'I clicked the link. Everything changed.', category: 'online' },
@@ -180,3 +205,46 @@ export const SCAM_STORY_ENTRIES: ScamStoryEntry[] = [
   { slug: 'qr-code-parking-meter-paid-wrong-place', title: 'I scanned the parking QR code. My payment went to a scammer.', category: 'emerging' },
   { slug: 'update-payment-text-not-from-bank', title: '"Update your payment details"—the text wasn\'t from my bank', category: 'phone' },
 ];
+
+const DEFAULT_RELATED_LIMIT = 4;
+
+/** Default hardship tag by category when entry.hardshipTag is not set. */
+const DEFAULT_HARDSHIP_BY_CATEGORY: Record<ScamCategoryId, HardshipTag> = {
+  financial: 'major_loss',
+  impersonation: 'emotional',
+  employment: 'moderate',
+  housing: 'major_loss',
+  prizes_charity: 'moderate',
+  identity_benefits: 'identity',
+  government: 'moderate',
+  emerging: 'moderate',
+  other: 'recovery',
+  online: 'moderate',
+  phone: 'moderate',
+};
+
+/**
+ * Returns the hardship tag for a story (explicit or category-based default).
+ */
+export function getHardshipTag(entry: ScamStoryEntry): HardshipTag {
+  if (entry.hardshipTag) return entry.hardshipTag;
+  return DEFAULT_HARDSHIP_BY_CATEGORY[entry.category];
+}
+
+/**
+ * Returns related story entries (same category first, then others), excluding the given slug.
+ */
+export function getRelatedStories(
+  currentSlug: string,
+  category: ScamCategoryId,
+  limit: number = DEFAULT_RELATED_LIMIT
+): ScamStoryEntry[] {
+  const sameCategory = SCAM_STORY_ENTRIES.filter(
+    (e) => e.slug !== currentSlug && e.category === category
+  );
+  const other = SCAM_STORY_ENTRIES.filter(
+    (e) => e.slug !== currentSlug && e.category !== category
+  );
+  const combined = [...sameCategory, ...other];
+  return combined.slice(0, limit);
+}

@@ -75,6 +75,9 @@ def _report_from_record(
         avg_credibility = avg_usefulness = avg_completeness = avg_relevance = 0.0
     narrative = None if mask_sensitive else record.get("narrative")
     report_type_detail = None if mask_sensitive else record.get("report_type_detail")
+    external_links = record.get("external_evidence_links") if not mask_sensitive else []
+    if not isinstance(external_links, list):
+        external_links = []
     return ReportResponse(
         id=str(record["id"]),
         slug=record["slug"],
@@ -96,6 +99,7 @@ def _report_from_record(
         status=status,
         message=message,
         submitter_view_token=submitter_view_token,
+        external_evidence_links=external_links,
     )
 
 
@@ -117,6 +121,9 @@ def create_report(
     else:
         lost_money = payload.lost_money
         store_range = None
+    evidence_links = payload.external_evidence_links or []
+    if len(evidence_links) > 5:
+        evidence_links = evidence_links[:5]
     row = {
         "slug": slug,
         "country_origin": payload.country_origin,
@@ -131,6 +138,7 @@ def create_report(
         "narrative": payload.narrative,
         "consent_share_authorities": payload.consent_share_authorities,
         "consent_share_social": payload.consent_share_social,
+        "external_evidence_links": evidence_links,
         "status": "pending",
         "submitter_view_token": view_token,
     }

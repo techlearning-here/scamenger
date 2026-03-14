@@ -19,13 +19,14 @@ import {
   REPORT_TYPE_ICONS,
   LOST_MONEY_RANGE_OPTIONS,
   REPORT_TYPE_DETAIL_LABELS,
+  REPORT_TYPE_DETAIL_SHORT_LABELS,
   type ReportType,
   type LostMoneyRange,
 } from '@/data/reports/api';
 import { FacebookShareModal } from '../../components/FacebookShareModal';
 import { XShareModal } from '../../components/XShareModal';
 import { ThreadsShareModal } from '../../components/ThreadsShareModal';
-import { FacebookIcon, XIcon, ThreadsIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, EditIcon } from '../../components/SocialShareIcons';
+import { FacebookIcon, XIcon, ThreadsIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, EditIcon, LinkIcon } from '../../components/SocialShareIcons';
 import { COUNTRY_OPTIONS } from '@/data/reports/countries';
 import { SCAM_CATEGORY_LABELS, type ScamCategoryId } from '@/data/scams/types';
 
@@ -428,6 +429,11 @@ export default function AdminReportDetailPage() {
               <span className={`admin-report-status admin-report-status-${report.status}`}>
                 {report.status}
               </span>
+              {report.external_evidence_links && report.external_evidence_links.length > 0 && (
+                <span className="admin-report-has-links" title="Has evidence links" data-tooltip="Has evidence links" aria-label="Has evidence links">
+                  <LinkIcon className="admin-report-has-links-icon" />
+                </span>
+              )}
             </p>
             <dl className="report-detail-meta">
               <div className="report-detail-meta-row">
@@ -451,7 +457,7 @@ export default function AdminReportDetailPage() {
               </div>
               {report.report_type_detail && (
                 <div className="report-detail-meta-row">
-                  <dt className="report-detail-meta-label">Type detail</dt>
+                  <dt className="report-detail-meta-label">Scammer&apos;s {REPORT_TYPE_DETAIL_SHORT_LABELS[report.report_type as ReportType] ?? report.report_type}</dt>
                   <dd className="report-detail-meta-value">
                     {/^https?:\/\//i.test(report.report_type_detail) ? (
                       <a href={report.report_type_detail} target="_blank" rel="noopener noreferrer">
@@ -485,6 +491,20 @@ export default function AdminReportDetailPage() {
                 <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook, X)</dt>
                 <dd className="report-detail-meta-value">{report.consent_share_social ? 'Yes' : 'No'}</dd>
               </div>
+              {report.external_evidence_links && report.external_evidence_links.length > 0 && (
+                <div className="report-detail-meta-row">
+                  <dt className="report-detail-meta-label">External evidence links</dt>
+                  <dd className="report-detail-meta-value">
+                    <ul className="report-detail-evidence-links">
+                      {report.external_evidence_links.map((url, i) => (
+                        <li key={i}>
+                          <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              )}
             </dl>
             {report.narrative && (
               <section className="report-detail-narrative-block">

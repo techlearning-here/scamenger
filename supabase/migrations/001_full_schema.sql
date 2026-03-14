@@ -1,6 +1,6 @@
 -- Scam Avenger: full schema (single combined migration).
 -- Run in Supabase SQL Editor or via Supabase CLI. Requires Supabase Auth for report_raters.
--- Includes: reports, report_raters, report_helpful_votes, contact_messages, site_settings, and Facebook post tracking on reports.
+-- Includes: reports (with external_evidence_links), report_raters, report_helpful_votes, contact_messages, site_settings, and Facebook post tracking on reports.
 
 -- =============================================================================
 -- REPORTS TABLE
@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS public.reports (
   submitter_view_token TEXT,
   facebook_post_id TEXT,
   facebook_posted_at TIMESTAMPTZ,
-  facebook_permalink TEXT
+  facebook_permalink TEXT,
+  external_evidence_links JSONB NOT NULL DEFAULT '[]'
 );
 
 CREATE INDEX IF NOT EXISTS idx_reports_slug ON public.reports (slug);
@@ -63,6 +64,7 @@ COMMENT ON COLUMN public.reports.consent_share_social IS 'Submitter consent to s
 COMMENT ON COLUMN public.reports.facebook_post_id IS 'Facebook Graph API post id (e.g. page_id_post_id) when report was posted to Scam Avenger Page.';
 COMMENT ON COLUMN public.reports.facebook_posted_at IS 'When the report was posted to Facebook (admin action).';
 COMMENT ON COLUMN public.reports.facebook_permalink IS 'Permalink URL of the Facebook post.';
+COMMENT ON COLUMN public.reports.external_evidence_links IS 'Optional list of up to 5 external evidence URLs (e.g. screenshots, articles) submitted with the report.';
 
 -- =============================================================================
 -- REPORT_RATERS TABLE

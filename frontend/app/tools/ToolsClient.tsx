@@ -89,6 +89,8 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
   const countryLabel = COUNTRY_OPTIONS.find((o) => o.value === country)?.label ?? 'Your region';
 
   const [tagFilters, setTagFilters] = useState<Set<ToolTagFilter>>(new Set());
+  const [expandedBenefits, setExpandedBenefits] = useState<Set<string>>(new Set());
+  const [compactView, setCompactView] = useState<boolean>(false);
 
   const totalToolCount = sections.reduce((sum, s) => sum + s.links.length, 0);
   const officialCount = sections.reduce((sum, s) => sum + s.links.filter((l) => !l.thirdParty).length, 0);
@@ -103,35 +105,76 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
     });
   };
 
+  const toggleBenefits = (key: string) => {
+    setExpandedBenefits((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
+
   const handlePrint = () => {
     if (typeof window !== 'undefined') window.print();
   };
 
+  /** Suggested PDF filename when printing/saving the Tools page. */
+  const PRINT_PDF_FILENAME_BASE = 'scamenger.com_tools_services';
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const stored = window.localStorage.getItem('toolsCompactView');
+    if (stored === 'true') setCompactView(true);
+  }, []);
+
+  const setCompact = (value: boolean) => {
+    setCompactView(value);
+    if (typeof window !== 'undefined') window.localStorage.setItem('toolsCompactView', String(value));
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    let previousTitle = '';
+    const onBeforePrint = () => {
+      previousTitle = document.title;
+      document.title = PRINT_PDF_FILENAME_BASE;
+    };
+    const onAfterPrint = () => {
+      if (previousTitle) document.title = previousTitle;
+    };
+    window.addEventListener('beforeprint', onBeforePrint);
+    window.addEventListener('afterprint', onAfterPrint);
+    return () => {
+      window.removeEventListener('beforeprint', onBeforePrint);
+      window.removeEventListener('afterprint', onAfterPrint);
+    };
+  }, []);
+
   return (
-    <>
+    <div className={`tool-page-content ${compactView ? 'tool-page-content--compact' : ''}`}>
       <nav className="back" aria-label="Breadcrumb">
         <Link href="/">Home</Link>
         <span className="back-sep"> / </span>
         <span>Tools</span>
       </nav>
-      <h1 id="tools-heading" className="report-scam-title">
-        Tools &amp; online services
-      </h1>
-      <p className="report-scam-lead report-scam-lead-multiline">
-        Official tools and services by country:
-        <br />
-        · <strong>Freeze credit</strong>, get your <strong>free credit report</strong>, and protect your identity
-        <br />
-        · <strong>Scam alerts and tips</strong> to stay informed and avoid fraud
-        <br />
-        · <strong>Check URLs, phone numbers, or firms</strong> before you act
-        <br />
-        · <strong>Report a scam</strong> to authorities and get step-by-step recovery help
-      </p>
-      <p className="emotional-support-cta tool-intro-cta">
-        <strong>Need to report a scam to authorities or get emergency support?</strong>{' '}
-        <Link href="/help-now/">Need help now?</Link> lists emergency contacts and official reporting links by country.
-      </p>
+      <header className="tool-page-hero">
+        <h1 id="tools-heading" className="tool-page-title">
+          Tools &amp; online services
+        </h1>
+        <p className="tool-page-intro">
+          Trusted, official resources to <strong>protect yourself</strong>, <strong>recover after fraud</strong>, and <strong>safeguard your identity</strong>—all in one place. We’ve grouped them by region so you can quickly find the right government and consumer services. Stay ahead of scams, check a link or company before you act, or get step-by-step help when something goes wrong. Everything here is free to use.
+        </p>
+        <ul className="tool-page-highlights" aria-label="What you’ll find on this page">
+          <li>Freeze credit, get your free credit report, and protect your identity</li>
+          <li>Scam alerts and tips to stay informed and avoid fraud</li>
+          <li>Check URLs, phone numbers, or firms before you act</li>
+          <li>Report a scam to authorities and get step-by-step recovery help</li>
+        </ul>
+        <p className="tool-page-cta emotional-support-cta tool-intro-cta">
+          <strong>Need to report a scam or get emergency support?</strong>{' '}
+          <Link href="/help-now/">Need help now?</Link> lists emergency contacts and official reporting links by country.
+        </p>
+      </header>
       <div className="tool-tags-legend" aria-label="Meaning of tags on tool cards">
         <h2 className="tool-tags-legend-title">Tags and meanings</h2>
         <p className="tool-tags-legend-intro">Each tool may show one or more tags. Use them to find what you need:</p>
@@ -162,9 +205,18 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
           </div>
         </dl>
       </div>
-      <div className="help-now-country-wrap form-group">
+      <div className="tool-how-to-guide" aria-label="How to use these tools">
+        <h2 className="tool-how-to-title">How to use these tools</h2>
+        <ol className="tool-how-to-list">
+          <li><strong>Pick your region</strong> — Use the country selector below so the list shows services for your area.</li>
+          <li><strong>Filter by tag</strong> — Click Prevent, For victims, Report, etc. to show only tools that match.</li>
+          <li><strong>Click a card</strong> — Opens the official site or our report page. External links open in a new tab.</li>
+          <li><strong>“Why use this?”</strong> — Expand on any card to see why we recommend that tool.</li>
+        </ol>
+      </div>
+      <div className="help-now-country-wrap form-group tool-country-block">
         <p className="tool-country-note">
-          All links below are for <strong>{countryLabel}</strong> — change the region selector if needed.
+          All links below are for <strong>{countryLabel}</strong>. Change the region if needed.
         </p>
         <label htmlFor="tools-country" className="form-optional">
           Change country / region
@@ -198,7 +250,16 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
             </a>
           ))}
         </nav>
-        <button type="button" onClick={handlePrint} className="tool-print-btn" aria-label="Print this page" title="Print this page">
+        <button
+          type="button"
+          className="tool-view-toggle"
+          onClick={() => setCompact(!compactView)}
+          aria-pressed={compactView}
+          title={compactView ? 'Show full cards with descriptions' : 'Show compact list'}
+        >
+          {compactView ? 'Full view' : 'Compact view'}
+        </button>
+        <button type="button" onClick={handlePrint} className="tool-print-btn" aria-label="Print tool list" title="Print tool list">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M6 9V2h12v7" />
             <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
@@ -257,6 +318,8 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
                 const showReport = item.forReporting ?? isRecoverySection;
                 const faviconUrl = getFaviconUrl(item.href, item.external);
                 const siteName = getSiteName(item.href, item.external);
+                const benefitsKey = `${section.heading}-${item.label}-${item.href}`;
+                const benefitsExpanded = expandedBenefits.has(benefitsKey);
                 return (
                 <li key={item.href + item.label}>
                   {item.external ? (
@@ -309,7 +372,21 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
                       </span>
                       <span className="help-now-card-desc">{item.description}</span>
                       {item.benefits && (
-                        <span className="tool-card-benefits">{item.benefits}</span>
+                        <div className={`tool-card-benefits-wrap ${benefitsExpanded ? 'is-expanded' : ''}`}>
+                          <button
+                            type="button"
+                            className="tool-benefits-toggle"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              toggleBenefits(benefitsKey);
+                            }}
+                            aria-expanded={benefitsExpanded}
+                          >
+                            Why use this?
+                          </button>
+                          <span className="tool-card-benefits" hidden={!benefitsExpanded}>{item.benefits}</span>
+                        </div>
                       )}
                     </a>
                   ) : (
@@ -357,7 +434,21 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
                       </span>
                       <span className="help-now-card-desc">{item.description}</span>
                       {item.benefits && (
-                        <span className="tool-card-benefits">{item.benefits}</span>
+                        <div className={`tool-card-benefits-wrap ${benefitsExpanded ? 'is-expanded' : ''}`}>
+                          <button
+                            type="button"
+                            className="tool-benefits-toggle"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              toggleBenefits(benefitsKey);
+                            }}
+                            aria-expanded={benefitsExpanded}
+                          >
+                            Why use this?
+                          </button>
+                          <span className="tool-card-benefits" hidden={!benefitsExpanded}>{item.benefits}</span>
+                        </div>
                       )}
                     </Link>
                   )}
@@ -384,6 +475,6 @@ export function ToolsClient({ countryFromUrl }: ToolsClientProps) {
         {' · '}
         <Link href="/report/">Report a scam</Link>
       </p>
-    </>
+    </div>
   );
 }

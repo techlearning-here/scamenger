@@ -42,6 +42,8 @@ export const LOST_MONEY_RANGE_LABELS: Record<LostMoneyRange, string> = {
   over_1000000: 'More than $1,000,000',
 };
 
+const MAX_EXTERNAL_EVIDENCE_LINKS = 5;
+
 export interface ReportCreatePayload {
   country_origin: string;
   report_type: ReportType;
@@ -52,7 +54,11 @@ export interface ReportCreatePayload {
   narrative: string;
   consent_share_authorities?: boolean;
   consent_share_social?: boolean;
+  /** Optional list of up to 5 external evidence URLs (e.g. screenshots, articles). */
+  external_evidence_links?: string[] | null;
 }
+
+export { MAX_EXTERNAL_EVIDENCE_LINKS };
 
 export interface ReportResponseDto {
   id: string;
@@ -82,6 +88,8 @@ export interface ReportResponseDto {
   user_rating?: RatePayloadDto | null;
   /** Number of other approved reports with same URL/number. Omitted or 0 when not applicable. */
   similar_count?: number | null;
+  /** Optional list of up to 5 external evidence URLs submitted with the report. */
+  external_evidence_links?: string[];
 }
 
 /** Response when report exists but is not yet approved (no report content). */

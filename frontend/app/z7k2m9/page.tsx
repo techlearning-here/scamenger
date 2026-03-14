@@ -25,7 +25,7 @@ import { invalidateConfigCache } from '@/data/config/api';
 import { FacebookShareModal } from './components/FacebookShareModal';
 import { XShareModal } from './components/XShareModal';
 import { ThreadsShareModal } from './components/ThreadsShareModal';
-import { FacebookIcon, XIcon, ThreadsIcon, ExternalLinkIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, CopyIcon } from './components/SocialShareIcons';
+import { FacebookIcon, XIcon, ThreadsIcon, ExternalLinkIcon, GlobeIcon, CheckIcon, RejectIcon, TrashIcon, CopyIcon, LinkIcon } from './components/SocialShareIcons';
 import { REPORT_TYPE_LABELS, REPORT_TYPE_ICONS } from '@/data/reports/api';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
 
@@ -637,6 +637,11 @@ export default function AdminDashboardPage() {
                       <tr key={r.id} className="admin-report-item-pending">
                         <td className="admin-table-id" title={r.id}>
                           <span className="admin-report-id-short">{shortReportId(r.id)}</span>
+                          {r.external_evidence_links && r.external_evidence_links.length > 0 && (
+                            <span className="admin-report-has-links" title="Has evidence links" data-tooltip="Has evidence links" aria-label="Has evidence links">
+                              <LinkIcon className="admin-report-has-links-icon" />
+                            </span>
+                          )}
                           <button
                             type="button"
                             onClick={() => copyReportIdToClipboard(r.id)}
@@ -793,6 +798,11 @@ export default function AdminDashboardPage() {
                       <tr key={r.id} className="admin-report-item-rejected">
                         <td className="admin-table-id" title={r.id}>
                           <span className="admin-report-id-short">{shortReportId(r.id)}</span>
+                          {r.external_evidence_links && r.external_evidence_links.length > 0 && (
+                            <span className="admin-report-has-links" title="Has evidence links" data-tooltip="Has evidence links" aria-label="Has evidence links">
+                              <LinkIcon className="admin-report-has-links-icon" />
+                            </span>
+                          )}
                           <button
                             type="button"
                             onClick={() => copyReportIdToClipboard(r.id)}
@@ -939,6 +949,11 @@ export default function AdminDashboardPage() {
                       <tr key={r.id} className="admin-report-item-approved">
                         <td className="admin-table-id" title={r.id}>
                           <span className="admin-report-id-short">{shortReportId(r.id)}</span>
+                          {r.external_evidence_links && r.external_evidence_links.length > 0 && (
+                            <span className="admin-report-has-links" title="Has evidence links" data-tooltip="Has evidence links" aria-label="Has evidence links">
+                              <LinkIcon className="admin-report-has-links-icon" />
+                            </span>
+                          )}
                           <button
                             type="button"
                             onClick={() => copyReportIdToClipboard(r.id)}

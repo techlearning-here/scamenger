@@ -22,6 +22,7 @@ describe('sitemap', () => {
     expect(urls.some((u) => u.includes('/news'))).toBe(true);
     expect(urls.some((u) => u.includes('/about'))).toBe(true);
     expect(urls.some((u) => u.includes('/contact'))).toBe(true);
+    expect(urls.some((u) => u.includes('/tools'))).toBe(true);
   });
 
   it('includes legal and policy pages', () => {

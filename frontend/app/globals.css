@@ -1184,6 +1184,14 @@ ul.scam-cards-grid {
   flex-wrap: wrap;
   gap: var(--space-sm);
   margin-bottom: var(--space-md);
+  overflow: visible;
+  min-height: 0;
+}
+.site_footer_social .site_footer_social_link {
+  overflow: visible;
+}
+.site_footer .layout_container {
+  overflow: visible;
 }
 
 .site_footer_legal {
@@ -1281,34 +1289,90 @@ ul.scam-cards-grid {
   color: #fff;
 }
 
-.site_footer_social a {
-  color: #fff;
-}
-
 .site_footer_social_link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  color: #fff;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
   background-color: transparent;
   border-radius: 50%;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
   text-decoration: none;
 }
 
-.site_footer_social_link:hover {
+.site_footer_social_link[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-0.35rem);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.2);
-  text-decoration: none;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.site_footer_social_link[data-tooltip]:hover::after,
+.site_footer_social_link[data-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-0.5rem);
+}
+
+.site_footer_social_link[data-tooltip]::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.site_footer_social_link[data-tooltip]:hover::before,
+.site_footer_social_link[data-tooltip]:focus-visible::before {
+  opacity: 1;
 }
 
 .site_footer_social_link svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.125rem;
+  height: 1.125rem;
   fill: currentColor;
 }
+
+/* Footer: brand colors on dark background – slightly lighter on hover */
+.site_footer .site_footer_social_link--facebook { color: #1877f2; }
+.site_footer .site_footer_social_link--facebook:hover { color: #4a9cf7; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--youtube { color: #ff0000; }
+.site_footer .site_footer_social_link--youtube:hover { color: #ff3333; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--x { color: #e7e9ea; }
+.site_footer .site_footer_social_link--x:hover { color: #fff; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--linkedin { color: #0a66c2; }
+.site_footer .site_footer_social_link--linkedin:hover { color: #378fe9; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--telegram { color: #26a5e4; }
+.site_footer .site_footer_social_link--telegram:hover { color: #5eb8eb; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--instagram { color: #e4405f; }
+.site_footer .site_footer_social_link--instagram:hover { color: #f77737; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--threads { color: #e7e9ea; }
+.site_footer .site_footer_social_link--threads:hover { color: #fff; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--tiktok { color: #ee1d52; }
+.site_footer .site_footer_social_link--tiktok:hover { color: #ff6b6b; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--reddit { color: #ff4500; }
+.site_footer .site_footer_social_link--reddit:hover { color: #ff6b2c; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--bluesky { color: #0085ff; }
+.site_footer .site_footer_social_link--bluesky:hover { color: #3399ff; background-color: rgba(255,255,255,0.1); }
+.site_footer .site_footer_social_link--pinterest { color: #bd081c; }
+.site_footer .site_footer_social_link--pinterest:hover { color: #e60023; background-color: rgba(255,255,255,0.1); }
 
 /* Floating action button: Report a scam */
 .fab_group {
@@ -1466,21 +1530,24 @@ ul.scam-cards-grid {
 
 /* Tools page: tags legend at top */
 .tool-tags-legend {
-  margin: var(--space-lg) 0;
-  padding: var(--space-md) var(--space-lg);
-  background: var(--color-bg);
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg);
+  background: var(--color-bg-subtle, #f8fafc);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
 }
 .tool-tags-legend-title {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 600;
   margin: 0 0 var(--space-xs);
+  color: var(--color-text);
+  letter-spacing: -0.01em;
 }
 .tool-tags-legend-intro {
   font-size: 0.95rem;
   color: var(--color-text-muted);
   margin: 0 0 var(--space-md);
+  line-height: 1.5;
 }
 .tool-tags-legend-list {
   display: grid;
@@ -1501,6 +1568,35 @@ ul.scam-cards-grid {
   line-height: 1.4;
 }
 .tool-tags-legend-badge { margin-top: 0.1rem; }
+
+.tool-how-to-guide {
+  margin: 0 0 var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--color-bg-subtle, #f8fafc);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.tool-how-to-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-sm);
+}
+.tool-how-to-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.tool-how-to-list li {
+  margin-bottom: 0.35rem;
+}
+.tool-how-to-list li:last-child {
+  margin-bottom: 0;
+}
+.tool-how-to-list strong {
+  color: var(--color-text);
+}
 
 /* Tools page: section CTA, badges, free badge and benefits */
 .tool-section-cta {
@@ -1594,6 +1690,35 @@ ul.scam-cards-grid {
   background: rgba(100, 100, 100, 0.12);
   color: var(--color-text-muted);
 }
+.tool-card-benefits-wrap {
+  margin-top: var(--space-xs);
+}
+.tool-benefits-toggle {
+  appearance: none;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--color-calm);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.tool-benefits-toggle:hover {
+  color: var(--color-calm-dark, #1a4a6e);
+}
+.tool-card-benefits-wrap:not(.is-expanded) .tool-card-benefits {
+  display: none;
+}
+.tool-card-benefits-wrap.is-expanded .tool-card-benefits {
+  display: block;
+}
+.tool-card-benefits-wrap.is-expanded .tool-benefits-toggle {
+  margin-bottom: 0.2rem;
+}
 .tool-card-benefits {
   display: block;
   margin-top: var(--space-xs);
@@ -1615,6 +1740,47 @@ ul.scam-cards-grid {
   align-items: center;
   gap: var(--space-md);
   margin-bottom: var(--space-md);
+}
+.tool-view-toggle {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-calm);
+  background: transparent;
+  border: 1px solid var(--color-calm-muted);
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tool-view-toggle:hover {
+  background: rgba(27, 54, 93, 0.06);
+  border-color: var(--color-calm);
+}
+.tool-view-toggle[aria-pressed="true"] {
+  background: var(--color-calm-muted);
+  color: var(--color-bg);
+  border-color: var(--color-calm);
+}
+@media (max-width: 768px) {
+  .tool-view-toggle {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+/* Compact view: hide description, benefits, site name; tighter cards */
+.tool-page-content--compact .help-now-card-desc,
+.tool-page-content--compact .tool-card-benefits-wrap,
+.tool-page-content--compact .tool-card-site-name {
+  display: none !important;
+}
+.tool-page-content--compact .help-now-card {
+  padding: var(--space-sm) var(--space-md);
+}
+.tool-page-content--compact .tool-card-header {
+  margin-bottom: 0;
+}
+.tool-page-content--compact .tools-list li {
+  margin-bottom: var(--space-xs);
 }
 .tool-jump-links {
   display: flex;
@@ -1712,10 +1878,39 @@ ul.scam-cards-grid {
   text-decoration: underline;
 }
 
+/* Printer-friendly: clean layout, save ink, readable text */
 @media print {
+  html, body {
+    background: #fff !important;
+    color: #1a1a1a !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  body {
+    padding: 0 !important;
+  }
+  a {
+    color: #1a1a1a !important;
+    text-decoration: underline;
+  }
+  h1, h2, h3, h4 {
+    color: #1a1a1a !important;
+    page-break-after: avoid;
+  }
+  img, svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .main, .layout_container, section, article {
+    max-width: 100% !important;
+  }
   .site_header,
   .tool-actions-row,
+  .tool-jump-links,
   .tool-filter-wrap,
+  .tool-filter-label,
+  .tool-filter-pills,
+  .tool-filter-clear,
   .tool-count-line,
   .tool-intro-cta,
   .fab_group,
@@ -1723,8 +1918,130 @@ ul.scam-cards-grid {
   .footer_legal_mobile,
   .site_footer_legal,
   .site_footer .disclaimer,
-  .help-now-footer {
+  .help-now-footer,
+  .back,
+  .report-detail-actions-row {
     display: none !important;
+  }
+  .site_footer {
+    background: #fff !important;
+    border-top: 1px solid #ccc;
+    margin-top: 1.5rem;
+    padding: 0.75rem 0 !important;
+  }
+  .site_footer .copy {
+    color: #333 !important;
+    font-size: 0.9rem;
+  }
+  .tool-page-hero {
+    border-bottom-color: #ccc !important;
+    padding-bottom: 1rem !important;
+  }
+  .tool-tags-legend,
+  .tool-how-to-guide,
+  .tool-country-block {
+    background: #f5f5f5 !important;
+    border-color: #ccc !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .help-now-card, .tool-card {
+    break-inside: avoid;
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+  .tool-benefits-toggle {
+    display: none !important;
+  }
+  .tool-card-benefits-wrap .tool-card-benefits {
+    display: block !important;
+    visibility: visible !important;
+  }
+  .tool-card-benefits-wrap .tool-card-benefits[hidden] {
+    display: block !important;
+  }
+  .tool-page-content--compact .help-now-card-desc,
+  .tool-page-content--compact .tool-card-benefits-wrap,
+  .tool-page-content--compact .tool-card-site-name {
+    display: block !important;
+  }
+  .tool-page-content--compact .tool-card-benefits-wrap .tool-card-benefits {
+    display: block !important;
+  }
+  .tool-page-content--compact .tool-card-benefits-wrap .tool-benefits-toggle {
+    display: none !important;
+  }
+  .emotional-support-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .emotional-support-section-title {
+    color: #1a1a1a !important;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.25rem;
+  }
+  .trust-indicators-item,
+  .top-scam-stats-card {
+    border-color: #ccc !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+  .ad_container, .ad_block, ins.adsbygoogle {
+    display: none !important;
+  }
+  /* Report view: print only the report card, printer-friendly */
+  .report-scam-title,
+  .layout_container > .back {
+    display: none !important;
+  }
+  .report-detail-card {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem 0 !important;
+    background: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  .report-detail-card .report-detail-copy-btn,
+  .report-detail-card .report-detail-copy-id-btn,
+  .report-detail-card .report-detail-save-hint,
+  .report-detail-card .report-detail-share-or,
+  .report-detail-card .report-detail-qr,
+  .report-detail-card .report-detail-share-block,
+  .report-detail-card .report-detail-helpful,
+  .report-detail-card .report-detail-ratings,
+  .report-detail-card .report-detail-back {
+    display: none !important;
+  }
+  .report-detail-card .report-detail-meta-block,
+  .report-detail-card .report-detail-narrative-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .report-detail-card .report-detail-section-title {
+    font-size: 1rem !important;
+    color: #1a1a1a !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.2rem !important;
+    border-bottom: 1px solid #ccc !important;
+  }
+  .report-detail-card .report-detail-meta-block {
+    background: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 2px;
+  }
+  .report-detail-card .report-detail-narrative {
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+    color: #1a1a1a !important;
+  }
+  @page {
+    margin: 1.5cm;
   }
 }
 
@@ -1819,9 +2136,12 @@ ul.scam-cards-grid {
 }
 
 .emotional-support-section-title {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   margin: 0 0 var(--space-sm);
   color: var(--color-text);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
 .emotional-support-section-intro {
@@ -2487,13 +2807,176 @@ ul.scam-cards-grid {
 
 /* Report a scam form */
 .report-scam-title { margin-bottom: var(--space-xs); }
+
+/* Tools page – hero and intro */
+.tool-page-hero {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+.tool-page-title {
+  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 var(--space-md);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.tool-page-intro {
+  margin: 0 0 var(--space-lg);
+  font-size: 1.06rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  max-width: 52rem;
+}
+.tool-page-intro strong {
+  font-weight: 600;
+  color: var(--color-trust, var(--color-text));
+}
+.tool-page-highlights {
+  list-style: none;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  max-width: 52rem;
+}
+.tool-page-highlights li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: var(--space-sm);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+.tool-page-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--color-calm);
+  opacity: 0.85;
+}
+.tool-page-cta {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+.tool-page-cta a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+.tool-page-cta a:hover {
+  text-decoration: underline;
+}
+
 .report-scam-lead { margin-bottom: var(--space-lg); color: var(--color-text-muted); }
 .report-scam-lead-multiline br { display: block; content: ''; margin-top: 0.15em; }
+.tool-country-block {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-subtle, #f8fafc);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-md);
+}
 .tool-country-note { margin: 0 0 var(--space-xs); color: var(--color-text-muted); font-size: 0.95rem; }
 
 .legal-content { margin-bottom: var(--space-xl); }
 .legal-content h2:first-child { margin-top: 0; }
 .legal-content ul { margin-bottom: var(--space-md); }
+.report-evidence-links-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.report-evidence-link-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.report-evidence-link-input-wrap {
+  flex: 1;
+  min-width: 0;
+}
+.report-evidence-link-row .report-evidence-link-input {
+  margin-bottom: 0;
+  width: 100%;
+}
+.report-evidence-link-input-invalid {
+  border-color: #c00;
+}
+.report-evidence-link-input-invalid:focus {
+  outline-color: #c00;
+}
+.report-evidence-link-error {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: #c00;
+}
+.report-evidence-link-remove {
+  flex-shrink: 0;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  color: #c00;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.report-evidence-link-remove .report-evidence-link-remove-icon {
+  flex-shrink: 0;
+}
+.report-evidence-link-remove:hover:not(:disabled) {
+  color: #a00;
+  border-color: rgba(204, 0, 0, 0.5);
+}
+.report-evidence-link-add {
+  margin-top: var(--space-xs);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.9rem;
+  color: var(--color-calm);
+  background: transparent;
+  border: 1px dashed var(--color-calm-muted);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.report-evidence-link-add .report-evidence-link-add-icon {
+  flex-shrink: 0;
+}
+.report-evidence-link-add:hover:not(:disabled) {
+  background: rgba(27, 54, 93, 0.06);
+  border-style: solid;
+}
+.report-evidence-link-add:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.report-evidence-link-input { margin-bottom: 0; }
+.report-preview-evidence-links {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.report-preview-evidence-links li { margin-bottom: 0.25rem; }
+.report-preview-evidence-links li:last-child { margin-bottom: 0; }
+.report-preview-evidence-links a { word-break: break-all; }
+.report-detail-evidence-links {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.report-detail-evidence-links li { margin-bottom: 0.25rem; }
+.report-detail-evidence-links li:last-child { margin-bottom: 0; }
+.report-detail-evidence-links a { word-break: break-all; }
+
 .report-scam-form {
   max-width: 32rem;
   padding: var(--space-md);
@@ -2678,6 +3161,31 @@ ul.scam-cards-grid {
   max-width: 40rem;
   margin: 0 auto;
 }
+.report-detail-actions-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-md);
+}
+.report-detail-print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-calm);
+  background: transparent;
+  border: 1px solid var(--color-calm-muted);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.report-detail-print-btn:hover {
+  background: rgba(27, 54, 93, 0.06);
+  border-color: var(--color-calm);
+}
+.report-detail-print-btn svg {
+  flex-shrink: 0;
+}
 .report-detail-status-pending {
   margin: 0 0 var(--space-md);
   padding: var(--space-sm) var(--space-md);
@@ -2859,6 +3367,7 @@ ul.scam-cards-grid {
   background: #fef3c7;
   border-radius: 999px;
 }
+.report-detail-id-value { font-family: ui-monospace, monospace; font-size: 0.9em; word-break: break-all; }
 .report-detail-type-detail-link { word-break: break-all; color: var(--color-accent); }
 .report-detail-type-detail-link:hover { text-decoration: underline; }
 .report-detail-narrative-block {
@@ -2908,9 +3417,9 @@ ul.scam-cards-grid {
 .report-detail-share-url-full .report-detail-share-link { color: var(--color-accent); font-weight: 500; }
 .report-detail-share-url-full .report-detail-share-link:hover { text-decoration: underline; }
 .report-detail-copy-btn {
-  padding: var(--space-md) var(--space-lg);
-  min-height: 2.75rem;
-  font-size: 0.95rem;
+  padding: var(--space-sm) var(--space-md);
+  min-height: 2.25rem;
+  font-size: 0.875rem;
   font-weight: 600;
   font-family: var(--font-sans);
   color: #fff;
@@ -2925,6 +3434,177 @@ ul.scam-cards-grid {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
 .report-detail-copy-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.report-detail-share-to {
+  margin: var(--space-md) 0 var(--space-xs);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+.report-share-options {
+  margin-bottom: var(--space-md);
+}
+.report-share-switch-wrap {
+  margin-bottom: var(--space-sm);
+}
+.report-share-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+  user-select: none;
+}
+.report-share-switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.report-share-switch-slider {
+  position: relative;
+  display: inline-block;
+  width: 2.5rem;
+  height: 1.25rem;
+  background: var(--color-border);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+.report-share-switch-slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+.report-share-switch input:checked + .report-share-switch-slider {
+  background: var(--color-accent);
+}
+.report-share-switch input:checked + .report-share-switch-slider::after {
+  transform: translateX(1.25rem);
+}
+.report-share-switch-label {
+  color: var(--color-text-muted);
+}
+.report-share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+.report-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  color: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.report-share-btn:hover { transform: scale(1.08); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.report-share-btn-facebook { background: #1877f2; }
+.report-share-btn-x { background: #000; }
+.report-share-btn-threads { background: #000; }
+.report-share-btn-whatsapp { background: #25d366; }
+.report-share-btn-facebook:focus-visible,
+.report-share-btn-x:focus-visible,
+.report-share-btn-threads:focus-visible,
+.report-share-btn-whatsapp:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.report-share-icon { flex-shrink: 0; }
+
+/* Report share – Facebook modal (edit content, then submit to open Facebook) */
+.report-share-fb-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-xl);
+  overflow-y: auto;
+  z-index: 1000;
+}
+.report-share-fb-modal {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 36rem;
+  width: 100%;
+  margin: var(--space-xl) auto;
+  padding: var(--space-lg);
+}
+.report-share-fb-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+.report-share-fb-modal-title { margin: 0; font-size: 1.2rem; }
+.report-share-fb-modal-close {
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+.report-share-fb-modal-close:hover { color: var(--color-text); }
+.report-share-fb-modal-intro {
+  margin: 0 0 var(--space-md);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.report-share-fb-form-group { margin-bottom: var(--space-md); }
+.report-share-fb-label { display: block; font-weight: 500; margin-bottom: var(--space-xs); font-size: 0.95rem; }
+.report-share-fb-textarea {
+  width: 100%;
+  min-height: 12rem;
+  padding: var(--space-sm);
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  resize: vertical;
+}
+.report-share-fb-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+.report-share-fb-actions { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+.report-share-fb-btn {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: none;
+}
+.report-share-fb-btn-cancel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+.report-share-fb-btn-cancel:hover { background: var(--color-bg); }
+.report-share-fb-btn-submit {
+  background: var(--color-accent);
+  color: #fff;
+}
+.report-share-fb-btn-submit:hover { filter: brightness(1.05); }
 .report-detail-share-or {
   margin: var(--space-lg) 0 var(--space-md);
   font-size: 0.9rem;
@@ -3062,7 +3742,7 @@ ul.scam-cards-grid {
 }
 .rate-report-error { font-size: 0.9rem; color: #991b1b; margin: 0 0 var(--space-sm); }
 .rate-report-error a { font-weight: 600; }
-.rate-report-submit { padding: var(--space-md) var(--space-md); min-height: 2.75rem; font-size: 0.95rem; font-weight: 600; font-family: var(--font-sans); color: #fff; background: var(--gradient-accent); border: none; border-radius: var(--radius); cursor: pointer; }
+.rate-report-submit { padding: var(--space-sm) var(--space-md); min-height: 2.25rem; font-size: 0.875rem; font-weight: 600; font-family: var(--font-sans); color: #fff; background: var(--gradient-accent); border: none; border-radius: var(--radius); cursor: pointer; }
 .rate-report-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 .report-detail-loading, .report-detail-not-found { padding: var(--space-xl); text-align: center; color: var(--color-text-muted); }
 .report-detail-not-found a { font-weight: 600; }
@@ -3201,6 +3881,12 @@ ul.scam-cards-grid {
 }
 .admin-copy-id-btn:hover { color: var(--color-accent); border-color: var(--color-accent); background: var(--color-bg); }
 .admin-copy-id-icon { width: 0.9rem; height: 0.9rem; }
+.admin-report-has-links {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-calm);
+}
+.admin-report-has-links-icon { width: 0.95rem; height: 0.95rem; }
 .admin-table-actions { white-space: nowrap; }
 .admin-table-actions .report-scam-submit {
   padding: var(--space-sm) var(--space-md);

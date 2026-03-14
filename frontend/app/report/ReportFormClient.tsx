@@ -6,10 +6,10 @@ import {
   createReport,
   REPORT_TYPE_LABELS,
   REPORT_TYPE_DETAIL_LABELS,
-  REPORT_TYPE_DETAIL_SCAMMER_HINT,
   REPORT_TYPE_ICONS,
   LOST_MONEY_RANGE_OPTIONS,
   LOST_MONEY_RANGE_LABELS,
+  MAX_EXTERNAL_EVIDENCE_LINKS,
   type ReportCreatePayload,
   type ReportType,
   type LostMoneyRange,
@@ -24,6 +24,18 @@ const CATEGORY_OPTIONS: { value: ScamCategoryId; label: string }[] = (
 
 const NARRATIVE_MAX_LENGTH = 3000;
 
+/** Returns true if the string is a non-empty valid URL (http/https). */
+function isValidEvidenceUrl(s: string): boolean {
+  const trimmed = s.trim();
+  if (!trimmed) return false;
+  try {
+    const u = new URL(trimmed);
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
 export function ReportFormClient() {
   const [countryOrigin, setCountryOrigin] = useState('');
   const [countryAutoSelected, setCountryAutoSelected] = useState(false);
@@ -32,6 +44,7 @@ export function ReportFormClient() {
   const [category, setCategory] = useState<ScamCategoryId | ''>('');
   const [lostMoneyRange, setLostMoneyRange] = useState<LostMoneyRange>('none');
   const [narrative, setNarrative] = useState('');
+  const [externalEvidenceLinks, setExternalEvidenceLinks] = useState<string[]>(['']);
   const [consentShareSocial, setConsentShareSocial] = useState(false);
   const [showFacebookConsentControl, setShowFacebookConsentControl] = useState<boolean | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -58,10 +71,35 @@ export function ReportFormClient() {
       setShowPreview(false);
       return;
     }
+    if (!category) {
+      setError('Please select a scam category.');
+      setShowPreview(false);
+      return;
+    }
     if (!narrative.trim()) {
       setError('Please describe what happened.');
       setShowPreview(false);
       return;
+    }
+    const evidenceLinks = externalEvidenceLinks
+      .map((s) => s.trim())
+      .filter(Boolean);
+    for (const u of evidenceLinks) {
+      if (!isValidEvidenceUrl(u)) {
+        setError('Please enter a valid URL for each link (e.g. https://...).');
+        setShowPreview(false);
+        return;
+      }
+    }
+    const seen = new Set<string>();
+    for (const u of evidenceLinks) {
+      const key = u.toLowerCase();
+      if (seen.has(key)) {
+        setError('Duplicate links are not allowed. Each link can only be added once.');
+        setShowPreview(false);
+        return;
+      }
+      seen.add(key);
     }
     setSubmitting(true);
     try {
@@ -69,10 +107,11 @@ export function ReportFormClient() {
         country_origin: countryOrigin.trim(),
         report_type: reportType,
         report_type_detail: reportTypeDetail.trim() || null,
-        category: category || null,
+        category: category as ScamCategoryId,
         lost_money_range: lostMoneyRange,
         narrative: narrative.trim(),
         consent_share_social: showFacebookConsentControl === true ? consentShareSocial : false,
+        external_evidence_links: evidenceLinks.length > 0 ? evidenceLinks : null,
       };
       const report = await createReport(payload);
       const params = new URLSearchParams({ id: report.id });
@@ -91,9 +130,31 @@ export function ReportFormClient() {
       setError('Please select the country of scam origin.');
       return;
     }
+    if (!category) {
+      setError('Please select a scam category.');
+      return;
+    }
     if (!narrative.trim()) {
       setError('Please describe what happened.');
       return;
+    }
+    const evidenceLinks = externalEvidenceLinks
+      .map((s) => s.trim())
+      .filter(Boolean);
+    for (const u of evidenceLinks) {
+      if (!isValidEvidenceUrl(u)) {
+        setError('Please enter a valid URL for each link (e.g. https://...).');
+        return;
+      }
+    }
+    const seen = new Set<string>();
+    for (const u of evidenceLinks) {
+      const key = u.toLowerCase();
+      if (seen.has(key)) {
+        setError('Duplicate links are not allowed. Each link can only be added once.');
+        return;
+      }
+      seen.add(key);
     }
     setShowPreview(true);
   }
@@ -130,7 +191,7 @@ export function ReportFormClient() {
             </div>
             {reportTypeDetail.trim() && (
               <div className="report-detail-meta-row">
-                <dt className="report-detail-meta-label">{REPORT_TYPE_DETAIL_LABELS[reportType].label}</dt>
+                <dt className="report-detail-meta-label">Scammer&apos;s {REPORT_TYPE_DETAIL_LABELS[reportType].label}</dt>
                 <dd className="report-detail-meta-value">{reportTypeDetail.trim()}</dd>
               </div>
             )}
@@ -142,6 +203,20 @@ export function ReportFormClient() {
               <dt className="report-detail-meta-label">What happened?</dt>
               <dd className="report-detail-meta-value report-preview-narrative">{narrative.trim()}</dd>
             </div>
+            {externalEvidenceLinks.some((s) => s.trim()) && (
+              <div className="report-detail-meta-row">
+                <dt className="report-detail-meta-label">External evidence links</dt>
+                <dd className="report-detail-meta-value">
+                  <ul className="report-preview-evidence-links">
+                    {externalEvidenceLinks.filter((s) => s.trim()).map((url, i) => (
+                      <li key={i}>
+                        <a href={url.trim()} target="_blank" rel="noopener noreferrer">{url.trim()}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )}
             {showFacebookConsentControl === true && (
             <div className="report-detail-meta-row">
               <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook, X)</dt>
@@ -200,11 +275,14 @@ export function ReportFormClient() {
       </div>
 
       <div className="form-group">
-        <label htmlFor="category">Scam category (optional)</label>
+        <label htmlFor="category">
+          Scam category <span className="required">*</span>
+        </label>
         <select
           id="category"
           value={category}
           onChange={(e) => setCategory((e.target.value || '') as ScamCategoryId | '')}
+          required
           disabled={submitting}
           className="form-control"
         >
@@ -239,11 +317,8 @@ export function ReportFormClient() {
 
       <div className="form-group">
         <label htmlFor="report_type_detail">
-          {REPORT_TYPE_DETAIL_LABELS[reportType].label} <span className="form-optional">(optional)</span>
+          Scammer&apos;s {REPORT_TYPE_DETAIL_LABELS[reportType].label} <span className="form-optional">(optional)</span>
         </label>
-        <p className="form-hint form-hint-scammer" id="report_type_detail_scammer_hint" role="note">
-          {REPORT_TYPE_DETAIL_SCAMMER_HINT[reportType]}
-        </p>
         <input
           id="report_type_detail"
           type={reportType === 'website' ? 'url' : 'text'}
@@ -254,7 +329,6 @@ export function ReportFormClient() {
           maxLength={2000}
           disabled={submitting}
           className="form-control"
-          aria-describedby="report_type_detail_scammer_hint"
         />
       </div>
 
@@ -273,6 +347,76 @@ export function ReportFormClient() {
             </option>
           ))}
         </select>
+      </div>
+
+      <div className="form-group">
+        <label id="external_evidence_label">
+          External evidence link <span className="form-optional">(optional)</span>
+        </label>
+        <p className="form-hint">Add links to evidence (e.g. screenshots, articles). You can add up to {MAX_EXTERNAL_EVIDENCE_LINKS} links.</p>
+        <div className="report-evidence-links-wrap" aria-labelledby="external_evidence_label">
+          {externalEvidenceLinks.map((value, index) => {
+            const trimmed = value.trim();
+            const showUrlError = trimmed.length > 0 && !isValidEvidenceUrl(value);
+            return (
+              <div key={index} className="report-evidence-link-row">
+                <div className="report-evidence-link-input-wrap">
+                  <input
+                    id={index === 0 ? 'external_evidence_0' : `external_evidence_${index}`}
+                    type="url"
+                    value={value}
+                    onChange={(e) => {
+                      const next = [...externalEvidenceLinks];
+                      next[index] = e.target.value;
+                      setExternalEvidenceLinks(next);
+                    }}
+                    placeholder="https://..."
+                    disabled={submitting}
+                    className={`form-control report-evidence-link-input ${showUrlError ? 'report-evidence-link-input-invalid' : ''}`}
+                    aria-label={`External evidence link ${index + 1}`}
+                    aria-invalid={showUrlError}
+                    aria-describedby={showUrlError ? `external_evidence_error_${index}` : undefined}
+                  />
+                  {showUrlError && (
+                    <p id={`external_evidence_error_${index}`} className="report-evidence-link-error" role="alert">
+                      Please enter a valid URL (e.g. https://...).
+                    </p>
+                  )}
+                </div>
+                {externalEvidenceLinks.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => setExternalEvidenceLinks((prev) => prev.filter((_, i) => i !== index))}
+                    disabled={submitting}
+                    className="report-evidence-link-remove"
+                    aria-label={`Remove link ${index + 1}`}
+                    title="Remove this link"
+                  >
+                    <svg className="report-evidence-link-remove-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                      <line x1="10" y1="11" x2="10" y2="17" />
+                      <line x1="14" y1="11" x2="14" y2="17" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        {externalEvidenceLinks.length < MAX_EXTERNAL_EVIDENCE_LINKS && (
+          <button
+            type="button"
+            onClick={() => setExternalEvidenceLinks((prev) => [...prev, ''])}
+            disabled={submitting || !isValidEvidenceUrl(externalEvidenceLinks[externalEvidenceLinks.length - 1] ?? '')}
+            className="report-evidence-link-add"
+            title="Add another link (enter a valid URL above first)"
+          >
+            <span>Add another link</span>
+            <svg className="report-evidence-link-add-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+        )}
       </div>
 
       <div className="form-group">

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://scamenger.com/sitemap-index.xml
+Sitemap: https://scamenger.com/sitemap.xml

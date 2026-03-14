@@ -8,9 +8,11 @@ import { getReportById } from '@/data/reports/api';
 import { REPORT_TYPE_LABELS, LOST_MONEY_RANGE_LABELS, REPORT_TYPE_DETAIL_SHORT_LABELS, REPORT_TYPE_ICONS, type ReportType } from '@/data/reports/api';
 import type { ReportResponseDto, GetReportByIdResponse } from '@/data/reports/api';
 import type { LostMoneyRange } from '@/data/reports/api';
+import { COUNTRY_OPTIONS } from '@/data/reports/countries';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
 import { DidThisHelpVote } from './DidThisHelpVote';
 import { RateReportForm } from './RateReportForm';
+import { ReportShareButtons } from '@/components/ReportShareButtons';
 import { supabase } from '@/lib/supabase';
 
 function formatDate(iso: string): string {
@@ -97,6 +99,10 @@ function ReportDetailInner() {
     });
   }, [reportId]);
 
+  const handlePrint = useCallback(() => {
+    if (typeof window !== 'undefined') window.print();
+  }, []);
+
   const handleRated = useCallback((updated: ReportResponseDto) => {
     setReport(updated);
   }, []);
@@ -149,13 +155,85 @@ function ReportDetailInner() {
   const showDetailRow = !!detailValue || isPending;
   const reportTypeLabel = REPORT_TYPE_LABELS[fullReport.report_type as ReportType] ?? fullReport.report_type;
   const categoryLabel = fullReport.category ? (SCAM_CATEGORY_LABELS[fullReport.category as keyof typeof SCAM_CATEGORY_LABELS] ?? fullReport.category) : null;
+  const countryOriginLabel = COUNTRY_OPTIONS.find((o) => o.value === fullReport.country_origin)?.label ?? fullReport.country_origin;
   const detailLabel =
     REPORT_TYPE_DETAIL_SHORT_LABELS[fullReport.report_type as ReportType] ?? fullReport.report_type;
   const isUrl = !!detailValue && /^https?:\/\//i.test(detailValue);
   const similarCount = typeof fullReport.similar_count === 'number' ? fullReport.similar_count : 0;
+  const shareContentText = (() => {
+    const lines: string[] = ['Scam report – Scam Avenger', ''];
+    lines.push(`Report ID: ${fullReport.id}`);
+    lines.push(`Country of origin: ${countryOriginLabel}`);
+    lines.push(`Type: ${reportTypeLabel}`);
+    if (categoryLabel) lines.push(`Category: ${categoryLabel}`);
+    lines.push(`Reported: ${formatDate(fullReport.created_at)}`);
+    if (fullReport.lost_money || fullReport.lost_money_range) {
+      const lostLabel = fullReport.lost_money_range && fullReport.lost_money_range !== 'none'
+        ? (LOST_MONEY_RANGE_LABELS[fullReport.lost_money_range as LostMoneyRange] ?? fullReport.lost_money_range)
+        : 'Lost money';
+      lines.push(`Amount lost: ${lostLabel}`);
+    }
+    if (fullReport.external_evidence_links && fullReport.external_evidence_links.length > 0) {
+      lines.push('External evidence links:');
+      fullReport.external_evidence_links.forEach((link) => lines.push(`  • ${link}`));
+    }
+    if (detailValue) {
+      lines.push(`Scammer's ${detailLabel}: ${detailValue}`);
+    }
+    if (fullReport.narrative) {
+      lines.push('', 'Description of the incident:', fullReport.narrative, '');
+    }
+    return lines.length > 2 ? lines.join('\n') : undefined;
+  })();
+  const shareContentTextFacebook = (() => {
+    if (!shareContentText) return undefined;
+    const lines: string[] = ['Scam report – Scam Avenger', ''];
+    lines.push(`Report ID: ${fullReport.id}`);
+    lines.push(`Country of origin: ${countryOriginLabel}`);
+    lines.push(`Type: ${reportTypeLabel}`);
+    if (categoryLabel) lines.push(`Category: ${categoryLabel}`);
+    lines.push(`Reported: ${formatDate(fullReport.created_at)}`);
+    if (fullReport.lost_money || fullReport.lost_money_range) {
+      const lostLabel = fullReport.lost_money_range && fullReport.lost_money_range !== 'none'
+        ? (LOST_MONEY_RANGE_LABELS[fullReport.lost_money_range as LostMoneyRange] ?? fullReport.lost_money_range)
+        : 'Lost money';
+      lines.push(`Amount lost: ${lostLabel}`);
+    }
+    if (fullReport.external_evidence_links && fullReport.external_evidence_links.length > 0) {
+      lines.push('External evidence links: Visit Scamenger website to view links.');
+    }
+    if (detailValue) {
+      if (isUrl) {
+        lines.push(`Scammer's ${detailLabel}: Visit Scamenger website to view link.`);
+      } else {
+        lines.push(`Scammer's ${detailLabel}: ${detailValue}`);
+      }
+    }
+    if (fullReport.narrative) {
+      lines.push('', 'Description of the incident:', fullReport.narrative, '');
+    }
+    lines.push('', 'Visit Scamenger website to view full report and links.');
+    return lines.join('\n');
+  })();
 
   return (
     <article className="report-detail-card">
+      <div className="report-detail-actions-row">
+        <button
+          type="button"
+          onClick={handlePrint}
+          className="report-detail-print-btn"
+          aria-label="Print report"
+          title="Print report"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M6 9V2h12v7" />
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <path d="M6 14h12v8H6z" />
+          </svg>
+          Print
+        </button>
+      </div>
       {isPending && (
         <p className="report-detail-status-pending" role="status">
           Status: Waiting for approval. Hidden until approved. {fullReport.message ?? 'It may take up to 48 hours.'}
@@ -168,7 +246,7 @@ function ReportDetailInner() {
       )}
       {!isPending && similarCount > 0 && (
         <p className="report-detail-similar" role="status">
-          <strong>{similarCount} other {similarCount === 1 ? 'user has' : 'users have'} reported this same {detailLabel.toLowerCase()}.</strong>
+          <strong>{similarCount} other {similarCount === 1 ? 'user has' : 'users have'} reported this same scammer&apos;s {detailLabel.toLowerCase()}.</strong>
         </p>
       )}
       {viewToken && (
@@ -187,8 +265,14 @@ function ReportDetailInner() {
         <h2 className="report-detail-section-title">Report details</h2>
         <dl className="report-detail-meta">
           <div className="report-detail-meta-row">
+            <dt className="report-detail-meta-label">Report ID</dt>
+            <dd className="report-detail-meta-value">
+              <code className="report-detail-id-value">{fullReport.id}</code>
+            </dd>
+          </div>
+          <div className="report-detail-meta-row">
             <dt className="report-detail-meta-label">Country of origin</dt>
-            <dd className="report-detail-meta-value">{fullReport.country_origin}</dd>
+            <dd className="report-detail-meta-value">{countryOriginLabel}</dd>
           </div>
           <div className="report-detail-meta-row">
             <dt className="report-detail-meta-label">Type</dt>
@@ -219,13 +303,23 @@ function ReportDetailInner() {
               </dd>
             </div>
           )}
-          <div className="report-detail-meta-row">
-            <dt className="report-detail-meta-label">Consent share on social (e.g. Facebook, X)</dt>
-            <dd className="report-detail-meta-value">{fullReport.consent_share_social ? 'Yes' : 'No'}</dd>
-          </div>
+          {fullReport.external_evidence_links && fullReport.external_evidence_links.length > 0 && (
+            <div className="report-detail-meta-row">
+              <dt className="report-detail-meta-label">External evidence links</dt>
+              <dd className="report-detail-meta-value">
+                <ul className="report-detail-evidence-links">
+                  {fullReport.external_evidence_links.map((url, i) => (
+                    <li key={i}>
+                      <a href={url} target="_blank" rel="noopener noreferrer" className="report-detail-type-detail-link">{url}</a>
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          )}
           {showDetailRow && (
             <div className="report-detail-meta-row">
-              <dt className="report-detail-meta-label">{detailLabel}</dt>
+              <dt className="report-detail-meta-label">Scammer&apos;s {detailLabel}</dt>
               <dd className="report-detail-meta-value">
                 {detailValue ? (
                   isUrl ? (
@@ -288,6 +382,12 @@ function ReportDetailInner() {
             <button type="button" onClick={handleCopyPublicUrl} disabled={!publicReportUrl} className="report-detail-copy-btn" aria-label="Copy public report URL">
               {copied ? 'Copied!' : 'Copy public link'}
             </button>
+            {publicReportUrl && (
+              <>
+                <p className="report-detail-share-to" aria-hidden="true">Share to</p>
+                <ReportShareButtons url={publicReportUrl} contentText={shareContentText} contentTextFacebook={shareContentTextFacebook} />
+              </>
+            )}
           </>
         ) : (
           <>
@@ -309,6 +409,12 @@ function ReportDetailInner() {
         >
           {copied ? 'Copied!' : 'Copy URL'}
         </button>
+        {fullReportUrl && (
+          <>
+            <p className="report-detail-share-to" aria-hidden="true">Share to</p>
+            <ReportShareButtons url={fullReportUrl} contentText={shareContentText} contentTextFacebook={shareContentTextFacebook} />
+          </>
+        )}
         {fullReportUrl && (
           <>
             <p className="report-detail-share-or" aria-hidden="true">OR</p>

@@ -29,6 +29,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: 'Scam Avenger',
   title: {
     default: siteTitle,
     template: '%s | Scam Avenger',
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   icons: {
-    icon: '/icon.png',
+    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }, '/icon.png'],
     apple: '/apple-icon.png',
   },
   manifest: '/manifest.json',
@@ -131,6 +132,7 @@ export default function RootLayout({
                   '@type': 'Organization',
                   '@id': `${siteUrl}/#organization`,
                   name: 'Scam Avenger',
+                  alternateName: 'Scamenger',
                   url: siteUrl,
                   logo: { '@type': 'ImageObject', url: `${siteUrl}/icon.png` },
                   description: siteDescription,

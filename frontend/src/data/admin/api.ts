@@ -29,6 +29,8 @@ export interface AdminReportDto {
   facebook_post_id?: string | null;
   facebook_posted_at?: string | null;
   facebook_permalink?: string | null;
+  /** Optional list of up to 5 external evidence URLs submitted with the report. */
+  external_evidence_links?: string[];
 }
 
 /** Paginated list response from GET /z7k2m9/reports */

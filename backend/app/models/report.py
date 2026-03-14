@@ -2,7 +2,7 @@
 from datetime import datetime
 from typing import Literal, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 ReportType = Literal[
     "website",
@@ -39,6 +39,24 @@ class ReportCreate(BaseModel):
     narrative: str = Field(..., min_length=1, max_length=3_000)
     consent_share_authorities: bool = False
     consent_share_social: bool = False
+    external_evidence_links: Optional[list[str]] = None
+
+    @field_validator("external_evidence_links", mode="before")
+    @classmethod
+    def validate_evidence_links(cls, v: object) -> list[str]:
+        if v is None:
+            return []
+        if not isinstance(v, list):
+            return []
+        out = []
+        for i, item in enumerate(v[:5]):
+            if item is None or not str(item).strip():
+                continue
+            s = str(item).strip()
+            if len(s) > 2048:
+                raise ValueError(f"External evidence link {i + 1} must be at most 2048 characters")
+            out.append(s)
+        return out
 
 
 class RatePayload(BaseModel):
@@ -93,6 +111,8 @@ class ReportResponse(BaseModel):
     similar_count: Optional[int] = None
     # Present when GET is authenticated and user has rated; allows pre-fill and update.
     user_rating: Optional[RatePayload] = None
+    # Optional list of up to 5 external evidence URLs submitted with the report.
+    external_evidence_links: list[str] = []
 
 
 ReportStatus = Literal["pending", "approved", "rejected"]

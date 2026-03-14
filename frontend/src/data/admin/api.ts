@@ -137,6 +137,28 @@ export async function getApprovedStats(token: string): Promise<AdminApprovedStat
 }
 
 /**
+ * Export newsletter subscribers as CSV (admin). Triggers a file download. Requires Bearer token.
+ * Use the CSV in your email provider (Resend, Mailchimp, etc.); include unsubscribe link using the unsubscribe_token column.
+ */
+export async function exportNewsletterSubscribers(token: string): Promise<void> {
+  const res = await fetch(`${API_BASE}/z7k2m9/newsletter/export`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (res.status === 401) throw new Error('Unauthorized');
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }));
+    throw new Error(err.detail || 'Export failed');
+  }
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'newsletter-subscribers.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+/**
  * Approve a report (admin). Requires Bearer token.
  */
 export async function approveReport(

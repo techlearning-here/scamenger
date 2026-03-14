@@ -101,8 +101,35 @@ public.report_raters  ──── N : 1 ────► public.reports
 
 ---
 
-## 4. Migration order
+## 4. `public.newsletter_subscribers` (newsletter signup — 15n3)
 
-1. **001_schema.sql** — Creates `reports` table (with report_type_detail, lost_money_range, full report_type CHECK) and RLS; creates `report_raters` table and RLS. Requires Supabase Auth enabled.
+Stores newsletter signups from `/newsletter/` and `POST /api/newsletter/subscribe`. Created in **001_full_schema.sql** (combined migration).
+
+| Column | Type | Nullable | Default | Description |
+|--------|------|----------|---------|-------------|
+| `id` | UUID | NO | `gen_random_uuid()` | Primary key |
+| `email` | TEXT | NO | — | Subscriber email (unique, lowercased by API) |
+| `name` | TEXT | YES | — | Optional name |
+| `unsubscribe_token` | TEXT | YES | — | Unique token for one-click unsubscribe link (e.g. /newsletter/unsubscribe?token=...) |
+| `consent_at` | TIMESTAMPTZ | NO | `now()` | When consent checkbox was checked (GDPR) |
+| `status` | TEXT | NO | `'subscribed'` | `subscribed`, `unsubscribed`, or `pending` (double opt-in) |
+| `topic` | TEXT | YES | `'all'` | 15n6: What to receive — `alerts`, `guides`, `digest`, `all` |
+| `frequency` | TEXT | YES | `'weekly'` | 15n6: How often — `weekly`, `monthly`, `important_only` |
+| `created_at` | TIMESTAMPTZ | NO | `now()` | When row was created |
+| `updated_at` | TIMESTAMPTZ | NO | `now()` | Last update |
+
+**RLS**
+
+- INSERT: anonymous (signup form).
+- SELECT/UPDATE: service role only (for admin or unsubscribe flow).
+
+Duplicate email on insert returns success to the user without leaking existence (API treats unique violation as “already subscribed”).
+
+---
+
+## 5. Migration order
+
+1. **001_full_schema.sql** — Reports, report_raters, etc. Requires Supabase Auth enabled.
+2. **001_full_schema.sql** — Single combined migration: reports, report_raters, report_helpful_votes, contact_messages, site_settings, and newsletter_subscribers (with topic/frequency).
 
 Run in Supabase SQL Editor (or via Supabase CLI).

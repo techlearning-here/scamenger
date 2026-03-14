@@ -1,8 +1,11 @@
 """Admin API: login and report moderation."""
+import csv
+import io
 from datetime import datetime, timezone
 from typing import Any, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import Response
 
 from app.auth.admin import (
     AdminLoginPayload,
@@ -328,6 +331,67 @@ def list_reports(
         total=total,
         page=page,
         page_size=page_size,
+    )
+
+
+@router.get("/newsletter/export")
+def export_newsletter_subscribers(
+    _admin: str = Depends(get_admin_from_token),
+) -> Response:
+    """Export subscribed newsletter subscribers as CSV. Admin only. For use with provider UI (Resend, Mailchimp, etc.)."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Service unavailable")
+    try:
+        result = (
+            sb.table("newsletter_subscribers")
+            .select("email,name,unsubscribe_token,topic,frequency,consent_at,created_at")
+            .eq("status", "subscribed")
+            .order("created_at", desc=True)
+            .execute()
+        )
+    except Exception as e:
+        if "topic" in str(e) or "frequency" in str(e):
+            result = (
+                sb.table("newsletter_subscribers")
+                .select("email,name,unsubscribe_token,consent_at,created_at")
+                .eq("status", "subscribed")
+                .order("created_at", desc=True)
+                .execute()
+            )
+        else:
+            raise HTTPException(status_code=503, detail="Service unavailable") from e
+    rows = result.data or []
+    buf = io.StringIO()
+    has_topic_freq = rows and ("topic" in (rows[0] or {}))
+    writer = csv.writer(buf)
+    if has_topic_freq:
+        writer.writerow(["email", "name", "unsubscribe_token", "topic", "frequency", "consent_at", "created_at"])
+        for r in rows:
+            writer.writerow([
+                r.get("email") or "",
+                r.get("name") or "",
+                r.get("unsubscribe_token") or "",
+                r.get("topic") or "",
+                r.get("frequency") or "",
+                r.get("consent_at") or "",
+                r.get("created_at") or "",
+            ])
+    else:
+        writer.writerow(["email", "name", "unsubscribe_token", "consent_at", "created_at"])
+        for r in rows:
+            writer.writerow([
+                r.get("email") or "",
+                r.get("name") or "",
+                r.get("unsubscribe_token") or "",
+                r.get("consent_at") or "",
+                r.get("created_at") or "",
+            ])
+    csv_content = buf.getvalue()
+    return Response(
+        content=csv_content,
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=newsletter-subscribers.csv"},
     )
 
 

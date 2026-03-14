@@ -26,6 +26,7 @@ const STATIC_PATHS: { path: string; priority: number; changeFreq: 'weekly' | 'mo
   { path: '/stories/', priority: 0.9, changeFreq: 'weekly' },
   { path: '/about/', priority: 0.85, changeFreq: 'monthly' },
   { path: '/contact/', priority: 0.85, changeFreq: 'monthly' },
+  { path: '/newsletter/', priority: 0.85, changeFreq: 'monthly' },
   { path: '/news/', priority: 0.9, changeFreq: 'weekly' },
   { path: '/reports/', priority: 0.8, changeFreq: 'weekly' },
   { path: '/privacy/', priority: 0.5, changeFreq: 'monthly' },

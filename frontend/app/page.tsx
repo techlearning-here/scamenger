@@ -4,6 +4,7 @@ import { getUsScamTypes, SCAM_CATEGORY_LABELS } from '@/data/us-scams';
 import type { ScamCategoryId } from '@/data/scams/types';
 import { ScamCard } from '@/components/ScamCard';
 import { CountryTopicsClient } from './CountryTopicsClient';
+import { NewsletterCtaButton } from './NewsletterCtaButton';
 
 const categoryOrder: ScamCategoryId[] = [
   'online', 'phone', 'financial', 'impersonation', 'employment', 'housing',
@@ -158,6 +159,12 @@ export default function HomePage() {
             />
           ))}
         </ul>
+      </section>
+
+      <section className="newsletter_cta_block" aria-labelledby="newsletter-cta-heading">
+        <h2 id="newsletter-cta-heading" className="newsletter_cta_heading">Get scam alerts and new guides</h2>
+        <p className="newsletter_cta_text">Stay updated with practical tips and new guides. No spam; unsubscribe anytime.</p>
+        <NewsletterCtaButton />
       </section>
 
       <CountryTopicsClient usScamTopics={usScamTopics} />

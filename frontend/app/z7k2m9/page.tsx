@@ -16,6 +16,7 @@ import {
   listContactMessages,
   getContactMessage,
   deleteContactMessage,
+  exportNewsletterSubscribers,
   type AdminReportDto,
   type AdminApprovedStatsResponse,
   type SiteSettingsDto,
@@ -75,7 +76,7 @@ export default function AdminDashboardPage() {
   const [draftShowReportScam, setDraftShowReportScam] = useState(true);
   const [draftShowFacebookConsent, setDraftShowFacebookConsent] = useState(true);
   const [searchReportId, setSearchReportId] = useState('');
-  type AdminTab = 'overview' | 'search' | 'messages' | 'settings' | 'pending' | 'rejected' | 'approved';
+  type AdminTab = 'overview' | 'search' | 'messages' | 'newsletter' | 'settings' | 'pending' | 'rejected' | 'approved';
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
   const [messages, setMessages] = useState<ContactMessageDto[]>([]);
   const [messagesTotal, setMessagesTotal] = useState(0);
@@ -86,6 +87,8 @@ export default function AdminDashboardPage() {
   const [messageActionId, setMessageActionId] = useState<string | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [newsletterExporting, setNewsletterExporting] = useState(false);
+  const [newsletterExportError, setNewsletterExportError] = useState<string | null>(null);
 
   async function copyReportIdToClipboard(id: string) {
     try {
@@ -372,6 +375,17 @@ export default function AdminDashboardPage() {
           <button
             type="button"
             role="tab"
+            aria-selected={activeTab === 'newsletter'}
+            aria-controls="admin-panel-newsletter"
+            id="admin-tab-newsletter"
+            className={`admin-tabs-nav-item ${activeTab === 'newsletter' ? 'admin-tabs-nav-item-active' : ''}`}
+            onClick={() => setActiveTab('newsletter')}
+          >
+            Newsletter
+          </button>
+          <button
+            type="button"
+            role="tab"
             aria-selected={activeTab === 'settings'}
             aria-controls="admin-panel-settings"
             id="admin-tab-settings"
@@ -541,6 +555,41 @@ export default function AdminDashboardPage() {
                   </button>
                 </form>
                 <p id="admin-search-report-desc" className="admin-search-report-desc">Enter a report ID to view, edit, or delete that report.</p>
+              </section>
+            </div>
+          )}
+          {activeTab === 'newsletter' && (
+            <div id="admin-panel-newsletter" role="tabpanel" aria-labelledby="admin-tab-newsletter" className="admin-tabs-panel">
+              <section className="admin-section" aria-labelledby="admin-newsletter-heading">
+                <h2 id="admin-newsletter-heading" className="admin-section-title">Newsletter</h2>
+                <p className="admin-newsletter-desc">
+                  Export subscribed emails to send via your email provider (Resend, Mailchimp, etc.). Include an unsubscribe link in every email: <code className="admin-code">/newsletter/unsubscribe?token=&#123;unsubscribe_token&#125;</code>
+                </p>
+                {newsletterExportError && (
+                  <div className="report-scam-error" role="alert">{newsletterExportError}</div>
+                )}
+                <button
+                  type="button"
+                  className="report-scam-submit admin-newsletter-export-btn"
+                  disabled={newsletterExporting}
+                  onClick={async () => {
+                    if (!token) return;
+                    setNewsletterExportError(null);
+                    setNewsletterExporting(true);
+                    try {
+                      await exportNewsletterSubscribers(token);
+                    } catch (e) {
+                      setNewsletterExportError(e instanceof Error ? e.message : 'Export failed');
+                    } finally {
+                      setNewsletterExporting(false);
+                    }
+                  }}
+                >
+                  {newsletterExporting ? 'Exporting…' : 'Export subscribers (CSV)'}
+                </button>
+                <p className="admin-newsletter-doc">
+                  See <strong>docs/NEWSLETTER_SENDING.md</strong> in the repo for how to compose and send.
+                </p>
               </section>
             </div>
           )}

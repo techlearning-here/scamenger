@@ -12,7 +12,7 @@ User-reported scams with shareable links; **anyone can submit a report without s
 |---|---------|-------------|--------|
 | **P0** | **Report scams + shareable URL** | User submits a report **without creating an account or signing in** and receives a unique URL (e.g. `/reports/{report-id}`). Each report captures **country of scam origin** (where the scam appears to originate or primarily targets). They can share this link so others can find and reference the report. | Done |
 | **P0** | **Authenticated view + ratings** | Only authenticated users can open a report and rate it. Ratings use **1–5 stars** on four dimensions: **Credibility** (believable/accurate?), **Usefulness** (helpful to others?), **Completeness** (information complete?), **Relevance** (e.g. "This happened to me too" = 5, "Not relevant" = 1). One rating per user per report. Ratings help surface fraudulent or low-quality reports and improve trust. See **docs/ReportRatingCategories.md**. | Done |
-| **P0** | **Aggregated public trends** | Public-facing dashboard or pages show **aggregated** data only: no specifics, no victim descriptions, no PII. Show trends (e.g. scam types over time, **regions/countries of origin**, categories) to inform the community and authorities without exposing individual reports. | Partial |
+| **P0** | **Aggregated public trends** | Public-facing dashboard or pages show **aggregated** data only: no specifics, no victim descriptions, no PII. Show trends (e.g. scam types over time, **regions/countries of origin**, categories) to inform the community and authorities without exposing individual reports. | Partial (GET /reports/stats public API available; stats not shown to end users on site per product decision) |
 | **P0** | **Stack** | **Supabase** — reports, users, ratings, and analytics tables. **Backend** — hosted on **Render** (API/serverless for auth, report creation, aggregation). **Frontend** — **Next.js** app hosted on **Vercel**. | Done |
 
 ---
@@ -57,11 +57,26 @@ User-reported scams with shareable links; **anyone can submit a report without s
 |---|---------|-------------|--------|
 | 11 | **Community scam reports feed** | User-submitted reports in a **Reddit-style feed**: recent scams, upvotes, warnings. Browse and submit; builds SEO content organically. | Partial |
 | 12 | **Report scams form** | "Seen something suspicious? Share to protect!" — form to submit scam details: **country of scam origin** (required), report type (website, phone, crypto address, or IBAN; "+ Add more" for multiple), scam category + subcategory dropdowns, "Lost money?" option, free-text narrative ("How did you get in contact? What happened next?"), and optional consent to share the report with police and crime-fighting agencies. Feeds into the community reports feed (#11). | Done |
-| 13 | **Live stats dashboard** | Public metrics (e.g. "X reports, Y scam types, Z visits") to build authority. | Partial |
+| 13 | **Live stats dashboard** | Public metrics (e.g. "X reports, Y scam types, Z visits") to build authority. | Partial (GET /reports/stats API available; not shown to end users on site) |
 | 14 | **Press / review badges** | Press logos (e.g. Time, Yahoo Finance) and links to Trustpilot, SiteJabber, Google Reviews for credibility. | Planned |
 | 15 | **Newsletter signup** | Email list for recurring traffic and monetizable audience. | Planned |
 | 15b | **Real-time scam alerts & newsletter** | Trending scams ticker on site; email alerts for new scam types in user's region. Drives recurring traffic. | Missing |
 | 15c | **Scam alert subscription** | Users **follow specific scam types** (e.g. romance, crypto) and get **email/push alerts** when new reports or trends match. Recurring engagement + email list for monetization. *From newfeature3.* | Missing |
+
+### 4a. Newsletter support (detailed)
+
+Newsletter support: collect emails with consent, send digests or alerts, and grow a monetizable audience. Build in order below.
+
+| # | Feature | Description | Status |
+|---|---------|-------------|--------|
+| 15n1 | **Newsletter signup form** | **Signup UI**: Email field + optional name; clear CTA (e.g. "Get scam alerts"). Place in **footer** on every page and optionally on a dedicated **/newsletter/** or **/subscribe/** page. Mobile-friendly. | Done |
+| 15n2 | **Consent & privacy** | **GDPR/consent**: Checkbox or explicit "I agree to receive emails" (no pre-check). Link to **Privacy policy** (e.g. /privacy/) and state what they’ll get (e.g. "Weekly scam tips and new guides"). Optional: double opt-in (confirm via email link) for higher-quality list and compliance. | Done |
+| 15n3 | **Email storage & provider** | **Backend**: Store subscribed emails (Supabase table or provider’s list). Use an **email-sending provider** (e.g. Resend, Mailchimp, ConvertKit, Sendinblue) for delivery. API route or serverless function to accept signup and optionally send confirmation email. | Done (Supabase table; provider optional later) |
+| 15n4 | **Thank-you / confirmation** | After signup: show **thank-you message** (e.g. "You’re subscribed. Check your inbox to confirm.") or redirect to a thank-you page. If double opt-in, send a confirmation email with a link to confirm subscription. | Done (in-component thank-you message) |
+| 15n5 | **Unsubscribe** | **One-click unsubscribe**: Every email must include an unsubscribe link (required by law). Provider (Resend, Mailchimp, etc.) usually supplies this; or a link to a page on your site (e.g. /newsletter/unsubscribe?token=...) that calls the provider API to remove the email. | Done (/newsletter/unsubscribe?token=...; stores token in DB, page updates status) |
+| 15n6 | **Preference center (optional)** | Let subscribers choose **topic** (e.g. "Scam alerts", "New guides", "Weekly digest") and **frequency** (e.g. weekly, only important alerts). Stored per email; used when sending. Can be Phase 2. | Done (topic + frequency on /newsletter/ page; stored in DB) |
+| 15n7 | **Newsletter content** | **What to send**: (1) **Weekly or monthly digest** — new stories, top guides, "This week in scams." (2) **One-off alerts** — when you publish a high-impact guide or scam warning. (3) Later: **personalized alerts** (#15b/#15c) when report/trend data exists. | Done (decided; doc: **docs/NEWSLETTER_CONTENT.md** — content types, sources [static/code], checklists for digest vs alert, 15n6 preference mapping) |
+| 15n8 | **Admin / sending** | Ability to **compose and send** a newsletter (via provider’s UI or a simple admin screen that calls the provider API). Optional: schedule send, A/B test subject lines. Start with manual send; automate digests later. | Done (Admin → Newsletter tab: export subscribers CSV; **docs/NEWSLETTER_SENDING.md** for compose/send via Resend/Mailchimp; unsubscribe link required) |
 | 11b | **"Did this help?" voting** | Upvote/downvote on reports or guides. Social proof + content ranking for SEO. Complements ratings (#P0). *From newfeature3.* | Done |
 | 13b | **Scam heatmap** | **Visual map** showing scam density by region. Viral shareable content; strong for press coverage. *From newfeature3.* | Missing |
 | 11c | **Verified recovery stories** | Users post **outcomes** (e.g. "I got $500 back via chargeback"). Hope-driven engagement; unique differentiator. *From newfeature3.* | Missing |
@@ -251,7 +266,7 @@ Stories index at `/stories/` and per-story pages at `/stories/[slug]`. Real, ano
 | 34 | **Identity Restoration Checklist** | Step-by-step static guide for identity theft. |
 | 16 | **Scam alerts blog** | Content; SEO and traffic. |
 | 17 | **Global country guide** | Per-country content pages. |
-| 15 | **Newsletter signup** | Collect emails; no report data needed. |
+| 15 / **15n1–15n8** | **Newsletter support** | Signup form, consent, storage, provider (Resend/Mailchimp etc.), thank-you, unsubscribe, optional preference center and digest content. See **§4a Newsletter support**. No report data needed for basic signup + manual sends. |
 | 18 / 19 | **Warmer tone, Hero redesign** | Design and copy. |
 | 21 / 21b | **Breadcrumbs, Dark mode & mobile UX** | UX and accessibility. |
 | 22 / 22b | **Mobile-first, 48px touch targets** | Audit and fix; no data. |
@@ -271,7 +286,7 @@ Use the list above to pick the next feature to implement; revisit data-dependent
 |-------|--------|
 | **Top priority** | **Report scams platform (P0)** — Shareable report URLs (submit without signing in), authenticated view + ratings (fraud mitigation), aggregated public trends (no specifics). Stack: Supabase + backend (Render) + frontend (Next.js on Vercel). |
 | **Phase 1 (MVP)** | Unified scam checker (#1) + Report scams form (#12) + Community reports (#11) + Scam category cards (#7/#8) + Country guide (#17) |
-| **Phase 2** | Blog/alerts (#16) + Live stats (#13) + Newsletter (#15) + **Facebook — post approved reports (#27)** |
+| **Phase 2** | Blog/alerts (#16) + Live stats (#13) + **Newsletter (#15 / §4a: 15n1–15n8)** + **Facebook — post approved reports (#27)** |
 | **Phase 3** | B2B "Claim your site" (#24) + API (#25) + Mobile app (#26) |
 
 **Differentiator:** The "I got scammed → what do I do now?" guided wizard (#4) remains a unique angle in the space. **Post-scam recovery** (Section 10): highest-impact first = Emergency Action Checklist (#28) + Evidence Collection Wizard (#30) + Authority Router (#31).

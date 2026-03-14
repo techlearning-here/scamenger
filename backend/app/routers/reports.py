@@ -9,6 +9,8 @@ from app.auth.deps import get_current_user_id, get_current_user_id_optional
 from app.cache import get_report_cached, set_report_cached
 from app.db.supabase import get_supabase
 from app.models.report import (
+    AdminApprovedStatsCategory,
+    AdminApprovedStatsResponse,
     HelpfulCountsResponse,
     HelpfulVotePayload,
     RatePayload,
@@ -160,6 +162,32 @@ def create_report(
         message="This report is waiting for approval. It may take up to 48 hours.",
         submitter_view_token=view_token,
     )
+
+
+@router.get("/stats", response_model=AdminApprovedStatsResponse)
+def get_public_stats() -> AdminApprovedStatsResponse:
+    """Public aggregated stats: total approved reports and count by scam category. No PII."""
+    sb = get_supabase()
+    if not sb:
+        raise HTTPException(status_code=503, detail="Reports service unavailable")
+    try:
+        result = (
+            sb.table("reports")
+            .select("category")
+            .eq("status", "approved")
+            .limit(50_000)
+            .execute()
+        )
+    except Exception:
+        raise HTTPException(status_code=503, detail="Reports service unavailable") from None
+    data = result.data or []
+    total_approved = len(data)
+    counts: dict[str | None, int] = {}
+    for row in data:
+        cat = row.get("category") if row.get("category") else None
+        counts[cat] = counts.get(cat, 0) + 1
+    by_category = [AdminApprovedStatsCategory(category=k, count=v) for k, v in sorted(counts.items(), key=lambda x: (-x[1], str(x[0] or "")))]
+    return AdminApprovedStatsResponse(total_approved=total_approved, by_category=by_category)
 
 
 @router.get(

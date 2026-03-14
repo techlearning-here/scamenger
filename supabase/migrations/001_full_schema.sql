@@ -1,6 +1,7 @@
 -- Scam Avenger: full schema (single combined migration).
 -- Run in Supabase SQL Editor or via Supabase CLI. Requires Supabase Auth for report_raters.
--- Includes: reports (with external_evidence_links), report_raters, report_helpful_votes, contact_messages, site_settings, and Facebook post tracking on reports.
+-- Includes: reports, report_raters, report_helpful_votes, contact_messages, site_settings,
+-- newsletter_subscribers (with topic/frequency), and Facebook post tracking on reports.
 
 -- =============================================================================
 -- REPORTS TABLE
@@ -188,6 +189,39 @@ ON CONFLICT (key) DO NOTHING;
 INSERT INTO public.site_settings (key, value)
 VALUES ('show_report_scam', 'true')
 ON CONFLICT (key) DO NOTHING;
+
+-- =============================================================================
+-- NEWSLETTER_SUBSCRIBERS TABLE (15n3, 15n6)
+-- =============================================================================
+
+CREATE TABLE IF NOT EXISTS public.newsletter_subscribers (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email TEXT NOT NULL UNIQUE,
+  name TEXT,
+  unsubscribe_token TEXT UNIQUE,
+  consent_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  status TEXT NOT NULL DEFAULT 'subscribed' CHECK (status IN ('subscribed', 'unsubscribed', 'pending')),
+  topic TEXT DEFAULT 'all' CHECK (topic IN ('alerts', 'guides', 'digest', 'all')),
+  frequency TEXT DEFAULT 'weekly' CHECK (frequency IN ('weekly', 'monthly', 'important_only')),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_newsletter_subscribers_email ON public.newsletter_subscribers (email);
+CREATE INDEX IF NOT EXISTS idx_newsletter_subscribers_unsubscribe_token ON public.newsletter_subscribers (unsubscribe_token) WHERE unsubscribe_token IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_newsletter_subscribers_status ON public.newsletter_subscribers (status) WHERE status = 'subscribed';
+
+ALTER TABLE public.newsletter_subscribers ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow anonymous insert" ON public.newsletter_subscribers
+  FOR INSERT WITH CHECK (true);
+
+COMMENT ON TABLE public.newsletter_subscribers IS 'Newsletter signups from /newsletter/; consent and email stored. status: subscribed (default), unsubscribed, pending (double opt-in).';
+COMMENT ON COLUMN public.newsletter_subscribers.consent_at IS 'When the user checked the consent checkbox (GDPR).';
+COMMENT ON COLUMN public.newsletter_subscribers.status IS 'subscribed = receive emails; unsubscribed = one-click opt-out; pending = double opt-in not yet confirmed.';
+COMMENT ON COLUMN public.newsletter_subscribers.unsubscribe_token IS 'Unique token for one-click unsubscribe link: /newsletter/unsubscribe?token=...';
+COMMENT ON COLUMN public.newsletter_subscribers.topic IS 'What to receive: alerts = scam alerts only, guides = new guides only, digest = weekly digest, all = everything.';
+COMMENT ON COLUMN public.newsletter_subscribers.frequency IS 'How often: weekly, monthly, or important_only (high-impact alerts only).';
 
 -- =============================================================================
 -- BACKFILL: report_type_detail_normalized (for existing data if any)

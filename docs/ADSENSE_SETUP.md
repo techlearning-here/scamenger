@@ -38,6 +38,27 @@ If AdSense instead shows a **google-site-verification** meta (different from the
 
 ---
 
+## Consent message (EEA, UK, Switzerland)
+
+Google asks you to create a consent message for users in the European Economic Area (EEA), UK, and Switzerland so you comply with GDPR/ePrivacy and avoid ad revenue loss.
+
+**What to choose in the Google form**
+
+| Option | Meaning | Recommendation |
+|--------|--------|-----------------|
+| **Use Google's CMP – two choices** | Message has “Consent” and “Manage options”. No explicit “Do not consent”. | Simpler; some regulators prefer an explicit reject. |
+| **Use Google's CMP – three choices** | Message has “Consent”, “Do not consent”, and “Manage options”. | **Recommended.** Clear reject option and better alignment with strict GDPR. |
+| **Certified CMP** | You use a third‑party CMP (e.g. OneTrust, Cookiebot) certified by Google. | Use only if you already have or want a separate CMP. |
+
+**Recommendation:** Choose **“Use Google's CMP to create a message with three choices (consent, do not consent and manage options)”**.
+
+After you create the message in AdSense (Privacy & Messaging / European regulations), Google serves it automatically to eligible visitors when your site has the AdSense script—no extra code in this app. You can edit the message text and which sites/languages it applies to in AdSense.
+
+- [Create a European regulations message (AdSense Help)](https://support.google.com/adsense/answer/10960768)
+- [Consent management requirements for EEA/UK/CH](https://support.google.com/adsense/answer/13790256)
+
+---
+
 ## 1. Get your Publisher ID (`NEXT_PUBLIC_ADSENSE_CLIENT`)
 
 The **publisher ID** (also called **client ID**) is the `ca-pub-XXXXXXXXXXXXXXXX` value. It is the same for your whole account.

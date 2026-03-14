@@ -180,6 +180,7 @@ export default function RootLayout({
                 </summary>
                 <nav className="footer_legal_collapse_nav" aria-label="Legal">
                   <Link href="/emotional-support/">Emotional support</Link>
+                  <Link href="/newsletter/">Newsletter</Link>
                   <Link href="/privacy/">Privacy Policy</Link>
                   <Link href="/terms/">Terms &amp; Conditions</Link>
                   <Link href="/disclaimer/">Disclaimer</Link>
@@ -190,6 +191,7 @@ export default function RootLayout({
             </div>
             <nav className="site_footer_legal footer_legal_desktop" aria-label="Legal">
               <Link href="/emotional-support/">Emotional support</Link>
+              <Link href="/newsletter/">Newsletter</Link>
               <Link href="/privacy/">Privacy Policy</Link>
               <Link href="/terms/">Terms &amp; Conditions</Link>
               <Link href="/disclaimer/">Disclaimer</Link>

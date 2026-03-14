@@ -19,6 +19,9 @@ const showGa = Boolean(gaMeasurementId);
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? '';
 const adsenseSlotMain = process.env.NEXT_PUBLIC_ADSENSE_SLOT_MAIN ?? '';
 const adsenseSlotTop = process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP ?? adsenseSlotMain;
+/** Load AdSense script when publisher ID is set (for verification and/or ads). */
+const loadAdsenseScript = Boolean(adsenseClient);
+/** Show ad slots only when we have both client and at least one slot. */
 const showAdsense = Boolean(adsenseClient && adsenseSlotMain);
 
 export const viewport: Viewport = {
@@ -90,8 +93,9 @@ export default function RootLayout({
         {adsenseClient ? (
           <meta name="google-adsense-account" content={adsenseClient} />
         ) : null}
-        {showAdsense && (
+        {loadAdsenseScript && (
           <Script
+            async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
             strategy="afterInteractive"
             crossOrigin="anonymous"

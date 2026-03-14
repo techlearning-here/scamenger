@@ -10,7 +10,7 @@ When AdSense asks you to **Select verification method**, you’ll see:
 
 | Method | What it is | Best for this project |
 |--------|------------|------------------------|
-| **AdSense code snippet** | A `<script>` tag that loads AdSense. | Use if you prefer one snippet for both verification and ads. Once you add `NEXT_PUBLIC_ADSENSE_CLIENT` and deploy, the app already injects this script, so verification may succeed without extra steps. |
+| **AdSense code snippet** | A `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXX" crossorigin="anonymous"></script>` in `<head>`. | **Recommended if meta tag fails.** Set only `NEXT_PUBLIC_ADSENSE_CLIENT` to your publisher ID and deploy. The app injects this script in the root layout, so verification can succeed before you add ad units. |
 | **Ads.txt snippet** | A line in a file at `https://yourdomain.com/ads.txt` that authorizes Google to sell ads on your site. | Use **after** verification if AdSense asks for it (often required for payment). See [Ads.txt](#4-ads-txt-optional-after-approval) below. |
 | **Meta tag** | A `<meta name="google-adsense-account" content="ca-pub-...">` in your site’s `<head>`. AdSense may also show a `google-site-verification` variant. | **Recommended.** This app outputs the **google-adsense-account** meta automatically when `NEXT_PUBLIC_ADSENSE_CLIENT` is set (your publisher ID). Set that env, deploy, then click **Verify** in AdSense. |
 

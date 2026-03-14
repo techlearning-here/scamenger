@@ -195,7 +195,28 @@ NEXT_PUBLIC_ADSENSE_SLOT_MID=3333333333
 
 ---
 
-## 8. Useful links
+## 8. Troubleshooting: “Couldn’t verify your site”
+
+If AdSense says it couldn’t verify your site:
+
+1. **Script in initial HTML**  
+   The AdSense script must be in the **first HTML** the server sends (so Google’s crawler sees it). This app uses `strategy="beforeInteractive"` so the script is in the server-rendered page. Do not change it to `afterInteractive` or the crawler may not see the script.
+
+2. **Env var at build time**  
+   `NEXT_PUBLIC_ADSENSE_CLIENT` is baked in at **build** time. Set it in your host’s environment (e.g. Vercel → Project → Settings → Environment Variables) **before** building, then trigger a new deploy. A deploy that was built without the variable will not contain the script.
+
+3. **Site is public**  
+   The URL you add in AdSense must be reachable by Google without login (no auth wall, no “under construction” blocking crawlers).
+
+4. **Confirm in View Source**  
+   Open the live site URL, right‑click → **View Page Source**, and search for `pagead2.googlesyndication.com` or `ca-pub-`. You should see the script (and optionally the meta tag) in `<head>`. If they’re missing, the build didn’t have the env var or the deploy is stale.
+
+5. **Wait and retry**  
+   After a new deploy, wait a few minutes, then click **Verify** again in AdSense.
+
+---
+
+## 9. Useful links
 
 - [AdSense Help – Get started](https://support.google.com/adsense/answer/7477845)
 - [AdSense – Create ad units](https://support.google.com/adsense/answer/9183569)

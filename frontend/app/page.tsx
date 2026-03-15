@@ -3,8 +3,72 @@ import Link from 'next/link';
 import { getUsScamTypes, SCAM_CATEGORY_LABELS } from '@/data/us-scams';
 import type { ScamCategoryId } from '@/data/scams/types';
 import { ScamCard } from '@/components/ScamCard';
+import { FindYourPathCarousel } from '@/components/FindYourPathCarousel';
+import type { FindYourPathSlide } from '@/components/FindYourPathCarousel';
 import { CountryTopicsClient } from './CountryTopicsClient';
 import { NewsletterCtaButton } from './NewsletterCtaButton';
+
+/** Find your path carousel slides (persona-based entry). */
+const FIND_YOUR_PATH_SLIDES: FindYourPathSlide[] = [
+  {
+    id: 'learn',
+    icon: '📚',
+    title: 'I want to learn about scams',
+    desc: 'Read real stories and guides to spot red flags and avoid common traps.',
+    links: [
+      { label: 'Browse stories', href: '/stories/' },
+      { label: 'See popular guides', href: '#popular-guides-heading' },
+    ],
+  },
+  {
+    id: 'was-scammed',
+    icon: '⚡',
+    title: 'I was scammed — I need to take action',
+    desc: 'Get your 0–24 hour checklist, report the scam, and find emotional support.',
+    links: [
+      { label: 'Immediate response checklist', href: '/immediate-help/' },
+      { label: 'Report a scam', href: '/report/' },
+      { label: 'Emotional support', href: '/emotional-support/' },
+    ],
+  },
+  {
+    id: 'protect',
+    icon: '🛡️',
+    title: 'I want to protect myself & my devices',
+    desc: 'Step-by-step tips for your phone, laptop, bank account, and more.',
+    links: [{ label: 'Tools & protect guides', href: '/tools/' }],
+  },
+  {
+    id: 'help-now',
+    icon: '🆘',
+    title: 'I need help right now',
+    desc: 'Official reporting and support links by country.',
+    links: [
+      { label: 'Need help now?', href: '/help-now/' },
+      { label: 'Immediate response', href: '/immediate-help/' },
+    ],
+  },
+  {
+    id: 'warn-others',
+    icon: '📢',
+    title: 'I want to warn others',
+    desc: 'Report a scam and get a shareable link so others can avoid it.',
+    links: [
+      { label: 'Report a scam', href: '/report/' },
+      { label: 'Get alerts', href: '/newsletter/' },
+    ],
+  },
+  {
+    id: 'stay-updated',
+    icon: '📬',
+    title: 'I want to stay updated',
+    desc: 'Get scam alerts and new guides in your inbox, or read the latest news.',
+    links: [
+      { label: 'Subscribe to newsletter', href: '/newsletter/' },
+      { label: 'News', href: '/news/' },
+    ],
+  },
+];
 
 const categoryOrder: ScamCategoryId[] = [
   'online', 'phone', 'financial', 'impersonation', 'employment', 'housing',
@@ -115,6 +179,12 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section id="find-your-path" className="find-your-path" aria-labelledby="find-your-path-heading">
+        <h2 id="find-your-path-heading" className="find-your-path-heading">Find your path</h2>
+        <p className="find-your-path-intro">New here? Choose what you need — we&apos;ll take you to the right place.</p>
+        <FindYourPathCarousel slides={FIND_YOUR_PATH_SLIDES} />
       </section>
 
       <section className="mission-block" aria-label="Our mission">

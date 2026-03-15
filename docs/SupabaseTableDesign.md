@@ -129,7 +129,6 @@ Duplicate email on insert returns success to the user without leaking existence 
 
 ## 5. Migration order
 
-1. **001_full_schema.sql** — Reports, report_raters, etc. Requires Supabase Auth enabled.
-2. **001_full_schema.sql** — Single combined migration: reports, report_raters, report_helpful_votes, contact_messages, site_settings, and newsletter_subscribers (with topic/frequency).
+1. **001_full_schema.sql** — Single combined migration: reports, report_raters, report_helpful_votes, contact_messages, site_settings, and newsletter_subscribers (with topic/frequency). Requires Supabase Auth enabled.
 
 Run in Supabase SQL Editor (or via Supabase CLI).

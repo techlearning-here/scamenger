@@ -168,11 +168,11 @@ export function FindYourPathCarousel({
           </ul>
         </div>
         <div className="find-your-path-controls">
-          <button type="button" className="find-your-path-btn find-your-path-btn-prev" disabled aria-label="Previous slide">‹</button>
+          <button type="button" className="find-your-path-btn find-your-path-btn-prev" disabled aria-label="Previous slide"><span className="find-your-path-btn-arrow" aria-hidden>‹</span></button>
           <div className="find-your-path-dots" role="tablist" aria-label="Slide navigation">
             <button type="button" role="tab" aria-selected className="find-your-path-dot" data-active="true" />
           </div>
-          <button type="button" className="find-your-path-btn find-your-path-btn-next" disabled aria-label="Next slide">›</button>
+          <button type="button" className="find-your-path-btn find-your-path-btn-next" disabled aria-label="Next slide"><span className="find-your-path-btn-arrow" aria-hidden>›</span></button>
         </div>
       </div>
     );
@@ -196,7 +196,7 @@ export function FindYourPathCarousel({
           onClick={goPrev}
           aria-label="Previous slide"
         >
-          ‹
+          <span className="find-your-path-btn-arrow" aria-hidden>‹</span>
         </button>
         <div className="find-your-path-viewport">
           <ul
@@ -229,7 +229,7 @@ export function FindYourPathCarousel({
           onClick={goNext}
           aria-label="Next slide"
         >
-          ›
+          <span className="find-your-path-btn-arrow" aria-hidden>›</span>
         </button>
       </div>
 

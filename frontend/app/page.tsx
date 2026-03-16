@@ -181,12 +181,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="find-your-path" className="find-your-path" aria-labelledby="find-your-path-heading">
-        <h2 id="find-your-path-heading" className="find-your-path-heading">Find your path</h2>
-        <p className="find-your-path-intro">New here? Choose what you need — we&apos;ll take you to the right place.</p>
-        <FindYourPathCarousel slides={FIND_YOUR_PATH_SLIDES} />
-      </section>
-
       <section className="mission-block" aria-label="Our mission">
         <p className="mission-text">
           <strong>You&apos;re not alone.</strong> Every day, <strong>over 1.6 million people</strong> fall victim to scams and fraud worldwide. Scam Avenger helps you <strong>learn and build awareness</strong> about scams and fraud—so you can spot and avoid them. We also help you figure out what happened, get guided to the right place to report if you choose to, and find support to recover. We&apos;re community-driven: share what you&apos;ve seen, check if others saw the same thing, and use our free guides and official links by country and scam type to take action and help others avoid the same traps.
@@ -194,6 +188,12 @@ export default function HomePage() {
         <p className="mission-regions" role="note">
           Official links and support for many countries. Choose your country on <Link href="/help-now/">Need help now?</Link> or when <Link href="/report/">sharing a scam</Link>. In the first 0–24 hours? Use our <Link href="/immediate-help/">Immediate response checklist and evidence collection list</Link>.
         </p>
+      </section>
+
+      <section id="find-your-path" className="find-your-path" aria-labelledby="find-your-path-heading">
+        <h2 id="find-your-path-heading" className="find-your-path-heading">Find your path</h2>
+        <p className="find-your-path-intro">New here? Choose what you need — we&apos;ll take you to the right place.</p>
+        <FindYourPathCarousel slides={FIND_YOUR_PATH_SLIDES} />
       </section>
 
       <section className="top-scam-stats" aria-labelledby="top-scam-stats-heading">

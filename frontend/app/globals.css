@@ -635,35 +635,63 @@ ul.scam-cards-grid {
 
 .find-your-path-btn {
   flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 300;
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--color-calm);
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(13, 122, 111, 0.2);
   border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   cursor: pointer;
-  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .find-your-path-btn:hover:not(:disabled) {
-  color: var(--color-accent-hover);
-  background: var(--color-calm-muted);
-  border-color: var(--color-calm);
+  color: #fff;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 113, 188, 0.3);
+  transform: scale(1.05);
+}
+
+.find-your-path-btn:active:not(:disabled) {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 113, 188, 0.25);
 }
 
 .find-your-path-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .find-your-path-btn:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+.find-your-path-btn-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  text-align: center;
+}
+
+.find-your-path-btn-prev .find-your-path-btn-arrow {
+  transform: translateX(0.05em);
+}
+
+.find-your-path-btn-next .find-your-path-btn-arrow {
+  transform: translateX(-0.05em);
 }
 
 .find-your-path-dots {

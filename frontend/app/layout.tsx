@@ -193,7 +193,7 @@ export default function RootLayout({
         {(showGa || loadAdsenseScript || showAdsense) && (
           <DeferredThirdPartyScripts
             showGa={showGa}
-            gaId={gaMeasurementId}
+            gaId={gaMeasurementId ?? ''}
             adsenseClient={adsenseClient}
             loadAdsenseScript={loadAdsenseScript}
             showAdsense={showAdsense}

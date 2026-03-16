@@ -29,7 +29,7 @@ describe('FabActions', () => {
   it('renders report link in DOM with correct href', () => {
     vi.mocked(getConfig).mockResolvedValue({ show_facebook_consent: true, show_report_scam: true });
     render(<FabActions />);
-    const reportLink = screen.getByRole('link', { name: /Report a scam/i });
+    const reportLink = screen.getByRole('link', { name: /Report a scam/i, hidden: true });
     expect(reportLink).toBeInTheDocument();
     expect(reportLink).toHaveAttribute('href', '/report/');
   });
@@ -38,7 +38,8 @@ describe('FabActions', () => {
     vi.mocked(getConfig).mockResolvedValue({ show_facebook_consent: true, show_report_scam: true });
     render(<FabActions />);
     await waitFor(() => {
-      const wrapper = screen.getByRole('link', { name: /Report a scam/i }).closest('[aria-hidden]');
+      const reportLink = screen.getByRole('link', { name: /Report a scam/i });
+      const wrapper = reportLink.closest('[aria-hidden]');
       expect(wrapper).toHaveAttribute('aria-hidden', 'false');
     });
     const reportLink = screen.getByRole('link', { name: /Report a scam/i });
@@ -51,7 +52,7 @@ describe('FabActions', () => {
     await waitFor(() => {
       expect(getConfig).toHaveBeenCalled();
     });
-    const reportLink = screen.getByRole('link', { name: /Report a scam/i });
+    const reportLink = screen.getByRole('link', { name: /Report a scam/i, hidden: true });
     const wrapper = reportLink.closest('[aria-hidden]');
     expect(wrapper).toHaveAttribute('aria-hidden', 'true');
     expect(reportLink).toHaveAttribute('tabindex', '-1');

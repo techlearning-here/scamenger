@@ -26,7 +26,7 @@ export function FabActions() {
   const isReportVisible = hasMounted && showReportScam === true;
 
   return (
-    <div className="fab_group" aria-label="Quick actions">
+    <div className="fab_group" role="group" aria-label="Quick actions">
       <Link
         href="/help-now/"
         className="fab_help_now"

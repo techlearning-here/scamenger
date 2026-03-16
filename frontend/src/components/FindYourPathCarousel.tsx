@@ -24,8 +24,15 @@ interface FindYourPathCarouselProps {
   autoAdvanceMs?: number;
 }
 
-/** Renders a single slide card (shared by real and cloned slides). */
-function SlideCard({ slide }: { slide: FindYourPathSlide }) {
+/** Renders a single slide card (shared by real and cloned slides). When hidden, links are non-focusable to match aria-hidden. */
+function SlideCard({
+  slide,
+  hidden = false,
+}: {
+  slide: FindYourPathSlide;
+  hidden?: boolean;
+}) {
+  const linkTabIndex = hidden ? -1 : undefined;
   return (
     <div className="find-your-path-card">
       <span className="find-your-path-icon" aria-hidden="true">
@@ -38,7 +45,11 @@ function SlideCard({ slide }: { slide: FindYourPathSlide }) {
           {slide.links.map((link, i) => (
             <span key={link.href + i}>
               {i > 0 && <span className="find-your-path-sep"> · </span>}
-              <Link href={link.href} className="find-your-path-link">
+              <Link
+                href={link.href}
+                className="find-your-path-link"
+                tabIndex={linkTabIndex}
+              >
                 {link.label}
               </Link>
             </span>
@@ -211,16 +222,19 @@ export function FindYourPathCarousel({
             aria-live="polite"
             onTransitionEnd={handleTransitionEnd}
           >
-            {extendedSlides.map((slide, index) => (
-              <li
-                key={index === 0 ? `${slide.id}-clone-last` : index === extendedSlides.length - 1 ? `${slide.id}-clone-first` : slide.id}
-                className="find-your-path-slide"
-                aria-current={index === internalIndex ? 'true' : undefined}
-                aria-hidden={index !== internalIndex}
-              >
-                <SlideCard slide={slide} />
-              </li>
-            ))}
+            {extendedSlides.map((slide, index) => {
+              const isHidden = index !== internalIndex;
+              return (
+                <li
+                  key={index === 0 ? `${slide.id}-clone-last` : index === extendedSlides.length - 1 ? `${slide.id}-clone-first` : slide.id}
+                  className="find-your-path-slide"
+                  aria-current={index === internalIndex ? 'true' : undefined}
+                  aria-hidden={isHidden}
+                >
+                  <SlideCard slide={slide} hidden={isHidden} />
+                </li>
+              );
+            })}
           </ul>
         </div>
         <button

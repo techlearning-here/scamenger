@@ -15,8 +15,9 @@ const NO_ADS_PATHS = new Set([
 
 function useShowAds(): boolean {
   const pathname = usePathname();
-  const normalized = pathname?.replace(/\/$/, '') || '';
-  return !NO_ADS_PATHS.has(pathname ?? '') && !NO_ADS_PATHS.has(normalized);
+  if (pathname == null) return false;
+  const normalized = pathname.replace(/\/$/, '') || pathname;
+  return !NO_ADS_PATHS.has(pathname) && !NO_ADS_PATHS.has(normalized);
 }
 
 interface AdSlotProps {

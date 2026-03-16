@@ -18,8 +18,8 @@
   --gradient-header: linear-gradient(135deg, #1b365d 0%, #2c5282 35%, #2d3748 70%, #252f3d 100%);
   --gradient-footer: linear-gradient(135deg, #252f3d 0%, #2d3748 30%, #2c5282 65%, #1b365d 100%);
   --gradient-accent: linear-gradient(180deg, #0071bc 0%, #005a9c 100%);
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-  --font-heading: 'DM Sans', system-ui, sans-serif;
+  /* --font-sans set by next/font on html; fallback for body when var() is used */
+  --font-heading: var(--font-sans, system-ui, sans-serif);
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -47,7 +47,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-sans, system-ui, sans-serif);
   font-size: 1rem;
   line-height: var(--line-height-body);
   color: var(--color-text);
@@ -59,7 +59,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, system-ui, sans-serif);
   line-height: var(--line-height-tight);
   font-weight: 700;
 }
@@ -198,13 +198,13 @@ ul.scam-cards-grid {
 }
 
 .scam-card-badge--most-reported {
-  background: rgba(13, 122, 111, 0.15);
-  color: var(--color-calm);
+  background: var(--color-calm);
+  color: #fff;
 }
 
 .scam-card-badge--trending {
-  background: rgba(0, 113, 188, 0.12);
-  color: var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
 }
 
 /* Home page */
@@ -2014,6 +2014,18 @@ ul.scam-cards-grid {
   gap: 0.5rem;
 }
 
+.fab_report_wrapper {
+  display: flex;
+  min-height: 3.5rem;
+}
+.fab_report_wrapper--hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+.fab_report_wrapper--hidden .fab_report {
+  pointer-events: none;
+}
+
 .fab_report {
   position: static;
   min-height: 3.5rem;
@@ -2089,6 +2101,10 @@ ul.scam-cards-grid {
     flex-direction: row;
     gap: var(--space-sm);
     justify-content: flex-end;
+  }
+
+  .fab_report_wrapper {
+    min-height: 2.5rem;
   }
 
   .fab_report,

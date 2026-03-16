@@ -5,7 +5,7 @@ import type { ScamCategoryId } from '@/data/scams/types';
 import { ScamCard } from '@/components/ScamCard';
 import { FindYourPathCarousel } from '@/components/FindYourPathCarousel';
 import type { FindYourPathSlide } from '@/components/FindYourPathCarousel';
-import { CountryTopicsClient } from './CountryTopicsClient';
+import { CountryTopicsClientLazy } from './CountryTopicsClientLazy';
 import { NewsletterCtaButton } from './NewsletterCtaButton';
 
 /** Find your path carousel slides (persona-based entry). */
@@ -237,7 +237,7 @@ export default function HomePage() {
         <NewsletterCtaButton />
       </section>
 
-      <CountryTopicsClient usScamTopics={usScamTopics} />
+      <CountryTopicsClientLazy usScamTopics={usScamTopics} />
     </>
   );
 }

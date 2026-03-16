@@ -1,11 +1,21 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
+import { DM_Sans } from 'next/font/google';
 import { ConditionalAdBottom, ConditionalAdTop } from '@/components/ConditionalAdSlots';
+import { DeferredThirdPartyScripts } from '@/components/DeferredThirdPartyScripts';
 import { FabActions } from '@/components/FabActions';
 import { SiteNav } from '@/components/SiteNav';
 import { SocialLinks } from '@/components/SocialLinks';
 import './globals.css';
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  adjustFontFallback: true,
+  variable: '--font-sans',
+});
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 const defaultOgImageFallback = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=630&auto=format&fit=crop';
@@ -85,35 +95,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${dmSans.variable} ${dmSans.className}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
         {adsenseClient ? (
           <meta name="google-adsense-account" content={adsenseClient} />
         ) : null}
-        {loadAdsenseScript && (
-          <div
-            dangerouslySetInnerHTML={{
-              // Escaped so JSX doesn't treat the closing tag as end of element
-              __html: `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}" crossorigin="anonymous"><\/script>`,
-            }}
-            hidden
-            aria-hidden="true"
-          />
-        )}
-        {showGa && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga-config" strategy="afterInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaMeasurementId}');`}
-            </Script>
-          </>
-        )}
       </head>
       <body suppressHydrationWarning>
         <script
@@ -204,10 +190,14 @@ export default function RootLayout({
           </div>
         </footer>
         <FabActions />
-        {showAdsense && (
-          <Script id="adsense-push" strategy="afterInteractive">
-            {`(function(){try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}})();`}
-          </Script>
+        {(showGa || loadAdsenseScript || showAdsense) && (
+          <DeferredThirdPartyScripts
+            showGa={showGa}
+            gaId={gaMeasurementId}
+            adsenseClient={adsenseClient}
+            loadAdsenseScript={loadAdsenseScript}
+            showAdsense={showAdsense}
+          />
         )}
       </body>
     </html>

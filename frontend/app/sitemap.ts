@@ -38,6 +38,7 @@ const STATIC_PATHS: { path: string; priority: number; changeFreq: 'weekly' | 'mo
   { path: '/us/financial-banking/', priority: 0.8, changeFreq: 'weekly' },
   { path: '/us/government-impersonation-tax/', priority: 0.8, changeFreq: 'weekly' },
   { path: '/us/corruption-fraud-waste/', priority: 0.8, changeFreq: 'weekly' },
+  { path: '/site-map/', priority: 0.5, changeFreq: 'monthly' },
 ];
 
 export const dynamic = 'force-static';
@@ -59,8 +60,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
   const staticEntries = STATIC_PATHS.map(({ path, priority, changeFreq }) => {
     const lastMod = PATH_LAST_MODIFIED[path] ? new Date(PATH_LAST_MODIFIED[path]) : now;
+    const url = path === '/' ? `${siteUrl}/` : `${siteUrl}${path}`;
     return {
-      url: path === '/' ? siteUrl : `${siteUrl}${path}`,
+      url,
       lastModified: lastMod,
       changeFrequency: changeFreq,
       priority,

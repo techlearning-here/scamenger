@@ -175,6 +175,18 @@ If the admin page on Vercel shows “Not Found” or the browser reports **`GET 
 - **Vercel:** In the project → **Settings → Domains**, add your domain and follow the DNS instructions. Set `PUBLIC_SITE_URL` (or `NEXT_PUBLIC_SITE_URL`) to that URL.
 - **Render:** In the Web Service → **Settings → Custom Domains**, add a domain and configure DNS as shown.
 
+### Canonical URL and redirects (Search Console)
+
+The site uses a **single canonical URL**: `https://scamenger.com/` (HTTPS, no `www`). All other variants redirect there with **308 Permanent Redirect** so crawlers and Search Console index only the canonical URL.
+
+| Requested URL | Redirects to |
+|---------------|--------------|
+| `http://scamenger.com/` | `https://scamenger.com/` |
+| `http://www.scamenger.com/` | `https://scamenger.com/` |
+| `https://www.scamenger.com/` | `https://scamenger.com/` |
+
+Redirects are implemented in **Next.js middleware** (`frontend/middleware.ts`). The canonical origin is taken from `NEXT_PUBLIC_SITE_URL` or `PUBLIC_SITE_URL` (default `https://scamenger.com`). In **Google Search Console**, “Page with redirect” for these URLs is expected: Google discovers the non-canonical URL, follows the redirect, and indexes the destination. No action is required unless you want to reduce crawl of redirecting URLs (e.g. by not linking to `http://` or `www` in sitemaps or internal links). The sitemap and canonicals already use the trailing-slash canonical base URL.
+
 ---
 
 ## 6. Optional: AdSense and scheduled rebuilds

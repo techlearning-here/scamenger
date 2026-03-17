@@ -2722,6 +2722,20 @@ ul.scam-cards-grid {
   font-weight: 400;
   letter-spacing: 0;
 }
+/* Legend badge: sufficient contrast on light background (WCAG AA) */
+.tool-tags-legend .tool-card-important-star.tool-tags-legend-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  background: #b8860b;
+  color: #fff;
+  margin-right: 0;
+}
 .tool-card-badges {
   display: inline-flex;
   align-items: center;
@@ -6585,3 +6599,10 @@ ul.scam-cards-grid {
 .admin-stats-category-item:last-child { border-bottom: none; }
 .admin-stats-category-label { color: var(--color-text); }
 .admin-stats-category-count { font-weight: 600; color: var(--color-text-muted); }
+
+/* Sitemap page */
+.sitemap-page-main { padding-block: 2rem; max-width: 48rem; }
+.sitemap-intro { margin-bottom: var(--space-lg); color: var(--color-text-muted); }
+.sitemap-list { list-style: disc; margin: 0 0 var(--space-lg); padding-left: 1.5rem; }
+.sitemap-list li { margin-bottom: var(--space-xs); }
+.sitemap-xml { font-size: 0.95rem; color: var(--color-text-muted); margin-top: var(--space-xl); }

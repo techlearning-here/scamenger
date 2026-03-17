@@ -54,6 +54,7 @@ describe('sitemap', () => {
     expect(urls.some((u) => u.includes('/disclaimer'))).toBe(true);
     expect(urls.some((u) => u.includes('/content-guidelines'))).toBe(true);
     expect(urls.some((u) => u.includes('/notice-takedown'))).toBe(true);
+    expect(urls.some((u) => u.includes('/site-map/'))).toBe(true);
   });
 
   it('includes US scam type pages for each slug from getUsScamSlugs', () => {

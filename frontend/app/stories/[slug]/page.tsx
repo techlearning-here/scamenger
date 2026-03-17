@@ -65,6 +65,9 @@ function buildStoryArticleJsonLd(
     url,
     articleSection: seo.articleSection,
     keywords: seo.jsonLdKeywords.join(', '),
+    datePublished: '2025-01-01',
+    dateModified: '2025-01-01',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     isPartOf: {
       '@type': 'WebSite',
       name: 'Scam Avenger',
@@ -110,7 +113,12 @@ export default async function StorySlugPage({ params }: Props) {
         <div className="story-page-share">
           <StoryShareButtons url={storyUrl} title={entry.title} />
         </div>
-        <p className="story-page-coming">Story content will be added here. Check back later or <Link href="/report/">report your own scam</Link>.</p>
+        <p className="story-page-intro">
+          {entry.title}. {seo.themePhrase} This story is shared anonymously to help others spot similar scams.
+        </p>
+        <p className="story-page-coming">
+          Full story content will be added here. Check back later or <Link href="/report/">report your own scam</Link>.
+        </p>
         <p><Link href="/stories/">← All scam stories</Link></p>
       </article>
 

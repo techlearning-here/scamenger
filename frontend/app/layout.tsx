@@ -172,6 +172,7 @@ export default function RootLayout({
                   <Link href="/disclaimer/">Disclaimer</Link>
                   <Link href="/content-guidelines/">Content Guidelines</Link>
                   <Link href="/notice-takedown/">Notice and Take Down</Link>
+                  <Link href="/site-map/">Sitemap</Link>
                 </nav>
               </details>
             </div>
@@ -183,6 +184,7 @@ export default function RootLayout({
               <Link href="/disclaimer/">Disclaimer</Link>
               <Link href="/content-guidelines/">Content Guidelines</Link>
               <Link href="/notice-takedown/">Notice and Take Down</Link>
+              <Link href="/site-map/">Sitemap</Link>
             </nav>
             <p className="disclaimer disclaimer-long">One free platform to learn about scams and fraud, get guided to the right place to report if you need to, and find support to recover. We help you build awareness and warn others.</p>
             <p className="disclaimer disclaimer-short">Free platform to learn, report, and recover. We help you build awareness and warn others.</p>

@@ -1307,22 +1307,13 @@ ul.scam-cards-grid {
   color: #a4d4f4;
 }
 
-/* Chevron via ::before (no inner span) to avoid hydration mismatch from extensions injecting text */
-/* Chevron in span so server/client match; hide any extension-injected text */
+/* Render "▾" in markup so server/client match (avoids extension-induced hydration mismatch). */
 .site_nav_dropdown_icon {
   display: inline-block;
-  width: 0;
-  height: 0;
   margin-left: 0.25rem;
   vertical-align: 0.2em;
-  border-left: 0.35em solid transparent;
-  border-right: 0.35em solid transparent;
-  border-top: 0.4em solid currentColor;
   pointer-events: none;
   transition: transform 0.2s ease;
-  font-size: 0;
-  overflow: hidden;
-  color: transparent;
 }
 .site_nav_dropdown_trigger[aria-expanded="true"] .site_nav_dropdown_icon {
   transform: rotate(-180deg);
@@ -4610,6 +4601,38 @@ ul.scam-cards-grid {
 .story-page-coming {
   color: var(--color-text-muted);
   margin-bottom: var(--space-lg);
+}
+
+.story-page-body {
+  margin-bottom: var(--space-xl);
+}
+
+.story-page-section {
+  margin-bottom: var(--space-xl);
+}
+
+.story-page-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text);
+}
+
+.story-page-section-body {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.story-page-learning-list {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.story-page-learning-list li {
+  margin-bottom: var(--space-sm);
 }
 
 .story-related {

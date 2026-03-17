@@ -74,7 +74,7 @@ export function SiteNav() {
             suppressHydrationWarning
           >
             Get help
-            <span className="site_nav_dropdown_icon" aria-hidden="true" suppressHydrationWarning />
+            <span className="site_nav_dropdown_icon" aria-hidden="true">▾</span>
           </button>
           <div
             id="site_nav_get_help_menu"

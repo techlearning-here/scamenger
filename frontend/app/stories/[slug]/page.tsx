@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import React from 'react';
 import { notFound } from 'next/navigation';
 import { SCAM_STORY_ENTRIES, getRelatedStories, getHardshipTag, HARDSHIP_TAG_LABELS } from '@/data/scam-stories';
+import { getStoryContent } from '@/data/scam-stories-content';
 import { getStorySeo } from '@/data/scam-stories-seo';
 import { SCAM_CATEGORY_ICONS } from '@/data/scams/icons';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
@@ -51,6 +53,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const RELATED_STORIES_COUNT = 4;
 
+/** Renders text with **bold** segments as <strong>. */
+function renderWithBold(text: string): React.ReactNode {
+  const segments = text.split(/\*\*(.+?)\*\*/g);
+  return segments.map((seg, i) => (i % 2 === 1 ? <strong key={i}>{seg}</strong> : seg));
+}
+
 function buildStoryArticleJsonLd(
   entry: { title: string; category: string },
   slug: string,
@@ -91,6 +99,7 @@ export default async function StorySlugPage({ params }: Props) {
   const seo = getStorySeo(entry.category, categoryLabel, entry.title);
   const storyUrl = `${siteUrl}/stories/${slug}/`;
   const articleJsonLd = buildStoryArticleJsonLd(entry, slug, seo);
+  const content = getStoryContent(slug);
 
   return (
     <>
@@ -113,12 +122,29 @@ export default async function StorySlugPage({ params }: Props) {
         <div className="story-page-share">
           <StoryShareButtons url={storyUrl} title={entry.title} />
         </div>
-        <p className="story-page-intro">
-          {entry.title}. {seo.themePhrase} This story is shared anonymously to help others spot similar scams.
-        </p>
-        <p className="story-page-coming">
-          Full story content will be added here. Check back later or <Link href="/report/">report your own scam</Link>.
-        </p>
+        {content ? (
+          <div className="story-page-body">
+            <p className="story-page-section-body">{renderWithBold(content.characterIntro)}</p>
+            <p className="story-page-section-body">{renderWithBold(content.initialPlot)}</p>
+            <p className="story-page-section-body">{renderWithBold(content.scamExperience)}</p>
+            <p className="story-page-section-body">{renderWithBold(content.victimExperience)}</p>
+            <p className="story-page-section-body">{renderWithBold(content.climax)}</p>
+            <p className="story-page-section-body">{renderWithBold(content.victimPain)}</p>
+            <p className="story-page-section-body">{renderWithBold(content.learningVictim)}</p>
+            <ul className="story-page-learning-list">
+              {content.learningForReaders.map((item, i) => (
+                <li key={i}>{renderWithBold(item)}</li>
+              ))}
+            </ul>
+            <p className="story-page-section-body">
+              For more help, see our <Link href="/report/">Report a scam</Link> page and <Link href="/spot-and-avoid-scams/">Spot and avoid scams</Link> guide.
+            </p>
+          </div>
+        ) : (
+          <p className="story-page-coming">
+            Full story content will be added here. Check back later or <Link href="/report/">report your own scam</Link>.
+          </p>
+        )}
         <p><Link href="/stories/">← All scam stories</Link></p>
       </article>
 

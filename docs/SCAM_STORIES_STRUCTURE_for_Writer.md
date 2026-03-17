@@ -181,6 +181,7 @@ Use the headings and prompts below when writing or editing a story.
 | **Bold for emphasis** | Wrap key phrases in **double asterisks** to highlight them on the page. Use for: important emotions (*hopeful*, *ashamed*), red flags (*"tax" or "fees"*, *one platform*), turning points (*That's when I knew*), and actionable takeaways (*report it*, *check with your bank*). | The system renders `**...**` as bold. Don't overuse—a few per section is enough. |
 | **Content lives in the frontend** | All story content is stored in frontend source (e.g. `scam-stories-content.ts`). There is **no backend or CMS**; stories are not stored in a database. | When adding or editing a story, update the frontend data file. |
 | **Learning for readers** | Write bullets or short paragraphs. The site automatically adds a closing line with links to "Report a scam" and "Spot and avoid scams"—you don't need to repeat those links in every bullet. | Keeps bullets focused on spotting and reporting; links are consistent. |
+| **Paragraph breaks within a section** | To split a section into multiple paragraphs, use the **Unicode paragraph separator** `\u2029` between paragraphs in the source string. (E.g. `'First paragraph.\u2029Second paragraph.'`) Alternatively `\n\n` is supported locally, but **for deployed builds (e.g. Vercel)** minification can collapse newlines—using `\u2029` ensures paragraph breaks match between local and production. | Each section can contain one or more paragraphs; the renderer splits on `\u2029` or newlines and outputs separate `<p>` tags. |
 
 ---
 
@@ -199,5 +200,6 @@ Use the headings and prompts below when writing or editing a story.
 - **Eight sections** in order: Character intro → Initial plot → Scam experience → Victim's experience → **Climax** → **Victim's pain** → Learning (victim) → Learning for readers. (Victim's pain comes *after* climax.)
 - **No visible headings** on the published page—sections flow as continuous paragraphs.
 - Use **double asterisks** (`**...**`) for bold emphasis on key phrases.
+- Use the **Unicode paragraph separator** `\u2029` between paragraphs within a section so breaks render correctly in production (e.g. Vercel); `\n\n` is supported but may be collapsed by minification.
 - All content is stored in the **frontend**; no backend/CMS.
 - Use this as the **editorial template** for every scam experience story.

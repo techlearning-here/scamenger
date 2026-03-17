@@ -59,6 +59,22 @@ function renderWithBold(text: string): React.ReactNode {
   return segments.map((seg, i) => (i % 2 === 1 ? <strong key={i}>{seg}</strong> : seg));
 }
 
+/** Paragraph separator used in content (Unicode U+2029). Survives minification so prod matches local. */
+const PARAGRAPH_SEP = '\u2029';
+
+/** Splits section text into paragraphs (separator or double newline). Renders each as <p>. */
+function renderSectionParagraphs(text: string): React.ReactNode {
+  const paragraphs = text
+    .split(new RegExp(`[${PARAGRAPH_SEP}\\n]+`, 'g'))
+    .map((p) => p.trim())
+    .filter(Boolean);
+  return paragraphs.map((para, i) => (
+    <p key={i} className="story-page-section-body">
+      {renderWithBold(para)}
+    </p>
+  ));
+}
+
 function buildStoryArticleJsonLd(
   entry: { title: string; category: string },
   slug: string,
@@ -124,13 +140,13 @@ export default async function StorySlugPage({ params }: Props) {
         </div>
         {content ? (
           <div className="story-page-body">
-            <p className="story-page-section-body">{renderWithBold(content.characterIntro)}</p>
-            <p className="story-page-section-body">{renderWithBold(content.initialPlot)}</p>
-            <p className="story-page-section-body">{renderWithBold(content.scamExperience)}</p>
-            <p className="story-page-section-body">{renderWithBold(content.victimExperience)}</p>
-            <p className="story-page-section-body">{renderWithBold(content.climax)}</p>
-            <p className="story-page-section-body">{renderWithBold(content.victimPain)}</p>
-            <p className="story-page-section-body">{renderWithBold(content.learningVictim)}</p>
+            {renderSectionParagraphs(content.characterIntro)}
+            {renderSectionParagraphs(content.initialPlot)}
+            {renderSectionParagraphs(content.scamExperience)}
+            {renderSectionParagraphs(content.victimExperience)}
+            {renderSectionParagraphs(content.climax)}
+            {renderSectionParagraphs(content.victimPain)}
+            {renderSectionParagraphs(content.learningVictim)}
             <ul className="story-page-learning-list">
               {content.learningForReaders.map((item, i) => (
                 <li key={i}>{renderWithBold(item)}</li>

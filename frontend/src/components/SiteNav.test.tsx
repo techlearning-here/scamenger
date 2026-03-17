@@ -46,8 +46,8 @@ describe('SiteNav', () => {
     expect(home).toHaveAttribute('href', '/');
     expect(screen.getByRole('link', { name: 'Tools', hidden: true })).toHaveAttribute('href', '/tools');
     expect(screen.getByRole('link', { name: 'News', hidden: true })).toHaveAttribute('href', '/news');
-    expect(screen.getByRole('link', { name: 'About', hidden: true })).toHaveAttribute('href', '/about');
-    expect(screen.getByRole('link', { name: 'Contact', hidden: true })).toHaveAttribute('href', '/contact');
+    expect(screen.getByRole('link', { name: 'About us', hidden: true })).toHaveAttribute('href', '/about');
+    expect(screen.getByRole('link', { name: 'Contact us', hidden: true })).toHaveAttribute('href', '/contact');
   });
 
   it('toggles hamburger menu', () => {

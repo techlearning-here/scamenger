@@ -2027,6 +2027,13 @@ ul.scam-cards-grid {
 .site_footer .site_footer_social_link--pinterest { color: #bd081c; }
 .site_footer .site_footer_social_link--pinterest:hover { color: #e60023; background-color: rgba(255,255,255,0.1); }
 
+/* Keep social icon background unchanged on click/focus */
+.site_footer .site_footer_social_link:active,
+.site_footer .site_footer_social_link:focus,
+.site_footer .site_footer_social_link:focus-visible {
+  background-color: transparent;
+}
+
 /* Floating action button: Report a scam */
 .fab_group {
   position: fixed;
@@ -4622,6 +4629,12 @@ ul.scam-cards-grid {
   margin: 0;
   line-height: 1.65;
   color: var(--color-text);
+}
+
+/* Paragraph gap: space between consecutive story paragraphs (explicit so Vercel/prod matches local) */
+.story-page-body .story-page-section-body + .story-page-section-body,
+.story-page-body > .story-page-section-body + .story-page-section-body {
+  margin-top: 1rem;
 }
 
 .story-page-learning-list {

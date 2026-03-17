@@ -59,13 +59,13 @@ function renderWithBold(text: string): React.ReactNode {
   return segments.map((seg, i) => (i % 2 === 1 ? <strong key={i}>{seg}</strong> : seg));
 }
 
-/** Paragraph separator used in content (Unicode U+2029). Survives minification so prod matches local. */
+/** Paragraph separator (Unicode U+2029). Split by string only so prod build matches local. */
 const PARAGRAPH_SEP = '\u2029';
 
-/** Splits section text into paragraphs (separator or double newline). Renders each as <p>. */
+/** Splits section text into paragraphs and renders each as <p>. Uses string split only (no RegExp) so Vercel/minification doesn't alter behavior. */
 function renderSectionParagraphs(text: string): React.ReactNode {
   const paragraphs = text
-    .split(new RegExp(`[${PARAGRAPH_SEP}\\n]+`, 'g'))
+    .split(PARAGRAPH_SEP)
     .map((p) => p.trim())
     .filter(Boolean);
   return paragraphs.map((para, i) => (

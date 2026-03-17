@@ -59,7 +59,7 @@ export function SiteNav() {
         }}
       >
         <Link href="/">Home</Link>
-        <div className="site_nav_dropdown" ref={helpRef}>
+        <div className="site_nav_dropdown" ref={helpRef} suppressHydrationWarning>
           <button
             type="button"
             className="site_nav_dropdown_trigger"
@@ -74,7 +74,7 @@ export function SiteNav() {
             suppressHydrationWarning
           >
             Get help
-            <span className="site_nav_dropdown_icon" aria-hidden="true">▾</span>
+            <span className="site_nav_dropdown_icon" aria-hidden="true" suppressHydrationWarning>▾</span>
           </button>
           <div
             id="site_nav_get_help_menu"

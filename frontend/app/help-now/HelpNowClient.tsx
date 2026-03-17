@@ -104,6 +104,8 @@ export function HelpNowClient({ countryFromUrl }: HelpNowClientProps) {
         {' · '}
         <Link href="/emotional-support/">Emotional support &amp; victim resources</Link>
         {' · '}
+        <Link href="/spot-and-avoid-scams/">Spot and avoid scams</Link>
+        {' · '}
         <Link href="/">Back to home</Link>
         {' · '}
         <Link href="/report/">Report a scam</Link>

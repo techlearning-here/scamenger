@@ -12,6 +12,7 @@ const MAIN_SECTIONS: { path: string; label: string }[] = [
   { path: '/help-now/', label: 'Need help now?' },
   { path: '/immediate-help/', label: 'Immediate response (0–24 hours)' },
   { path: '/emotional-support/', label: 'Emotional support' },
+  { path: '/spot-and-avoid-scams/', label: 'Spot and avoid scams' },
   { path: '/stories/', label: 'Scam stories' },
   { path: '/tools/', label: 'Tools & protect guides' },
   { path: '/tools/protect-phone/', label: 'Protect your phone' },

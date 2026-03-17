@@ -17,6 +17,7 @@ const FIND_YOUR_PATH_SLIDES: FindYourPathSlide[] = [
     desc: 'Read real stories and guides to spot red flags and avoid common traps.',
     links: [
       { label: 'Browse stories', href: '/stories/' },
+      { label: 'How to spot and avoid scams', href: '/spot-and-avoid-scams/' },
       { label: 'See popular guides', href: '#popular-guides-heading' },
     ],
   },
@@ -36,7 +37,10 @@ const FIND_YOUR_PATH_SLIDES: FindYourPathSlide[] = [
     icon: '🛡️',
     title: 'I want to protect myself & my devices',
     desc: 'Step-by-step tips for your phone, laptop, bank account, and more.',
-    links: [{ label: 'Tools & protect guides', href: '/tools/' }],
+    links: [
+      { label: 'Spot and avoid scams', href: '/spot-and-avoid-scams/' },
+      { label: 'Tools & protect guides', href: '/tools/' },
+    ],
   },
   {
     id: 'help-now',
@@ -184,6 +188,9 @@ export default function HomePage() {
       <section className="mission-block" aria-label="Our mission">
         <p className="mission-text">
           <strong>You&apos;re not alone.</strong> Every day, <strong>over 1.6 million people</strong> fall victim to scams and fraud worldwide. Scam Avenger helps you <strong>learn and build awareness</strong> about scams and fraud—so you can spot and avoid them. We also help you figure out what happened, get guided to the right place to report if you choose to, and find support to recover. We&apos;re community-driven: share what you&apos;ve seen, check if others saw the same thing, and use our free guides and official links by country and scam type to take action and help others avoid the same traps.
+        </p>
+        <p className="mission-reporting-stat" role="note">
+          Most scams go unreported—<strong>fewer than 1 in 3</strong> victims report to authorities. Sharing your experience helps others spot similar scams and strengthens data for prevention.
         </p>
         <p className="mission-regions" role="note">
           Official links and support for many countries. Choose your country on <Link href="/help-now/">Need help now?</Link> or when <Link href="/report/">sharing a scam</Link>. In the first 0–24 hours? Use our <Link href="/immediate-help/">Immediate response checklist and evidence collection list</Link>.

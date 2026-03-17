@@ -376,6 +376,8 @@ export function ImmediateHelpClient() {
         {' · '}
         <Link href="/emotional-support/">Emotional support</Link>
         {' · '}
+        <Link href="/spot-and-avoid-scams/">Spot and avoid scams</Link>
+        {' · '}
         <Link href="/">Home</Link>
       </p>
     </>

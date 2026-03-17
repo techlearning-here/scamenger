@@ -34,8 +34,8 @@ export default function AboutPage() {
           className="about-hero-img"
         />
         <div className="about-hero-overlay">
-          <h1 className="about-hero-title">About Scam Avenger</h1>
-          <p className="about-hero-tagline">A community-based scam database to support users.</p>
+          <h1 className="about-hero-title">About us</h1>
+          <p className="about-hero-tagline">Scam Avenger is a community-based scam database to support users.</p>
         </div>
       </div>
 

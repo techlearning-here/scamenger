@@ -162,10 +162,11 @@ export default function RootLayout({
               <details className="footer_legal_collapse">
                 <summary className="footer_legal_summary">
                   <span className="footer_legal_summary_text">Emotional support &amp; legal</span>
-                  <span className="footer_legal_summary_icon" aria-hidden="true">▾</span>
+                  <span className="footer_legal_summary_icon" aria-hidden="true" suppressHydrationWarning />
                 </summary>
                 <nav className="footer_legal_collapse_nav" aria-label="Legal">
                   <Link href="/emotional-support/">Emotional support</Link>
+                  <Link href="/spot-and-avoid-scams/">Spot and avoid scams</Link>
                   <Link href="/newsletter/">Newsletter</Link>
                   <Link href="/privacy/">Privacy Policy</Link>
                   <Link href="/terms/">Terms &amp; Conditions</Link>
@@ -178,6 +179,7 @@ export default function RootLayout({
             </div>
             <nav className="site_footer_legal footer_legal_desktop" aria-label="Legal">
               <Link href="/emotional-support/">Emotional support</Link>
+              <Link href="/spot-and-avoid-scams/">Spot and avoid scams</Link>
               <Link href="/newsletter/">Newsletter</Link>
               <Link href="/privacy/">Privacy Policy</Link>
               <Link href="/terms/">Terms &amp; Conditions</Link>

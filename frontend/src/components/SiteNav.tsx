@@ -71,9 +71,10 @@ export function SiteNav() {
               e.stopPropagation();
               setHelpOpen((o) => !o);
             }}
+            suppressHydrationWarning
           >
             Get help
-            <span className="site_nav_dropdown_icon" aria-hidden="true">▾</span>
+            <span className="site_nav_dropdown_icon" aria-hidden="true" suppressHydrationWarning />
           </button>
           <div
             id="site_nav_get_help_menu"
@@ -85,13 +86,14 @@ export function SiteNav() {
             <Link href="/lookup-report/" role="menuitem">Look up report</Link>
             <Link href="/emotional-support/" role="menuitem">Emotional support</Link>
             <Link href="/immediate-help/" role="menuitem">Immediate response</Link>
+            <Link href="/spot-and-avoid-scams/" role="menuitem">Spot and avoid scams</Link>
           </div>
         </div>
         <Link href="/tools/">Tools</Link>
         <Link href="/stories/">Stories</Link>
         <Link href="/news/">News</Link>
-        <Link href="/about/">About</Link>
-        <Link href="/contact/">Contact</Link>
+        <Link href="/about/">About us</Link>
+        <Link href="/contact/">Contact us</Link>
         <NavReportScamLink />
       </div>
     </nav>

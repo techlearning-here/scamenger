@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I got a **jury duty** notice—**fine** for **missing** court, pay by **card** now.\u2029The **court** had **never** summoned me.\u2029The **notice** was **fake**.',
+    'A letter with **court letterhead** said I had **failed to appear** for **jury duty** and owed an immediate **fine** to avoid a **bench warrant**.\u2029I travel for work and worried I had missed a summons in the mail pile.',
   initialPlot:
-    'Letterhead looked **official**—**seal**, **case ID**.\u2029Phone number on the letter went to a **helpful** "**clerk**" who took my **payment**.\u2029I paid **hundreds** before I called the **real** courthouse **directory**.',
+    'The phone number on the sheet connected to a “**clerk**” who took my **card payment** over the phone and said the warrant would clear overnight.\u2029I paid **hundreds** before I thought to open the county website.',
   scamExperience:
-    '**Jury duty scams** fabricate **missed appearance** fines.\u2029Real courts **don\u2019t** demand **immediate card** payment over the phone to "**avoid warrant**."\u2029I lost **money**.',
+    '**Jury duty scams** fabricate **missed appearance** fines; **real courts** do not demand **instant card payment** by phone to cancel warrants.\u2029The letterhead and case ID were forged.',
   victimExperience:
-    'I was **scared** of **bench warrants**.\u2029I **didn\u2019t** want a **record**.\u2029I **paid** to make it **go away**.',
+    'While I paid I was afraid of **arrest** and a mark on my record; challenging the caller felt riskier than complying.',
   climax:
-    'The **real** clerk said "**we don\u2019t send letters like that**" and "**you\u2019re not in our system**."\u2029That\u2019s when I knew.',
+    'The **real clerk** at the courthouse directory said **I was not in the jury pool** for that term and **they do not send letters like that**.',
   victimPain:
-    'I felt **violated**—someone used **fear** of **the law** against me.\u2029**Anger** helped me **report** it.',
+    'I felt manipulated through fear of the law itself; anger fuelled the **police report** I filed the same week.',
   learningVictim:
-    'I now know: **verify** any court contact by calling the **published** court number **yourself**.\u2029I wish I\u2019d done that **first**.',
+    'I **verify** any court contact by calling the **published** court number from the **official .gov** site—never the one on a cold letter.',
   learningForReaders: [
-    '**Real jury** communications come through **official** channels—verify **in person** or via **court website**.',
+    '**Real jury** notices come through **official mail**; verify in person or via the **court website**.',
+    '**Report** jury scams to **local police** and **consumer fraud** lines.',
   ],
 };
 

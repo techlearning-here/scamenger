@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A **stranger** left me **money**—or so the **email** said.\u2029There was **no inheritance**.',
+    'An email from a “**law firm**” said a distant relative had died abroad and left me part of an **estate** I had never heard of.\u2029The tone was formal, the case number looked official, and they asked only for a reply to begin paperwork.',
   initialPlot:
-    'They needed **fees**, **taxes**, or my **bank details** to "**release**" the estate.\u2029I paid. The **lawyer** and **inheritance** were **fiction**.',
+    'Each step needed **wire fees**, **tax prepayments**, or **notarisation** costs before funds could **release**.\u2029I paid several times because stopping felt like abandoning a windfall I had already funded.',
   scamExperience:
-    '**Inheritance scams** hook victims with **unexpected wealth** then extract **fees**. I lost **money**.',
+    '**Inheritance scams** invent dead relatives and **licensed-sounding** lawyers; **real probate** does not run on **gift cards** or endless **unlock wires** to strangers you cannot verify.',
   victimExperience:
-    'I was **shocked** and **hopeful**. I **didn\u2019t question** a windfall.',
+    'While the emails arrived I was shocked enough to hope it might be true and embarrassed to ask family if anyone recognised the name.',
   climax:
-    'When they asked for **one more wire** and I searched "**inheritance scam**," I knew.',
+    'When they demanded another **urgent wire** I searched **inheritance scam** and matched the letter text word for word to a public warning bulletin.',
   victimPain:
-    'I lost **money** and felt **ashamed**. Reporting **helped**.',
+    'The fees I sent were gone; I felt foolish explaining the loss to my partner, but reporting it at least put the fake firm name on watchlists.',
   learningVictim:
-    'I now know: **real** estates use **licensed** attorneys—never **gift cards** or **urgent wire**.',
+    '**Real estates** are handled through **lawyers you choose** and **court** filings you can verify—never through cold email and **upfront fees** to release money.',
   learningForReaders: [
-    '**Verify** any inheritance claim with a **lawyer you choose**.',
+    '**Verify** any inheritance claim with an **attorney you hire**; ignore pressure to wire **taxes** or **fees** first.',
+    '**Report** to **FBI IC3** (US), **Action Fraud** (UK), or your national fraud centre.',
   ],
 };
 

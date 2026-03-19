@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Email**: "**Unusual** **login**—**verify** **account**."\u2029Each **link** asked for **more**: **password**, **OTP**, **SSN** **last** **four**, **photo** **ID**.\u2029**Infinite** **steps** until **everything** **leaked**.',
+    'An email titled "**unusual login**" asked me to verify my account, and each link opened a new form—password, OTP, last four of SSN, photo ID—until I had handed over a full dossier.',
   initialPlot:
-    'I **thought** I was **securing** **myself**.\u2029**Real** **bank** **froze** me **hours** later—**real** **fraud** **from** **Vietnam** **IPs**.\u2029**Phishing** **kit** **sold** as "**security** **audit**" **template**.',
+    'I thought I was securing myself after a scare. Hours later the real bank froze me because logins from overseas IPs tried to move cash using everything I had typed into the fake ladder.',
   scamExperience:
-    '**Verification** **loops** **fatigue** **victims** into **compliance**.\u2029**Each** **field** **feeds** **criminal** **databases**.\u2029**Stop** at **first** **nonstandard** **ask**.',
+    '**Verification loops** fatigue victims into compliance. Every field fed criminal databases sold on forums. The site was a kit dressed as a security audit.',
   victimExperience:
-    'I **couldn\u2019t** **sleep** until I "**fixed**" **it**—**scammer** **designed** that **urgency**.',
+    'I could not sleep until I "fixed" the problem—the scammer engineered that itch on purpose.',
   climax:
-    '**Bookmarked** **real** **login** showed **no** **alerts**.\u2029**Parallel** **universe** **site**.',
+    'My bookmarked real login showed no alerts while the phishing tab still demanded "final confirmation." Seeing clean dashboards side by side with the fake one proved I had been inside a copy.',
   victimPain:
-    '**Identity** **monitoring** **for** **life** **now**.',
+    'Credit monitoring and password resets became a second job for months afterward.',
   learningVictim:
-    'I now **type** **URLs** or **use** **app**; **one** **OTP** **max** per **session** I **started**.\u2029I wish I\u2019d **compared** **TLS** **cert** **names**.',
+    'I type URLs myself or use the app only, and I refuse to enter more than one sensitive field per session I initiated. I wish I had compared certificate names before I typed.',
   learningForReaders: [
-    '**Legitimate** **flows** **don\u2019t** **ask** for **everything** **in** **one** **sitting** via **email** **link**.',
+    'Legitimate banks do not ask for **everything at once** via an email link.',
   ],
 };
 

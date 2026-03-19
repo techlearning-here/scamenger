@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **interested in modelling** or **acting** and a "**talent agency**" reached out.\u2029When they wanted **cash before any gig**—for "photos," "portfolio," or "registration"—I thought it was **normal**. It wasn\u2019t. It was a **scam**.',
+    'I wanted to try **modelling** on the side; a “**talent agency**” DM’d to say I had **potential** and should book a **portfolio shoot** and **registration** before they could send me to castings.\u2029The pitch was flattering.',
   initialPlot:
-    'They said I had **potential** and offered to **represent** me. First I had to **pay** for "professional photos," "portfolio," or "agency registration."\u2029I paid. I never got a **single gig**. The "agency" **disappeared** or kept asking for **more**. The **talent agency** was **fake**—they wanted **cash**, not talent.',
+    'I paid for **photos**, a **website profile**, and a **background check** they said clients required.\u2029Months passed with no bookings—only emails pitching more **classes** and **fees**.',
   scamExperience:
-    '**Fake modelling and talent agencies** charge **upfront fees** and never deliver work. Real agencies **earn** when you earn. I lost **hundreds** (or more). The "agency" was **fake**.',
+    '**Fake modelling agencies** profit from **upfront charges** and never place real work.\u2029Legitimate agencies typically earn **commission on jobs**, not large **prepaid packages** from every applicant.',
   victimExperience:
-    'I was **hopeful** and the pitch felt **flattering**. I didn\u2019t want to **miss my chance**. I **paid without checking** if the agency was legit or had real clients.',
+    'While I paid I did not want to **miss a chance** by seeming difficult; I skipped checking the firm with **industry associations**.',
   climax:
-    'When I never got a single booking and the "agency" stopped replying (or asked for more money), I searched them. **Scam**—same story. That\u2019s when I knew.',
+    'When I demanded a contract with named clients, replies stopped; searching the agency name plus **scam** surfaced the same script other people had posted.',
   victimPain:
-    'I lost **money** and felt **used**. The **shame** was real. Reporting **helped**.',
+    'I lost **hundreds** and felt used for wanting something vain; reporting to consumer protection at least added the company name to warnings.',
   learningVictim:
-    'I now know: real talent agencies **don\u2019t** ask for big upfront fees before you\u2019ve booked anything. I wish I\u2019d checked first.',
+    '**Real agencies** do not rely on **big upfront fees** before you book paid work.\u2029I verify **licences** and references before paying anything.',
   learningForReaders: [
-    '**Beware** agencies that ask for **cash before any gig**. **Verify** with industry bodies. **Report** to the FTC.',
+    '**Research** agencies with **industry bodies**; walk away from **pressure** to pay immediately for photos or “registration.”',
+    '**Report** to the **FTC** (US) or your **consumer** fraud office.',
   ],
 };
 

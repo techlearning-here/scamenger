@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I thought I had a **legit work-from-home job**—receiving packages and **shipping them on**.\u2029I didn\u2019t know I was **shipping for criminals**. I was an **unwitting parcel mule**.',
+    'I answered a **work-from-home** ad that paid per package: items would arrive at my house, I would **relabel and forward** them, and a direct deposit would follow.\u2029It sounded like warehouse work without the commute.',
   initialPlot:
-    'The "**employer**" said I\u2019d get **packages** at home, **repack** them, and **ship** to an address they gave. I\u2019d get **paid** per parcel.\u2029I did it. The packages were **stolen goods** or **fraud**. I was **shipping for criminals** without knowing it. When the police or victims traced the parcels, **I** was in the frame.',
+    'Parcels came daily with my name on the box and a **printed sheet** with the next address.\u2029I did not open the goods; I just swapped labels and dropped them at the carrier.\u2029After three weeks a neighbour mentioned a news story about **reshipping scams**, and I searched the pattern that night.',
   scamExperience:
-    '**Reshipping (parcel mule) scams** use "work from home" to get you to **receive and forward** stolen or fraudulent goods. You\u2019re **used** by criminals and can face **legal risk**. The "job" was **fake**—I was a **mule**.',
+    'The articles explained **stolen payment data** buying goods shipped through **mules** so the trail ends at an innocent door.\u2029I stopped shipping, kept the remaining boxes, and went to the police with screenshots of the “employer” chat.',
   victimExperience:
-    'I thought I had a **real job**. The process seemed **straightforward**. I didn\u2019t **ask what was in the packages**. I didn\u2019t want to **lose the gig**.',
+    'While I was working the gig I told myself asking what was inside would sound nosy and might cost me the only income I had cobbled together that month.',
   climax:
-    'When I learned the **packages were linked to fraud** and my address was on record, I knew. I\u2019d been **shipping for criminals**. That\u2019s when I knew.',
+    'A detective said several items matched **fraud reports** from retailers; because I had **cooperated and stopped**, I was treated as a witness, but the conversation made clear how easily I could have been deeper in.',
   victimPain:
-    'I felt **used and scared**—and **legally exposed**. The **shame** was huge. Reporting and **stopping** helped.',
+    'I was not paid for the last batch, my address was on file with criminals, and I worried about **legal exposure** until the case note cleared; the shame of having moved the boxes lasted longer than the “job.”',
   learningVictim:
-    'I now know: any "job" that has you receive and reship packages from home is a **red flag**. I wish I\u2019d refused.',
+    'Any role that pays you only to **receive and reship strangers’ packages** is a **red flag**.\u2029Real logistics companies do not run that way from random Gmail accounts.',
   learningForReaders: [
-    '**Beware** "work from home" jobs that ask you to receive and reship packages. You may be used as a **parcel mule**. **Report** to the FTC.',
+    '**Do not forward packages** for unknown “employers”; you may be moving **stolen goods**.',
+    '**Report** the scheme to **police** and the **FTC** (US) or your national fraud body.',
   ],
 };
 

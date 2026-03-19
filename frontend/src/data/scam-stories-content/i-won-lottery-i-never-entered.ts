@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I got a message: I\u2019d **won a lottery** I\u2019d **never entered**.\u2029I wanted to **believe** it.',
+    'A letter and email said I had **won a lottery** I never entered—jackpot abroad, my name “randomly selected.”\u2029The paperwork looked formal enough that I let hope win for a day.',
   initialPlot:
-    'They said I had to pay **taxes**, **fees**, or **processing** first.\u2029I paid. There was **no lottery**. I\u2019d been **scammed**.',
+    'To **release** the prize I had to pay **taxes**, **processing**, and **legal fees** up front.\u2029I sent the first wire; they immediately asked for a second “**hold**” payment.',
   scamExperience:
-    '**Fake lottery** scams demand **upfront payment** for prizes that **don\u2019t exist**. I lost **money**.',
+    '**Fake lottery** scams sell prizes that **do not exist**.\u2029**Real lotteries** do not ask winners to **prepay fees** by wire or **gift card**.',
   victimExperience:
-    'I was **excited** and **hopeful**. The **official-looking** letter or email felt real.',
+    'While I paid I pictured paying down debt; stopping felt like throwing away money I had already sent.',
   climax:
-    'When they asked for **more fees** and I searched "**lottery scam**," I knew.',
+    'When I searched the “**lottery**” name plus **scam**, the exact letter text appeared on a consumer warning site.',
   victimPain:
-    'I lost **money** and felt **foolish**. Reporting **helped**.',
+    'The fees I sent were gone; I felt foolish explaining it to my partner.',
   learningVictim:
-    'I now know: you **can\u2019t win** a lottery you didn\u2019t enter. **Never pay** fees upfront for a "prize."',
+    'You **cannot win** a lottery you did not enter.\u2029**Upfront fees** for a “prize” are always **fraud**.',
   learningForReaders: [
-    '**Real lotteries** don\u2019t ask for **fees** via wire or gift cards.',
-    '**Report** to the FTC.',
+    '**Legitimate** lotteries do not require **wire** or **gift-card** fees to claim winnings.',
+    '**Report** to the **FTC** (US) or your **national fraud** centre.',
   ],
 };
 

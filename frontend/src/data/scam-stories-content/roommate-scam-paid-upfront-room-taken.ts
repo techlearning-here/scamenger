@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **paid for a room upfront**—**first and last**—so I could move in on the **first**.\u2029When I arrived, **someone else** was already living there.\u2029The "**roommate**" who took my money **wasn\u2019t** on the lease.',
+    'I paid **first and last month** upfront so I could move in on the first of the month for a new job. When I showed up with a suitcase, someone else was on the couch—and the person who took my money was **not on the lease**.',
   initialPlot:
-    'I met them through a **Facebook** or **Craigslist** group.\u2029They showed me **photos** and said the **main tenant** was **cool** with sublets.\u2029I **Venmo\u2019d** thousands.\u2029The **real** tenant had **never** agreed—and had **never** heard of me.',
+    'I found them through a housing group on social media. They toured me with photos, said the main tenant approved sublets, and pushed for Venmo that night because "three other people" were interested. I sent **thousands** without my name on a contract.',
   scamExperience:
-    '**Unauthorized sublet scams** pocket deposits from **multiple** victims.\u2029The **scammer** may have **brief** access or **fake** keys.\u2029I was **out** my money and **homeless** the same night.',
+    '**Unauthorized sublet scams** collect deposits from several people using borrowed keys or fake access. The real leaseholder had never agreed to me—or heard my name until I knocked.',
   victimExperience:
-    'I was in a **hurry** to start a new job.\u2029I **skipped** asking for the **lease** with my name on it.\u2029I **trusted** a friendly vibe.',
+    'I was in a hurry to start work and told myself roommate situations move fast in expensive cities. I skipped asking for written permission from the landlord because it felt bureaucratic.',
   climax:
-    'The **real** leaseholder said "**call the police**"—they\u2019d seen this before.\u2029My "roommate" **blocked** me.\u2029That\u2019s when I knew.',
+    'The actual leaseholder opened the door, said they had seen this before, and told me to call the police while my "roommate" blocked me mid-sentence. That hallway conversation was when the friendly tour turned into fraud.',
   victimPain:
-    'I slept in a **hostel** and **ate** cheap for weeks.\u2029**Embarrassment** at work when people asked if I\u2019d "settled in" **stung**.',
+    'I slept in a hostel and ate cheap for weeks, and I dodged questions at work about whether I had "settled in." The embarrassment stung as much as the lost cash.',
   learningVictim:
-    'I now know: I need **written permission** from the **actual** leaseholder or **landlord**, on **letterhead** or email I verify.\u2029I wish I\u2019d never paid **cash apps** to a stranger.',
+    'I now need **written permission** from the real leaseholder or landlord on contact info I verify myself, and I refuse cash-app rent to strangers. I wish I had met the building manager before I sent anything.',
   learningForReaders: [
-    '**Meet** on-site with someone who can **prove** they control the space.',
-    '**Report** fraud; warn the **housing group** where you found the ad.',
+    '**Meet on-site** with someone who can prove they control the space.',
+    '**Report** fraud and warn the group where you found the ad.',
   ],
 };
 

@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Rent-to-own**: we **paid extra** every month toward a **future deed**.\u2029**Years** went by.\u2029The **deed** never came.\u2029The "**seller**" wasn\u2019t the **owner**—or the **contract** was **void**.',
+    'We signed a **rent-to-own** deal because traditional lenders said no and the seller promised part of every cheque would buy equity. Years of payments later we still had no deed, and the LLC on the contract had dissolved without a forwarding address.',
   initialPlot:
-    'Paperwork looked **legal**; we **didn\u2019t** have a lawyer **review** it.\u2029Payments went to a **LLC** that **dissolved**.\u2029When we asked for the **title**, excuses piled up—**tax liens**, **pending** signatures, **one more** payment.',
+    'Paperwork looked legal enough that we skipped a lawyer to save money. Excuses stacked whenever we asked for the title—liens, waiting signatures, one more "good faith" instalment—while rent stayed above market.',
   scamExperience:
-    '**Predatory rent-to-own** schemes **extract** premium rent **without** intent to transfer **title**.\u2029We lost **tens of thousands** in **excess** payments with **no equity**.',
+    '**Predatory rent-to-own** schemes collect premium payments without intent to transfer title. Our cash flowed to a shell entity while the property stayed encumbered by debts we never knew about until a title search.',
   victimExperience:
-    'We wanted **homeownership** and had **imperfect credit**.\u2029The deal felt like a **path forward**.\u2029We **ignored** friends who said "**get a lawyer**."',
+    'We wanted homeownership badly enough to ignore friends who said get counsel. I told myself we were being resourceful, not reckless, every time we wired another month early.',
   climax:
-    'A **title search** showed the **property** had **another mortgage** and **no** record of our agreement.\u2029That\u2019s when we knew we\u2019d been **exploited**.',
+    'A title search showed a separate mortgage and no recorded agreement matching ours. Seeing public records contradict the story we had been told was when we knew the path to ownership had been fiction.',
   victimPain:
-    'We **painted walls** and **fixed** things thinking it was **ours**.\u2029Walking away felt like **grief**—and **eviction** still loomed.',
+    'We painted walls and fixed leaks thinking the place was ours, so walking away felt like grief layered with eviction risk. The money hurt, but the imagined future hurt more.',
   learningVictim:
-    'I now know: **hire a real-estate attorney** before any rent-to-own; verify **seller** owns **free and clear** or understand **liens**.\u2029I wish we\u2019d spent **hundreds** on advice instead of **thousands** on lies.',
+    'I now hire a **real-estate attorney** before any rent-to-own and verify the seller owns the property free and clear or understand every lien. I wish we had spent hundreds on advice instead of thousands on promises.',
   learningForReaders: [
-    '**Escrow** and **recorded** contracts protect buyers.',
-    '**Report** fraud to consumer protection and consult a **lawyer**.',
+    'Use **escrow** and recorded contracts when buying equity over time.',
+    '**Report** fraud to consumer protection and consult a lawyer early.',
   ],
 };
 

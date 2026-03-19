@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **ordered** "**Apple**" **AirPods** for **half** **retail** from a **site** with **reviews** and **SSL**.\u2029I got **buds** that **hurt** my **ears** and **died** in **days**.\u2029**Customs** letter later: **counterfeit** **import** **linked** to my **address**.',
+    'I wanted **AirPods** without paying full retail, so I ordered from a site that looked polished—**reviews**, **HTTPS**, prices about **half** the Apple Store.\u2029The earbuds arrived in a box that fooled me until I tried them.',
   initialPlot:
-    '**Tracking** worked; **box** **looked** **real** until **serial** **check** **failed**.\u2029**Seller** **vanished**.\u2029**Chargeback** **won**—**rare** **luck**.\u2029Still **angry** about **e-waste** and **who** **made** them **under** **what** **conditions**.',
+    '**Tracking** worked and the packaging looked right, but the fit hurt, the sound cut out, and Apple’s **serial check** failed.\u2029The seller’s site went offline before I could return them; my bank eventually **charged back** the purchase, which not everyone gets.',
   scamExperience:
-    '**Fake** **goods** **fund** **grey** **supply** **chains**.\u2029**Price** **too** **good** + **obscure** **domain** = **risk**.\u2029**IP** **theft** isn\u2019t **victimless**.',
+    'The goods were **counterfeit**: cheap hardware sold with stolen branding, often moved through **short-lived domains**.\u2029A letter from **customs** later tied a shipment to my address, which explained why the price had been possible at all.',
   victimExperience:
-    'I **wanted** **status** **cheap**.\u2029**Vanity** **tax**.',
+    'I told myself I was being smart about money; I did not check how **new** the domain was or whether the seller was an **authorised retailer**.',
   climax:
-    '**Apple** **Store** **genius** **laughed** **kindly** and **showed** **hologram** **differences**.\u2029**Humbling**.',
+    'At an **Apple Store**, staff compared the case to a real unit and pointed out **label and hinge details** I would never have spotted at home—that was the first time I admitted I had bought a fake.',
   victimPain:
-    '**Moral** **ick** worse than **$ lost** after **chargeback**.',
+    'Even after the chargeback I was stuck with the waste and the worry about what I had imported; the loss of trust in “too good” prices lasted longer than the refund.',
   learningVictim:
-    'I now buy **only** **authorised** **retailers** or **refurb** **with** **warranty**.\u2029I wish I\u2019d **checked** **WHOIS** **age**.',
+    'I buy **audio and electronics** only from **authorised sellers** or refurbs with a **warranty** I can verify.\u2029I check **domain age** and company registry before checkout.',
   learningForReaders: [
-    '**Brand** **registry** **lookup** and **too-new** **domains** are **red flags**.',
+    '**Prices far below retail** on unknown sites are a major **counterfeit** risk.',
+    '**Verify sellers** with the brand’s official store locator; **dispute** bad charges promptly with your card issuer.',
   ],
 };
 

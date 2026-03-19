@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'At a **café**, **table** **tent** **QR** **opened** a **payment** **page** **cloned** from **Square**.\u2029I **paid** **tip** + **bill**.\u2029**Owner** said "**we** **use** **paper** **menus**."\u2029**Sticker** **overlay** **scam**.',
+    'At a neighbourhood café I scanned the **QR code** on the table tent to pay my tab and tip. The checkout skin looked like a familiar processor, so I completed the charge and only thought about it again when the owner walked over asking if I had paid in cash.',
   initialPlot:
-    '**£40** **lost**; **real** **merchant** **kind** about **police** **report**.\u2029**CCTV** **caught** **someone** **slapping** **stickers** **overnight**.\u2029**Pattern** hit **strip**.',
+    'They still used paper menus and their real QR lived behind the counter; someone had slapped a sticker over the tent overnight. My receipt email used a domain I did not recognise, but I shrugged until the staff showed me the laminated code they actually owned.',
   scamExperience:
-    '**Malicious** **QR** at **POI** **redirects** to **fake** **checkout**.\u2029**Physical** **world** **phishing**.\u2029**Staff** **should** **audit** **codes** **daily**.',
+    '**QR swapping** is physical phishing: a cheap sticker routes tips and tabs to a cloned payment page. The merchant helped me file a police report, and security footage later showed someone replacing codes along the strip after closing.',
   victimExperience:
-    '**Post-COVID** **habit**—**scan** **everything**.',
+    'Post-pandemic habit made me scan without thinking, and I assumed table tents were as trustworthy as the espresso machine. I did not preview the URL because I was rushing to catch a train.',
   climax:
-    '**URL** on **phone** **preview** was **not** **café** **name**—I **noticed** **after** **pay**.',
+    'When I compared the URL in my banking app to the café\'s real domain, the mismatch was obvious in hindsight. The owner\'s confirmation that their code never lived on that tent was the moment I understood I had tipped a stranger.',
   victimPain:
-    '**Skeptical** **of** **mom-and-pop** **QR** now—**hurts** **owners** too.',
+    'I lost about **forty pounds** and spent evenings feeling foolish every time I ate out afterward. Small businesses suffered the same suspicion I carried, which was an unfair side effect of one sticker.',
   learningVictim:
-    'I **ask** **staff** "**is this your** **code**?" before **big** **tabs**.\u2029I wish I\u2019d **compared** **domain** **first**.',
+    'I now ask staff "is this your code?" before I pay a big tab and read the domain like an email link. I wish I had taken two seconds to match the merchant name.',
   learningForReaders: [
-    '**Businesses**: **laminated** **QR** **inside** **glass**, not **replaceable** **tents** only.',
+    '**Businesses**: mount QR codes behind glass or laminate tamper-evident prints; audit tables daily.',
   ],
 };
 

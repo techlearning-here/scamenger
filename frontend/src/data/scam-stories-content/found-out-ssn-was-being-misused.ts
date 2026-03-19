@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **found out** my **SSN** was **misused** when a **job** background check **flagged** **records** that **weren\u2019t** mine.\u2029**Someone else** had been **living** in **databases** as **me**.',
+    'A **background check** for a new job flagged **employment** and **addresses** I never had.\u2029Pulling my own **credit reports** showed accounts and inquiries that did not belong to me—someone had been using my **Social Security number** for years.',
   initialPlot:
-    '**Addresses** I never lived at, **employers** I never had.\u2029Piecing together **when** it started meant **years** of **credit reports** and **court** searches.\u2029**No** single "**aha**"—a **slow** **horror**.',
+    'Rebuilding the timeline meant **years** of **credit bureau** disputes, **IRS** letters about wages I did not earn, and calls to employers who had hired “me” on paper only.',
   scamExperience:
-    '**SSN misuse** enables **work**, **credit**, and **benefits** fraud.\u2029Cleanup is **legal** and **emotional** labor.\u2029I **affidavit**-ed everything.',
+    '**SSN misuse** fuels **work**, **credit**, and **benefits** fraud; cleanup is **affidavits**, freezes, **PIN** programmes where available, and patient follow-up with each bureau and agency.',
   victimExperience:
-    'I **oscillated** between **rage** and **numbness**.\u2029**Identity** felt **shared** with a **stranger**.',
+    'Some weeks I was furious; others I went numb—my **identity** felt shared with a stranger I could not see.',
   climax:
-    'A **detective** matched a **fingerprint** on a **form**—not mine.\u2029That **broke** the **case** open.',
+    'A **detective** matched a **fingerprint** on a hiring form to someone else—that break linked several fake jobs to one operator and cleared a chunk of the false history.',
   victimPain:
-    '**Career** **paused** while **errors** **cleared**.\u2029**Relationships** tested by my **obsession** with **paperwork**.',
+    'Hiring paused while errors cleared; relationships strained when I obsessed over paperwork instead of being present.',
   learningVictim:
-    'I now know: **freeze**, **monitor**, **PIN** programs, and **document** **everything**.\u2029I wish **breach notices** had **forced** **freeze** **defaults**.',
+    'I keep **credit frozen** by default, use **monitoring**, and document every step on **IdentityTheft.gov** (US) or my country’s equivalent recovery plan.',
   learningForReaders: [
-    '**IdentityTheft.gov** for a **recovery plan** (US).',
+    'Use **IdentityTheft.gov** for a structured **recovery plan** (US).',
+    '**Freeze** credit with all bureaus; **report** misuse to **FTC** and **local police**.',
   ],
 };
 

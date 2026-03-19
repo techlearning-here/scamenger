@@ -6,8 +6,10 @@ export interface StoryContent {
   initialPlot: string;
   scamExperience: string;
   victimExperience: string;
-  victimPain: string;
+  /** Turning point: realisation, confrontation, money gone. */
   climax: string;
+  /** Aftermath after the climax. */
+  victimPain: string;
   learningVictim: string;
   /** Actionable takeaways: bullets or short paragraphs. */
   learningForReaders: string[];

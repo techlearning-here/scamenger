@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was added to a **WhatsApp group** that seemed to be about investing. People were sharing "gains" and tips. It felt like a **community**.\u2029I wasn\u2019t greedy—I just thought **maybe I can learn**. The group wasn\u2019t investors. It was a **trap**.',
+    'Someone added me to a **WhatsApp group** that looked like a investing club—charts, cheerleading, screenshots of green days. I was not chasing riches; I thought I might **learn something**. The room was not a community—it was a script.',
   initialPlot:
-    'The "members" pushed one **platform** and one "advisor." I put in money; it showed gains. When I wanted to withdraw, they said **fees** or **more deposit**. I paid. Then I realized many "members" were **the same scammers** with multiple accounts. The group and the platform **vanished**.',
+    'Admins pushed one platform and one "mentor." I deposited; the dashboard smiled back. When I tried to withdraw, fees multiplied, then a final unlock deposit appeared. Names I thought were peers repeated the same talking points within seconds.',
   scamExperience:
-    '**Fake investment groups** on WhatsApp (and elsewhere) are run by scammers who play multiple roles. They push one fake platform and drain everyone. I lost **thousands**. The "group" was **scripted**.',
+    '**Fake investment groups** staff multiple accounts to simulate consensus. Everyone used the same referral link; the app and the chat died the same weekend.',
   victimExperience:
-    'I told myself **so many people can\u2019t be wrong**. When the balance went up, I felt **hopeful**.\u2029Part of me wondered why we all had to use that one platform, but **I didn\u2019t want to miss out**.',
+    'I told myself crowds could not all be wrong. Rising balances felt like proof I had finally found an edge.',
   climax:
-    'When the group **disappeared** and the app went offline, I searched online. **Fake WhatsApp investment groups**—same pattern. That\u2019s when I knew.',
+    'When the group vanished overnight and the APK returned a server error, I searched the platform name with scam and found my exact screenshots on victim threads. That pattern match ended the fantasy.',
   victimPain:
-    'I lost **savings** and trust in "groups." The **shame** was real. Reporting **helped**.',
+    'I lost **thousands** and trust in any group chat that touches money. Reporting gave me language for what had happened.',
   learningVictim:
-    'I now know: if a group only pushes one platform and won\u2019t let you withdraw, it\u2019s a scam. I wish I\u2019d never joined.',
+    'If a room only pushes one platform and withdrawals stall, I leave and report. I wish I had never clicked the pinned link.',
   learningForReaders: [
-    '**Beware investment groups** that push one platform or "advisor." Real investors don\u2019t all use the same link.',
-    '**Never invest** through a group link. **Report** to the FTC.',
+    '**Beware** investment groups that mandate one app or advisor—real investors are not synchronized that way.',
+    '**Never invest** through a WhatsApp link. **Report** to the FTC.',
   ],
 };
 

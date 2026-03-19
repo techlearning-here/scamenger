@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'After a **breach** at a **company** I used, **someone became me**—**logins**, **orders**, **password resets** I never requested.\u2029The **leak** wasn\u2019t my **fault**; the **cleanup** was **mine**.',
+    'After a **company I used** announced a **breach**, someone started living as me online—**logins**, **orders**, **password resets** I never triggered.\u2029The leak was not my fault; the **cleanup** still landed on me.',
   initialPlot:
-    '**Dark-web** kits tied my **email + password** to **dozens** of sites.\u2029They **drained** a **store credit** line and **ordered** phones to **mules**.\u2029I learned **password reuse** was the **bridge**.',
+    '**Credential stuffing** hit dozens of sites where I had reused the same **email and password**.\u2029They drained a **store credit line** and shipped **phones** to **mule** addresses.',
   scamExperience:
-    '**Credential stuffing** after breaches **automates** takeover.\u2029I **changed** hundreds of passwords, **revoked** sessions, **lost** a **weekend** to **recovery**.',
+    'One stolen combo becomes a **bridge** everywhere.\u2029I revoked sessions, rotated **hundreds** of passwords, and lost a weekend to **recovery checklists**.',
   victimExperience:
-    'I **blamed** myself for **reusing** passwords—then **accepted** I was **human** and **systems** failed too.\u2029**Anger** at the **breached company** was **real**.',
+    'I blamed myself for **reuse**, then accepted that **breaches** and human habits both play a role; I was still furious at the company.',
   climax:
-    'When **Have I Been Pwned** showed **that breach** + my **old password**, I **understood** the **vector**.\u2029That\u2019s when I **fixed** the **root** cause.',
+    '**Have I Been Pwned** showed that breach next to my **old password**—finally a clear map from leak to fraud.',
   victimPain:
-    '**Anxiety** every **login alert**.\u2029**Trust** in **online life** **cracked**.',
+    'Every login alert spiked anxiety; trust in routine online life cracked for months.',
   learningVictim:
-    'I now know: **password manager**, **unique** passwords, **2FA** on **email** and **bank**.\u2029I wish I\u2019d done it **before** the breach.',
+    'I use a **password manager**, **unique** passwords, and **2FA** on **email** and **bank** first.',
   learningForReaders: [
-    '**Assume** breached data **will** be tried everywhere—**rotate** credentials after notices.',
+    '**Assume** breached data will be tried everywhere—**change passwords** after notices.',
+    '**Freeze credit** and file **identity theft** reports where your country provides them.',
   ],
 };
 

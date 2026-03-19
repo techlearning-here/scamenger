@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'They said they were the **IRS** (or **HMRC**)—I owed **taxes** and would be **arrested** if I didn\u2019t pay **now**.\u2029I **paid**. Real tax agencies **don\u2019t** work that way.',
+    'A robocall said **IRS** / **HMRC** had filed a case against me for **unpaid taxes** and that **officers** were on the way unless I paid **immediately**.\u2029The voice sounded calm and referenced **federal** or **national** penalties.',
   initialPlot:
-    'They demanded **gift cards**, **wire**, or **crypto**—**immediate** payment to stop **warrants** or **deportation**.\u2029I was **terrified**. I paid. The **agency** never called. It was **impersonation**.',
+    'They demanded **gift cards**, **wire**, or **crypto** and stayed on the line while I drove toward a shop.\u2029I paid **one** card load before a cashier asked if someone was **coaching** me on the phone.',
   scamExperience:
-    '**Government impersonation** scams use **threats** and **urgency**. Tax offices **don\u2019t** demand payment by gift card or threaten **instant arrest** by phone. I lost **money**.',
+    '**Tax impersonation** scams use **threats** and **urgency**.\u2029**Real tax agencies** do not demand **gift cards**, threaten **instant arrest** by phone, or refuse to let you **verify** through official channels.',
   victimExperience:
-    'I was **afraid** of legal trouble. The caller sounded **official**. I didn\u2019t want to **risk** my freedom or home.',
+    'While they talked I was afraid of **arrest** and **deportation** language they mixed in; challenging them felt dangerous.',
   climax:
-    'When I called the **real** tax office, they said **no** such case existed. That\u2019s when I knew.',
+    'I called the **published** tax office number from **.gov**; the agent said **no case** existed in my name and the call I had received was **known fraud**.',
   victimPain:
-    'I lost **money** and felt **violated**. Reporting **helped**.',
+    'The **money** on the cards was gone; filing police and **IRS** / **HMRC** fraud reports took an evening I had planned to spend quietly.',
   learningVictim:
-    'I now know: **hang up** on threatening tax calls. **Verify** only through **official .gov** channels.',
+    'I **hang up** on every threatening **tax** call and **verify** only through **official** web portals or letters I can confirm.',
   learningForReaders: [
-    '**IRS / HMRC** don\u2019t demand **gift cards** or **instant wire**. **Report** impersonation.',
+    '**IRS** / **HMRC** do not take **gift cards** or **crypto** for tax debt.',
+    '**Report** impersonation to **TIGTA** / **HMRC phishing** teams and local **police**.',
   ],
 };
 

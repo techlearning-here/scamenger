@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I saw **posts** that looked like a celebrity I follow was promoting a **crypto deal**. The screenshots and "testimonials" looked real.\u2029I wasn\u2019t naive—I just thought **if they\u2019re endorsing it**, maybe it\u2019s legit. It wasn\u2019t.',
+    'Clips and posts made it look like a celebrity I follow was backing a **crypto platform** with guaranteed returns.\u2029I knew enough to be wary of random DMs, but **seeing their face next to the logo** lowered my guard.',
   initialPlot:
-    'I clicked the link and signed up. I put in money; the "platform" showed **gains**. When I tried to withdraw, they asked for **fees** or more deposit. I paid. The celebrity had **never endorsed** it—their name and face had been **stolen**. The platform and my money **disappeared**.',
+    'I signed up through the linked site, deposited, and watched the dashboard show **gains**.\u2029Withdrawals stalled behind **fees**, then **tax holds**, then another **unlock deposit**; when I searched harder, the same face appeared on the star’s real profile with a **“I never endorsed this”** notice.',
   scamExperience:
-    '**Fake celebrity crypto** scams use stolen images and deepfakes to lure victims. There is no real endorsement. I lost **thousands**. The "platform" was **fake**.',
+    '**Fake celebrity crypto** scams steal images and sometimes use **deepfake** clips; there is no endorsement and no real platform—only a **sink address** and scripted support chat until the site goes dark.',
   victimExperience:
-    'I told myself **celebrities do promotions**. When the balance went up, I felt **excited**.\u2029Part of me wondered why withdrawal was so hard, but **I didn\u2019t want to believe** I\u2019d been fooled.',
+    'While balances rose on screen I told myself **celebrities do sponsored deals** and ignored that none of this was on their **verified** channels.',
   climax:
-    'When I found the real celebrity\u2019s statement—**never endorsed, report scams**—and the app went offline, I knew. That\u2019s when I knew.',
+    'The app stopped loading the same week the celebrity’s team filed takedowns; my login returned **server error** and support numbers disconnected.',
   victimPain:
-    'I lost **savings** and felt **stupid**. The **shame** was real. Reporting **helped**.',
+    'I lost **thousands** I had treated as a serious investment; filing with **FTC** and police did not return the coins but stopped me from sending “one more” fee.',
   learningVictim:
-    'I now know: celebrities don\u2019t DM you or promote random crypto links. I wish I\u2019d checked the official account and never clicked.',
+    '**No investment** is real because a famous face appears in an ad outside their **official** accounts.\u2029I verify every offer on **SEC** / **FCA** registers before money moves.',
   learningForReaders: [
-    '**Celebrities don\u2019t** promote crypto or investment links in DMs or random posts. **Verify** on their official channels; assume the rest is scam.',
-    '**Report** to the FTC.',
+    '**Celebrities** do not promote random **crypto** links in unsolicited posts or DMs—assume **fraud**.',
+    '**Report** impersonation to the platform and **FTC** (US) or your consumer fraud line.',
   ],
 };
 

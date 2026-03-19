@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was in my 30s and we met on a dating site. He said he was **in the military, deployed**. I wanted to support someone serving.\u2029We talked for months. He was sweet, remembered everything. I let myself **fall for him**.',
+    'We met on a dating site in my 30s.\u2029He said he was **military**, **deployed**; I wanted to **support** someone serving.\u2029We talked for months and I let myself care.',
   initialPlot:
-    'He couldn\u2019t video much—"deployment," "bad connection." When he needed money for **phone access**, **emergency leave**, or **family back home**, I helped. I told myself **partners support each other**.\u2029The requests added up. I kept waiting for the day he\u2019d come home and we\u2019d finally meet.',
+    'Video was always brief—**deployment**, **bad connection**.\u2029Then came costs for **phone access**, **emergency leave**, **family** back home.\u2029I sent **thousands** and told myself **partners help**.',
   scamExperience:
-    'I sent **thousands** over more than a year. Every time I asked to meet or talk longer, something blocked it. Then I found his **photos on a scam-warning site**—same face, different name, same story. I confronted him. He **disappeared**. The "deployed" soldier had never existed.',
+    'The story never reached a **homecoming**.\u2029I found his **photos** on a **scam-warning** site—same face, **different name**.\u2029When I confronted him, he **disappeared**.',
   victimExperience:
-    'I believed we had a **future**. I didn\u2019t want to abandon someone "serving abroad."\u2029Part of me wondered why we could never really talk or meet, but **I was too invested to admit** it might be a lie.',
+    'I did not want to abandon someone “**serving abroad**,” so I ignored how thin **proof** was.',
   climax:
-    'When I found his photo on a victim forum, I knew. I\u2019d been **romance-scammed** by someone pretending to be deployed. He vanished when I confronted him. That\u2019s when I knew.',
+    'The victim forum post matched my chat **line by line**—deployed soldier, same excuses, same photo set.',
   victimPain:
-    'I lost **money and trust**. The **shame and grief** were huge. I felt **stupid and used**.\u2029Reporting helped. Rebuilding **takes time**.',
+    'Money and **trust** were gone; reporting helped but **grief** lingered.',
   learningVictim:
-    'I now know: real military personnel don\u2019t ask strangers for money. I wish I\u2019d verified before sending a cent.',
+    '**Real service members** do not ask strangers for **money** over dating apps.\u2029I verify through **official** channels before supporting anyone financially.',
   learningForReaders: [
-    '**Military romance scams** are common—scammers pretend to be deployed and ask for money. Verify before sending anything.',
-    '**Never send money** to someone you haven\u2019t met. **Report** to the FTC.',
+    '**Military romance scams** are common—**verify** before sending funds.',
+    '**Report** to the **FTC** and **military** fraud offices where available.',
   ],
 };
 

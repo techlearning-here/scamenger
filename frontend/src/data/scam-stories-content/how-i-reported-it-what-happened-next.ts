@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'After I **realised** I\u2019d been **phished**, I **reported** everywhere—**bank**, **FTC**, **local police**, **FBI IC3**.\u2029**Nothing** **felt** like **justice**—but **paper trails** **mattered** later.',
+    'Once I accepted I had been **phished**, I reported the same day—**bank fraud line**, **FTC**, **local police**, **FBI IC3**.\u2029Nothing felt like **justice** immediately, but I kept **PDFs**, **reference numbers**, and **screenshots** in one folder.',
   initialPlot:
-    'The **bank** **denied** the **first** **chargeback**; I **resent** **affidavits** and **police report** **numbers**.\u2029**Months** later a **fraud** **unit** **linked** my **case** to a **ring**.\u2029I got **partial** **credit**—not because I was **special**, but because I **documented**.',
+    'The **bank** denied the first **chargeback** until I resent **affidavits** with the **police report** number.\u2029Months later a **fraud unit** linked my **IBAN** to a **ring**; I received **partial** credit—not because I was special, but because the **paper trail** existed.',
   scamExperience:
-    '**Reporting** doesn\u2019t **refund** **instantly**, but it **feeds** **pattern** **detection** and **sometimes** **recovery**.\u2029**Silence** is what **scammers** count on.',
+    '**Reporting** rarely refunds cash overnight, but it **feeds pattern detection**, **freezes** mule rails, and **sometimes** unlocks recovery.\u2029**Silence** is what operators count on.',
   victimExperience:
-    'I **almost** **didn\u2019t** file—**shame** said "**nothing will happen**."\u2029**Anger** made me **try** anyway.',
+    'Shame almost kept me from filing—“**nothing will happen**”—but anger pushed me to submit the forms anyway.',
   climax:
-    'A **detective** **called**—**rare**—because my **IBAN** matched **twelve** **other** **victims**.\u2029That\u2019s when I **saw** my **report** wasn\u2019t a **black hole**.',
+    'A **detective** called—uncommon for my area—because my **account** matched **twelve** other victims; that call showed the report was not a **black hole**.',
   victimPain:
-    '**Waiting** without **updates** **wore** me down.\u2029I **needed** **therapy** to **stop** **refreshing** **email**.',
+    'Waiting without updates wore me down; therapy helped me stop **refreshing** the email inbox for case notes that rarely came.',
   learningVictim:
-    'I now know: **report anyway**, **keep copies**, **follow up** with **banks** in **writing**.\u2029I wish I\u2019d **screenshot** **everything** the **first** **hour**.',
+    'I **report anyway**, **keep copies**, and **follow up in writing** with banks on a timeline I can track.',
   learningForReaders: [
-    '**IC3.gov**, **Action Fraud** (UK), **local** consumer bodies—**use** the **right** **channel** for your country.',
+    'Use **IC3.gov** (US), **Action Fraud** (UK), or your country’s **consumer fraud** portal.',
+    '**Screenshot** evidence in the **first hour**; **time-stamped** records matter.',
   ],
 };
 

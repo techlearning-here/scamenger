@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'My **uncle** **bought** **$2,000** in **gift cards** because a **voice** said his **grandson** was in **jail** and **couldn\u2019t** talk long.\u2029He **read** the **codes** over the phone.\u2029The **real** grandson was **at soccer**.',
+    'My **uncle** bought about **two thousand dollars** in **gift cards** because a caller said his **grandson** was in **jail**, could not stay on the line, and needed the codes read aloud for “bond paperwork.”\u2029The real grandson was at **soccer practice** the whole time.',
   initialPlot:
-    'The caller **knew** his **name** and **hometown**—probably **Facebook**.\u2029**"Bail bonds"** **wouldn\u2019t** take cards, but **this officer** "**made an exception**."\u2029**Store clerks** **warned** him; he **thought** they **didn\u2019t understand**.',
+    'The voice used his **grandson’s name** and details that likely came from **social media**, then insisted normal bail rules did not apply and only **gift cards** would work.\u2029Clerks at two stores warned him; he assumed they did not understand an emergency.',
   scamExperience:
-    '**Grandparent scams** + **gift cards** = **instant**, **irreversible** **drain**.\u2029**Criminals** **sell** codes **minutes** later.\u2029We **filed** **FBI IC3** and **local police**; **money** was **gone**.',
+    '**Grandparent scams** paired with **gift cards** move money in minutes; codes are sold or spent before families can react.\u2029We filed with **local police** and **IC3**; the **cash** did not come back.',
   victimExperience:
-    'He **wanted** to **save** a **child** he **loves**.\u2029**Love** was **weaponized**.',
+    'While he was on the phone he was afraid that asking questions would make things worse for a child he loves, so **speed** felt like care.',
   climax:
-    'When my **cousin** **FaceTimed** from the **field**, **uncle** **collapsed** into a **kitchen** chair.\u2029That\u2019s when he **believed** it was **fraud**.',
+    'My cousin **video-called** from the field with the grandson in frame; my uncle hung up on the other line while the scammer was still demanding another card.',
   victimPain:
-    'He **stopped** **answering** his **phone** for **weeks**—**isolated** by **shame**.',
+    'He avoided the phone for weeks afterward and felt humiliated at family dinners until we normalised talking about the script instead of blaming him.',
   learningVictim:
-    'We now have a **family code word** and a **rule**: **no cards** for **bail**, **IRS**, or **utilities**.\u2029I wish we\u2019d **rehearsed** that **before**.',
+    'We set a **family code word** and a hard rule: **no gift cards** for **bail**, **taxes**, or **utilities**.\u2029Urgent calls get a **callback on a saved number** first.',
   learningForReaders: [
-    '**Hang up** and **call** the **relative** on a **number you already have**.',
-    '**Gift cards** for **government** or **bail** = **always** a **scam**.',
+    '**Hang up** on jail-or-emergency gift-card demands; **call your relative** on a number you already trust.',
+    '**Report** to the **FTC** (US) or your national fraud line.',
   ],
 };
 

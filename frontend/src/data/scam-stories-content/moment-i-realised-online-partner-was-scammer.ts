@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'We\u2019d been talking online for months. I thought we had something **real**—we shared everything.\u2029Then **one text** changed it. I still replay it in my head.',
+    'I was in my 30s and we had messaged every day for months—photos, voice notes, rough plans that felt concrete. I thought we had something **real** until a line landed in our chat that was clearly meant for someone else.',
   initialPlot:
-    'He\u2019d had "emergencies" before—money for bills, family—and I\u2019d helped. I told myself **partners help**. One day he sent a message that was **meant for someone else**—another victim, same script. I read it and my stomach dropped. I\u2019d been **one of many**.',
+    'He had asked for money before for bills and family trouble, and I had sent it because I told myself partners help each other. When the wrong-thread text appeared I scrolled back and saw the same phrases and timing recycled across old requests.',
   scamExperience:
-    'I confronted him. He denied it, then **disappeared**. His number and profile went dead. I reverse-searched his photos: **stolen**. The person I\u2019d trusted had been running a romance scam. I\u2019d sent thousands to a stranger.',
+    'Romance scammers often run **parallel chats** with the same script. After I confronted him he denied everything, then vanished; his number and profile went dead. I reverse-searched his photos and found **stolen images** tied to other names.',
   victimExperience:
-    'I\u2019d believed we had a **future**. That one text made me see: I **didn\u2019t want to admit** I\u2019d been fooled. I\u2019d invested so much.',
+    'I had pictured a future I could describe to friends, so admitting the pattern felt like calling myself foolish. Part of me had noticed the crises always lined up with payment requests, but I did not want to be the person who doubted love.',
   climax:
-    'That **one text**—meant for another victim—was the moment I knew. He vanished when I confronted him. The "relationship" had never been real.',
+    'That mistargeted message was the proof I was one inbox in a pile, not special. When he disappeared overnight, the relationship ended without a goodbye that matched months of promises.',
   victimPain:
-    'I lost **money and trust**. The **shame** was huge. I felt **stupid**. Reporting and healing **take time**.',
+    'I lost **thousands** and the trust I had in my own judgment, and the shame sat on my chest for weeks before I told my sister. Reporting did not return the cash, but it gave me a next step instead of spiralling alone.',
   learningVictim:
-    'I now know: if something feels off—like a text that doesn\u2019t add up—trust your gut. I wish I\u2019d questioned earlier.',
+    'I now know: if messages stop matching the person you think you know, pause before you send money. I wish I had reverse-searched photos and insisted on verification the first time he rushed me.',
   learningForReaders: [
-    '**Red flag**: scripted or inconsistent messages. Verify identities; reverse-search photos.',
-    '**Never send money** to someone you haven\u2019t met. **Report** to the FTC.',
+    '**Red flags**: scripted or inconsistent messages; reverse-search photos.',
+    '**Never send money** to someone you have not met in person. **Report** to the FTC.',
   ],
 };
 

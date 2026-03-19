@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'Someone **randomly messaged** me—wrong number, they said. We got talking. They were friendly and over weeks we grew close.\u2029I wasn\u2019t looking for love or money. But then they mentioned **investing** and "gains" they\u2019d made. I was curious.',
+    'A wrong-number text turned into daily chats about work, food, and family—I was not hunting for romance or trades, just company during a dull season. After trust built, they mentioned **investment gains** on a platform a cousin supposedly used, and curiosity got me to look.',
   initialPlot:
-    'They sent a link to a "platform." I put in a little; it showed **huge gains**. They said to add more to "unlock" withdrawals. I did. For **months** the balance kept growing—but I could never withdraw. "Fees," "tax," "one more trade." Then they **disappeared** and the app went offline. I\u2019d been **pig-butchered**—slowly drained.',
+    'I deposited a small test amount; the app showed smooth growth and quick statements. They urged larger transfers to **unlock withdrawals**, then cited taxes, compliance holds, and one more trade that would "fix" the balance.',
   scamExperience:
-    '**Pig-butchering** is romance + fake investment: they build trust for weeks or months, then drain you. The "gains" were **fake**. I lost **everything** I\u2019d put in. The person and the app **vanished**.',
+    '**Pig-butchering** blends grooming with a fake brokerage: the numbers are theater, the fees are endless, and the relationship dies when you stop paying. Over **months** I sent far more than the first experiment before the app and the person vanished the same week.',
   victimExperience:
-    'I told myself we had something **real** and the platform was legit. When the numbers went up, I felt **hopeful**.\u2029Part of me wondered why I couldn\u2019t withdraw, but **I was too invested to admit** it was a scam.',
+    'I told myself the friendship felt real and the platform looked licensed enough on the surface. Part of me clocked every stalled withdrawal, but I was too deep to admit I had been steered into a script.',
   climax:
-    'When they **disappeared** and the app went dead, I Googled it. **Pig-butchering scam**—same pattern everywhere. That\u2019s when I knew.',
+    'When the app returned server errors and the chat profile deleted itself overnight, I searched the pattern online and found the same story under the pig-butchering label. Reading identical timelines from strangers was the moment I stopped bargaining with hope.',
   victimPain:
-    'I lost **months and thousands**. The **shame and stress** were crushing. Rebuilding **is still ongoing**.',
+    'I lost **months of savings** and carried embarrassment that made me avoid friends for weeks. Rebuilding money and boundaries is ongoing, but reporting broke the isolation.',
   learningVictim:
-    'I now know: if someone you met online sends you to one "platform" and you can\u2019t withdraw, it\u2019s a scam. I wish I\u2019d never clicked.',
+    'I now treat any investment link from a new online friend as a red line. I wish I had tested a withdrawal after the first deposit instead of after the fifth.',
   learningForReaders: [
-    '**Pig-butchering**: strangers build trust, then push fake investment apps. **Never invest** via a link from someone you haven\u2019t met.',
-    '**Report** to the FTC and your bank.',
+    '**Pig-butchering**: strangers build trust, then push fake apps—**never invest** via their links.',
+    '**Report** to the FTC and notify your bank early.',
   ],
 };
 

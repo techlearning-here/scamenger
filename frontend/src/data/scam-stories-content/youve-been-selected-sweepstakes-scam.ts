@@ -2,19 +2,19 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**You\u2019ve been selected!**—for a **sweepstakes** I never entered.\u2029It was a **scam**.',
+    'A letter and a follow-up call said I had been **selected** for a sweepstakes I did not remember entering. The prose sounded official, and the prize amount made my stomach flip with hope.',
   initialPlot:
-    'They wanted **fees**, **tax prepayment**, or **bank details** to "**release**" the prize.\u2029I complied. **No prize**. Just **theft**.',
+    'They needed a processing fee, then a tax prepayment, then bank details to "release" the winnings. Each step was framed as the last obstacle before a courier would arrive.',
   scamExperience:
-    '**Sweepstakes scams** use **selection** language to steal **money** or **data**. I lost **money**.',
+    '**Sweepstakes fraud** sells selection language to extract cash and data. There was no prize fund—only rotating invoices until I stopped paying.',
   victimExperience:
-    'I felt **special** and **lucky**. I didn\u2019t want to **miss out**.',
+    'I felt special and lucky, and I did not want to forfeit a windfall over paperwork I told myself was normal.',
   climax:
-    'When **more money** was always the answer, I knew.',
+    'When the fifth "final fee" arrived the same week the first cheque was supposedly shipping, I called the real sweepstakes sponsor from their official site—they had never heard of me.',
   victimPain:
-    'I lost **savings** and **trust**. Reporting **helped**.',
+    'Savings thinned and trust in good news shrank; reporting at least stopped me from funding the next round.',
   learningVictim:
-    'I now know: **real sweepstakes** don\u2019t ask for **payment** to claim.',
+    'Legitimate sweepstakes do not require upfront payment to claim. I wish I had hung up on the first fee request.',
   learningForReaders: [
     '**Report** sweepstakes fraud to the FTC.',
   ],

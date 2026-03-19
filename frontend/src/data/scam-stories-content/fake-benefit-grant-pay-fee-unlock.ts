@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A message said my **grant** was **approved**—I just had to pay a **small fee** to **unlock** it.\u2029I was **struggling** with bills.\u2029The **grant** was **fiction**.',
+    'A letter and follow-up texts said a **government grant** had been **approved** in my name; I only needed to pay a **processing fee** to **unlock** the deposit.\u2029Bills were behind, so the timing felt like relief.',
   initialPlot:
-    'Each **fee** unlocked the **next** step—**processing**, **wire transfer charge**, **tax hold**.\u2029I **paid** again and again, sure the **big** deposit was **coming**.\u2029It **never** did.',
+    'Each payment opened a new step—**wire charge**, **tax hold**, **expedited review**—and I kept paying because stopping felt like wasting what I had already sent.\u2029The **portal** showed a balance that never moved to my bank.',
   scamExperience:
-    '**Government grant scams** target people who **need** help.\u2029Real **benefits** don\u2019t ask for **upfront** fees to "**release**" money.\u2029I lost **hundreds** in **death by a thousand cuts**.',
+    '**Fake grant scams** sell hope in small fees; **real public benefits** do not ask for **upfront money** to release funds.\u2029When the site went **offline** and the phone disconnected, the total I had sent was **hundreds**.',
   victimExperience:
-    'I **clung** to hope.\u2029Stopping felt like **admitting** I\u2019d been **fooled**—so I **paid one more time**.',
+    'Between fees I told myself one more payment would finally make the earlier ones worthwhile, which made it hard to walk away.',
   climax:
-    'The "**portal**" went **404**.\u2029The **phone** disconnected.\u2029That\u2019s when I knew.',
+    'The last link returned **404** the same day a relative sent me a **FTC** article listing the exact script I had been following.',
   victimPain:
-    'I **borrowed** from family for the **last** fee.\u2029**Humiliation** at the dinner table when I explained **why** **hurt**.',
+    'I had borrowed for the final fee; explaining that at a family dinner was harder than the lost cash.',
   learningVictim:
-    'I now know: **real** grants are listed on **official** sites—**no** unlock fees.\u2029I wish I\u2019d walked away at the **first** $50.',
+    '**Legitimate grants** are listed on **official government sites** with **no unlock fees**.\u2029I should have stopped at the **first** card they asked me to buy.',
   learningForReaders: [
-    '**USA.gov** / **GOV.UK** for **legitimate** benefit info.',
-    '**Report** grant fraud to the FTC.',
+    'Check **USA.gov**, **GOV.UK**, or your country’s **official benefits** pages—never pay to “release” a grant.',
+    '**Report** grant fraud to the **FTC** (US) or your consumer protection agency.',
   ],
 };
 

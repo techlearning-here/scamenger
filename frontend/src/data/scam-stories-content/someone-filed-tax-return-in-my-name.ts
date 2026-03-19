@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A **tax return** was filed in my **name**—**not** by me.\u2029My **real** filing was **rejected**.\u2029Someone **beat** me to my **refund**.',
+    'A **tax return** landed in my name before I filed—someone beat me to my own **refund** using stolen personal information. When I submitted the real return, the IRS rejected it as a duplicate.',
   initialPlot:
-    '**IRS** / **HMRC** letters said "**duplicate SSN**."\u2029I **proved** identity with **hours** of **paperwork**.\u2029The **refund** was **delayed** **months**; the **thief** had **already** taken **money**.',
+    'Letters referenced a duplicate Social Security number and sent me through identity-proof paperwork for hours. The thief had already collected the refund while I untangled bureaucracy.',
   scamExperience:
-    '**Tax identity theft** uses **stolen PII** to **file early**.\u2029Victims **fight** bureaucracy while **cash** is **gone**.\u2029I got a **PIN** for future years.',
+    '**Tax identity theft** files early with stolen PII. Victims fight forms while cash disappears. I eventually received an **IP PIN** and tighter monitoring for future seasons.',
   victimExperience:
-    'I felt **invaded**—**government** systems thought **they** were **me**.',
+    'I felt invaded—government systems thought they were dealing with me while a stranger cashed the check.',
   climax:
-    'When the **investigator** confirmed a **fraudulent** return from an **IP** overseas, I **knew** it wasn\u2019t a **mistake**.',
+    'An investigator confirmed a fraudulent return filed from an overseas IP. Learning it was not a typo or clerical error—that someone had chosen me—made the violation concrete.',
   victimPain:
-    '**Rent** depended on that **refund**.\u2029**Stress** **aged** me that **spring**.',
+    'Rent had depended on that refund; the stress of that spring aged me in ways spreadsheets cannot measure.',
   learningVictim:
-    'I now know: **file early**, **protect SSN**, **use IRS IP PIN** where available.\u2029I wish I\u2019d **filed** **before** **crooks** did.',
+    'I file as early as I can now, guard my SSN, and use an IRS IP PIN where offered. I wish I had beaten the crooks to the submit button.',
   learningForReaders: [
-    '**IdentityTheft.gov** (US) has a **tax-related** identity theft **checklist**.',
+    '**IdentityTheft.gov** (US) has a tax-related identity theft checklist.',
   ],
 };
 

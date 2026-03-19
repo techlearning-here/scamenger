@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was new to trading and **cautious**. When I found an app that promised good returns, I started small.\u2029At first it worked. Then **one morning the app was gone**—and so was my money.',
+    'I was new to trading and **cautious**, so I picked an app with slick marketing and started with an amount I could "afford to learn with." For a while it felt like discipline paying off—until **the app disappeared**.',
   initialPlot:
-    'The app had good reviews (I thought) and a slick interface. I put in money and saw **gains**. When I tried to withdraw, there were "fees" or "processing delays." I waited. Then one day the app **wouldn\u2019t open**. The website was down. **Support** didn\u2019t exist.',
+    'Balances climbed; withdrawals hit processing delays, then surprise fees. I told myself patience was part of investing. One morning the icon bounced, the website timed out, and support inboxes autoresponded with silence.',
   scamExperience:
-    'The **trading app was fake**. It had been designed to show gains and block withdrawals until they pulled the plug. I lost **everything I\u2019d put in**. I found other victims online—same story.',
+    'The **trading app was a facade** built to show gains and stall cash until operators pulled the plug. Other victims online shared identical UI screenshots and loss amounts.',
   victimExperience:
-    'I told myself I was **being careful** by starting small. When the balance went up, I felt **hopeful**.\u2029Part of me wondered about the withdrawal delays, but **I didn\u2019t want to believe** it was a scam.',
+    'Starting small felt responsible, so each new deposit felt like proof I was learning risk management instead of feeding a script.',
   climax:
-    'The morning the app **wouldn\u2019t load** and the site was gone, I knew. I Googled the app name—**scam warnings everywhere**. That\u2019s when I knew.',
+    'When the APK would not install on a new phone and the domain WHOIS showed a fresh registration in a privacy shell, I knew the storefront had never been tethered to a real broker.',
   victimPain:
-    'I lost **savings** and peace of mind. The **shame** was real. Reporting and rebuilding **take time**.',
+    'Savings and calm mornings disappeared together. Reporting and rebuilding take longer than the app took to vanish.',
   learningVictim:
-    'I now know: if an app or platform won\u2019t let you withdraw and then vanishes, it was never legit. I wish I\u2019d checked with my bank first.',
+    'If an app will not release funds and then ghosts, it was never legit. I wish I had verified with my bank before I scaled up.',
   learningForReaders: [
-    '**Verify trading and investment apps** with your bank or a regulator. Real platforms don\u2019t vanish with your money.',
-    '**Report** to the FTC if you\u2019ve lost money.',
+    '**Verify** trading apps with your bank or regulator—real platforms do not evaporate with customer money.',
+    '**Report** to the FTC.',
   ],
 };
 

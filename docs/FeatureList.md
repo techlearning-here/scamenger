@@ -48,6 +48,8 @@ User-reported scams with shareable links; **anyone can submit a report without s
 | 8 | **Scam category education** | Card-based guides per scam type with clear action steps (inspired by Shopping, Financial, Dating, Gambling, Employment categories). | Done |
 | 9 | **Niche scam tools** | Dedicated tools (e.g. Romance Scam Checker) for SEO and engagement. | Planned |
 | 10 | **Scam prevalence badges** | "Most reported" or "Trending" tags on high-volume scam types to help users validate their experience. | Missing |
+| 10a | **Scam awareness quiz** | Short interactive quiz (scenario or multiple choice): red flags, safe next steps, and “what would you do?” items grounded in real patterns. Low shame framing (wrong answers explained as common traps). Align with existing scam categories; good for SEO hub (e.g. `/learn` or `/quiz`) and voice-friendly prompts. | Missing |
+| 10b | **Flash cards for scam literacy** | Flip or reveal cards: front = short scenario, message snippet, or question; back = red flag(s), one recommended action, and link to a guide or story. Optional decks by category; optional spaced repetition later. Complements stories and the quiz (#10a). | Missing |
 
 ---
 
@@ -112,7 +114,7 @@ Newsletter support: collect emails with consent, send digests or alerts, and gro
 
 | # | Feature | Description | Status |
 |---|---------|-------------|--------|
-| 36 | **Scam Immunity Score** | Gamified quiz system that tests users on recognizing scams, building awareness over time. | Missing |
+| 36 | **Scam Immunity Score** | Gamified layer on top of the **scam awareness quiz (#10a)** (e.g. score, streaks, “immunity” level over time). Optional social share. Builds on quiz + **flash cards (#10b)** content; not a substitute for grounded questions. | Missing |
 | 37 | **Personalized Scam Alerts** | Based on demographic, location, and past reports, AI pushes relevant emerging scam warnings. | Missing |
 | 38 | **Family Protection Dashboard** | Add elderly parents or teens; get alerts when scams targeting their demographic surge in their area. | Missing |
 | 39 | **Recovery Story Publishing** | Verified, anonymized success stories ("I got $2,400 back from PayPal dispute") to give hope and teach tactics. Overlaps with #11c Verified recovery stories. | Missing |
@@ -174,7 +176,7 @@ Stories index at `/stories/` and per-story pages at `/stories/[slug]`. Real, ano
 | 17o | **Stories — Search / filter by text** | Search box to filter cards by title (and later by story body when content exists). | Done |
 | 17p | **Stories — Featured / Start here** | Pin 3–6 high-impact stories at top or in a separate row as entry point. | Done |
 | 17q | **Stories — Related stories on story page** | On `/stories/[slug]`, show 3–4 related stories (same or related category) with small cards and links. | Done |
-| 17r | **Stories — Real story content** | Replace "Story content will be added here" with real narratives; optional excerpt on cards, "Key takeaway" or "Red flags" bullets. | Missing |
+| 17r | **Stories — Real story content** | Replace "Story content will be added here" with real narratives; optional excerpt on cards, "Key takeaway" or "Red flags" bullets. | Done (all slugs have `StoryContent`; **editorial pass** for depth/voice ongoing—see **docs/SCAM_STORIES_STRUCTURE_for_Writer.md §2.4**) |
 | 17s | **Stories — Excerpt on cards** | When stories have body content, show 1–2 line excerpt on card. | Missing |
 | 17t | **Stories — Reading time** | Show "~2 min read" on card or story page when body content exists. | Missing |
 | 17u | **Stories — JSON-LD (Article/CollectionPage)** | Structured data for index and each story page for SEO and rich results. | Done |
@@ -273,6 +275,7 @@ Stories index at `/stories/` and per-story pages at `/stories/[slug]`. Real, ano
 | 17c | **Submit to other search engines** | Bing, Yandex; already planned. |
 | 17d | **Tools & online services** | Nav “Tools” + page with official tools by country (protect, recover, identity). Done. |
 | 9 | **Niche scam tools** (e.g. Romance Scam Checker) | Can start as educational content / flow; no lookup required. |
+| 10a / 10b | **Scam quiz & flash cards** | Static or CMS-driven Q&A and card decks; ties to existing categories/guides. No report DB required. |
 | 14 | **Press / review badges** | Static links and logos. |
 | 27 / 27d | **Facebook, Threads — post approved reports** | Already partial; admin posts; not dependent on DB size. |
 
@@ -299,8 +302,8 @@ Use the list above to pick the next feature to implement; revisit data-dependent
 |--------|-------|----------|
 | Done | 13 | P0 report + shareable URL, auth ratings, Stack, Report form (#12), Scam category education (#8), "Need help now?" CTA (#20), Country auto-detection (#3), Estimated time (#6), **Emotional support (#27c)**, **Progress indication (#5)**, **"Did this help?" voting (#11b)**, **Scam similarity matching (#1b)**, **Multi-country support (#3b)** |
 | Partial | 12+ | Aggregated trends, Card-based categories (#7), Route to channel (#4b), Trust indicators (#18b), Breadcrumb (#21), Community reports (#11), Live stats (#13), Blog (#16), Country guide (#17), Trust score (#23), SEO/monetization (#17b) |
-| Missing | 16+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Wizard (#4), Prevalence badges (#10), Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), **Scam alert subscription (#15c)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Monthly trends report (#16b)**, **Gamification (#11d)** — plus **post-scam recovery (#28–43)**: Emergency Checklist, Bank Alert Generator, Evidence Wizard, Recovery Tracker, Credit Monitoring, Identity Checklist, Legal Advisor, Scam Immunity Score, Personalized Alerts, Family Dashboard, Victim Forum, Impact Calculator, Monthly Recovery Report |
+| Missing | 18+ | Unified scam checker (#1), Search-first (#2), Replace dropdown (#2b), Wizard (#4), Prevalence badges (#10), **Scam quiz (#10a)**, **Flash cards (#10b)**, Warmer tone (#18), Hero redesign (#19), Dark mode & mobile UX (#21b), Real-time alerts (#15b), Trust score algorithmic (#23b), **Scam alert subscription (#15c)**, **Scam heatmap (#13b)**, **Recovery stories (#11c)**, **Monthly trends report (#16b)**, **Gamification (#11d)** — plus **post-scam recovery (#28–43)**: Emergency Checklist, Bank Alert Generator, Evidence Wizard, Recovery Tracker, Credit Monitoring, Identity Checklist, Legal Advisor, Scam Immunity Score (#36), Personalized Alerts, Family Dashboard, Victim Forum, Impact Calculator, Monthly Recovery Report |
 | Unverified | 2 | Mobile-first (#22), 48px touch targets (#22b) |
 | Planned | 7+ | Niche tools (#9), Press badges (#14), Newsletter (#15), Facebook post (#27), Revenue (#24–26), Browser extension (#27b) |
 
-*Last updated from NewFeatures.md, readme_New_UX.md, MISSING_FEATURES_FROM_NEW_UX.md, **newfeatures2.md**, **newfeature3.md**, and **post_scam_recovery.md**.*
+*Last updated from NewFeatures.md, readme_New_UX.md, MISSING_FEATURES_FROM_NEW_UX.md, **newfeatures2.md**, **newfeature3.md**, and **post_scam_recovery.md**; **10a/10b** quiz & flash cards added for education layer.*

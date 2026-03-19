@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'When friends **joke** about "**only idiots** fall for scams," I **tell them** what **happened** to me—**calm**, **specific**, **no** **drama**.\u2029**Shame** **keeps** **scams** **profitable**; **stories** **break** that.',
+    'When friends joke that "**only idiots** fall for scams," I tell them what happened to me—calm, specific, minimal drama. **Shame keeps scams profitable**; stories chip away at that.',
   initialPlot:
-    'I **lost** money to a **fake** **employer** who **sent** a **cheque** and asked for **"software"** **refunds**.\u2029I **explain** the **timing**, the **official-looking** **PDFs**, why **my bank** **cleared** then **reversed**.\u2029People **listen** when it\u2019s **concrete**.',
+    'I lost money to a fake employer who mailed a cheque and asked for "**software refunds**." I explain the timing, the PDF letterhead, and why my bank briefly cleared funds before reversing. People listen when the beats are concrete.',
   scamExperience:
-    '**Education** after **victimisation** is **advocacy**.\u2029I **don\u2019t** **debate** **victim-blaming**—I **share** **red flags**: **upfront** **fees**, **overpayment**, **secrecy**.',
+    'Speaking up after victimisation feels like advocacy. I do not debate victim-blaming line by line; I share **red flags**—upfront fees, overpayment tricks, secrecy rules—that anyone can recognise.',
   victimExperience:
-    'First **times** I **spoke up**, my **voice shook**.\u2029**Easier** now.',
+    'The first times I spoke, my voice shook. It gets easier when I focus on mechanics instead of self-attack.',
   climax:
-    'A **coworker** **stopped** a **wire** mid-**branch** because she **remembered** my **story**.\u2029That **moment** **repaid** something **money** couldn\u2019t.',
+    'A coworker froze mid-wire at a branch because she remembered my story. That pause repaid something money never could.',
   victimPain:
-    '**Some** people **still** **smirk**.\u2029I **exit** those **conversations**.',
+    'Some people still smirk; I leave those conversations without defending my dignity to strangers.',
   learningVictim:
-    'I now **frame** it: "**humans** **under stress** **decide fast**; **scams** **engineer** **stress**."\u2029I wish I\u2019d **heard** that **before** I **paid**.',
+    'I frame it plainly: humans under stress decide fast, and scams engineer stress. I wish I had heard that before I paid.',
   learningForReaders: [
-    '**Your** **story** **protects** **someone**—**tell** it **without** **self-attack**.',
+    '**Your story protects someone**—tell it without turning yourself into the punchline.',
   ],
 };
 

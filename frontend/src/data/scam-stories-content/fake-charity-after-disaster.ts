@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'After a **disaster**, I wanted to **help**.\u2029The **charity** was **fake**.',
+    'After a **major disaster** filled the news, I donated through a **social media** appeal that copied photos from the ground and named a charity I assumed was new.\u2029The site took card payments instantly.',
   initialPlot:
-    'A site or social post looked **legit**—**photos**, **urgent appeals**.\u2029I **donated**. The money **didn\u2019t** go to victims. **Scammers** pocketed it.',
+    'Receipts were vague, and when I searched the domain a week later it was gone.\u2029Journalists published a list of **fake fundraising** URLs tied to the same event; mine was on it.',
   scamExperience:
-    '**Disaster charity fraud** exploits **goodwill**. I lost **donations** to **criminals**.',
+    '**Disaster charity fraud** times **urgent graphics** to bypass verification; money goes to **criminals**, not shelters or food lines.\u2029Legitimate groups were still fundraising while I had funded a parked domain.',
   victimExperience:
-    'I felt **compassion** and **urgency**. I **gave quickly** without verifying.',
+    'While I checked out I told myself speed mattered more than cross-checking because survivors needed cash that night.',
   climax:
-    'When journalists listed **fake** domains, I found **mine**. That\u2019s when I knew.',
+    'The **real relief fund** posted the official donation URL on verified accounts; comparing it side by side with mine showed different registrars and spelling.',
   victimPain:
-    'I felt **used** and **angry**. Reporting **helped**.',
+    'I felt angry at myself and robbed of the good I meant to do; reporting the charges and domain at least fed anti-fraud databases.',
   learningVictim:
-    'I now know: **verify** charities via **Charity Navigator**, **official** relief funds, or **.gov** links.',
+    'I donate now only through **established charities** or **.gov** relief links I verify from **second sources**.',
   learningForReaders: [
-    '**Donate** through **known** organizations only.',
+    '**Verify** disaster appeals with **Charity Navigator**, **gov** disaster pages, or newsroom **verified** lists.',
+    '**Report** fake fundraisers to payment providers and **consumer fraud** lines.',
   ],
 };
 

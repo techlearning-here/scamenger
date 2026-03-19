@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Wire transfer only.** **No viewings**—they said they were **overseas** and **trusted** me from my messages.\u2029I **sent the money**.\u2029I **lost** it.',
+    'I needed a flat fast after a breakup and the listing looked clean—bright photos, a rent **below market**, and a landlord who answered within minutes. They said they were overseas and could only take a **wire** to hold the place, which should have stopped me cold.',
   initialPlot:
-    'The rent was **below market**—that should have warned me.\u2029They refused **PayPal**, **cards**, or **in-person** meet; only **SWIFT** or **Zelle** to a **personal** name.\u2029I rationalized it as "**how things work**" abroad.',
+    'They refused cards, PayPal, or a viewing because of "logistics," and pushed SWIFT or Zelle to a personal name. I rationalised it as how some overseas owners work and sent **thousands** to beat other applicants I never saw.',
   scamExperience:
-    '**Wire-only** + **no viewing** is a classic **rental scam** pattern.\u2029Funds are **gone** once sent; **chargebacks** don\u2019t apply like with cards.\u2029I paid **thousands**.',
+    '**Wire-only** rent scams move money in seconds; unlike card disputes, there is rarely a chargeback path once the recipient withdraws. The listing vanished, the inbox went quiet, and the bank told me the funds were already gone.',
   victimExperience:
-    'I told myself I was **saving money** on a good deal.\u2029I **didn\u2019t** want to **lose** the listing to someone who would pay faster.',
+    'I told myself I was grabbing a deal smarter people would miss. I did not want to lose the slot to someone who would pay faster, so I ignored friends who said legitimate landlords meet tenants or use traceable deposits.',
   climax:
-    'The **bank** said the recipient **withdrew** immediately.\u2029The "**owner**" blocked me.\u2029That\u2019s when I knew.',
+    'The bank confirmed the beneficiary withdrew immediately and the "owner" blocked every channel I had. That sequence—silent app, dead number—was the moment the bargain turned into fraud in plain language.',
   victimPain:
-    'I felt **naive** and **angry**.\u2029The **bank** couldn\u2019t recover the wire.\u2029**Months** of stress followed.',
+    'I felt naive and angry at myself, and the stress of finding another place while that hole sat in my account lasted months. Recovery was unlikely; the lesson was expensive.',
   learningVictim:
-    'I now know: **legitimate** landlords accept **traceable** methods and **prove** they control the property.\u2029I wish I\u2019d refused wire-only.',
+    'I now insist on **traceable rent** and proof someone controls the property before I move money. I wish I had walked away the second wire was the only option.',
   learningForReaders: [
-    '**Avoid** wire to strangers for housing; use **verified** platforms with **protection**.',
-    '**Report** fraud to law enforcement.',
+    '**Avoid** wiring strangers for housing; use verified platforms with escrow-style protections when you can.',
+    '**Report** rental fraud to law enforcement and your bank.',
   ],
 };
 

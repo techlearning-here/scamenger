@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'They **called** and said they were **my bank**—**fraud** on my account, they needed to **verify** me.\u2029I gave them **one-time codes** from my app. They weren\u2019t my bank.',
+    'A caller said they were **my bank’s fraud team**, named a few real merchants from my statement, and warned that a **bogus transfer** was in progress unless I **verified** immediately.\u2029**Caller ID** showed a number I thought I recognised.',
   initialPlot:
-    'Caller ID looked **right**. They knew **pieces** of my info. They said I had to **read back** codes from texts or my **authenticator** to "stop" a transfer.\u2029I read them. They **emptied** my account or **added** a payee. The call was **vishing**.',
+    'They stayed on the line while texts arrived with **one-time codes** and asked me to **read each code aloud** so they could “block the transaction.”\u2029I complied until my app showed **new payees** and outgoing wires I had not set up.',
   scamExperience:
-    '**Bank impersonation calls** trick you into giving **OTP codes** or **PINs**. Banks **never** ask you to read codes **out loud** to them. I lost **money**.',
+    '**Vishing** plus **spoofed numbers** plus **OTP codes** lets criminals pass **strong authentication** from the victim’s own device.\u2029**Real banks** do not ask you to **dictate SMS or app codes** to a caller.',
   victimExperience:
-    'I was **terrified** of losing my savings. The urgency felt **real**. I **trusted** the caller ID. I didn\u2019t think a **bank** would be fake.',
+    'While the call ran I was afraid every second of delay would **empty the account**; hanging up felt riskier than cooperating.',
   climax:
-    'When I called my **real bank** on the number on my card, they said **no one** had called me from fraud team—that minute. That\u2019s when I knew.',
+    'I hung up, dialled the **number on my card** from a second phone, and the agent said **no fraud alert** had been opened and **no colleague** had contacted me—that minute the other line went dead.',
   victimPain:
-    'I lost **savings** and felt **violated**. The **shame** was crushing. Reporting **helped**.',
+    'Recovering **savings** took affidavits and weeks of stress; I felt foolish for trusting the ID display until I learned how cheap **spoofing** is.',
   learningVictim:
-    'I now know: **never** give OTP codes to anyone who calls you—even if they say they\u2019re the bank. **Hang up** and call the number on your card.',
+    'I **never** give **OTPs** to inbound callers.\u2029I **hang up** and call the bank on a **number I look up** myself.',
   learningForReaders: [
-    '**Your bank will never** ask for your full password or **one-time codes** over the phone.',
-    '**Report** to your bank and the FTC.',
+    '**Banks** will not ask for your **full password** or **one-time codes** over the phone.',
+    '**Report** vishing to your bank and **FTC** (US) or local fraud lines.',
   ],
 };
 

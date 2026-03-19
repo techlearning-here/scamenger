@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'They used a **real charity\u2019s name**.\u2029The **money** didn\u2019t go there.',
+    'After a disaster in the news I wanted to donate quickly, and a social post linked to a page that used a **real charity’s name**, logo, and story.\u2029I entered my card on what looked like a normal checkout.',
   initialPlot:
-    'A **similar URL** or **cloned page** took my **donation**.\u2029**Scammers** impersonated a **trusted** charity.',
+    'The **URL was slightly wrong**—extra words in the subdomain—but I did not slow down to compare it to the organisation’s main site.\u2029I received a generic thank-you email and no tax receipt that matched the charity’s usual format.',
   scamExperience:
-    '**Charity impersonation** diverts **donations**. I lost **money** meant for **good**.',
+    '**Charity impersonation** copies branding so **donations** go to criminals.\u2029When I called the charity’s main line from their annual report, they said **they were not running that appeal** and the page I had used was **fraud**.',
   victimExperience:
-    'I thought I was **helping**.',
+    'While I donated I told myself speed mattered more than double-checking URLs because people on the ground needed help that night.',
   climax:
-    'When the **real charity** said they **never** ran that campaign, I knew.',
+    'The development officer confirmed **no campaign** matched the link I saved; that was the moment I knew the money had missed the people I meant to fund.',
   victimPain:
-    'I felt **betrayed**. Reporting **helped**.',
+    'I felt cheated out of both the **money** and the good I thought I had done; reporting to payment fraud channels and the charity’s abuse inbox at least flagged the domain.',
   learningVictim:
-    'I now know: **type** the charity\u2019s **official URL** myself.',
+    'I only give through the **charity’s official site**—**typed URL** or a link from **Charity Commission** / **IRS** listings—not from random social posts.',
   learningForReaders: [
-    '**Give** only through **official** charity websites.',
+    '**Donate** only via the charity’s **verified website** or known campaigns.',
+    '**Report** fake fundraising pages to the **real charity** and **consumer fraud** bodies.',
   ],
 };
 

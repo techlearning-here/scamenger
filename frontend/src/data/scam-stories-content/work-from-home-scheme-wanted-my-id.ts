@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I wanted **work from home** and the ad said **flexible hours**, **no experience needed**.\u2029When they asked for my **ID** and **bank details** before I\u2019d done any work, it was a **red flag**. I wish I\u2019d run.',
+    'I wanted **work from home** with flexible hours and no experience barrier. The listing looked friendly until they asked for my **ID and bank details** before I had typed a single hour of "data entry." That should have been the end.',
   initialPlot:
-    'They said I\u2019d get **paid** for "data entry" or "review work." First they wanted my **ID**, **passport**, or **bank details**—"for payroll" or "verification."\u2029I gave them. Soon after, **someone else** was using my identity or my accounts. The "job" was a **scam** to **harvest ID and details**.',
+    'They promised easy review tasks and payroll setup, so I uploaded a passport photo and routing numbers for "verification." Within days accounts I did not open began appearing, and my email received password resets I never triggered.',
   scamExperience:
-    '**Work-from-home ID scams** offer easy work to get your **personal details** and **identity**. They **steal** or **sell** your data. I lost **money** or had to **fix identity theft**. The "employer" was **fake**.',
+    '**Work-from-home ID scams** harvest credentials to sell or to open credit. There was no job—only a funnel for identity theft and drained balances.',
   victimExperience:
-    'I was **eager** for remote work and the request seemed **normal**. I didn\u2019t want to **delay** by refusing. I **gave my details** without checking the company.',
+    'I was eager for remote income and told myself real HR always needs documents eventually. I did not verify the company on a phone number I looked up myself.',
   climax:
-    'When **fraud** showed up in my name or my accounts, I knew. I searched the "company." **Scam**. That\u2019s when I knew. They\u2019d wanted my **ID** all along.',
+    'When a fraud alert named a lender I had never visited, I searched the "employer" brand with scam and found my onboarding PDF mirrored on warning sites. That match turned vague anxiety into a labelled crime.',
   victimPain:
-    'I lost **money** or **time** fixing identity issues. The **stress and shame** were huge. Reporting **helped**.',
+    'I lost money and months to credit freezes and police reports. Stress made me sharp with people who did not deserve it.',
   learningVictim:
-    'I now know: real employers don\u2019t need your **full ID** before you\u2019ve done any work. I wish I\u2019d said no and verified first.',
+    'Real employers do not need full ID packages before verifiable work begins. I wish I had refused the upload and called the state business registry first.',
   learningForReaders: [
-    '**Don\u2019t give** ID or bank details to a "employer" before you\u2019ve verified the company and done real work. **Report** to the FTC.',
+    '**Do not send** ID or bank details until you verify the company through independent channels.',
+    '**Report** to the FTC.',
   ],
 };
 

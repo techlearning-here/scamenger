@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Caller ID** showed **my bank\u2019s name**. I thought it was **safe**.\u2029It **wasn\u2019t** my bank—**spoofing** is easy.',
+    '**Caller ID** showed **my bank’s name** and even a **local branch** code, so I assumed the **fraud alert** call was genuine.\u2029Spoofing made a stranger look like my institution.',
   initialPlot:
-    'They said **fraud alert**, asked for **codes** or **transfers**.\u2029I believed the **number on the screen**. I lost **money**. **Spoofed** caller ID means **nothing**.',
+    'They described a **suspicious transfer** and asked me to **read one-time codes** aloud to “block” it.\u2029I complied until a second payment prompt appeared that I had not initiated.',
   scamExperience:
-    '**Caller ID spoofing** lets scammers **fake** bank numbers. I gave **OTPs** or moved **money**. The **bank** never called.',
+    '**Caller ID spoofing** is cheap; **OTP codes** plus **urgency** empty accounts.\u2029The **bank** had not placed the call I answered.',
   victimExperience:
-    'I **trusted** the display. I was **scared** for my account. I **cooperated** fully.',
+    'While they talked I trusted the **display** more than the rule that **banks never ask for codes** on an inbound call.',
   climax:
-    'My **real bank** said **spoofing** is common. That\u2019s when I understood I\u2019d been **tricked**.',
+    'I hung up, called the **number on my card** from another phone, and fraud said **no alert** was open on my file—that was the proof the first line was fake.',
   victimPain:
-    'I lost **money** and felt **violated**. Reporting **helped**.',
+    'I lost **money** before I hung up; disputes took weeks and I still flinch when the phone rings.',
   learningVictim:
-    'I now know: **never trust** caller ID. **Hang up** and dial the number **on your card**.',
+    'I **never trust caller ID**.\u2029I **hang up** and dial the **bank** on a number **I look up** myself.',
   learningForReaders: [
-    '**Caller ID can be faked.** Always **call back** using **official** numbers.',
+    '**Caller ID can be faked**—always **call back** using **official** numbers from your card or app.',
+    '**Never** read **SMS or app codes** to someone who called you.',
   ],
 };
 

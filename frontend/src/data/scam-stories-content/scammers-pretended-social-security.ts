@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'They said they were from **Social Security**—my number was linked to **crime** and I had to **move money** to "**protect**" it.\u2029They **weren\u2019t** SSA.\u2029I almost **emptied** my account.',
+    'A caller said they were from **Social Security** and that my number was tied to serious crime. I had to move money to "**protect**" it or face arrest. They were not SSA; I almost **emptied** my account before someone intervened.',
   initialPlot:
-    'They kept me on the line **hours**—**no bathroom**, **no** telling anyone.\u2029They said **tellers** were "**in on it**" and I should **buy gold** or **gift cards**.\u2029A **bank manager** finally **intervened** when I looked **distressed**.',
+    'They kept me on the line for hours—no bathroom, no telling family—and said bank tellers were "in on it." They pushed gold bars and gift cards as the only safe format. I was shaking at a branch counter until a manager stepped in.',
   scamExperience:
-    '**SSA impersonation** often pairs with **"safe account"** or **asset conversion** lies.\u2029Victims lose **life savings**.\u2029I lost **some**—not all—thanks to a **stranger** who cared.',
+    '**SSA impersonation** pairs legal-sounding threats with asset-conversion lies. Victims lose life savings; I lost some, not all, because a stranger cared enough to pause the script and call the real agency on speakerphone.',
   victimExperience:
-    'I **trusted** the "**badge number**" they gave.\u2029I was **afraid** of **arrest**.\u2029**Isolation** was the **real weapon**.',
+    'I trusted the badge number they recited and feared arrest more than I feared sounding rude. Isolation was the real weapon—they trained me to treat every outside voice as compromised.',
   climax:
-    'The **manager** called **real SSA** while I sat there.\u2029**No** case existed.\u2029That\u2019s when I **knew**.',
+    'The branch manager dialled SSA while I sat there; the real agency confirmed no case existed. Hearing an official say "that is a known scam" while the fraudster was still whispering in my ear broke the trance.',
   victimPain:
-    'I still **flinch** at **robocalls**.\u2029**Therapy** helped with the **aftermath**.',
+    'Robocalls still make me flinch, and therapy helped with the weeks of hypervigilance after the branch visit.',
   learningVictim:
-    'I now know: **SSA** doesn\u2019t ask you to **buy gold** or **move** money for "**protection**."\u2029I wish I\u2019d **broken** the isolation rule and called a **friend**.',
+    'I now know SSA does not ask you to buy gold or move money for protection. I wish I had broken their isolation rule and texted a friend mid-call.',
   learningForReaders: [
-    '**Hang up** and call **SSA** at the **official** number from **ssa.gov**.',
-    '**Report** to FTC at **ReportFraud.ftc.gov**.',
+    '**Hang up** and call SSA at the **official number from ssa.gov**.',
+    '**Report** to the FTC at ReportFraud.ftc.gov.',
   ],
 };
 

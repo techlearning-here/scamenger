@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **waiting for a delivery** and checking my phone all day.\u2029When a text said my **package** needed a **redelivery fee** or a **quick confirmation**, I didn\u2019t think twice. I was **expecting** that package.',
+    'I was **waiting for a delivery** and checking tracking obsessively, so when a text mentioned my **package** and a **small fee** to reschedule, it landed at the right moment.\u2029The sender ID looked close enough to a carrier I use.',
   initialPlot:
-    'The text looked like it was from the carrier—**tracking**, **link to pay or confirm**.\u2029I clicked and entered my **card details** on a page that looked legit. Soon after, **unauthorized charges** started. The text wasn\u2019t from the carrier. It was **phishing**.',
+    'The message linked to a page with **tracking-style** graphics and asked for **card details** to “confirm redelivery.”\u2029I entered them and went back to work; within an hour **fraud alerts** pinged for purchases I had not made.',
   scamExperience:
-    '**Delivery phishing** uses fake texts about packages so you enter payment or personal details. Scammers **charge your card** or **steal your identity**. I lost **money** and had to cancel my card. The link went to **scammers**.',
+    '**Delivery smishing** times texts to people who are already expecting boxes; the site harvests **card data** for **card-not-present** fraud.\u2029My bank reversed some charges, but I still had to **cancel the card** and rebuild autopays.',
   victimExperience:
-    'I was **expecting a delivery** and didn\u2019t want it delayed. The text felt **relevant**. I **clicked without checking** the real carrier site. I didn\u2019t think one text would **cost me**.',
+    'While I filled out the form I told myself a **two-pound fee** was normal and that clicking was faster than calling the depot.',
   climax:
-    'When **fraud alerts** started and I checked the real carrier site, there was no redelivery fee—and no message from them. That\u2019s when I knew. I\u2019d been **phished** by a fake delivery text.',
+    'When I opened the **real carrier app**, there was **no fee** and **no alert** about my shipment—the text had been a parallel script.',
   victimPain:
-    'I lost **money** and had to **cancel my card**. The **shame** of having clicked was real. Reporting **helped**.',
+    'The lost time on disputes and new card details was draining; I felt stupid every time another subscription failed until I updated every merchant.',
   learningVictim:
-    'I now know: never pay or "confirm" via a link in a delivery text. Go to the carrier\u2019s official site or app yourself. I wish I\u2019d done that.',
+    'I never **pay** or **“verify”** delivery issues through **links in texts**.\u2029I use the **carrier’s app** or I type their **known URL**.',
   learningForReaders: [
-    '**Don\u2019t click** links in texts about deliveries or fees. Go to the **carrier\u2019s official site or app** yourself.',
-    '**Report** phishing to the carrier and the FTC.',
+    '**Ignore** delivery fee links in SMS; check status in the **official app** or site.',
+    '**Report** smishing to your carrier and **7726** (US) where supported.',
   ],
 };
 

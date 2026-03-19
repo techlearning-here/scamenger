@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **paid** for a **Golden Retriever** "**puppy**" from a **breeder** site with **heartfelt** **bios** and **vet** **photos**.\u2029No **puppy**.\u2029No **breeder**.\u2029Just **shipping fees**, **insurance**, and **silence**.',
+    'After my dog died I wanted another companion fast, so I scrolled breeder sites until a **Golden Retriever** listing with vet photos and a warm bio felt like fate. I paid a deposit, then shipping, then insurance, and still never met a puppy or a real kennel.',
   initialPlot:
-    'Each **email** had a **new** **cost**—**crate**, **quarantine**, **climate-controlled** **van**.\u2029I **Zelle**d and **Venmo**d because they said **cards** "**don\u2019t work** for **live animals**."\u2029The **tracking** **link** was **fake**.',
+    'Each email introduced a new cost—crate fees, climate-controlled vans, quarantine paperwork—and they insisted on **Zelle or Venmo** because cards "do not work for live animals." A tracking link bounced to a generic template that never updated.',
   scamExperience:
-    '**Pet scams** steal **deposits** for **animals** that **don\u2019t exist** or **aren\u2019t** theirs.\u2029**Stock photos** and **stolen** **litter** pics **repeat** across **sites**.\u2029I lost **$1,800**.',
+    '**Pet scams** sell animals that do not exist, often with stolen litter photos reused across domains. I sent about **eighteen hundred dollars** before I stopped chasing a dog that was only JPEGs and polite excuses.',
   victimExperience:
-    'After my **dog died**, I **wanted** **another** **companion** **fast**.\u2029**Grief** made me **click** "**available now**."',
+    'Grief made me click "available now" without the patience I usually have. I told myself I was rescuing a lonely pup, and I ignored the voice that said legitimate breeders answer the phone and welcome video calls.',
   climax:
-    'I **reverse-searched** the **photo**—it was a **UK kennel** from **2019**.\u2029That\u2019s when I **stopped** paying **shipping**.',
+    'I reverse-searched the hero photo and found the same puppy on a UK kennel blog from years earlier. Seeing the timestamp mismatch was when I finally stopped sending "final" shipping fees.',
   victimPain:
-    'I **mourned** a **dog** I **never** **met**.\u2029**Weird** **grief** people **don\u2019t get**.',
+    'I grieved a dog I never held, which felt strange to explain to people who expect loss to look a certain way. The money hurt, but the hollow hope hurt longer.',
   learningVictim:
-    'I now know: **visit** the **litter** or use **refs** from **local** **clubs**; **never** **wire** for **pets**.\u2029I wish I\u2019d **called** the **vet** on the **certificate**.',
+    'I now insist on live video with a dated newspaper and references from local clubs before I pay. I wish I had called the vet on the certificate instead of trusting a PDF.',
   learningForReaders: [
-    '**Search** images; ask for **live video** with a **newspaper** **date**.',
+    '**Reverse-image search** photos; ask for live video proof.',
+    'Avoid wiring money for pets—meet the litter or use verified rescues.',
   ],
 };
 

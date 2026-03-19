@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I\u2019d worked for decades and had a **pension** I was careful with. I wasn\u2019t a gambler—I just thought **crypto** might be a way to grow it a bit.\u2029Someone I "met" online pointed me to a platform. Big mistake.',
+    'I had worked for decades and treated my **pension** carefully—I was not chasing meme coins, just looking for modest growth someone online framed as conservative. A friendly stranger pointed me to a platform that looked as polished as a retail bank site.',
   initialPlot:
-    'The platform looked legit. I moved **a portion of my pension** into it. At first the numbers went up. I felt **relieved**.\u2029When I tried to withdraw, they said I had to pay "tax" or add more. I paid. Then the platform **went ghost**—no support, no withdrawals, no way to get my money back.',
+    'I moved a slice of retirement money in after watching dashboards tick upward for weeks. When I tried to withdraw, "support" said I needed a **tax prepayment** and then an unlock deposit; each step sounded like the last hurdle before access.',
   scamExperience:
-    'I\u2019d put pension money into a **fake crypto platform**. The site and "support" disappeared. I found **warnings** online—same scheme, many victims. My pension slice was **gone**.',
+    'The balances were **fabricated** on a **fake crypto platform**. The site, chat agents, and phone tree vanished once I refused another transfer. Forums were already warning about the same URL and logo set.',
   victimExperience:
-    'I told myself I was **diversifying**. When the balance grew, I felt **hopeful**.\u2029Part of me wondered why withdrawal was so hard, but **I didn\u2019t want to believe** I\u2019d been scammed.',
+    'I told myself I was diversifying, and rising numbers felt like proof I had been smart. Part of me noticed how hard withdrawals were, but I did not want to admit I might have endangered retirement money on a stranger\'s link.',
   climax:
-    'When the platform went offline and I couldn\u2019t reach anyone, I searched the name. **Scam alerts everywhere**. That\u2019s when I knew. My pension money was gone.',
+    'The platform went offline mid-chat and every contact route returned errors. Searching the name pulled regulator warnings and victim threads—that offline weekend was when I accepted the pension slice was gone.',
   victimPain:
-    'I lost **pension money** I couldn\u2019t afford to lose. **Shame and stress** were huge. Reporting and recovery **are still ongoing**.',
+    'Losing **pension money** I could not replace brought shame and sleepless nights; recovery paperwork is slow and uncertain. Naming it as fraud out loud mattered as much as any form I filed.',
   learningVictim:
-    'I now know: never move pension or retirement money into a platform you found through someone online. I wish I\u2019d checked with a regulated advisor first.',
+    'I now keep retirement funds away from platforms I only discover through social messages, and I check firms with regulated advisors before I move a cent. I wish I had paused the first time they taxed a withdrawal that did not exist.',
   learningForReaders: [
-    '**Never invest** pension or retirement savings through a link or platform recommended only online. **Verify** with your bank or a regulator.',
-    '**Report** to the FTC and your local authority.',
+    '**Never invest** pension savings through a link someone sends online—**verify** with your bank or a regulator.',
+    '**Report** to the FTC and local financial authorities.',
   ],
 };
 

@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I almost **moved "company" money**—they said it was for **payroll** or **vendors**.\u2029It wasn\u2019t company money. It was **stolen**. I almost became a **money mule**.',
+    'A **remote “employer”** I found online said they would use my account for **payroll** and **vendor** payments because their main bank was “slow to set up overseas.”\u2029The pay sounded ordinary, not flashy, which made the setup feel boring enough to be real.',
   initialPlot:
-    'My "**employer**" (from a **fake job**) asked me to **receive** wire transfers or **deposit cheques** and then **send** the money to "suppliers" or "clients."\u2029I was about to do it when I **stopped** and asked myself: why would a real company use **my** account? I searched the company. **Scam**. The money would have been **stolen**—and **I** would have moved it.',
+    'They emailed wire instructions: **receive transfers or deposit cheques**, then **send the funds** to “suppliers” and “clients” they named.\u2029I was about to move the first sum when I paused and searched the company name plus **money mule**.',
   scamExperience:
-    '**Money-mule scams** use fake jobs to get you to **receive and move** stolen money. You become **part of the fraud**. I **didn\u2019t** send the money—but I came close. The "job" was **fake**.',
+    'The search turned up warnings that the “firm” was fake and the money would have been **stolen**; I would have been the person who **moved it** and could have faced **legal** and **bank** consequences even if I thought I had a job.',
   victimExperience:
-    'I was **eager** to prove myself. The request seemed **odd** but I didn\u2019t want to **question** my "boss." I almost **did it** without checking.',
+    'Between interviews I had been eager to **prove I was reliable**, so I almost treated the odd flow as a test instead of a **red flag**.',
   climax:
-    'When I **refused** and searched the company, I found **warnings**. That\u2019s when I knew. I\u2019d almost moved **stolen money**.',
+    'When I told them I would only work through the company’s official payroll after calling a number from their real website, the thread stopped and the domain I had been using no longer replied.',
   victimPain:
-    'I didn\u2019t lose money but the **fear** of how close I came stayed. Reporting **helped**.',
+    'I did not lose cash, but I spent weeks worried something had already been queued in my name; **reporting** to the bank and fraud line gave me a file number and calmed that down.',
   learningVictim:
-    'I now know: no real employer will ask you to **receive** money in your account and **send it on**. That\u2019s a **mule** setup. I\u2019m glad I stopped.',
+    '**No real employer** asks you to **receive money in your personal account** and **forward it** to third parties.\u2029That pattern is a **money-mule** setup.',
   learningForReaders: [
-    '**Never** receive money and send it on for an "employer." That\u2019s a **money-mule** scam. **Report** to the FTC.',
+    '**Never** accept pay that requires you to **pass money through** your account to strangers.',
+    '**Report** recruitment fraud to the **FTC** (US) or your national consumer fraud body.',
   ],
 };
 

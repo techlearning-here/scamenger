@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was single and we met on an app. She was into **crypto** and said she could show me how to grow my money.\u2029We talked for weeks. I wasn\u2019t looking for get-rich-quick—I just liked her and thought **why not learn**?',
+    'We met on a dating app; she was into **crypto** and offered to teach me while we built a connection.\u2029I was single and curious—not chasing get-rich-quick, just **interested in her** and the topic.',
   initialPlot:
-    'She sent a link to a "trading platform." I put in a little; it showed **gains**. She said to add more to "unlock" bigger returns. I trusted her.\u2029When I wanted to withdraw, they asked for **"tax" or "fees."** I paid. Then she said one more trade would fix everything. I added more. I lost both the **relationship** and the **money**.',
+    'She sent a **trading platform** link; small deposits showed **gains**.\u2029Withdrawals stalled behind **taxes** and **fees**; she said one more top-up would **unlock** everything.\u2029I added more until I could not.',
   scamExperience:
-    'The platform never let me withdraw. She kept saying **one more deposit**, one more trade. I used savings and credit. When I said I couldn\u2019t add more, she **disappeared**. The app went offline. I\u2019d been pig-butchered—romance plus fake crypto.',
+    'The setup is **pig-butchering**: **romance** plus a **fake exchange**.\u2029When I refused further transfers, she **vanished** and the app went **offline**.',
   victimExperience:
-    'I told myself we had something **real** and the platform was legit. When the balance went up, I felt **hopeful**.\u2029Part of me wondered why I couldn\u2019t withdraw, but **I was embarrassed to admit** I might have been scammed.',
+    'I told myself the relationship was **real**; questioning withdrawals felt like **distrust**.',
   climax:
-    'When she vanished and the app died, I Googled it. **Warnings everywhere**. That\u2019s when I knew. Love + crypto had been a **scam** from the start.',
+    'Search results for the platform name returned **victim threads** that matched my chat line for line.',
   victimPain:
-    'I lost **savings and credit** and the person I thought I knew. **Shame and stress** were crushing. Rebuilding **is still ongoing**.',
+    'Savings and **credit** took a hit; rebuilding financially and emotionally is still ongoing.',
   learningVictim:
-    'I now know: if someone you met online sends you to one "platform" and you can\u2019t withdraw, it\u2019s a scam. I wish I\u2019d never clicked.',
+    'Anyone who routes my money through **one private platform** I cannot verify is a **risk**, not a partner.',
   learningForReaders: [
-    '**Pig-butchering**: romance + fake crypto. Never invest via a link from someone you haven\u2019t met.',
-    '**Report** to the FTC and your bank if you\u2019ve lost money.',
+    '**Pig-butchering**: online romance plus **fake crypto**—**never invest** via links from dates.',
+    '**Report** to the **FTC** and your bank.',
   ],
 };
 

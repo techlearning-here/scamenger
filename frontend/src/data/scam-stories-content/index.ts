@@ -75,6 +75,7 @@ import i_thought_we_were_getting_married from './i-thought-we-were-getting-marri
 import i_won_lottery_i_never_entered from './i-won-lottery-i-never-entered';
 import identity_stolen_after_data_breach from './identity-stolen-after-data-breach';
 import immigration_scam_forms_that_are_free from './immigration-scam-forms-that-are-free';
+import india_ngo_hospital_baby_donation_scam from './india-ngo-hospital-baby-donation-scam';
 import inheritance_scam_targeting_seniors from './inheritance-scam-targeting-seniors';
 import instagram_brand_deal_wanted_bank_details from './instagram-brand-deal-wanted-bank-details';
 import interview_asked_for_credit_card from './interview-asked-for-credit-card';
@@ -231,6 +232,7 @@ const STORY_CONTENT: Record<string, StoryContent> = {
   'i-won-lottery-i-never-entered': i_won_lottery_i_never_entered,
   'identity-stolen-after-data-breach': identity_stolen_after_data_breach,
   'immigration-scam-forms-that-are-free': immigration_scam_forms_that_are_free,
+  'india-ngo-hospital-baby-donation-scam': india_ngo_hospital_baby_donation_scam,
   'inheritance-scam-targeting-seniors': inheritance_scam_targeting_seniors,
   'instagram-brand-deal-wanted-bank-details': instagram_brand_deal_wanted_bank_details,
   'interview-asked-for-credit-card': interview_asked_for_credit_card,

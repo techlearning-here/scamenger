@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was at work and **got a pop-up** that looked like **Microsoft** or my IT department—**account problem**, **verify now**.\u2029I was **busy** and didn\u2019t want my account locked. I almost **entered my password**. I stopped just in time.',
+    'At work a **browser pop-up** said my **Microsoft account** would be locked unless I **verified now**.\u2029I was mid-deadline and did not want email or Teams cut off, so I almost treated the window like an IT ticket.',
   initialPlot:
-    'The page looked like the **real login**—logo, colours, **password field**.\u2029I was one click away from handing over my **password** when something felt off. I closed the tab and went to the real Microsoft site by typing the URL. There was **no alert**. The page had been **phishing**.',
+    'The page copied the **real login layout**—logo, colours, password field—and I had my cursor in the box before I noticed the address bar did not match what our handbook shows.\u2029I closed the tab, opened a new window, and typed **microsoft.com** myself; there was **no security alert** on the real account.',
   scamExperience:
-    '**Fake Microsoft (and tech) pages** mimic real login screens so you enter your credentials. Scammers then **access your email**, **work accounts**, or **identity**. The pop-up or link had gone to a **fake site**.',
+    'That pop-up was **phishing**: steal the password, then use **email and work logins** for fraud or further break-ins.\u2029I reported the URL to IT and ran a scan; nothing was taken because I never submitted the form.',
   victimExperience:
-    'I was **worried** my account would be locked. The page looked **real**. I was **in a hurry** and almost **typed my password**. I didn\u2019t want to **call IT** and wait.',
+    'In the moment I was more afraid of **losing access** during a meeting than of a fake page—I almost skipped the step of checking the URL.',
   climax:
-    'When I opened the **real** site myself, there was no warning—and no request for my password. That\u2019s when I knew. I\u2019d almost been **phished**.',
+    'The real portal showed a clean account and our IT desk confirmed **they had not pushed that warning**; the fake site was taken down from the block list a day later.',
   victimPain:
-    'I didn\u2019t lose money this time, but the **fear and shame** stayed. I changed my password and **reported** it. I still think about how close I came.',
+    'No money went missing, but I was shaken by how close I came; I changed the password anyway and still double-check the address bar on every login.',
   learningVictim:
-    'I now know: never enter your password on a page you reached from a pop-up or link. Always go to the real site by typing the URL or a bookmark. I\u2019m glad I stopped.',
+    'I never type passwords on pages I reached through a **pop-up** or **link**.\u2029I use a **typed URL** or a **saved bookmark** every time.',
   learningForReaders: [
-    '**Never enter passwords** on a page you reached from a link or pop-up. Go to the **official site** yourself.',
-    '**Report** phishing to your IT department and the FTC.',
+    '**Never enter passwords** on pages opened from pop-ups, ads, or unexpected links.',
+    '**Report** phishing to **IT** (at work) and to **consumer fraud** channels for personal accounts.',
   ],
 };
 

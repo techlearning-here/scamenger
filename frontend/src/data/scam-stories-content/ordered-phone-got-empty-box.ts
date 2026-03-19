@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Tracking** said **delivered**.\u2029**Box** **sealed** **officially**.\u2029**Inside**: **packing** **peanuts**.\u2029**Carrier** **POD** **photo** showed **porch**—**thief** **swapped** **contents** or **seller** **never** **shipped** **phone**.\u2029**Investigation** **stalled**.',
+    'I saved for months to upgrade my phone and bought from a marketplace seller with solid ratings. **Tracking showed delivered**, the outer box looked intact, and I assumed the heavy day at work meant I could open it later—which turned out to be the mistake that cost the dispute.',
   initialPlot:
-    '**Marketplace** **seller** **insisted** I **film** **unboxing**—I **didn\u2019t** **first** **time**.\u2029**Second** **dispute** **lost** on **policy**.\u2029**Weight** **discrepancy** **logged** **too** **late**.',
+    'The seller insisted on filming the unboxing for "fraud protection," but I was tired and skipped video the first time. Inside were packing peanuts and a brick of cardboard where the handset should have been. The carrier\'s proof-of-delivery photo only showed my porch, not contents.',
   scamExperience:
-    '**Empty** **box** / **bricking** **scams** **abuse** **proof** **gaps**.\u2029**Signature** **delivery** + **video** **helps**.\u2029**Some** **rings** **inside** **jobs** at **depots**—**rare** but **real**.',
+    '**Empty-box scams** exploit the gap between delivery proof and what is inside the tape. Some rings swap goods in transit; some sellers never ship the device at all. Because I lacked continuous video and filed late, the platform closed the case under its policy language.',
   victimExperience:
-    'I **saved** **months** for **upgrade**.',
+    'I told myself sealed tape meant honesty, and I did not want to accuse a stranger over plastic crunch. Part of me knew I should have weighed the parcel or opened it on camera immediately, but I wanted to believe the purchase was finally done.',
   climax:
-    '**Reddit** **thread** **matched** **seller** **username** **pattern**.\u2029**Pattern** **clear**; **justice** **unclear**.',
+    'I found a Reddit thread describing the same username pattern and MO—sealed outer box, light inner weight—and the repetition was clearer than any single email from support. That was when I accepted I had been targeted by a playbook, not bad luck.',
   victimPain:
-    '**Skepticism** **toward** **every** **delivery** **driver**—**unfair** **but** **honest**.',
+    'I lost the **phone money** and months of patience with delivery drivers I had unfairly side-eyed afterward. The bitterness lasted longer than the refund fight because I kept replaying the moment I set the box down unopened.',
   learningVictim:
-    'I now **record** **unboxing**, **weigh** **packages**, **use** **protected** **checkout** only.\u2029I wish I\u2019d **refused** **FF** **payment**.',
+    'I now film high-value unboxings from the first cut in the tape, weigh parcels against the carrier label when I can, and keep checkout inside **buyer-protected** flows. I wish I had refused off-platform payment the second they suggested it.',
   learningForReaders: [
-    '**High-value** **items**: **pick up** at **carrier** **hub** when possible.',
+    'For expensive electronics use **protected checkout**, record unboxing, and pick up at a hub if you can.',
   ],
 };
 

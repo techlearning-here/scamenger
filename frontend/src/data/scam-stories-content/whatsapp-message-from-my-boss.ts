@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**WhatsApp** from "**my** **boss**"—**new** **number**, "**phone** **died**."\u2029**Urgent** **wire** to **vendor** for **secret** **deal**.\u2029I **almost** **sent** **£20k**.\u2029**EA** **stopped** me at **elevator**.',
+    'A **WhatsApp** message arrived from "**my boss**"—new number, dead phone, urgent tone. They needed a **wire to a vendor** for a secret deal and told me not to loop finance because of an NDA. I almost sent **tens of thousands** before an executive assistant stopped me at the elevator.',
   initialPlot:
-    '**CEO** **fraud** **moved** to **WhatsApp** from **email**.\u2029**Tone** **matched** **Slack** **style**—probably **scraped**.\u2029**Pressure** "**don\u2019t** **loop** **finance**, **NDA**."\u2029**Account** **details** **changed** **last** **minute**.',
+    'CEO fraud moved from email to messaging apps. The phrasing matched Slack jokes I had posted publicly, probably scraped, and the payment details changed at the last minute with pressure not to verify.',
   scamExperience:
-    '**Impersonation** **exploits** **hierarchy**.\u2029**Payment** **changes** **need** **voice** + **callback** **verification**.\u2029**Apps** **feel** **private**; **they**\u2019re **not**.',
+    '**Impersonation** exploits hierarchy: junior staff want to look capable, and apps feel private even when they are not. New payee details should never live only inside a chat thread.',
   victimExperience:
-    'I **wanted** **promotion** **energy**—**be** **indispensable**.',
+    'I wanted promotion energy—I told myself being indispensable meant moving fast without bothering busy executives.',
   climax:
-    '**Boss** **in** **meeting** **showed** **phone**—**no** **WhatsApp** **to** **me**.\u2029**Relief** and **rage** **mixed**.',
+    'My real manager was in a conference room; when I slipped in quietly they showed me their phone—no WhatsApp thread to me, no wire request. Relief and rage hit in the same breath.',
   victimPain:
-    '**Shook** **trust** in **my** **own** **judgment** at **work**.',
+    'I questioned my judgment at work for weeks even though policy gaps had set me up to succeed or fail alone.',
   learningVictim:
-    'We now **require** **voice** **or** **in-person** **for** **new** **payees**.\u2029I wish **policy** had **existed** **before** **attempt**.',
+    'Our company now requires voice or in-person confirmation for any new payee. I wish that rule had existed before the attempt.',
   learningForReaders: [
-    '**Finance** **teams**: **publish** "**we will never**" **WhatsApp** **rules**.',
+    '**Finance teams**: publish clear "**we will never** request wires via WhatsApp" rules and train staff.',
   ],
 };
 

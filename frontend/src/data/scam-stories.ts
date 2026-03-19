@@ -82,7 +82,7 @@ export const SCAM_STORY_ENTRIES: ScamStoryEntry[] = [
   { slug: 'paid-training-kit-job-didnt-exist', title: 'I paid for a training kit. The job never existed.', category: 'employment' },
   { slug: 'fake-recruiter-lost-money-before-day-one', title: 'I lost money before I\'d even had day one', category: 'employment' },
   { slug: 'mystery-shopper-scam-easy-money', title: 'Easy money for "mystery shopping"—sounded perfect', category: 'employment' },
-  { slug: 'employer-sent-fake-cheque-deposit', title: 'My "employer" sent a cheque. I deposited it. Then the nightmare started.', category: 'employment' },
+  { slug: 'employer-sent-fake-cheque-deposit', title: 'My "employer" sent a cheque. I deposited it—and the wire was gone when it bounced.', category: 'employment' },
   { slug: 'reshipping-scam-unwitting-parcel-mule', title: 'I thought I had a job. I was shipping for criminals.', category: 'employment' },
   { slug: 'linkedin-job-offer-too-good-to-be-true', title: 'The LinkedIn offer was dream-level. It was a scam.', category: 'employment' },
   { slug: 'almost-became-money-mule', title: 'I almost moved "company" money. It wasn\'t company money.', category: 'employment' },
@@ -116,6 +116,7 @@ export const SCAM_STORY_ENTRIES: ScamStoryEntry[] = [
   { slug: 'pay-taxes-on-winnings-before-prize', title: 'Pay "taxes" on your winnings first. The prize never came.', category: 'prizes_charity' },
   { slug: 'cruise-holiday-winner-scam', title: 'I "won" a cruise. I paid "fees." No cruise.', category: 'prizes_charity' },
   { slug: 'donation-scam-used-real-charity-name', title: 'They used a real charity\'s name. The money didn\'t go there.', category: 'prizes_charity' },
+  { slug: 'india-ngo-hospital-baby-donation-scam', title: 'An NGO said a baby in a big hospital needed surgery today. The UPI ID was fake.', category: 'prizes_charity' },
   // Housing & rental
   { slug: 'paid-deposit-flat-wasnt-for-rent', title: 'I paid the deposit. The flat wasn\'t for rent.', category: 'housing' },
   { slug: 'landlord-in-another-country', title: 'The "landlord" was always "in another country"', category: 'housing' },

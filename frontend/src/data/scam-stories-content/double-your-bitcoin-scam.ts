@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I had a little **crypto** and wanted to grow it. When I saw an offer to **"double your Bitcoin"**—with "proof" from others—I was skeptical but curious.\u2029I thought I was being careful. I wasn\u2019t.',
+    'I held a small amount of **crypto** and wanted it to grow without learning complex trading.\u2029A site promised to **double my Bitcoin** with video “proof” and chat windows full of people thanking the operator.',
   initialPlot:
-    'The scheme had **testimonials** and a process: send Bitcoin to an "address" and they\u2019d "double" it and send it back. I sent a **small amount** first. Nothing came back. They said I had to send **more** to "unlock" the return. I didn\u2019t. I\u2019d already lost what I sent.',
+    'They said to send coins to a **wallet address** and the doubled amount would return within an hour.\u2029I sent a **small test** first; nothing came back.\u2029Support claimed I needed a **second deposit** to “unlock” the return, which is when I stopped sending.',
   scamExperience:
-    '"Double your Bitcoin" and similar **giveaway-style** crypto scams are designed to take what you send. There is no doubling. I lost the Bitcoin I sent. I found **warnings** online—same scam, many victims.',
+    '**Multiply your crypto** scams keep the money you send; there is no algorithm, only a **sink address** and scripted excuses.\u2029Searching the address later showed the same pattern reported by other victims.',
   victimExperience:
-    'I told myself **small amount, low risk**. When nothing came back, I felt **stupid and angry**.\u2029I didn\u2019t send more, but the loss still hurt.',
+    'Between the first and second request I told myself the **test amount** was tuition and that walking away would waste what I had already sent.',
   climax:
-    'When they asked for more to "unlock" my return, I knew. I searched the scheme—**scam**. That\u2019s when I knew I wasn\u2019t getting it back.',
+    'When they pasted the same unlock script a third time after I refused more funds, I searched the brand name plus **scam** and read dozens of identical stories.',
   victimPain:
-    'I lost **crypto** I couldn\u2019t afford to lose. The **shame** was real. Reporting **helped**.',
+    'The **Bitcoin** I sent was gone for good; filing reports did not recover it, but it stopped me from chasing losses with a bigger transfer.',
   learningVictim:
-    'I now know: anyone promising to "double" or "multiply" crypto is a scam. I wish I\u2019d never sent a single satoshi.',
+    '**Nobody doubles** your crypto for free.\u2029If they need you to **send assets first**, it is **fraud**.',
   learningForReaders: [
-    '**No one legit** will "double" your crypto. Any offer that asks you to send crypto first is a **scam**.',
-    '**Report** to the FTC and your local authority.',
+    '**Ignore** “double your crypto” offers; **report** wallet addresses to **FTC** / **IC3** (US) or local fraud units.',
+    '**Never** send more to “unlock” a previous payment—that is a **recovery-pressure** tactic.',
   ],
 };
 

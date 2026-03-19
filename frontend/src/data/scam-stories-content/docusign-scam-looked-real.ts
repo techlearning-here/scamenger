@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **expecting a document** to sign—contract, lease, or work papers.\u2029When an email said **DocuSign** (or similar) had a document for me and I had to **click to sign**, it looked **100% real**. I was waiting for exactly that.',
+    'I was **expecting a contract** for a freelance gig, so when email arrived saying **DocuSign** had a document waiting, the timing felt right.\u2029The layout matched messages I had seen from real signings before.',
   initialPlot:
-    'The email looked like **DocuSign**—**branding**, **"View document"** link, **sender name**.\u2029I clicked and landed on a page that looked like the real signing flow. I almost entered my **details**. The link wasn\u2019t DocuSign. It was **phishing**—designed to steal my login or payment info.',
+    'I clicked **View document**, landed on a flow that copied colours and buttons from the real product, and started typing **login** details before I noticed the **hostname** in the bar was wrong.\u2029I closed the tab without submitting and opened DocuSign from a bookmark instead.',
   scamExperience:
-    '**Fake DocuSign (and e-sign) emails** mimic real services so you enter credentials or click malware links. Scammers **steal accounts** or **infect your device**. The email and page were **fake**.',
+    '**Fake e-sign emails** harvest **passwords** or drop **malware**; because many people are mid-deal when they arrive, the click rate stays high.\u2029I ran a malware scan and rotated passwords after realising how close I had come.',
   victimExperience:
-    'I was **expecting a document** and the email felt **right**. I didn\u2019t want to **delay** the deal. I **clicked without checking** the URL. I didn\u2019t think a signing link could be **dangerous**.',
+    'While the page loaded I was thinking about **deadlines**, not URLs—I almost treated the link like a calendar invite.',
   climax:
-    'When I went to the **real** DocuSign site myself, there was no document from that sender. That\u2019s when I knew. The link had been **phishing**.',
+    'On the **real DocuSign** inbox there was **no envelope** from that sender; support confirmed **phishing** was circulating that week using the same subject lines.',
   victimPain:
-    'I lost **time and trust**—and had to secure my accounts. The **stress** of not knowing what I\u2019d clicked was real. Reporting **helped**.',
+    'I lost most of a day re-securing accounts and explaining to the client why I had delayed; the stress sat in my chest longer than the actual incident.',
   learningVictim:
-    'I now know: never open signing links from email without checking the URL. Go to the real DocuSign (or provider) site yourself and sign from there. I wish I\u2019d done that.',
+    'I do not sign from **email links** anymore.\u2029I go to the **provider’s site** myself, log in, and open envelopes only from there.',
   learningForReaders: [
-    '**Check the URL** before entering details on any "sign document" page. Use the **official e-sign site** yourself.',
-    '**Report** phishing to the e-sign provider and the FTC.',
+    '**Check the URL** on any “sign document” page; when in doubt, open the **official e-sign site** directly.',
+    '**Forward** phishing to the provider’s abuse address and **report** to **FTC** (US) or local fraud lines.',
   ],
 };
 

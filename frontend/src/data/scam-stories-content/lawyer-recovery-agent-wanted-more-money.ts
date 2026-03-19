@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'After **binary** **options** **fraud**, a "**lawyer**" **emailed** **court** **looking** **letterhead**.\u2029**Retainer** **paid**.\u2029Then **filing** **fees**, **international** **service**, **crypto** **for** "**bailment** **release**."\u2029**Endless** **invoices**—**no** **court** **case** **ever** **filed**.',
+    'After **binary options** fraud, a “**law firm**” emailed with **court-style** letterhead and promised to **recover** my losses.\u2029I paid a **retainer**, then **filing fees**, **international service**, even **crypto** for a “**bailment release**.”',
   initialPlot:
-    'I **called** **courthouse**—**no** **docket**.\u2029**Bar** **association**—**no** **such** **attorney**.\u2029**Same** **scammers** **sold** me **hope** **after** **stealing** **hope** **the** **first** **time**.',
+    'Invoices kept coming; no **docket** appeared when I called the **courthouse**.\u2029The **bar association** had **no attorney** by that name—the same criminals had sold me **hope** twice.',
   scamExperience:
-    '**Fake** **recovery** **lawyers** **mirror** **real** **litigation** **language**.\u2029**Advance** **fee** **fraud** **dressed** as **legal**.\u2029**Real** **lawyers** **itemise** **and** **escrow** **properly**.',
+    '**Fake recovery lawyers** copy litigation language for **advance-fee** fraud.\u2029**Real counsel** itemises work and uses **proper escrow**; they do not **guarantee** asset return from anonymous scammers.',
   victimExperience:
-    'I **clung** to **any** **narrative** where I **wasn\u2019t** **powerless**.',
+    'I clung to any story where I was not **powerless**.',
   climax:
-    '**Google** **reverse** **image** on **"partner** **photo**"\u2014**stock** **lawyer** from **Shutterstock**.',
+    '**Reverse image search** on the “**partner**” photo returned a **stock** lawyer portrait from a photo site.',
   victimPain:
-    '**Cynicism** about **any** **help**—**healing** **slow**.',
+    'Cynicism about **any** help slowed real healing; trusting again took time.',
   learningVictim:
-    'I now **verify** **bar** **numbers** **independently** and **refuse** **crypto** **legal** **fees**.\u2029I wish I\u2019d **known** **double** **victimisation** has a **name**.',
+    'I **verify bar numbers** independently and **refuse crypto** for **legal fees** from cold outreach.',
   learningForReaders: [
-    '**Legitimate** **lawyers** **don\u2019t** **guarantee** **asset** **recovery** from **anonymous** **fraudsters**.',
-    '**Report** **fake** **law** **firms** to **state** **bar** and **FTC**.',
+    '**Legitimate lawyers** do not **guarantee** recovery from offshore fraudsters.',
+    '**Report** fake firms to the **state bar** and **FTC**.',
   ],
 };
 

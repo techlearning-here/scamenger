@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was browsing when a **pop-up** said my computer was **infected** and I had to **call** or **click** immediately.\u2029I wasn\u2019t technical. I **believed** it.',
+    'I was browsing at home when a **pop-up** locked the screen with red warnings and a countdown that said my PC was infected. I am not technical, so fear pushed me to call the number on the banner instead of closing the tab.',
   initialPlot:
-    'The pop-up looked **official**—logos, warnings, **countdown**. It said my **data was at risk**.\u2029I **called the number** or **downloaded** what it offered. I gave **remote access** or **paid** for "repair." The pop-up was **fake**. I\u2019d let **scammers** in.',
+    'The voice on the line sounded like a help desk—calm, urgent, full of acronyms. They asked for **remote access** to "disinfect" the machine and quoted a cleanup fee I paid because I thought I was buying peace.',
   scamExperience:
-    '**Tech-support pop-up scams** use fear to get you to call or install malware. They **sell fake fixes**, **steal data**, or **lock your device**. I lost **money** and had to **wipe** my machine. The "infection" was **theatre**.',
+    '**Tech-support pop-up scams** use scare copy to sell useless software or steal data once they control the mouse. The infection was theater; the real damage was the payment and whatever they scraped while logged in.',
   victimExperience:
-    'I was **scared** I\u2019d lose my files. The warning looked **real**. I didn\u2019t want to **wait** for a real IT person. I **acted fast**—too fast.',
+    'I pictured losing years of photos and tax files, so I moved fast to avoid "losing everything." I did not want to wait for a real IT friend on a Friday night, and the pop-up looked close enough to Windows styling to feel official.',
   climax:
-    'When my **bank** flagged charges or a real technician said there was **never** a virus from that pop-up, I knew. I\u2019d been **scammed**.',
+    'My bank flagged the charge as risky the next morning, and a local technician laughed gently when he said browser pop-ups are not virus scans. Hearing both confirmations in one day was when I understood I had paid a stranger for panic.',
   victimPain:
-    'I lost **money** and felt **stupid**. The **stress** of securing my PC and accounts was huge. Reporting **helped**.',
+    'I lost **money** and hours re-securing accounts, and I felt stupid every time I retold the story. Reporting gave me a checklist instead of just shame.',
   learningVictim:
-    'I now know: **browser pop-ups** aren\u2019t virus scans. Close the tab; don\u2019t call the number. I wish I\u2019d known.',
+    'I now force-quit the browser, run real scans from software I installed myself, and never grant remote access to inbound callers. I wish I had known pop-ups cannot diagnose hardware.',
   learningForReaders: [
-    '**Never call** numbers from pop-ups or allow **remote access** to strangers. Use **official** support only.',
+    '**Never call** numbers from pop-ups or allow **remote access** to strangers—use official support channels you look up.',
     '**Report** to the FTC.',
   ],
 };

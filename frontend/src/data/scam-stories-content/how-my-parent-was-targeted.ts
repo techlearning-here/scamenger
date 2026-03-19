@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Mum** got **robocalls** **daily**—**Medicare**, **Amazon**, **IRS** **rotation**.\u2029She **hung up** **mostly**.\u2029Then **one** **human** **caller** **knew** her **grandkid**\u2019s **name** from **sports** **posts**.\u2029**That** **broke** her **shield**.',
+    'Mum fielded **robocalls** every week—**Medicare**, **Amazon**, **IRS** scripts—and usually hung up.\u2029Then a **human caller** used our **grandson’s name** and his **coach’s name** from a **local sports article** online; that detail made her think it was real.',
   initialPlot:
-    'They **sold** her a "**new** **Medicare** **card**" for **fees**.\u2029**I** **intercepted** **package** **instructions**—**prepaid** **cards**.\u2029We **sat** **together** on **speaker** with **real** **agency**.\u2029**Caller** **disconnected**.',
+    'They sold her a “**new Medicare card**” for **prepaid card fees**.\u2029I intercepted the package instructions, sat with her on **speakerphone** while we dialled the **real agency**, and the caller hung up mid-transfer.',
   scamExperience:
-    '**Targeting** **seniors** **layers** **public** **data** + **scripts**.\u2029**Family** **visibility** on **social** **feeds** **spears**.\u2029**Education** + **spam** **filters** + **whitelists** **help**.',
+    '**Senior targeting** layers public **social posts** with polished scripts; **family visibility** gives scammers **specific hooks**.\u2029We tightened **privacy** settings, added **spam filters**, and started a weekly **scam tea** chat so new pitches get a second opinion.',
   victimExperience:
-    'She **felt** "**stupid**."\u2029I **repeated**: **they** **train** **for** this.',
+    'She called herself **stupid** afterward; I kept repeating that **whole teams train** to exploit people who care.',
   climax:
-    'She **said** "**he used [grandson]\u2019s coach\u2019s name**."\u2029**OSINT** **from** **local** **news** **site**.',
+    'When she said **“he knew the coach’s name,”** I searched the **local news site**—both names were public in a **team photo caption** from the same week.',
   victimPain:
-    '**Anger** at **myself** for **oversharing** **kids**\u2019 **lives** **online**.',
+    'I was angry at myself for **oversharing kids’ lives** publicly; we pulled identifying detail from open profiles.',
   learningVictim:
-    'We **locked** **profiles**, **use** **Google** **Voice** for **forms**, **weekly** **scam** **tea** **chats**.\u2029I wish **carriers** **blocked** **spoofed** **local** **numbers** **better**.',
+    'We use **Google Voice** for forms, **lock down** family posts, and **pause** any urgent money ask with a phrase like “I’ll call you back after I check with my daughter.”',
   learningForReaders: [
-    '**Share** **less** **identifying** **detail** **publicly**; **teach** **elders** **pause** **phrases**.',
+    '**Share less** identifying detail about **children** and elders online.',
+    '**Teach** older relatives to **verify** urgent calls through a **saved family number**.',
   ],
 };
 

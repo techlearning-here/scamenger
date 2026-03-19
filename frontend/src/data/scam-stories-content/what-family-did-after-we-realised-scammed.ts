@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'When we **realised** **Dad** **sent** **money** to a **fake** **grandson**, the **family** **split** two ways—**blame** him or **fix** **systems**.\u2029We **chose** **fix**.\u2029Mostly.',
+    'When we realised **Dad** had sent money to a **fake grandson**, the family split briefly between blaming him and fixing systems. We chose repair—most of the time.',
   initialPlot:
-    'We **froze** **credit**, **changed** **phones**, **sat** **together** with the **bank** **fraud** **team**.\u2029**One** **aunt** **said** he was "**too old** for **internet**."\u2029We **shut** that **down** **firmly**.\u2029**Weekly** **check-ins** **replaced** **shame** **spirals**.',
+    'We froze credit, rotated phone numbers where needed, and sat with the bank fraud team as a group. One aunt said he was "**too old for the internet**"; we shut that down and replaced shame with weekly check-ins.',
   scamExperience:
-    '**Family** **response** **shapes** **recovery**.\u2029**Practical** **steps** + **emotional** **safety** beat **lectures**.\u2029**Money** **gone**; **trust** **rebuilt** **slowly**.',
+    '**Family response** shapes recovery. Practical steps plus emotional safety beat lectures. Money was gone, but trust rebuilt slowly through shared procedures instead of surveillance disguised as love.',
   victimExperience:
-    '**Dad** **withdrawn** until we **assigned** him **roles**—**call** **new** **code word** **keeper**.',
+    'Dad withdrew until we gave him a role—keeper of a new **family code word**—so he could feel useful instead of punished.',
   climax:
-    'He **stopped** a **second** **scam** **himself**—**hung up** and **called** my **brother**.\u2029We **celebrated** like a **birthday**.',
+    'Months later he hung up on a fresh scam and called my brother first. We celebrated like a birthday because he had used the playbook without us hovering.',
   victimPain:
-    '**Sibling** **arguments** about **control** vs **autonomy** **still** **flare**.',
+    'Sibling fights about control versus autonomy still flare when someone suggests "just take his phone."',
   learningVictim:
-    'We now use **shared** **calendar** for **large** **transfers** and **no** **secrets** about **weird** **calls**.\u2029I wish we\u2019d **normalised** **scam talk** **years** ago.',
+    'We use a shared calendar for large transfers and a rule: no secrets about weird calls. I wish we had normalised scam talk years earlier.',
   learningForReaders: [
-    '**Replace** **judgment** with **procedures**—**code words**, **slow** **rules**, **second** **signer**.',
+    '**Replace judgment with procedures**—code words, slow rules, second signers when needed.',
   ],
 };
 

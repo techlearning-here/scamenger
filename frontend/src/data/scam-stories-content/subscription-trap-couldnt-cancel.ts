@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Free** **trial** **fitness** **app**—**card** for **shipping** "**only**."\u2029**Fine** print **annual** **£189** **renewal**.\u2029**Cancel** **button** **looped**; **support** **email** **bounced**.\u2029**Dark** **patterns** **dressed** as **SaaS**.',
+    'A fitness app promised a **free trial** if I covered shipping with my card. The fine print buried an **annual renewal** that hit my statement like a second gym membership I never chose.',
   initialPlot:
-    '**Chargeback** **fought**—**merchant** **sent** **fake** **logs** I **clicked** "**agree**."\u2029**Bank** **split** **decision**.\u2029**Regulator** **complaint** **finally** **refunded** **partial**.',
+    'The cancel button looped to a dead support form, and emails bounced. I screenshot every attempt while the charge repeated. My bank fought a chargeback; the merchant returned fake logs claiming I had clicked agree to the annual plan.',
   scamExperience:
-    '**Subscription** **traps** **exploit** **UX** **friction** and **obscure** **terms**.\u2029**Legal** **grey** **hurts** **consumers**.\u2029**Virtual** **cards** **with** **limits** **help**.',
+    '**Subscription traps** lean on dark patterns—hidden terms, broken cancel flows, shell companies. Regulator complaints eventually won a partial refund, but the hours on hold cost more than the cash.',
   victimExperience:
-    'I **skimmed** **T&Cs** like **everyone**.',
+    'I skimmed terms like everyone else and told myself a fitness brand would play fair because wellness sounds wholesome.',
   climax:
-    '**WHOIS** **matched** **shell** **company** in **three** **other** **trial** **scams** **on** **Trustpilot**.',
+    'WHOIS tied the domain to the same shell company running two other trial scams reviewers had flagged. Seeing the same corporate address on three scammy apps was when I knew this was a business model, not a glitch.',
   victimPain:
-    '**Hours** on **hold** **with** **bank** **disputes**.',
+    'Dispute calls ate evenings I wanted for anything else. The anger lingered longer than the line items.',
   learningVictim:
-    'I now use **virtual** **card** **numbers** for **trials** and **calendar** **alerts** **day** **before** **renewal**.\u2029I wish **app** **stores** **policed** **cancel** **flows** **harder**.',
+    'I use **virtual card numbers** with low limits for trials and calendar alerts the day before renewals. I wish app stores policed cancel flows harder.',
   learningForReaders: [
-    '**Screenshot** **cancel** **attempts** for **disputes**; **report** to **consumer** **protection**.',
+    '**Screenshot** cancel attempts for disputes; **report** to consumer protection.',
   ],
 };
 

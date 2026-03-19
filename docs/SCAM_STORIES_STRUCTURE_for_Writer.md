@@ -47,6 +47,63 @@ Stories should **show the emotional journey** and **put the reader in the situat
 
 Use these as a checklist when editing: each section should add to the reader's emotional connection to the situation.
 
+### 2.4 Depth, length, and voice (avoid "outline" stories)
+
+Some drafts read like **bullet summaries**—one clause per section, no scene, no inner voice. They fail the emotional goals above and feel **flat** on the site and for SEO/voice search.
+
+| Problem | Fix |
+|--------|-----|
+| Sections are only **one short sentence** | Aim for **2–4 sentences** per section where the doc allows (intro can stay tight but must still *hook* with a relatable situation). |
+| No **concrete detail** | Add **one specific moment** per beat: where you were (kitchen at midnight, break room at work), what you saw (caller ID, email subject line), what you told yourself. |
+| **Scam experience** is only a label | Describe **steps**: what they asked for next, how you paid, how many times, what the paperwork or site looked like. |
+| **Climax** is vague ("I knew it was a scam") | Show the **trigger**: the number disconnected, the charity had never heard of the campaign, the "IRS" hung up when you said you were calling back on the official line. |
+| Voice is **generic** | Use **first-person** rhythm: *I told myself…*, *Part of me…*, *Looking back…*—without sounding like a lecture. |
+
+**Rough target:** Across the eight sections (excluding reader bullets), about **900–2,000+ characters** of prose is a healthy band for a "standard" story on the site; **under ~700** total is a red flag for an outline. Longer is fine when every paragraph earns its place.
+
+**Quality bar:** If a stranger could read only **Character intro** and **Victim's experience** and still feel *that could be me*, the draft is on track.
+
+### 2.5 Prose rhythm — avoid "telegraphic" or poem-like copy
+
+**What “poem-like” means here (important):** It is **not only** about markdown bold. A story can have **no `**` at all** and still read like a **poem** if every section is a **stack of tiny sentences** or **clever one-liners** (staccato rhythm, line-break feel, no connective tissue). Readers should hear **someone talking**, not a list of beats.
+
+**Problems to avoid:**
+
+| Poem-like / telegraphic | Narrative prose |
+|-------------------------|-----------------|
+| Many lines of 3–8 words in a row | Mix **short and longer** sentences; use *because, when, after, although, until* |
+| Every section ends in a punchline | Most sections have **2–4 sentences** with one concrete detail (place, time, object) |
+| `Sentence A.\u2029Sentence B.\u2029Sentence C.` all equally tiny | Use `\u2029` between **thought units**, not after every breath; merge related ideas into one sentence when natural |
+| **Scam experience** = one slogan (“It was all fake.”) | Describe **steps**: what they asked next, how you paid, how often |
+| **Learning (victim)** = aphorism only | Aphorism **plus** one plain sentence (“I wish I had…” / “Now I always…”) |
+
+**Bold for emphasis (keep it):** Use `**...**` on the phrases readers should **remember**—**red flags**, **amounts**, **critical mistakes**, **turning points** (“That’s when I knew”), and **rules** in learning lines. Aim for roughly **2–5 bold phrases per section** in the narrative blocks, not bold on every other word: long sentences stay readable, but **scanners** still catch the lesson.
+
+**Check:** Read **Character intro** through **Victim's pain** aloud. If it sounds like **slam poetry** (mostly bold, no flow), merge sentences and reduce bold. If it sounds flat with **no** emphasis, add bold back on the true pivots.
+
+### 2.6 Depth, creativity, and engagement — why someone keeps reading
+
+Stories compete with every other tab. **Utility alone** (red flags + reporting links) is not enough if the prose feels like a form. Aim for **narrative pull**: the reader should want the next paragraph.
+
+| Technique | What it does |
+|-----------|----------------|
+| **Hook in the opening** | Start with tension, a vivid moment, or a relatable want—not a label. *Bad:* “I was scammed on Instagram.” *Better:* “The DM arrived during finals week, when I was counting coins for laundry.” |
+| **One fresh detail per beat** | Sound, object, time, or place readers can picture: fluorescent bank lobby, smell of the gift-card display, the exact wrong word in a phishing email. Avoid repeating the same abstract words (fraud, scam, fake) without grounding them once. |
+| **Inner conflict** | Show the victim **arguing with themselves**: hope vs doubt, politeness vs suspicion, pride vs asking for help. That is where readers recognise their own voice. |
+| **Pacing** | Let the scam **unfold in steps** so tension builds; save the sharpest realisation for **Climax**. **Victim's pain** can be slower and more reflective—aftermath, not a second climax. |
+| **Voice and small surprises** | Occasional plain, human phrasing (“I still hate that shade of green on the gift-card rack”) beats generic warnings. Stay truthful and anonymised—creativity is in **how** you tell it, not in inventing facts. |
+| **Earned ending** | **Learning (victim)** should feel like a consequence of what happened, not a slogan pasted on. Pair “what I know now” with “what it cost me to learn it” when it fits. |
+
+**Length:** For a **standard** story, target roughly **900–2,000+ characters** across the seven narrative sections (before reader bullets); **engaging** stories often sit in the **~1,200–2,500** range when the arc needs room. Shorter is fine only if every sentence still carries scene, feeling, or consequence—not outline bullets.
+
+**Quality bar:** If a reader would **forward the story** because it reads like a real person—not because they were assigned to read it—you are in the right zone.
+
+**Tone — engaging but not overwrought:** Prefer **plain, believable** language over **purple prose**, long metaphors, or **cinematic** beats (“blood ran cold,” “stage set collapsed,” “the universe sent…”). **Name feelings** directly (*afraid*, *ashamed*, *relieved*) instead of stacking dramatic images. One concrete detail beats three poetic ones.
+
+**Scam fear vs drama:** Convey the **real fear scams create**—losing savings, **owing the bank**, **account takeover**, **identity misuse**, legal worry, or fear for a family member—not theatrical pacing. Tie fear to **specific outcomes** (*“I was afraid the police would think I knew”*, *“I kept checking for new accounts in my name”*) rather than vague dread or performance.
+
+**Continuity across sections:** The blocks render as **one story in order**. Each section should **follow the last in time or logic**—use bridges like *the next evening*, *while I was still on the phone*, *after that call*, *looking back at that week*. **Victim's experience** should attach to **the same events** already described (*while the parcels were arriving I told myself…*, *before I learned it was phishing I believed…*), not a new topic. **Climax** is when that thread **breaks**; **Victim's pain** is **what came next** in life after that moment.
+
 ---
 
 ## 3. Story sections (in order)
@@ -178,7 +235,7 @@ Use the headings and prompts below when writing or editing a story.
 | Rule | What to do | Notes |
 |------|------------|--------|
 | **No visible section headings** | Do not expect "Character intro", "Initial plot", etc. to appear on the published page. Those headings are for *you* (writer/editor) only. The story is published as **continuous paragraphs** in the same order—no on-page labels for sections. | Keeps the narrative flowing and avoids a "form" feel. |
-| **Bold for emphasis** | Wrap key phrases in **double asterisks** to highlight them on the page. Use for: important emotions (*hopeful*, *ashamed*), red flags (*"tax" or "fees"*, *one platform*), turning points (*That's when I knew*), and actionable takeaways (*report it*, *check with your bank*). | The system renders `**...**` as bold. Don't overuse—a few per section is enough. |
+| **Bold for emphasis** | Wrap **key phrases** in `**...**` so readers spot **red flags**, **amounts**, **pivotal moments**, and **rules** while skimming. Target **roughly 2–5 bold phrases per narrative section**; keep surrounding text as **full sentences** (see **§2.5**). Learning-for-readers bullets should bold the **main action or warning** where helpful. | Over-bolding every other word still reads like **concrete poetry**—emphasis should **mean** something. |
 | **Content lives in the frontend** | All story content is stored in frontend source under `scam-stories-content/` (one file per story: `{slug}.ts`). There is **no backend or CMS**; stories are not stored in a database. | When adding or editing a story, add or update the file in `scam-stories-content/` and register it in `index.ts`. |
 | **Learning for readers** | Write bullets or short paragraphs. The site automatically adds a closing line with links to "Report a scam" and "Spot and avoid scams"—you don't need to repeat those links in every bullet. | Keeps bullets focused on spotting and reporting; links are consistent. |
 | **Paragraph breaks within a section** | To split a section into multiple paragraphs, use the **Unicode paragraph separator** `\u2029` between paragraphs in the source string. (E.g. `'First paragraph.\u2029Second paragraph.'`) Alternatively `\n\n` is supported locally, but **for deployed builds (e.g. Vercel)** minification can collapse newlines—using `\u2029` ensures paragraph breaks match between local and production. | Each section can contain one or more paragraphs; the renderer splits on `\u2029` or newlines and outputs separate `<p>` tags. |
@@ -191,12 +248,15 @@ Use the headings and prompts below when writing or editing a story.
 |--------|------------|--------|
 | **Anonymization** | Add explicit rules: no real names, locations (or only country/region), employer names, or contact details. | Protects victims and avoids defamation. |
 | **Tone** | Add guideline: “Respectful and factual; avoid sensationalizing or blaming the victim.” | Keeps stories helpful and avoids re-traumatizing. |
-| **Length** | Suggest soft limits: e.g. 400–800 words for “short” and 800–1,500 for “long” so stories stay scannable. | Helps writers and keeps reading time predictable. |
+| **Length** | Soft limits: ~400–800 words for a shorter story, 800–1,500 for a longer one. **Do not** ship outline-only copy (see **§2.4**): each section should read like narrative, not a label. | Keeps stories scannable but alive; very short prose across all sections usually means under-developed copy. |
 
 
 
 ## 7. Summary
 
+- **§2.4** — Avoid outline-only stories; add scene, inner voice, and concrete climax beats.
+- **§2.5** — **Full sentences** first; avoid poem-like staccato. **Use bold** on **2–5 memorable phrases per section** (red flags, amounts, turning points)—not every other word.
+- **§2.6** — Depth and **engagement**: hooks, concrete detail, inner conflict, pacing, and an earned learning—so readers want to finish the story and remember it.
 - **Eight sections** in order: Character intro → Initial plot → Scam experience → Victim's experience → **Climax** → **Victim's pain** → Learning (victim) → Learning for readers. (Victim's pain comes *after* climax.)
 - **No visible headings** on the published page—sections flow as continuous paragraphs.
 - Use **double asterisks** (`**...**`) for bold emphasis on key phrases.

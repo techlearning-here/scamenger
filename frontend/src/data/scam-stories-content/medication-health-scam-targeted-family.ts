@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Ads** **promised** **cheap** **insulin** **from** **Canada** **without** **prescription**.\u2029**Dad** **ordered**; **package** **never** **came**.\u2029**Card** **charged**; **fake** **pills** **arrived** **later** from **different** **sender**—**who** **knows** **what** **was** **in** them.',
+    '**Ads** promised **cheap insulin** from abroad **without** a prescription.\u2029My **father** ordered; the **package** never came as promised.\u2029The **card** was charged; **pills** arrived later from a different sender.',
   initialPlot:
-    '**Health** **anxiety** + **cost** **stress** = **click**.\u2029We **reported** to **FDA** / **MHRA** **equivalent**.\u2029**Doctor** **said** **lucky** **no** **one** **ingested** long-term.',
+    '**Health anxiety** and **US** **drug prices** made the click feel rational.\u2029We reported to **FDA** / **MHRA** equivalents.\u2029Our doctor said we were **lucky** no one took the mystery tablets long-term.',
   scamExperience:
-    '**Medication** **scams** **risk** **life** not just **wallet**.\u2029**Illegal** **online** **pharmacies** **sell** **counterfeits**.\u2029**Legitimate** **assistance** **programs** **exist**—**hard** to **find** under **SEO** **garbage**.',
+    '**Illegal online pharmacies** sell **counterfeits**; contents may be **inactive** or **harmful**.\u2029**Legitimate** **patient assistance** exists but hides under **SEO** spam.',
   victimExperience:
-    '**Dad** **felt** **trapped** by **US** **prices**.\u2029**Anger** at **system** **made** **scam** **appealing**.',
+    'Dad felt **trapped** by pricing; anger at the **system** made the scam ad feel like a workaround.',
   climax:
-    '**Pharmacist** **tested** **sample**—**mostly** **starch**.\u2029**Horror** **movie** **moment** in **real** **life**.',
+    'A **pharmacist** tested a sample—mostly **starch**—which ended any thought of using what arrived.',
   victimPain:
-    '**Guilt** **family-wide**.',
+    'Guilt spread through the family for not catching it sooner.',
   learningVictim:
-    'We now use **only** **licensed** **pharmacies** and **patient** **advocacy** **nonprofits**.\u2029I wish **search** **engines** **de-ranked** **rogue** **pill** **sites**.',
+    'We use **only licensed pharmacies** and **nonprofit patient advocacy** paths our doctor recommends.',
   learningForReaders: [
-    '**Verify** **VIPPS** / **your** **country**\u2019s **pharmacy** **regulator** **seals**.',
+    '**Verify** pharmacies with **VIPPS** (US) or your country’s **regulator** seal.',
+    '**Report** rogue pill sites to **drug regulators**.',
   ],
 };
 

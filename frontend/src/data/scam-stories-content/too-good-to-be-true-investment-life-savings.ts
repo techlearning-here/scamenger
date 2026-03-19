@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was in my 50s and **worried about retirement**. I wasn\u2019t reckless—I just wanted to **grow my savings** safely.\u2029When I got a message about an "opportunity" with strong returns, I was curious.',
+    'I was in my 50s and worried about retirement without wanting to gamble. A polite message about an "**opportunity**" with steady returns sounded like grown-up planning—not a carnival barker.',
   initialPlot:
-    'They had a **professional-looking site** and "advisors" on the phone. The returns they showed were **much higher** than my bank. I put in a small amount; it grew. I felt **relieved**. When I wanted to withdraw, they said I had to pay **"tax" or "fees"** or add more to "unlock." I paid. Then they asked for more.',
+    'Their site looked institutional and advisors returned calls quickly. I started small; balances grew on schedule. When I asked to withdraw, they cited **tax holds** and unlock fees, each framed as the last obstacle.',
   scamExperience:
-    'I never got my money back. The "platform" and "advisors" **disappeared**. I\u2019d lost a **large chunk of my life savings**. I found warnings online—same scheme, many victims.',
+    'The platform and phone lines vanished once I refused another wire. I lost a **large chunk of life savings** and found forums full of the same logo and script.',
   victimExperience:
-    'I told myself I was **being smart**—checking the site, talking to "advisors." When the first gains showed, I felt **hopeful**.\u2029Part of me wondered why I couldn\u2019t just withdraw, but **I didn\u2019t want to believe** it was a scam.',
+    'I told myself I was being diligent because I read the brochure and spoke to humans. Hope made me explain away every withdrawal delay.',
   climax:
-    'When the site went offline and the phone lines went dead, I Googled the company. **Fraud reports everywhere**. That\u2019s when I knew. My life savings were gone.',
+    'The morning the site returned a parked domain and the 800 number played a fast-busy tone, I searched the company name and found fraud advisories stacked like cordwood. That search results page was the end of bargaining.',
   victimPain:
-    'I lost **retirement money** I couldn\u2019t replace. The **shame and stress** were crushing. I couldn\u2019t tell my family for months. **Reporting** was hard but necessary.',
+    'Retirement money I could not replace disappeared with my confidence. I hid the loss from family for months before reporting because shame felt heavier than the forms.',
   learningVictim:
-    'I now know: if returns are too good to be true and they won\u2019t let you withdraw, it\u2019s a scam. I wish I\u2019d checked with my bank or a regulator first.',
+    'If returns outpace banks and withdrawals need fees, I walk. I wish I had checked with my bank or a regulator before the second transfer.',
   learningForReaders: [
-    '**Verify any investment** with your bank or a financial regulator. Real firms don\u2019t block withdrawals with "fees."',
-    '**Report** to the FTC and your local authority if you\u2019ve lost money.',
+    '**Verify investments** with your bank or a financial regulator—real firms do not block withdrawals with mystery fees.',
+    '**Report** to the FTC and local authorities.',
   ],
 };
 

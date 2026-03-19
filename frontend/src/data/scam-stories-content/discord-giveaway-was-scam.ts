@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A **Discord** **mod** **DM** said I **won** **GPU** **giveaway**—**connect** **wallet** to "**claim**."\u2029I **signed** a **transaction** that **looked** like "**approve** **NFT**."\u2029It **drained** **approved** **tokens**.',
+    'A **Discord DM** arrived from an account that matched a **moderator’s** name and avatar, saying I had **won a GPU** in a server giveaway and should **connect my wallet** to claim.\u2029I was active in that community and wanted to believe the win was real.',
   initialPlot:
-    '**Fake** **bot** **copied** **server** **avatar**.\u2029**Link** went to **wallet** **drainer** **site**.\u2029**EIP-** style **jargon** **blinded** me.\u2029**$3k** **gone** in **one** **block**.',
+    'The link opened a clean page that asked me to **sign a transaction** to “approve the NFT drop.”\u2029I confirmed it in my browser wallet; within one block **about three thousand dollars** in tokens left the account through permissions I had granted.',
   scamExperience:
-    '**Crypto** **giveaways** on **Discord** **are** **almost** **always** **fake**.\u2029**Malicious** **contracts** **hide** in **benign** **UI**.\u2029**Revoke** **permissions** **after**—**too late** for **balance**.',
+    '**Fake mod DMs** and **wallet drainer** sites are common on Discord; the contract behind a friendly button can include **unlimited token approval**.\u2029Revoking access later stops new drains but does not return what already moved.',
   victimExperience:
-    'I **wanted** **community** **status**.\u2029**Winning** **validated** me.',
+    'While I clicked through, jargon on the screen looked like normal Web3 flow, and I did not read the **contract name** in the explorer until a developer friend translated it the next day.',
   climax:
-    '**Blockchain** **explorer** showed **function** **name** I **didn\u2019t** **read**.\u2029**Developer** **friend** **translated**—**unlimited** **spend**.',
+    'That friend pasted the **transaction** into an explorer, pointed at a function I had ignored, and showed **setApprovalForAll**—meaning the scam contract could move balances I thought were still mine.',
   victimPain:
-    '**Trust** in **servers** I **moderated** **myself** **shook**.',
+    'I moderated channels on that server myself, so trusting a spoofed mod stung; I posted a warning publicly and stepped back from trading for a while.',
   learningVictim:
-    'I now **use** **hardware** **wallet**, **read** **calldata**, **never** **claim** via **DM** **links**.\u2029I wish I\u2019d **asked** **public** **channel** **first**.',
+    'I **never sign** transactions from **DM links**; **real giveaways** are announced in **verified channels**, and I use a **hardware wallet** for anything beyond play money.',
   learningForReaders: [
-    '**Official** **giveaways** **announce** on **verified** **accounts** only—**not** **random** **DMs**.',
+    '**Treat Discord DMs** about **crypto prizes** as **fake** unless confirmed in an **official announcement**.',
+    '**Review** wallet prompts carefully; **revoke** suspicious approvals via trusted tools and **report** the server mods.',
   ],
 };
 

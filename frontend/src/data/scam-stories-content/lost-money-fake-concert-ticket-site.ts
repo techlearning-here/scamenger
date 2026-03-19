@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Sold-out** **show**; **site** **looked** like a **reseller** I\u2019d **heard** of.\u2029**PDF** **tickets** **arrived**—**barcodes** **invalid** at **gate**.\u2029**£180** **gone**; **night** **ruined** **outside** **venue** **listening** to **muffled** **bass**.',
+    'The **show** was **sold out**; a reseller site looked familiar enough that I paid **about one hundred eighty pounds** for **PDF tickets**.\u2029At the gate the **barcodes** failed.',
   initialPlot:
-    '**URL** **typosquat**.\u2029**Chargeback** **lost**—**digital** **goods** **policy**.\u2029**Fan** **forums** **listed** **same** **site** **weeks** **earlier**—I **didn\u2019t** **search**.',
+    'The URL was a **typosquat** of a known reseller.\u2029**Chargeback** failed under **digital goods** rules; fan forums had flagged the **domain** weeks earlier—I had not searched.',
   scamExperience:
-    '**Secondary** **ticket** **fraud** **spikes** **tour** **season**.\u2029**Fake** **PDFs** **cost** **nothing** to **mass** **produce**.\u2029**Official** **exchange** **only** from **now** on.',
+    '**Fake ticket** sites mass-produce **invalid PDFs** during tour season.\u2029The same code had already been scanned in **another city** the night before.',
   victimExperience:
-    '**FOMO** **after** **two** **years** **without** **gigs**.',
+    '**FOMO** after years without live gigs made me rush checkout.',
   climax:
-    '**Security** **scanned** **code**—**already** **used** **in** **Manchester** **yesterday**.',
+    'Security scanned the code—**already used**—and waved me aside while my friends went inside.',
   victimPain:
-    '**Bitter** **memory** **of** **friends** **inside**.',
+    'I stood outside hearing the **bass** through the wall; the memory still rankles.',
   learningVictim:
-    'I now **buy** **only** from **primary** or **verified** **resale** **partners**.\u2029I wish I\u2019d **paid** **extra** **official** **fees** **without** **resentment**.',
+    'I buy only from **primary** sellers or **verified resale** partners linked from the **venue** or **artist**.',
   learningForReaders: [
-    '**Check** **seller** **reviews** **outside** the **site**; **avoid** **wire** / **crypto** for **tickets**.',
+    '**Check seller reviews outside** the ticket site; avoid **wire** or **crypto** for tickets.',
+    '**Report** fraud to **payment** providers and **Action Fraud** / **FTC**.',
   ],
 };
 

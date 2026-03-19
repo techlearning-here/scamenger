@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I got an **email** that looked exactly like my bank\u2019s—logo, wording, link. It said my account had **suspicious activity** and I had to **verify** or it would be locked.\u2029I wasn\u2019t careless. I just **panicked**. It wasn\u2019t my bank.',
+    'An **email** copied my bank’s layout—logo, footer, tone—and said **suspicious activity** meant I had to **verify** or the **account would lock**.\u2029I was between meetings and did not want payments to fail, so I treated it like an urgent chore.',
   initialPlot:
-    'I clicked the link and entered my **details** on a page that looked like the real login. Within hours my account was **drained**. The email was **phishing**—a perfect copy. The link went to **scammers**. I\u2019d handed them everything.',
+    'I used the **link in the email**, landed on a page that matched the real login, and entered my **username and password**.\u2029By evening **transfers and card taps** I had not made were moving out of the account.',
   scamExperience:
-    '**Phishing** uses fake emails and sites that look like your bank, so you enter your credentials. They then **empty your account**. I lost **thousands**. The email and site were **fake**.',
+    '**Phishing** pairs a fake message with a fake site so credentials go straight to criminals.\u2029They drained **thousands** before the bank’s fraud filter froze what was left; recovery meant affidavits and new cards.',
   victimExperience:
-    'I was **scared** my account would be locked. The email looked **so real**. I didn\u2019t want to **wait**—I clicked. I didn\u2019t think I was **giving my details to criminals**.',
+    'At the time I believed speed would **stop** a lockout; I knew the rule about not clicking bank links, but the **fear of losing access** won for five minutes.',
   climax:
-    'When I saw **unauthorized transactions** and called my real bank, they said they\u2019d never sent that email. That\u2019s when I knew. I\u2019d been **phished**.',
+    'The fraud line on the **number on my card** said **they had not sent that email**; when I compared the link character by character, the domain was wrong.',
   victimPain:
-    'I lost **savings** and felt **violated**. The **stress** of locking the account and disputing was huge. Reporting **helped**.',
+    'Savings took a hit and the weeks of disputes were exhausting; I kept checking the app for new alerts long after the case closed.',
   learningVictim:
-    'I now know: never click "verify" or "login" links in emails. Go to the bank\u2019s site by typing the URL or your bookmark. I wish I\u2019d done that.',
+    'I never use **verify** or **login** links from email or texts.\u2029I open the **bank’s site** from a bookmark or typed URL and log in there.',
   learningForReaders: [
-    '**Never click** login or verify links in emails or texts. Go to your bank\u2019s **official site** by typing the URL or using a saved bookmark.',
-    '**Report** phishing to your bank and the FTC.',
+    '**Never click** login links in unsolicited email or SMS; use your **official app** or typed URL.',
+    '**Report phishing** to your bank and **FTC** (US) or your national reporting centre.',
   ],
 };
 

@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **paid** for **government forms** that are **free** on the **official** site.\u2029A **copycat** website ranked **high** on Google.\u2029I **wasted** money and **almost** missed a **deadline**.',
+    'I paid for **government immigration forms** that are **free** on the **official .gov** site.\u2029A **copycat** page ranked high in search and looked helpful.',
   initialPlot:
-    'The site **charged** "**service fees**" to **fill** PDFs I could have **downloaded** for **$0**.\u2029They **delayed** "processing" unless I paid **expedited** fees.\u2029**Stress** and **cash**—for **public** forms.',
+    'They charged **service fees** to “file” PDFs I could have downloaded for **zero dollars**, then pushed **expedited processing** fees when nothing moved.\u2029Deadlines loomed; stress mounted.',
   scamExperience:
-    '**Form-copycat sites** monetize **confusion**.\u2029They may deliver **outdated** or **wrong** forms.\u2029I lost **hundreds** and **sleep**.',
+    '**Form-copycat sites** monetise confusion and may deliver **wrong or outdated** papers.\u2029I lost **hundreds** and almost missed a **real** filing date.',
   victimExperience:
-    'I was **overwhelmed** by **immigration** paperwork.\u2029Paying felt like **buying certainty**.\u2029I **didn\u2019t** read the **fine print**.',
+    'Paperwork overwhelmed me; paying felt like buying **certainty** instead of reading fine print.',
   climax:
-    'A **community lawyer** said "**this form is free at uscis.gov**" and showed me the **real** URL.\u2029That\u2019s when I knew I\u2019d been **ripped off**.',
+    'A **community lawyer** opened **uscis.gov** (and the equivalent for my case) beside my receipt—“**this form is free here**”—and the copycat URL was obvious.',
   victimPain:
-    'I felt **exploited** in a moment I was already **vulnerable**.\u2029**Rage** at the **SEO** that put **predators** first.',
+    'I felt exploited during an already vulnerable season; anger at **SEO** that surfaces predators first lingered.',
   learningVictim:
-    'I now know: **bookmark** **official** `.gov` immigration pages.\u2029I wish I\u2019d asked **one** question in a **trusted** forum first.',
+    'I **bookmark official** immigration domains and ask **one trusted** question in a vetted forum before paying any third party.',
   learningForReaders: [
-    '**Only** use **official** government domains for forms and fees.',
-    '**Report** copycat sites to **FTC** and **search engines**.',
+    'Use **only** **official government** domains for forms and **fees**.',
+    '**Report** copycats to the **FTC** and **search** abuse teams.',
   ],
 };
 

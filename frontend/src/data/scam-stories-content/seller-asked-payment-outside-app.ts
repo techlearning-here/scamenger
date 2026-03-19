@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I found a **bike** on a **marketplace app** at a **steal**.\u2029The **seller** said "**fees are crazy**"—**pay** with **PayPal Friends** or **bank transfer** **outside** the app.\u2029I did.\u2029**No bike**.',
+    'I found a **bike** on a marketplace app at a price that made me feel clever. The seller said platform fees were "**crazy**" and pushed **PayPal Friends** and a direct bank transfer instead. I paid outside the flow and never got the bike.',
   initialPlot:
-    'They **cancelled** the **in-app** listing "**by mistake**" and **emailed** **invoices** that **looked** **official**.\u2029**Buyer protection** **vanished** the second I used **FF**.\u2029The **profile** **disappeared** after I **paid**.',
+    'They "accidentally" cancelled the in-app listing and emailed invoices that looked like official receipts. Buyer protection vanished the second I used Friends & Family; the profile disappeared after the transfer cleared.',
   scamExperience:
-    '**Off-platform** payments **bypass** **dispute** flows.\u2029Scammers **love** **F&F**, **Zelle**, **crypto**.\u2029I **reported**; **platform** said "**transaction wasn\u2019t on us**."',
+    '**Off-platform payments** bypass dispute teams. Scammers love irreversible rails. The platform told me the transaction never touched their system, so the case closed fast.',
   victimExperience:
-    'I **thought** I was **savvy**—I\u2019d **sold** stuff **before**.\u2029**Greed** for the **deal** **muted** **alarm bells**.',
+    'I thought past selling experience made me savvy. Wanting the deal louder than the alarm bells made me rationalise skipping protected checkout.',
   climax:
-    'The **same** **photo** appeared in **three** **cities** the **same** **day** on **r/scams**.\u2029That\u2019s when I knew.',
+    'The same photo popped up in three cities the same day on a scam-watch thread. Seeing my bike listed in places I had never visited was when the "private sale" story collapsed.',
   victimPain:
-    '**Anger** at myself **hurt** more than **losing** the **cash**.',
+    'Anger at myself hurt more than the cash for a while because I knew the rules and broke them anyway.',
   learningVictim:
-    'I now know: **only** pay **inside** the **flow** that **covers** **buyers**.\u2029I wish I\u2019d **walked** when they **refused** **meetup** + **cash** or **protected** **checkout**.',
+    'I only pay inside flows that cover buyers now, or I meet in person with cash. I walk away the moment someone refuses protected payment.',
   learningForReaders: [
-    '**If** they **won\u2019t** use **protected** payment, **assume** **fraud**.',
+    'If they will not use **protected checkout**, treat it as fraud until proven otherwise.',
   ],
 };
 

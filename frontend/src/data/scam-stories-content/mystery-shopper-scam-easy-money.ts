@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **looking for extra income** and the idea of **easy money** for "mystery shopping" sounded **perfect**.\u2029When I was "hired" and told to **buy gift cards** or **wire money** as part of the "job," I thought it was **legit**. It wasn\u2019t.',
+    'I wanted **extra income** without quitting my day job, so a polished email about mystery shopping sounded like a grown-up side hustle. I did not run it past my bank because the PDF "contract" looked tidy enough to feel legitimate.',
   initialPlot:
-    'They said I\u2019d **evaluate stores** and get **paid** plus keep the "purchases." First they sent a **cheque** and asked me to **buy gift cards** and send the codes—or **wire** part of the "overpayment" back.\u2029I did it. The **cheque bounced**. The "company" **disappeared**. I was out the money.',
+    'They mailed a cheque for more than my first assignment and told me to buy gift cards, photograph the codes, and send them for their audit log. I deposited the cheque, bought the cards that afternoon, and emailed everything they asked for because the steps sounded official.',
   scamExperience:
-    '**Mystery-shopper scams** offer easy money but are designed to **steal**. You deposit a fake cheque, spend real money (gift cards, wire), and the cheque **bounces**. I lost **thousands**. The "job" was **fake**.',
+    '**Mystery-shopper scams** lean on fake cheques: your bank may show a temporary credit while the cheque is still clearing, but the instrument is worthless. When mine **bounced**, the overdraft and the gift-card spend were mine. The "company" stopped answering.',
   victimExperience:
-    'I was **hopeful** for extra cash. The offer felt **too good to pass up**. I **followed the instructions** without checking. I didn\u2019t think a "mystery shopping" company would **clean me out**.',
+    'I was hopeful for quick cash and embarrassed to ask someone older if the workflow was normal. I told myself real retailers really did secret shops, so I followed the script instead of pausing at the gift-card step.',
   climax:
-    'When the **cheque bounced** and the "employer" stopped replying, I knew. I searched "mystery shopper scam." **Warnings everywhere**. That\u2019s when I knew.',
+    'The cheque bounced a week later and the mailbox for my "coordinator" bounced too. I searched the company name plus scam and found the same cheque-and-cards pattern on warning pages—that was when I knew the job had only ever been a funnel.',
   victimPain:
-    'I lost **money** and felt **stupid**. The **shame** was huge. Reporting **helped**.',
+    'I lost **thousands** I had meant for rent and felt stupid explaining it at the branch. Filing a report did not erase the loss, but it stopped me from blaming myself in silence.',
   learningVictim:
-    'I now know: real mystery-shopping gigs don\u2019t ask you to deposit cheques and wire or send gift cards. I wish I\u2019d never sent a cent.',
+    'I now know legitimate mystery shopping does not start with you depositing a stranger\'s cheque and buying gift cards. I wish I had hung up the moment they asked for untraceable codes.',
   learningForReaders: [
-    '**Beware** "easy money" jobs that ask you to deposit cheques and send gift cards or wire money. **Report** to the FTC.',
+    '**Never** buy gift cards or wire money for a job that mailed you a cheque first—**report** to the FTC.',
   ],
 };
 

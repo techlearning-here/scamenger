@@ -39,7 +39,7 @@ serial_number,title,category,angle_or_region,status,story_file
 38,I paid for a training kit. The job never existed.,employment,,done,paid-training-kit-job-didnt-exist.json
 39,I lost money before I'd even had day one,employment,,done,fake-recruiter-lost-money-before-day-one.json
 40,"Easy money for ""mystery shopping""—sounded perfect",employment,,done,mystery-shopper-scam-easy-money.json
-41,"My ""employer"" sent a cheque. I deposited it. Then the nightmare started.",employment,,done,employer-sent-fake-cheque-deposit.json
+41,"My ""employer"" sent a cheque. I deposited it—and the wire was gone when it bounced.",employment,,done,employer-sent-fake-cheque-deposit.json
 42,I thought I had a job. I was shipping for criminals.,employment,,done,reshipping-scam-unwitting-parcel-mule.json
 43,The LinkedIn offer was dream-level. It was a scam.,employment,,done,linkedin-job-offer-too-good-to-be-true.json
 44,"I almost moved ""company"" money. It wasn't company money.",employment,,done,almost-became-money-mule.json

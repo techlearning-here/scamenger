@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **looking for work abroad** and the offer was **visa + dream job**—I just had to **pay thousands upfront** for "processing" or "fees."\u2029I paid. I got **neither** visa nor job.',
+    'I wanted to **work abroad**; an “**employer**” paired with an “**agency**” offered a **visa** plus a **job** if I paid **processing**, **medical**, and **legal fees** up front.\u2029The package looked organised—PDFs, timelines, logos.',
   initialPlot:
-    'A "**employer**" or "**agency**" said they\u2019d get me a **visa** and a **job** overseas. I had to **pay** for "application," "medical," or "processing" **first**.\u2029I paid **thousands**. The visa never came. The job never existed. The "agency" **disappeared**.',
+    'I wired **thousands** in stages; each milestone unlocked a new **fee** while the **visa** application number they gave never appeared on the embassy’s tracker.\u2029Replies thinned, then stopped.',
   scamExperience:
-    '**Fake visa and job scams** promise work abroad and take **upfront fees**. There is **no visa** and **no job**. I lost **thousands**. The "employer" or "agency" was **fake**.',
+    '**Fake visa and overseas job scams** sell paperwork that does not exist.\u2029**Real immigration** routes go through **official government** portals and **registered** sponsors—not unsolicited agencies demanding **urgent wires**.',
   victimExperience:
-    'I was **desperate** to work abroad and the offer felt **real**. I didn\u2019t want to **miss the chance**. I **paid without verifying** with official immigration or the real company.',
+    'While I sent money I was afraid to **miss the window** they invented; verifying with the **embassy** felt slower than their countdown emails.',
   climax:
-    'When the "processing" dragged on and no one answered, I checked with the **real** embassy and the **real** company. They\u2019d never heard of the "agency" or the job. That\u2019s when I knew. **Scam**.',
+    'The **embassy** helpline and the **named company** on the offer both said they had **never heard** of the agency; the job listing was **fabricated**.',
   victimPain:
-    'I lost **thousands** I couldn\u2019t afford and felt **stupid and angry**. The **shame** was huge. Reporting **helped**.',
+    'The savings I had set aside for relocation were gone; explaining that to family was as hard as the financial hole.',
   learningVictim:
-    'I now know: **verify** visa and job offers through **official** immigration and the **real** employer—never pay big fees to an unverified "agency." I wish I\u2019d done that.',
+    'I **confirm** visas and job offers only through **official immigration** sites and **employer contacts** I reach myself—never through **upfront fees** to strangers.',
   learningForReaders: [
-    '**Verify** visa and job offers through **official** channels. **Never pay** large upfront fees to an unverified agency.',
-    '**Report** to the FTC.',
+    '**Verify** sponsorship and visas with **government** sources; **report** fraud to **immigration fraud** lines and **consumer** bodies.',
+    '**Refuse** pressure to wire large sums before **verifiable** documentation exists.',
   ],
 };
 

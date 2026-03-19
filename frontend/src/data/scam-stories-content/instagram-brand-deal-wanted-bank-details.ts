@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**DM** from "**skincare** **brand**": **paid** **collab**, **10k** **followers** **enough**.\u2029They **sent** **contract** **PDF**.\u2029Then "**finance**" **needed** **routing** + **online** **banking** **login** to "**verify** **micro-deposit**."\u2029**Insane** in **retrospect**.',
+    'A **DM** from a “**skincare brand**” offered a **paid collab**; I had about **ten thousand followers** and wanted the validation.\u2029They sent a **contract PDF**, then “**finance**” asked for **routing numbers** and **online banking login** to “verify a micro-deposit.”',
   initialPlot:
-    'I **wanted** **validation** as a **creator**.\u2029**Almost** **screenshotted** **balances**.\u2029**Friend** in **fintech** **screamed** **stop**.\u2029**Profile** **deleted** **next** **day**.',
+    'I almost **screenshotted balances**.\u2029A friend who works in **fintech** saw my message and told me to **stop**; the profile was gone the next day.',
   scamExperience:
-    '**Influencer** **scams** **promise** **exposure** for **data**.\u2029**Real** **brands** use **platform** **tools** or **known** **domains**.\u2029**Never** **bank** **logins**.',
+    '**Influencer scams** trade fake **exposure** for **bank access**.\u2029**Real brands** use **platform tools** or **known domains**—never **full login** requests.',
   victimExperience:
-    '**Small** **account** **felt** **hungry** for **deals**.',
+    'A smaller account felt **hungry** for the first “real” deal, which made the red flags easy to ignore.',
   climax:
-    '**Reverse** **image** **search** on **logo**—**stock** **bundle** **sold** on **Etsy**.',
+    '**Reverse image search** on their logo pulled a **stock graphic pack** sold on a craft marketplace—not a corporate asset.',
   victimPain:
-    '**Imposter** **feelings** **worse** than **near-miss**.',
+    'The near-miss left me feeling like an impostor; I almost lost more than money.',
   learningVictim:
-    'I now **verify** **brands** via **press** **email** **only** and **use** **business** **banking** **with** **low** **balance**.\u2029I wish I\u2019d **known** **login** **asks** are **always** **fraud**.',
+    'I verify **brand** outreach through **press** or **official** emails only and keep **creator** banking in a **low-balance** business account.',
   learningForReaders: [
-    '**Creators**: **talent** **agencies** and **platform** **marketplaces** reduce **DM** **risk**.',
+    '**Never** give **bank logins** for “verification.”\u2029Use **agencies** and **in-app** collaboration tools when possible.',
+    '**Report** fake brand accounts to **Instagram**.',
   ],
 };
 

@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A **free grant**—I just had to **pay** to "**unlock**" it.\u2029There was **no grant**.',
+    'A letter and texts said I had been **selected** for a **government grant** to help with bills; I only had to pay a **processing fee** to **unlock** the deposit.\u2029Money was tight, so the timing felt like relief.',
   initialPlot:
-    'They said **government** or **foundation** money was **waiting**—small **fee** first.\u2029I paid. Then **more fees**. **Nothing** arrived.',
+    'After the first fee came **tax holds**, **wire charges**, and **expedited review** costs.\u2029I paid several rounds because walking away felt like wasting what I had already sent.',
   scamExperience:
-    '**Grant fee scams** steal **upfront payments** for **nonexistent** benefits. I lost **money**.',
+    '**Grant fee scams** sell **benefits that do not exist**.\u2029**Real public grants** are listed on **official .gov** sites and do not ask for **upfront unlock payments** to strangers.',
   victimExperience:
-    'I needed **help** with bills. The offer felt like **relief**.',
+    'Between payments I told myself **one more small fee** would finally release the lump sum I had been promised.',
   climax:
-    'When the "**agent**" disappeared, I knew.',
+    'The “**agent**” number disconnected and the **portal** stopped loading the same week I tried to verify the programme with a **government** helpline—they had **never heard** of it.',
   victimPain:
-    'I lost **money** I couldn\u2019t spare. Reporting **helped**.',
+    'I lost money I could not spare; reporting to consumer fraud channels did not refund me but stopped me from borrowing for another fee.',
   learningVictim:
-    'I now know: **real grants** don\u2019t charge **unlock fees**.',
+    'I check **grants** only through **official government** websites; **any unlock fee** is a **red flag**.',
   learningForReaders: [
-    '**Check** grants only through **official** .gov sites.',
+    '**USA.gov**, **GOV.UK**, and local **benefit** portals list **real** programmes.',
+    '**Report** grant fraud to the **FTC** (US) or your **consumer** protection agency.',
   ],
 };
 

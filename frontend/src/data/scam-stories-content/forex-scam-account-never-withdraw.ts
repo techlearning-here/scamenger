@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I wanted to try **forex** and found a platform that looked legit. I put in money and the balance **kept growing**.\u2029Withdraw? **"Technical issue."** Again and again. I wasn\u2019t trading—I was **trapped**.',
+    'I wanted to learn **forex** and opened an account on a platform that looked like other brokers—charts, leverage settings, support chat.\u2029Early deposits showed **gains** on screen that made the interface feel legitimate.',
   initialPlot:
-    'The platform showed **gains** and "open positions." When I tried to withdraw, they said **technical issue**, **verification**, **fees**. I paid. Then **more fees**. The balance kept "growing" but I could **never** get money out. Finally the site **vanished**. I\u2019d lost everything.',
+    'When I tried to **withdraw**, support cited **technical issues**, then **verification**, then **fees** to release profit.\u2029I paid the fees; the balance still could not leave.\u2029Eventually the **site stopped loading**.',
   scamExperience:
-    '**Fake forex (and crypto) platforms** show fake balances and block withdrawals with endless excuses. I lost **all** I\u2019d deposited. The "technical issues" were **by design**.',
+    '**Fake trading platforms** simulate **PnL** while blocking **withdrawals**; excuses stack until victims stop paying or the operators fold the domain.\u2029I lost everything I had deposited.',
   victimExperience:
-    'I told myself **these things happen**. When the balance went up, I felt **hopeful**.\u2029Part of me knew something was wrong, but **I didn\u2019t want to admit** I\u2019d been scammed.',
+    'Between excuses I told myself delays happen at real brokers too; rising numbers on the dashboard made admitting fraud feel premature.',
   climax:
-    'When the site **went offline** and no one answered, I searched. **Forex scam**—same "technical issue" story everywhere. That\u2019s when I knew.',
+    'When support numbers disconnected and **WHOIS** showed the domain registered months earlier under privacy, I matched the story to **forex scam** reports online.',
   victimPain:
-    'I lost **savings** and peace of mind. The **shame** was real. Reporting **helped**.',
+    'Savings I had treated as a learning budget were gone; reporting did not refund me but stopped me from sending a final “tax” payment they requested.',
   learningVictim:
-    'I now know: if a platform won\u2019t let you withdraw, it\u2019s a scam. I wish I\u2019d stopped at the first "technical issue."',
+    'If a platform will not let me **withdraw** on a **small test** early, it is **fraud**.\u2029I verify firms with **national regulators** before funding.',
   learningForReaders: [
-    '**Real platforms** let you withdraw. Endless "technical issues" or fees = **scam**. Verify with your bank or regulator.',
-    '**Report** to the FTC.',
+    '**Test withdrawals** early; endless **fees** or “technical” blocks mean **scam**.',
+    '**Report** to **FCA** / **CFTC** / **local securities** regulators and **consumer fraud** lines.',
   ],
 };
 

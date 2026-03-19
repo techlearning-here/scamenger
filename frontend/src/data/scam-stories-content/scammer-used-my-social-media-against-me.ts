@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'They **knew** my **dog**\u2019s **name**, **gym** **schedule**, **boss**\u2019s **first** **name**—all **public**.\u2029**Spear-phished** me with a **fake** **invoice** **from** a **vendor** I **actually** **use**.\u2029**Wire** **authorised** **by** **me**.',
+    'They emailed an invoice that looked like a vendor we actually use, and the subject line referenced my **dog\'s name**, my gym, and my **boss\'s first name**—all scraped from posts I had treated as harmless.',
   initialPlot:
-    '**OSINT** **isn\u2019t** **hacking**; it\u2019s **reading**.\u2029I **overshared** **stories** and **location** **tags**.\u2029**CFO** **thought** I **verified** **supplier** **change**—I **didn\u2019t** **double-check** **voice**.',
+    'I had shared stories, location tags, and workplace wins for years. The message asked me to approve an updated wire account "today only" and copied phrasing our CFO uses. I authorised a transfer without a voice callback because the tone felt familiar.',
   scamExperience:
-    '**Social** **graph** **fuels** **BEC**-style **fraud** even for **individuals**.\u2029**Privacy** **settings** + **less** **broadcast** **data** **raise** **cost** for **attackers**.',
+    '**Open-source intelligence** is not hacking; it is reading. The scammer built a believable thread from public data and sat in the middle while I thought I was talking to finance. The real vendor never changed their IBAN.',
   victimExperience:
-    'I **liked** **being** **known** **online**.\u2029**Price** **tag** **emerged**.',
+    'I liked being known online and never priced the downside. Part of me enjoyed looking connected; I did not imagine criminals taking notes.',
   climax:
-    '**Vendor** **called** **angry**—**they** **never** **sent** **new** **IBAN**.\u2029**Parallel** **conversation** **with** **criminal** **middle**.',
+    'Our vendor called angry about missed payment while the scammer\'s inbox still urged "ignore their old email—use this account." Hearing both sides at once exposed the parallel conversation.',
   victimPain:
-    '**Job** **review** **season** **bruised**.',
+    'Performance review season stung because I had to explain how a "smart" employee moved money on a spoofed thread. Trust at work took longer to repair than the wire dispute.',
   learningVictim:
-    'I **locked** **LinkedIn**, **removed** **pets**/**kids** **names**, **separate** **email** for **finance**.\u2029I wish **companies** **trained** **everyone** on **supplier** **change** **protocol**.',
+    'I locked down LinkedIn, removed kids\' and pets\' names from public bios, and route finance email through a dedicated address. I wish our company had drilled supplier-change callbacks before this happened.',
   learningForReaders: [
-    '**Treat** **public** **posts** as **intel** for **crooks**.',
+    'Treat **public posts** as intel for crooks—verify payment changes by **phone on a known number**.',
   ],
 };
 

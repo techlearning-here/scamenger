@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'The **scam** **emptied** **savings** I\u2019d **built** for **a house**.\u2029**Rebuild** wasn\u2019t **linear**—**budget** **triage**, **second** **job**, **therapy**, **small** **wins** **stacked** over **years**.',
+    'The **scam** drained savings I had meant for a **house deposit**.\u2029**Rebuild** was not a straight line—**budget triage**, a **second job**, **therapy**, and small wins that stacked over **years**.',
   initialPlot:
-    '**Bankruptcy** **talked** **not** **filed**—**payment** **plans** **instead**.\u2029**Community** **credit** **union** **classes**.\u2029**I** **tracked** **pennies** **without** **hating** **myself**—**that** **took** **help**.',
+    'We talked about **bankruptcy** but chose **payment plans** instead; a **community credit union** ran free **money-management** classes.\u2029I tracked spending without turning the spreadsheet into self-punishment—**that** needed professional help.',
   scamExperience:
-    '**Financial** **recovery** after **fraud** **overlaps** **emotional** **recovery**.\u2029**Shame** **tax** **makes** **rebuilding** **slower**.\u2029**Support** **groups** **online** **normalised** **my** **story**.',
+    '**Financial recovery** after fraud overlaps **emotional** recovery; **shame** slows both.\u2029Online **support groups** normalised stories like mine and cut the isolation.',
   victimExperience:
-    'I **defined** **worth** by **balance**—**toxic** **math**.',
+    'For a long time I tied **self-worth** to account balances—a habit I had to unlearn.',
   climax:
-    '**First** **month** **emergency** **fund** **closed** **again** at **$1k**—I **cried** in **car**.',
+    'The first month my **emergency fund** closed again at **one thousand dollars**, I sat in the car and let myself feel the milestone instead of minimising it.',
   victimPain:
-    '**Relationships** **strained** when I **couldn\u2019t** **split** **checks** **fairly**.',
+    'Friends did not always understand why I could not split dinner evenly; explaining fraud fatigue strained some relationships.',
   learningVictim:
-    'I now **separate** **identity** from **net** **worth**.\u2029I wish I\u2019d **asked** for **nonprofit** **counseling** **month** **one**.',
+    'I separate **identity** from **net worth** now and wish I had called a **nonprofit counsellor** in **month one** instead of waiting until crisis mode faded.',
   learningForReaders: [
-    '**NFCC**-style **agencies** (US) and **local** **equivalents** help **rebuild** **without** **judgment**.',
+    '**NFCC**-style agencies (US) and local **debt** / **victim** services can help **rebuild** without judgment.',
+    '**Therapy** and **peer support** are part of recovery, not a luxury after fraud.',
   ],
 };
 

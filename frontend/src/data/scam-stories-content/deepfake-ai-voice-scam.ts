@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Voice** **call** **sounded** **exactly** like my **son**—**cry**, **breath**, "**I\u2019m** **sorry** **Dad**."\u2029**Kidnap** **ruse** + **AI** **cloned** **voice** from **TikTok** **clips**.\u2029They wanted **crypto** **ransom** **now**.',
+    'My phone rang and the voice on the line sounded like my **adult son**—upset, out of breath, saying he was sorry and that something bad had happened.\u2029A second voice cut in demanding **crypto** payment immediately and telling me not to hang up or “he gets hurt.”',
   initialPlot:
-    'I **almost** **wired**.\u2029**Wife** **texted** **son**\u2019s **friend**—he was **in** **class**.\u2029**Caller** **used** **stress** **tactics** "**don\u2019t** **hang** **up**."\u2029**Police** said **wave** of **synthetic** **audio** **that** **month**.',
+    'They pushed me toward wiring while I could still hear crying on the line.\u2029My wife texted our son’s roommate from her own phone; the reply came back that he was **in class** and fine.\u2029Police later said several families in our area had reported the same **synthetic audio** pattern that month.',
   scamExperience:
-    '**Deepfake** **voice** **scams** **weaponise** **short** **samples** from **social**.\u2029**Emotion** **bypasses** **logic**.\u2029**Verification** **protocols** **save** **families**.',
+    '**AI-cloned voice** scams use short clips from **social media** to imitate someone you love, then add urgency and a payment rail that is hard to recall.\u2029The technology is new; the playbook—**panic, secrecy, speed**—is old.',
   victimExperience:
-    '**Parental** **terror** **is** **not** **rational** **time**.',
+    'While the call lasted, checking facts felt like gambling with my child’s safety, which is why the out-of-band text from my wife mattered.',
   climax:
-    '**Son** **FaceTimed** **from** **cafeteria** **line**.\u2029I **collapsed** **crying** **relief**.',
+    'Our son **video-called** from the cafeteria a few minutes later; hearing his live voice over the same phone I had almost sent money from ended the ransom story cold.',
   victimPain:
-    '**Hypervigilance** **every** **unknown** **number**.',
+    'Unknown numbers still make me tense; we filed a report and told relatives about the **code word** so the next urgent call gets a verification step first.',
   learningVictim:
-    'We have a **code word** and **challenge** **question** **only** **spoken** **in person**.\u2029I wish we\u2019d **set** it **years** **earlier**.',
+    'We agreed a **family code word** and a rule: **any emergency demand for money** gets checked on a **second channel** before we act.',
   learningForReaders: [
-    '**Pause** **any** **urgent** **voice** **demand**—**contact** **person** through **separate** **channel**.',
+    '**Pause** urgent voice demands; **contact the person** through a **separate** number or app you already trust.',
+    '**Report** AI voice extortion to **local police** and fraud centres (e.g. **FBI IC3** in the US).',
   ],
 };
 

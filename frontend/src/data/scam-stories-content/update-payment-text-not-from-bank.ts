@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**SMS**: "**Unusual** **activity**—**update** **payment** **details** **now**."\u2029**Link** **looked** like my **bank**.\u2029I **entered** **login** + **OTP**.\u2029**Real** **bank** **texted** **seconds** later: **real** **fraud** **alert**.',
+    'A text said there was **unusual activity** and I needed to **update payment details** now. The link copied my bank\'s mobile layout well enough that I entered login and a one-time code while boarding a flight.',
   initialPlot:
-    '**Smishing** **timed** with **travel**—I **was** **stressed** at **airport**.\u2029**Fake** **site** **mirrored** **mobile** **UI**.\u2029They **moved** **£4k** to **mule** **before** I **landed**.',
+    'Stress and low battery at the gate made me move fast. The fake site mirrored every button I recognised; within minutes they moved a large chunk to a mule account while I was still in the air.',
   scamExperience:
-    '**SMS** **spoofing** + **phishing** **pages** **bypass** **app** **habits**.\u2029**Banks** **don\u2019t** **ask** for **full** **credentials** **via** **link**.\u2029I **froze** **accounts** **in** **lounge** **wifi** **panic**.',
+    '**Smishing** pairs spoofed SMS with phishing pages that bypass app habits. Real banks do not ask for full credentials through links. I froze accounts from airport Wi-Fi once the real bank texted a genuine alert.',
   victimExperience:
-    '**Battery** **low**, **flight** **boarding**—**perfect** **storm**.',
+    'Travel chaos plus urgency created a perfect storm—I wanted the "problem" gone before takeoff.',
   climax:
-    '**URL** had **`.co`** not **`.com`**.\u2029**Obvious** on **laptop**; **invisible** on **phone** **chrome** **bar**.',
+    'On a laptop later that night the URL showed a **.co** instead of **.com**—obvious at desktop scale, invisible on a narrow phone bar mid-rush.',
   victimPain:
-    '**Holiday** **ruined**; **partner** **furious**.',
+    'The trip soured and my partner was furious at first, though we eventually focused on recovery steps instead of blame.',
   learningVictim:
-    'I now **only** **open** **bank** from **typed** URL or **app**.\u2029I wish I\u2019d **forwarded** **SMS** to **7726** **first**.',
+    'I only open my bank from a typed URL or the official app now, and I forward suspicious SMS to **7726** before I tap. I wish I had called the number on my card from the gate.',
   learningForReaders: [
-    '**Call** **number** on **card**—**never** the **one** in **text**.',
+    '**Call** the number on your card—never one provided in a random text.',
   ],
 };
 

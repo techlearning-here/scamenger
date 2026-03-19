@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **used** to **hide** when I got **tricked**.\u2029Now I **report**—**platforms**, **regulators**, **nonprofits**.\u2029Not for **vengeance**; for **data** that **warns** the **next** **person**.',
+    'I used to hide when I got tricked. Now I **report**—platforms, regulators, charities—not for revenge, but because those forms become **data** that warns the next person in line.',
   initialPlot:
-    'A **phishing** **campaign** **targeted** my **industry**.\u2029My **IC3** **report** **ID** **showed up** in a **FBI** **press** **release** **year** later.\u2029**Tiny** **tile** in a **big** **mosaic**—still **mattered** to **me**.',
+    'A phishing wave hit my industry hard. Filing with IC3 felt like dropping a letter into a void until a press release years later referenced the same campaign. My report ID was a tiny tile in a big mosaic, but it still mattered to me.',
   scamExperience:
-    '**Underreporting** **inflates** "**rare**" **myths**.\u2029**Patterns** **hide** when **victims** **stay** **silent**.\u2029**Reporting** is **civic** **hygiene**.',
+    '**Under-reporting** feeds the myth that fraud is rare. Patterns stay invisible when victims stay silent; reporting is civic hygiene even when cash never returns.',
   victimExperience:
-    '**First** **reports** felt **performative**.\u2029**Therapy** **reframed** them as **agency**.',
+    'Early filings felt performative until therapy reframed them as agency—something I could do after someone took my money.',
   climax:
-    'A **regulator** **email** asked for **more** **screenshots**—they were **building** a **case**.\u2029I **felt** **heard** **without** **refund**.',
+    'A regulator emailed asking for more screenshots because they were building an enforcement case. Being useful without a refund still felt like being heard.',
   victimPain:
-    '**Forms** **retraumatise**—I **take** **breaks**.',
+    'Forms can retraumatise, so I batch them with timers, tea, and breaks instead of marathons.',
   learningVictim:
-    'I now **batch** **reporting** like **admin**—**timer**, **tea**, **done**.\u2029I wish I\u2019d **started** **sooner**.',
+    'I treat reporting like bill pay now—scheduled, finite, done. I wish I had started sooner.',
   learningForReaders: [
-    '**FTC** **ReportFraud**, **Action Fraud**, **econsumer.gov**—**pick** your **region**.',
+    'Use **ReportFraud.ftc.gov**, **Action Fraud** (UK), or **econsumer.gov**—pick the channel for your region.',
   ],
 };
 

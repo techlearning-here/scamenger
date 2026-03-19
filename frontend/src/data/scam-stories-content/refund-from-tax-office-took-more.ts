@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'They offered a **refund** from the **tax office**—sounded like **good news**.\u2029They **took more** than I ever had.\u2029It was a **reverse** scam.',
+    'A voicemail said the **tax office** owed me a refund and needed a quick confirmation to release it. It sounded like good news wrapped in bureaucracy, not a robbery in progress.',
   initialPlot:
-    'They said a **deposit** was **pending** but I had to "**confirm**" with **remote access** or **read back** codes.\u2029While I was "**helped**," they **moved** money **out**.\u2029The "**refund**" was **bait**.',
+    'The return call led to someone reading partial details about me—enough to feel personal—then insisting I log in while they stayed on the line or read back one-time codes for "verification."',
   scamExperience:
-    '**Refund bait** tricks victims into **cooperating** with **account access**.\u2029I lost **more** than any **real** refund would have been.\u2029**Screen sharing** was the **weapon**.',
+    '**Refund bait** turns excitement into cooperation: they move money while you think you are approving a deposit. By the time fraud alerts fired, several transfers had already slipped through.',
   victimExperience:
-    'I was **excited** about **money back**.\u2029I **trusted** the "**official**" process they described.',
+    'I was excited about cash back and trusted the tone of official process. I ignored the mismatch between a huge refund promise and the urgency to share screens.',
   climax:
-    '**Alerts** fired for **transfers** I didn\u2019t make.\u2029By the time I **hung up**, it was **too late** for some of it.\u2029That\u2019s when I knew.',
+    'Push alerts listed withdrawals I never made while the caller still coached me through "clearing a hold." Hanging up and opening the real tax portal showed no pending deposit—that gap was when I knew the call had been theatre.',
   victimPain:
-    '**Guilt** for "**helping**" them hurt as much as the **balance**.\u2029**Disputes** took **months**.',
+    'The guilt of helping them hurt alongside the balance hit, and disputes dragged for months. Even partial recovery did not erase the shame until I talked to others targeted the same week.',
   learningVictim:
-    'I now know: **never** screen-share **banking** or read **codes** to a **caller**.\u2029I wish I\u2019d **only** used my **tax** portal **myself**.',
+    'I now refuse to screen-share banking or read codes aloud to inbound callers, and I only use tax portals I navigate myself. I wish I had paused the moment they mentioned remote access.',
   learningForReaders: [
-    '**Tax refunds** arrive through **normal** channels—**no** "confirm by remote access."',
-    '**Report** to IC3 / police.',
+    '**Tax refunds** arrive through normal channels—never through "confirm by remote access."',
+    '**Report** to IC3 or local police and your bank.',
   ],
 };
 

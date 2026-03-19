@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Your visa is cancelled unless you pay now**—the email had a **logo** that looked like **immigration**.\u2029I was **on a valid visa** and **panicked**.\u2029I **paid**.\u2029It was **fake**.',
+    'An email said my **visa would be cancelled** unless I paid immediately, and the logo mimicked immigration services. I was on a valid visa, mid-job, and panic made the threat feel personal.',
   initialPlot:
-    'They wanted **crypto** or **wire** to "**reinstate**" status.\u2029I was **mid-job** and **afraid** of **deportation**.\u2029I sent **money** before I showed **anyone** the message.',
+    'They demanded **crypto or wire** to reinstate status and warned me not to alert HR. I sent **thousands** before I showed the message to anyone because I felt ashamed about not understanding the system.',
   scamExperience:
-    '**Immigration impersonation** exploits **fear** of **legal status**.\u2029Real **embassies** and **immigration services** don\u2019t threaten **instant** cancellation by **email** with **crypto** payment.\u2029I lost **thousands**.',
+    '**Immigration impersonation** exploits fear of deportation. Real embassies and visa offices do not threaten instant cancellation by email or take crypto to fix records.',
   victimExperience:
-    'I **isolated**—didn\u2019t want to "**bother**" my employer\u2019s HR.\u2029**Shame** about not understanding the **system** kept me **silent**.',
+    'I isolated because I did not want to bother HR with what I thought was my mistake. Silence gave the scammer more room to push.',
   climax:
-    'HR said "**that\u2019s a known scam**" and helped me **verify** my status was **fine**.\u2029That\u2019s when I **sobbed**—relief and **anger**.',
+    'HR said the message matched a known template and walked me through checking my status on the official portal—everything was still valid. I sobbed in their office from relief and anger at once.',
   victimPain:
-    'The **money** was gone; the **fear** lingered **weeks** every time I checked **email**.',
+    'The money was gone, and every inbox ping spiked my pulse for weeks afterward.',
   learningVictim:
-    'I now know: **only** trust **official** government portals and **in-person** appointments for status questions.\u2029I wish I\u2019d forwarded the email to **HR** **immediately**.',
+    'I now rely only on **government portals** and appointments I book myself. I wish I had forwarded the email to HR the moment it arrived.',
   learningForReaders: [
-    '**Report** visa scams to your country\u2019s **fraud** reporting line.',
-    '**Never** pay immigration fees through **links** in unsolicited email.',
+    '**Report** visa scams to your country\'s fraud line.',
+    '**Never** pay immigration fees through links in unsolicited email.',
   ],
 };
 

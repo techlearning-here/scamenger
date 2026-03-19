@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I got a **text** that looked like it was from a company I use—**account issue**, click here to fix. I was busy and **clicked**.\u2029I wasn\u2019t stupid. I just didn\u2019t stop to think. **Everything changed**.',
+    'A **text** looked like a brand I use—**account issue**, tap to fix.\u2029I was between tasks and **clicked** without expanding the sender or URL.',
   initialPlot:
-    'The page looked **real**. I entered my details. Soon after, **unauthorized charges** started. My **card** was compromised; in some cases my **accounts** were hit. The link had been **phishing**—the site was fake. I\u2019d **handed over** my information.',
+    'The page copied the real **login** flow; I entered **credentials** and a **card** for “verification.”\u2029Within hours **unauthorised charges** and **password resets** from other sites began.',
   scamExperience:
-    '**Phishing** uses fake links and pages to steal your credentials or card details. One click led to **fraud**. I had to cancel cards, dispute charges, and **change everything**. The "company" had never sent that text.',
+    '**Smishing** plus a **fake site** harvests **logins** and **card data** in one session.\u2029The company had **never** sent that message.',
   victimExperience:
-    'I was **in a hurry** and the message looked **urgent**. I didn\u2019t want my account locked. I **clicked without checking**. I didn\u2019t think it would **cost me so much**.',
+    'I was in a hurry and afraid of a **locked account**; checking the link felt slower than tapping through.',
   climax:
-    'When **fraud alerts** started, I called the real company. They said they\u2019d never sent that link. That\u2019s when I knew. I\u2019d been **phished**.',
+    'The real company’s fraud line said **no SMS campaign** had gone out; comparing the link to the official domain showed the typo.',
   victimPain:
-    'I lost **money and time**—disputes, new cards, **stress**. The **shame** of having clicked was real. Reporting **helped**.',
+    'New cards, disputes, and password resets ate a week; I felt foolish every time an alert pinged.',
   learningVictim:
-    'I now know: never click "fix" or "verify" links in texts or emails. Go to the real site yourself. I wish I\u2019d stopped that day.',
+    'I do not use **fix** or **verify** links from texts.\u2029I open the **app** or **typed URL** only.',
   learningForReaders: [
-    '**Don\u2019t click** links in texts or emails about your account. Go to the **official website** yourself and log in there.',
-    '**Report** phishing to the company and the FTC.',
+    '**Do not click** account links in SMS or email; log in through the **official** site or app.',
+    '**Report** phishing to the company and **FTC** (US) or local fraud lines.',
   ],
 };
 

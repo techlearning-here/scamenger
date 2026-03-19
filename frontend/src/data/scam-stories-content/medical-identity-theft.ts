@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Someone used my identity at the hospital**—not me in the **ER**, but my **name** on **bills** and **treatments** I **never** had.\u2029**Insurance** and **collections** came after **me**.',
+    '**Someone used my name at hospitals** I never visited—**treatments** and **bills** appeared on **explanation-of-benefits** forms while I was home healthy.',
   initialPlot:
-    'An **EOB** listed **surgeries** in a **state** I\u2019d never visited.\u2029**Months** of **calls** to **insurers** and **providers**.\u2029Someone\u2019s **stolen ID** or **inside** leak **hooked** my **SSN** to **their** care.',
+    'An **EOB** listed **surgeries** in a **state** I had never been to.\u2029Months of calls to **insurers** and **providers** traced a **stolen SSN** or **inside leak** tied to **their** care, not mine.',
   scamExperience:
-    '**Medical identity theft** mixes **health privacy** with **financial** harm.\u2029**Correcting** records is **hard**; **debts** appear **fast**.\u2029I **documented** everything.',
+    '**Medical identity theft** mixes **privacy** harm with **collections**.\u2029Correcting **charts** is slow; **debts** show up fast without clear fraud flags.',
   victimExperience:
-    'I felt **unsafe** in my **own body**—**data** about **me** was **wrong** in **systems** I **depend on**.',
+    'Wrong data in **health systems** felt like losing control of my own body on paper.',
   climax:
-    'A **fraud investigator** found a **duplicate** chart with my **number** but **another** photo.\u2029That\u2019s when the **scope** became **clear**.',
+    'A **fraud investigator** found a **duplicate chart** with my **number** but **another person’s photo**—that clarified how far the mix-up ran.',
   victimPain:
-    '**Fear** that **wrong** **allergies** or **history** could **hurt** me in a **real** emergency.',
+    'I worried **wrong allergies** or history could hurt me in a **real** emergency until corrections propagated.',
   learningVictim:
-    'I now know: **review** **EOBs**, **request** **accounting of disclosures**, **file** police + **FTC** identity reports.\u2029I wish I\u2019d **checked** **EOBs** **monthly**.',
+    'I **review EOBs** monthly, request **accounting of disclosures**, and file **police** plus **FTC** identity reports when fraud appears.',
   learningForReaders: [
-    '**HIPAA** rights and **fraud** units at insurers can help **untangle** medical ID theft.',
+    '**Insurer fraud units** and **HIPAA** rights (US) help untangle **medical ID theft**.',
+    '**Document** every call and letter during cleanup.',
   ],
 };
 

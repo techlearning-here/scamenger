@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'They said they were **police**—there was a **warrant**, **fine**, or **missed court**.\u2029The **warrant** was **fake**.',
+    'A caller said they were **local police**—there was a **warrant** for missed court or unpaid fines, and I had to pay immediately to avoid **arrest**.\u2029They cited a **badge number** and a **case ID** that sounded official.',
   initialPlot:
-    'They wanted **payment** to "clear" the warrant—**gift cards**, **wire**, **crypto**.\u2029I paid. Real **law enforcement** doesn\u2019t collect **fines** that way over the phone. I was **scammed**.',
+    'They insisted on **gift cards** or **wire** to “clear” the warrant before the end of the shift.\u2029I bought cards and read codes until my partner walked in and asked why law enforcement would want **iTunes** balances.',
   scamExperience:
-    '**Fake police / sheriff** scams use **fear** and **authority**. I lost **money**. Legitimate agencies **don\u2019t** demand **gift cards**.',
+    '**Fake law enforcement** scams use **fear** and **authority**; **real agencies** do not collect **fines** with **gift cards** or threaten **instant arrest** for card payments over the phone.',
   victimExperience:
-    'I was **scared** of arrest. The **badge number** and **case ID** sounded real. I **panicked**.',
+    'While I stayed on the line I was afraid that hanging up would make things worse; the script was built to keep me from checking facts.',
   climax:
-    'When I called **local police** on a **non-emergency** line, they said **no warrant**. That\u2019s when I knew.',
+    'I called **non-emergency police** from a second phone; the desk said **no warrant** existed in my name and the number I had been given was not theirs.',
   victimPain:
-    'I lost **money** and trust. **Reporting** helped.',
+    'The **money** on the cards was gone; I filed a report and felt angry that someone had borrowed the badge’s credibility to steal.',
   learningVictim:
-    'I now know: **police don\u2019t** call for **gift card** payments. **Hang up** and call **your local station** yourself.',
+    'I **hang up** on any payment demand from a cold caller claiming to be **police**, then call the **published station number** myself.',
   learningForReaders: [
-    '**Verify** any "law enforcement" payment demand by calling **your local department** directly.',
+    '**Police** do not ask for **gift cards** or **crypto** to clear warrants.',
+    '**Verify** by calling your **local department** directly; **report** impersonation.',
   ],
 };
 

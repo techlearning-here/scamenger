@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A **friend** I trusted said they\u2019d made great returns on an investment and wanted me in. I wasn\u2019t greedy—I just thought **if it\u2019s good enough for them**, it\u2019s worth a look.\u2029It wasn\u2019t. The "friend" had been **compromised** or was in on it.',
+    'A **friend** I trusted messaged that they were doing well on an **investment platform** and sent a link “so I would not miss out.”\u2029I was not chasing riches—just thought **if it worked for them**, I could try a modest amount.',
   initialPlot:
-    'They sent a link to a "platform." I put in money; it showed **gains**. When I wanted to withdraw, there were "fees" or "minimums." I asked my friend—they said to **add more** and it would unlock. I did. The platform and my friend\u2019s story **fell apart**.',
+    'I deposited; the site showed **gains**.\u2029Withdrawals hit **fees** and **minimums**; when I asked my friend, they urged me to **add more** to unlock the balance.\u2029Later they admitted their account had been **compromised**—or they had been **recruited** unknowingly.',
   scamExperience:
-    'The "platform" was **fake**. Either my friend had been scammed and was passing it on, or their account was used to recruit others. I lost **thousands**. Real friends don\u2019t send you to platforms that won\u2019t let you withdraw.',
+    '**Fake platforms** spread through **trusted networks**; the site was **fraud** either way.\u2029I lost **thousands** chasing the trapped balance.',
   victimExperience:
-    'I trusted my **friend**. When the balance went up, I felt **relieved**.\u2029Part of me wondered about the withdrawal issues, but **I didn\u2019t want to doubt** someone I knew.',
+    'While balances rose I did not want to **doubt** someone I knew; questioning the withdrawal blocks felt like insulting their judgment.',
   climax:
-    'When the platform vanished and my friend couldn\u2019t explain, I searched online. **Investment scam**—often spread through trusted contacts. That\u2019s when I knew.',
+    'The platform **vanished**; searching the URL surfaced the same **investment scam** pattern other victims had documented.',
   victimPain:
-    'I lost **money and a friendship**. The **betrayal and shame** were huge. Reporting **helped**.',
+    'Money and **friendship** both took damage; reporting to **FTC** and police did not repair the relationship overnight.',
   learningVictim:
-    'I now know: even recommendations from people you trust can be scams. I wish I\u2019d verified the platform with my bank first.',
+    'Even **friend recommendations** need **independent** checks with my **bank** or **securities regulator** before I fund anything.',
   learningForReaders: [
-    '**Verify any investment**—even from friends—with your bank or a regulator. Scams often spread through trusted networks.',
-    '**Report** to the FTC.',
+    '**Verify investments** outside the chat where they were pitched.',
+    '**Report** to the **FTC** (US) or your **financial conduct** authority.',
   ],
 };
 

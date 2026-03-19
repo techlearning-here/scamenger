@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **looking for a job** and had been applying for weeks.\u2029When I was "**hired**" and told I had to **pay for a training kit** or **materials** before I could start, I thought it was an **investment**. The job **never existed**.',
+    'I had been job hunting for weeks when a hire letter arrived with a glossy contract and a start date that felt close enough to touch. They said I had to buy a **training kit** and software licences before onboarding, which sounded like a hurdle I could clear if it meant a paycheck.',
   initialPlot:
-    'They\u2019d sent a **job offer** and **contract**—it looked **real**. Then they said I had to **pay** for a "training kit," "software," or "certification" **upfront**—they\u2019d "reimburse" me later.\u2029I paid. I never got the kit—or the job. The "employer" **disappeared**.',
+    'Fees stacked for certifications, shipping, and "compliance" modules, each with a receipt that looked professional. They promised **reimbursement on day one**, so I paid on a card I could barely afford and waited for the kit tracking email.',
   scamExperience:
-    '**Fake job scams** use fake offers to get you to **pay for training**, **equipment**, or **fees**. There is **no job**. I lost **hundreds** (or more). The "company" was **fake**.',
+    '**Advance-fee job scams** sell hope: there is no payroll on the other side, only disappearing sites and silent inboxes. No kit arrived, no onboarding call ever connected, and the recruiter email began bouncing within days.',
   victimExperience:
-    'I was **desperate** to get started and the offer felt **real**. I didn\u2019t want to **lose the opportunity** by refusing. I **paid without checking** if the company was legit. I didn\u2019t think a "employer" would **take my money and vanish**.',
+    'I was desperate to begin and afraid to lose the slot, so I told myself real companies sometimes charge for uniforms or tools. I did not verify the firm through a phone number I looked up independently.',
   climax:
-    'When the "start date" came and went and no one replied, I searched the company. **Scam**—same story from other victims. That\u2019s when I knew. The job had **never existed**.',
+    'When the start date passed in silence I searched the brand with the word scam and found page after page of the same kit fee story. That pattern—not one angry review, but dozens—was when I admitted the job had never existed.',
   victimPain:
-    'I lost **money** I couldn\u2019t afford and felt **stupid and angry**. The **shame** was real. Reporting **helped**.',
+    'The money I lost was earmarked for rent, and the anger I aimed at myself lasted until I filed reports and talked to someone who had seen the same letterhead. Channeling the energy into reporting helped more than stewing alone.',
   learningVictim:
-    'I now know: real employers **don\u2019t** ask you to pay for training or equipment upfront. I wish I\u2019d said no and verified the company first.',
+    'I now know legitimate employers do not charge upfront for training kits or starter software from random vendors. I wish I had called the company on a number from their real careers page before I sent a dollar.',
   learningForReaders: [
-    '**Never pay** for "training," "kits," or "certification" to get a job. **Verify** the company through official channels.',
-    '**Report** to the FTC.',
+    '**Verify** hiring companies through official phone numbers before paying any job-related fees.',
+    '**Report** job scams to the FTC.',
   ],
 };
 

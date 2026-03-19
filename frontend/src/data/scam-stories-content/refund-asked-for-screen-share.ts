@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**"Amazon** **refund** **department**" **called** about a **charge** I **didn\u2019t** **recognise**.\u2029They **asked** **TeamViewer** / **screen** **share** to "**process** **credit**."\u2029I **showed** **bank** **tabs**; they **moved** **money** while I **watched** **confused**.',
+    'A caller ID that looked like a major retailer flashed on my phone while they said the **refund team** needed to reverse a mystery charge. I did not recognise the purchase and wanted it gone before my partner saw the statement, so I stayed on the line.',
   initialPlot:
-    '**Refund** **scam** **scripts** **sound** **helpful**.\u2029They **typed** **amounts** in **HTML** **inspect** **not** **real** **ledger**.\u2029I **authorised** a **transfer** **thinking** it was **incoming**.',
+    'They walked me through installing remote software so they could "credit" my account while I watched. Numbers flashed on the screen that looked like deposits, but they were edits in the browser, not my bank ledger.',
   scamExperience:
-    '**Screen** **share** + **social** **engineering** = **remote** **theft**.\u2029**No** **refund** **requires** **seeing** your **desktop**.\u2029**Hang** **up** **always**.',
+    '**Refund scams** pair screen sharing with rushed instructions so you authorise transfers you think are incoming. They moved money out while I typed verification codes they framed as confirmation numbers. No legitimate refund desk needs to see your desktop.',
   victimExperience:
-    'I **wanted** the **mystery** **charge** **gone** **before** **spouse** **saw** **statement**.',
+    'I wanted the charge cleared before dinner and felt rude hanging up on someone who sounded patient. I told myself big companies probably used remote tools, even though my gut whispered otherwise.',
   climax:
-    '**Real** **Amazon** **chat** said "**we don\u2019t** **call** **about** **refunds** that **way**" while **fraudster** still **talking** in **ear**.',
+    'While the scammer was still talking in my ear, I opened the real retailer chat on my phone and an agent typed that they never call that way. Reading the official denial while the fraudster urged one more code was the moment I killed the session and called my bank.',
   victimPain:
-    '**Self-blame** for **clicking** "**allow**" on **share**.',
+    'I blamed myself hard for clicking allow on the share prompt, and it took nights of disputes to unwind some of the transfers. The shame faded only after a fraud specialist said these scripts fool plenty of careful people.',
   learningVictim:
-    'I now **never** **screen-share** with **unknown** **support**.\u2029I wish **OS** **prompted** "**read** **aloud** what you\u2019re **sharing**" **slow** **modal**.',
+    'I now hang up on every inbound refund call and ring companies on numbers I look up. I wish OS prompts spelled out that strangers can see banking tabs, not just "share screen."',
   learningForReaders: [
-    '**End** **session** **immediately** if **anyone** asks to **see** **banking** **or** **crypto** **wallets**.',
+    '**End** any session where someone asks to view banking, crypto wallets, or one-time codes.',
   ],
 };
 

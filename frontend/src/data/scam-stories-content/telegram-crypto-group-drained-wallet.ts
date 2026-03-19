@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Private** **Telegram** **group**—**signals**, **charts**, **VIP** **access** for **deposit** to "**pool**" **contract**.\u2029I **approved** a **spending** **cap** I **didn\u2019t** **understand**.\u2029**Wallet** **emptied** **overnight**.',
+    'A private **Telegram** group promised VIP signals and a pooled contract that would "compound" deposits. I joined for charts and camaraderie, then approved a wallet transaction I did not fully read because the admins sounded like experts.',
   initialPlot:
-    '**Influencer** **screenshots** **were** **stolen**.\u2029**Bot** **posted** **green** **P&L** **daily**.\u2029**Smart** **contract** **was** **malicious**—**audit** **PDF** **fake**.\u2029**Chain** **analysis** showed **tornado** **next**.',
+    'Daily bots posted green P&L screenshots stolen from real traders, and an influencer face I recognised from Twitter appeared in pinned messages—later I learned those images were ripped from someone else\'s feed. When I clicked their staking link, the interface asked for broad permissions.',
   scamExperience:
-    '**Crypto** **communities** **blend** **education** and **predation**.\u2029**Signing** **transactions** = **irreversible** **consent**.\u2029**Never** **pool** **funds** with **Discord** / **Telegram** **strangers**.',
+    'The **smart contract was malicious**—one signature drained allowances overnight. The audit PDF was a forgery; on-chain tools later labelled the contract as a known drainer. Money moved to mixers before I finished coffee.',
   victimExperience:
-    'I **wanted** **tribe** and **alpha**.',
+    'I wanted tribe and edge after a lonely winter, so I ignored friends who said Telegram money pools are radioactive.',
   climax:
-    '**Etherscan** **internal** **tx** **label** **"phishing** **drainer**" **appeared** **too** **late**.',
+    'Etherscan flagged internal transactions as a phishing drainer the morning after, too late to claw back funds but early enough to prove the group had never been trading—only harvesting.',
   victimPain:
-    '**Avoided** **friends** who **warned** me—**awkward** **reconciliation** later.',
+    'I avoided the friends who had warned me, then had awkward apologies once the wallet was empty. Pride cost as much as the tokens.',
   learningVictim:
-    'I now **use** **hardware** **wallet**, **simulate** **transactions**, **say** **no** to **groups** **that** **move** **money**.\u2029I wish I\u2019d **treated** **every** **signature** like a **wire** **authorization**.',
+    'I use a hardware wallet now, simulate transactions before signing, and refuse group chats that move money. I wish I had treated every signature like a wire authorization.',
   learningForReaders: [
-    '**Read** **contract** **source** or **get** **trusted** **audit**—**not** **PDF** from **admin**.',
+    '**Read** contract source or rely on audits from sources you choose—not PDFs from admins.',
   ],
 };
 

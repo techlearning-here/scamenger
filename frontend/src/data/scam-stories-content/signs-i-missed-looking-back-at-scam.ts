@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Looking** **back**, the **signs** **glow** **neon**—**urgency**, **secrecy**, **only** **their** **channel**, **grammar** **shifts**, **too** **perfect** **empathy**.\u2029**In** **the** **moment**, I **explained** **each** **away**.',
+    'Looking back, the signs glow neon—**urgency**, secrecy, only their channel, grammar shifts, empathy that felt rehearsed. In the moment I explained each one away because hope was the blinder.',
   initialPlot:
-    'I **journal** now after **fraud** **therapy**—**list** **red** **flags** I **ignored**.\u2029**Hope** **was** the **blinder**.\u2029**Sharing** the **list** **helps** **friends** **without** **preaching**.',
+    'After fraud therapy I started journaling the red flags I ignored: the rushed wire, the ban on telling my partner, the payment method that could not be reversed. The list is not for self-attack anymore; it is a pattern library I share with friends without preaching.',
   scamExperience:
-    '**Hindsight** **bias** **hurts** if you **weaponise** it **against** **yourself**.\u2029**Better** use: **pattern** **library** for **future** **pause** **moments**.',
+    '**Hindsight bias** can feel like a second weapon if you use it to call yourself stupid. The healthier use is turning memory into pause rules—two concrete flags mean stop and call someone, not five.',
   victimExperience:
-    'I **called** **myself** **stupid**—**stopped** **that** **word** **in** **therapy**.',
+    'I called myself stupid for months until therapy banned that word in my vocabulary. Naming the engineering behind the scam mattered more than grading my character.',
   climax:
-    '**Realisation** that **two** **flags** **together** = **stop** **rule**, not **five**.',
+    'My counsellor drew a line: **two strikes**—say, secrecy plus a new payment app—and I must phone a trusted person before money moves. That simple rule replaced the fantasy that I needed to spot every clue perfectly.',
   victimPain:
-    '**Anger** at **past** **me** **eased** **slowly**.',
+    'Anger at past me eased slowly, but grief for the money and trust I lost still surfaces on slow nights.',
   learningVictim:
-    'I now use **"two** **strikes** **and** I **call** **someone**"\u2014**hard** **rule**.\u2029I wish I\u2019d **written** **rules** **before** **money** moved.',
+    'I now use "two strikes and I call someone" as a hard rule. I wish I had written those rules before the first transfer, not after.',
   learningForReaders: [
-    '**Teach** **kids** **red** **flags** as **games**, not **lectures**—**memory** **sticks**.',
+    'Teach **red flags** as games or stories for kids—memory sticks better than lectures.',
   ],
 };
 

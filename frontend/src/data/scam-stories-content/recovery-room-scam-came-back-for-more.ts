@@ -2,22 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I\u2019d already been **scammed once**—I\u2019d lost money to a fake investment. I was desperate to **get it back**.\u2029When someone reached out saying they could "recover" my funds for a fee, I wanted to believe. I was scammed **again**.',
+    'After a fake trading app ate my savings, I joined an online forum of other victims just to feel less alone. Within days, private messages arrived from "**recovery specialists**" who said they had cracked the same platform and could pull balances if I moved fast.',
   initialPlot:
-    'They said they were **recovery specialists** or lawyers and could get my money back from the first scam—for an **upfront fee**. I paid. Then they asked for **more**—legal costs, transfer fees. I paid again. They **disappeared**. There was no recovery. Only a second loss.',
+    'They shared screenshots of supposed government letters and wallet traces, then asked for an upfront "chain analysis" fee. Each payment unlocked another milestone—legal clearance, escrow release—until I had sent more to them than I had lost in the final week of the first scam.',
   scamExperience:
-    '**Recovery scams** target people who\u2019ve already been scammed. They promise to get your money back and charge fees. They never recover anything. I lost **more money** to the "recovery" team than I\u2019d lost in the original scam.',
+    '**Recovery rooms** piggyback on grief communities: the compassion is bait, the paperwork is fiction, and the money never returns. When I asked for a verifiable case number they ghosted across every app at once.',
   victimExperience:
-    'I was **vulnerable** and wanted my money back. When they seemed professional, I felt **hopeful**.\u2029Part of me wondered why I had to pay upfront, but **I didn\u2019t want to give up** the chance.',
+    'I wanted my money back badly enough to ignore how perfectly they mirrored my story. Part of me knew regulators do not text victims on Telegram, but isolation made the chat feel like solidarity.',
   climax:
-    'When they asked for yet another fee and I searched "recovery scam," I found **warnings**. That\u2019s when I knew. I\u2019d been taken twice.',
+    'A moderator posted a pinned warning naming the usernames I had paid, and law enforcement later confirmed the documents were templates. Seeing my "specialist" on a public blocklist was when I admitted the second loss was its own scam.',
   victimPain:
-    'I lost **more money** and felt **twice as stupid**. The **shame** was crushing. Reporting both scams **helped**.',
+    'I felt twice foolish and avoided the support group for months afterward. Filing police reports for both incidents was draining but stopped the spiral of secret payments.',
   learningVictim:
-    'I now know: anyone who contacts you after a scam and asks for money to "recover" funds is almost certainly another scammer. I wish I\u2019d reported the first scam and never paid a "recovery" fee.',
+    'I now report fraud only through channels I open myself and refuse any helper who slides into DMs after I share a loss. I wish I had screenshot their IDs and sent them to the platform before I sent cash.',
   learningForReaders: [
-    '**Recovery scams** target scam victims. No legitimate service will guarantee recovery for an upfront fee. **Report** the original scam to the FTC; be wary of anyone who then contacts you offering to get your money back for a fee.',
-    '**Report** recovery scams too. You\u2019re not alone.',
+    '**Recovery scams** follow public posts about losses—**report** originals to the FTC and block unsolicited "help."',
   ],
 };
 

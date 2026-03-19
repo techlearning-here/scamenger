@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A "**benefits advisor**" on the phone sounded **helpful**—they wanted my **NI number** / **SSN** to "**speed up**" my claim.\u2029I **gave** it.\u2029They **weren\u2019t** from any **agency**.',
+    'A cold caller introduced themselves as a **benefits advisor** who could **speed up** my delayed claim if I provided my full **National Insurance** number for the system.\u2029Payments had been slow for weeks, and they sounded like they had read my file.',
   initialPlot:
-    'Within **days**, **new** benefit **applications** and **loans** appeared.\u2029My **real** caseworker said "**we never cold-call** for full numbers."\u2029I **froze** everything I could.',
+    'I dictated the number while they typed; within days **new applications** and **credit checks** appeared that I had not filed.\u2029My real caseworker said the agency **never cold-calls** for complete identifiers.',
   scamExperience:
-    '**Benefits phishing** harvests **national identifiers** to **defraud** **government** and **private** systems.\u2029I became a **case study** in **what not to do**.',
+    '**Benefits phishing** uses **NI numbers** or **SSNs** to file **fake claims** and open **accounts** in your name.\u2029Freezing credit and working through fraud teams took months.',
   victimExperience:
-    'I was **stressed** about **delays** in **payments**.\u2029The call felt like **finally** someone **cared**.',
+    'While we talked I was relieved someone sounded organised about my backlog, so I ignored that real staff usually use **secure portals**, not phone dictation.',
   climax:
-    'The **real** agency **confirmed** **no** such "**advisor**" exists.\u2029That\u2019s when I knew.',
+    'The official helpline confirmed **no such advisor** existed and opened a **fraud flag** on my record while I was still on hold listening to hold music.',
   victimPain:
-    '**Months** of **fraud alerts**.\u2029**Guilt** for **one** **ten-digit** mistake.',
+    'Alerts and letters kept arriving for things I had not applied for; clearing each one reminded me of the ten digits I should not have spoken.',
   learningVictim:
-    'I now know: **only** share **NI/SSN** through **official** portals or **in-person** with **ID**.\u2029I wish I\u2019d **hung up**.',
+    'I only give **NI / SSN** through **official portals** or **in-person** appointments with ID—never to unsolicited callers.',
   learningForReaders: [
-    '**Government** agencies publish "**we will never ask**" rules—**memorize** them for your country.',
+    'Memorise your government’s “**we will never ask**” rules for benefits.',
+    '**Report** identity misuse to the **national fraud** centre and **credit bureaus**.',
   ],
 };
 

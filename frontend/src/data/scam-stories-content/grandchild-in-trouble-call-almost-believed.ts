@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Caller**: "**Grandma**, I\u2019m in **trouble**."\u2029**Voice** **cracked** like my **grandson**.\u2029**Lawyer** **needed** **cash** **bond**.\u2029I **almost** **went** to **ATM**.\u2029**Neighbor** **knocked** with **borrowed** **sugar**—**broke** the **trance**.',
+    'The caller said **“Grandma”** in a cracked voice that sounded like my **grandson** and claimed he was in **trouble** and needed **cash bond** fast.\u2029A second voice played “lawyer” and told me not to hang up.',
   initialPlot:
-    'They **said** "**don\u2019t** **tell** **Mom**."\u2029**Classic** **isolation**.\u2029When I **called** **grandson** **back** on **old** **number**, he was **playing** **Fortnite**.\u2029**Relief** **violent**.',
+    'They said **do not tell Mom**—classic **isolation**.\u2029I had my keys in hand for the ATM when a **neighbour knocked** to borrow sugar; that break let me breathe long enough to dial my grandson’s **saved number**.',
   scamExperience:
-    '**Grandchild** **emergency** **scams** **prey** on **love** and **secrecy**.\u2029**AI** **or** **actors** **mimic** **voices**.\u2029**Code words** **work**.',
+    '**Grandchild emergency scams** weaponise **love** and **secrecy**; voices can be **actors** or **AI** built from clips online.\u2029**Gift cards** or **cash drops** are the usual payment rail.',
   victimExperience:
-    'I **heard** **crying** and **stopped** **thinking**.',
+    'While the call ran I heard **crying** and stopped thinking about verification; fear for the child crowded everything else out.',
   climax:
-    'He said "**what** **bond**, **I\u2019m** **twelve**"\u2014**laugh** I **needed**.',
+    'My grandson answered from home—**twelve years old**, confused about “what bond,” laughing once he understood—and the other line went dead when I said I was not sending money.',
   victimPain:
-    '**Embarrassment** at **almost** **walking** **cash** **out**.',
+    'I was embarrassed at how close I came to walking cash out the door; we practised the **family code word** that weekend without joking about it.',
   learningVictim:
-    'Our **family** **word** is **"pineapple** **radio**"\u2014**silly** on **purpose**.\u2029I wish I\u2019d **had** it **memorised** **before**.',
+    'Our **code word** is something silly on purpose; **any urgent grandchild call** gets a **hang-up** and **callback on a known number**.',
   learningForReaders: [
-    '**Teach** **elders**: **any** **urgent** **grandchild** **call** = **hang up**, **call** **known** **number**.',
+    '**Teach elders** to **pause** urgent family calls and **verify** on a second channel.',
+    '**Report** to **FTC** (US) or your **national fraud** line.',
   ],
 };
 

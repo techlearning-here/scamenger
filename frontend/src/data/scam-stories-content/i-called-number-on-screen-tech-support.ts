@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A **warning** on my screen told me to **call** a number **now**.\u2029I **called**. It was the **worst call** I ever made.',
+    'A **full-screen browser warning** told me to **call a number immediately**—virus, hackers, account lock.\u2029I was drafting a work email and panicked about losing files.',
   initialPlot:
-    'The person said they were **support**—Microsoft, Apple, or my ISP. They asked for **remote access** and **payment** to "fix" a problem that **didn\u2019t exist**.\u2029I paid. They **drained** my card or **installed** spyware. The number on the screen was **scammers**.',
+    'The person who answered said they were **Microsoft** support, asked for **remote access**, then billed **hundreds** for a “**clean**” and installed extra software.\u2029Charges kept appearing after the call.',
   scamExperience:
-    '**Cold-call / pop-up tech support** scams sell fake repairs and steal access. I lost **hundreds or thousands**. The "technician" was a **criminal**.',
+    '**Pop-up tech support** scams sell **fake repairs** and steal **access**.\u2029**Real** vendors do not publish **phone numbers inside browser lock screens**.',
   victimExperience:
-    'I was **panicked** about my computer. The voice sounded **professional**. I **trusted** the number because it was **on my screen**.',
+    'I trusted the number because it was **on my screen**; the voice sounded calm and technical.',
   climax:
-    'When charges piled up or my accounts were **hit**, I knew. Real support **never** works that way. That\u2019s when I knew.',
+    'When my card showed **repeat charges** and the real **Microsoft** help article said they **never** operate that way, I wiped the machine and changed every password.',
   victimPain:
-    'I lost **money** and **peace of mind**. The **shame** was real. Reporting **helped**.',
+    'I lost **money** and spent nights wondering what they had copied during **remote control**; reporting to the **FTC** and bank felt necessary even though it was exhausting.',
   learningVictim:
-    'I now know: **never** call numbers from pop-ups. Find support on the **real** company site. I wish I\u2019d hung up.',
+    'I **force-quit** the browser on scary pages and find support only on **sites I type myself**—never numbers from pop-ups.',
   learningForReaders: [
-    '**Official support** is only from numbers you look up on the **real** company website.',
-    '**Report** to the FTC.',
+    '**Official support** numbers live on **company websites**, not in **pop-up** warnings.',
+    '**Report** tech support fraud to the **FTC** (US) or your consumer authority.',
   ],
 };
 

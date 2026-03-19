@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'A **"friend**" on **Snap** asked me to **receive** a **Zelle** and **send** **80%** to "**their** **cousin**" because their **account** was "**limited**."\u2029The **money** was **stolen**; **I** became the **face** of **fraud**.',
+    'A **Snapchat** message from my friend’s handle asked me to **receive a Zelle** and forward **eighty percent** to “their cousin” because their **account was limited**.\u2029I thought I was doing a quick favour.',
   initialPlot:
-    '**Account** was **hacked**—not **them** **typing**.\u2029I **thought** I was **helping**.\u2029**Bank** **froze** me; **police** **interview** **cleared** **intent** but **not** **instantly**.\u2029**Victims** upstream **wanted** **blood**.',
+    'I moved the money the same evening.\u2029Two days later my **bank froze** my account for **fraud review**; the inbound transfer was **stolen** and I had become the last hop before it disappeared.',
   scamExperience:
-    '**Money mule** **laundering** uses **trusted** **nodes**.\u2029**Receiving** + **forwarding** = **complicity** **risk** even if **naive**.\u2029**Chains** **break** **lives**.',
+    '**Money-mule** chains use **hacked social accounts** and trusted friends; **receiving and forwarding** puts you in **legal** and **banking** risk even if you meant to help.\u2029Police cleared **intent** slowly while upstream victims wanted recovery.',
   victimExperience:
-    'I **valued** being "**reliable**."\u2029**Exploited** **identity**.',
+    'While I tapped send I liked being the **reliable** friend who could move cash fast; I did not video-call to confirm it was really them.',
   climax:
-    'Real **friend** **video-called** from **new** **number**—**hadn\u2019t** **used** **Snap** in **months**.\u2029**Obvious** in **retrospect**.',
+    'The real friend **video-called** from a new number—she had not used **Snap** in months; the request had been a **takeover**.',
   victimPain:
-    '**Credit** **holds** **six months**.\u2029**Reputation** **damage** in **small** **town**.',
+    'Credit holds and whisper-network gossip in a small town lasted **months**; rebuilding trust at the branch took paperwork and patience.',
   learningVictim:
-    'I now know: **never** **pass** **money** for **third** **parties**.\u2029I wish I\u2019d **said** "**use** a **bank** **branch**."',
+    'I do not **pass money** for third parties through my account.\u2029Urgent payment asks get a **live check** on a channel I already trust.',
   learningForReaders: [
-    '**Legitimate** **people** don\u2019t need **your** **account** as a **pipe**.',
+    '**Legitimate** people do not need your account as a **pipe** for someone else’s transfers.',
+    '**Report** account takeover and **mule** activity to your bank and **police**.',
   ],
 };
 

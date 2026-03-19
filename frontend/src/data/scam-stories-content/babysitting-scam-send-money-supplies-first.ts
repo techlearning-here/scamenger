@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **looking for babysitting** work and found a "**family**" who needed a sitter.\u2029When they said I had to **send money for supplies** first—and they\u2019d reimburse—I wanted to **help**. The family **wasn\u2019t real**.',
+    'I had posted online that I was **looking for babysitting** work, and a “family” replied with a warm message about two kids and a steady schedule.\u2029They sent a **contract** PDF and asked for a video chat that never quite happened—always a last-minute conflict.',
   initialPlot:
-    'They\u2019d sent a **contract** and talked about the "kids" and "schedule." Then they said they\u2019d send a **cheque** for supplies and I should **buy gift cards** or **wire** part of it back—or **pay upfront** for "supplies" and they\u2019d reimburse.\u2029I sent money. The "family" **disappeared**. There were **no kids**. No job. Just **scammers**.',
+    'Then they said they would mail a **cheque** for supplies, or I should **buy gift cards** up front and they would **reimburse** on my first day.\u2029I sent the money they asked for through the channel they chose; the “start date” was only days away.',
   scamExperience:
-    '**Fake babysitting (and care) scams** pose as families to get you to **send money** for "supplies" or to "refund" a fake overpayment. The **family** is **fake**. I lost **money**.',
+    '**Fake babysitting scams** reuse the same script: build trust, invent kids, then extract **upfront fees** or **fake overpayment** returns.\u2029When the date arrived, the number was dead and the email bounced; there were **no children** and no job.',
   victimExperience:
-    'I was **excited** to have a gig and the "family" seemed **nice**. I didn\u2019t want to **lose the job** by refusing. I **sent money** without meeting them or verifying.',
+    'Between messages I told myself turning down **supply money** would make me lose the only gig I had lined up, so I ignored that real parents usually meet sitters in person first.',
   climax:
-    'When the "start date" came and the "family" and their number **vanished**, I knew. I searched "babysitting scam." **Same story**. That\u2019s when I knew. The family **wasn\u2019t real**.',
+    'I stood outside the address they had given for a meet-and-greet; the intercom belonged to someone who had never heard of the name on the contract.',
   victimPain:
-    'I lost **money** and felt **stupid**. The **shame** was real. Reporting **helped**.',
+    'The cash I sent was gone; I filed a **police report** and felt foolish telling friends, but reporting also turned up others hit by the same template.',
   learningVictim:
-    'I now know: real families **don\u2019t** ask you to send money for supplies before you\u2019ve met them or started. I wish I\u2019d said no.',
+    'I do not send **money for supplies** or accept **cheques to “refund”** to strangers I have not met through a verified channel.',
   learningForReaders: [
-    '**Never send money** to a "family" or "employer" before you\u2019ve met in person or started the job. **Report** to the FTC.',
+    '**Never pay upfront** for babysitting “supplies” or **wire back** part of an employer cheque to a stranger.',
+    '**Meet families** through trusted agencies or references; **report** fraud to the **FTC** (US) or your national line.',
   ],
 };
 

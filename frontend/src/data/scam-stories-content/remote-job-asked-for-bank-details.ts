@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **looking for remote work** and had applied to several places.\u2029When a "**employer**" offered me a **remote job** and said I needed to set up **direct deposit** or give my **bank details** before I started, I thought it was **normal**. It wasn\u2019t.',
+    'I was hunting for **remote work** and had résumés scattered across boards, so when a recruiter email arrived with a contract PDF I assumed it was one of those applications paying off. They moved fast—maybe too fast.',
   initialPlot:
-    'They\u2019d sent a **contract** and **onboarding** links. Everything looked **professional**. Then they asked for my **bank account details**—"for payroll"—**before** I\u2019d done any work.\u2029I gave them. Soon after, **money was taken** from my account or my details were **sold**. The "job" was a **scam** to harvest bank details.',
+    'Onboarding links looked polished, and then HR asked for **full bank details** before my first shift "so payroll could preload." I sent the numbers because real employers eventually need direct deposit, right?',
   scamExperience:
-    '**Fake remote-job scams** offer work to get your **bank details**, **ID**, or **money** (e.g. "equipment" fees). There is **no job**. They **drain accounts** or **steal identity**. I lost **money** and had to secure my accounts.',
+    '**Fake job scams** harvest account data or run test deposits then pull money out. There was no team chat, no manager on video—only urgent forms and a portal that went offline once the withdrawals started.',
   victimExperience:
-    'I was **eager** to start and the process looked **legit**. I didn\u2019t want to **delay** by questioning. I **gave my details** thinking it was for payroll. I didn\u2019t think a "company" would **steal**.',
+    'I was eager to start and did not want to seem difficult by questioning HR. I told myself delaying paperwork might cost me the offer, even though I had not earned a single hour yet.',
   climax:
-    'When I never got any real work and my account showed **unauthorized activity**, I searched the company name. **Scam warnings** everywhere. That\u2019s when I knew.',
+    'When small unauthorised debits appeared and the "company" inbox bounced, I searched the brand with scam and found the same contract header on warning lists. That search result was when I knew the job had only ever been data theft.',
   victimPain:
-    'I lost **money** and felt **stupid**. The **shame** of having given my bank details was real. Reporting **helped**.',
+    'I lost **money** and spent weekends freezing accounts and filing affidavits. The shame of handing bank details to a ghost company stung longer than the dollar amount.',
   learningVictim:
-    'I now know: real employers don\u2019t ask for your full bank details **before** you\u2019ve started. I wish I\u2019d verified the company and said no until I had a real first day.',
+    'I now verify employers through phone numbers on their real careers site and refuse to share full banking data before a verified first day. I wish I had called the main switchboard before I filled their forms.',
   learningForReaders: [
-    '**Real employers** don\u2019t need your bank details before you\u2019ve done any work. **Verify** the company through official channels.',
+    '**Real employers** do not need full bank details before you have started verifiable work.',
     '**Report** to the FTC.',
   ],
 };

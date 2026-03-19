@@ -2,21 +2,21 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I work in an office and **get emails from my boss** and colleagues every day.\u2029When an email looked like it was from **my boss**—**name**, **tone**, **urgent request**—and asked me to **do something quickly**, I **bit**. It wasn\u2019t my boss.',
+    'I work in an office and read emails from my boss every day, so when a message used **their name**, our project shorthand, and an urgent tone, I treated it like another deadline—not a trap.',
   initialPlot:
-    'The email knew **my name** and **my boss\u2019s name**. It asked me to **buy gift cards**, **transfer funds**, or **send a file**—urgent, **don\u2019t tell anyone**, **reply now**.\u2029I was **rushed** and didn\u2019t want to seem difficult. I did what it asked. The email was **spear phishing**. Someone had **researched** us and faked the sender.',
+    'The thread asked me to buy gift cards, wire funds, or send a sensitive file—quiet, do not loop anyone else, reply now. I was rushing between meetings and did not want to seem difficult, so I acted without walking down the hall.',
   scamExperience:
-    '**Spear phishing** targets specific people with tailored messages that look like they\u2019re from someone you know. Scammers **research names and roles** and then **impersonate** a boss or colleague to get money or access. I lost **money** and felt **violated**.',
+    '**Spear phishing** researches titles and relationships, then spoofs senders to extract money or access. I lost **money** and felt exposed because the attack felt personal, not random spam.',
   victimExperience:
-    'I was **used to urgent requests** from my boss. The email felt **real**. I didn\u2019t want to **slow things down** or ask questions. I **acted without calling** to confirm.',
+    'Urgent requests were normal from leadership, so the email felt plausible. I told myself verifying would slow the team down.',
   climax:
-    'When I mentioned it to my boss in person, they said they\u2019d never sent that email. That\u2019s when I knew. I\u2019d been **spear phished**.',
+    'When I mentioned the errand in person, my boss said they had never sent that email. That single confused look was when I knew I had been spear phished.',
   victimPain:
-    'I lost **money** (or put the company at risk) and felt **stupid and embarrassed**. The **shame** of having fallen for it was huge. Reporting **helped**.',
+    'Shame hit hard until IT reminded me these campaigns fool trained staff. Reporting and new verification habits helped more than hiding it.',
   learningVictim:
-    'I now know: for any **unusual or urgent** request about money or access, **call the person** on a number I already have—don\u2019t reply to the email. I wish I\u2019d done that.',
+    'I now call people on **numbers I already have** for any unusual money or access request. I wish I had done that before I clicked Send.',
   learningForReaders: [
-    '**Verify urgent requests** by calling the person on a **known number**—never by replying to the email.',
+    '**Verify urgent requests** on a known number—never only by replying to the email.',
     '**Report** to IT and the FTC.',
   ],
 };

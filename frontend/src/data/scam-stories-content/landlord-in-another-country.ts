@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I needed a **room** in a new city.\u2029The "landlord" was always **in another country**—business trip, family emergency—but the deal sounded **legit** on email.\u2029It wasn\u2019t.',
+    'I needed a **room** in a new city.\u2029The “**landlord**” was always **abroad**—business, family emergency—but the lease PDF and photos looked convincing by email.',
   initialPlot:
-    'Every time I asked to **meet**, there was a reason to delay.\u2029They sent a **contract** and asked for **first month + deposit** to "hold" the keys until their "representative" could meet me.\u2029I paid. **No representative** ever came.',
+    'Each time I asked to **meet**, a new delay appeared.\u2029They took **first month plus deposit** to “hold” keys until a **representative** could meet me.\u2029No representative ever came.',
   scamExperience:
-    '**Overseas landlord scams** avoid face-to-face contact and push **wire or gift cards**.\u2029The apartment might be **real** or **fabricated**—either way, the person taking my money **wasn\u2019t** the owner.',
+    '**Overseas landlord scams** avoid **viewings** and push **wire** or **gift cards**.\u2029The flat might be **real** or **stolen listing**—either way the person paid was not the **owner**.',
   victimExperience:
-    'I felt **sorry** for their travel story.\u2029I didn\u2019t want to seem **difficult** by insisting on a viewing.\u2029I **trusted** the paperwork they emailed.',
+    'I felt sorry for their travel story and did not want to seem **difficult** insisting on an in-person tour.',
   climax:
-    'When the **number stopped working** and the listing **vanished**, I walked to the address anyway.\u2029Wrong building—or **already rented** to someone else. That\u2019s when I knew.',
+    'When the **number died** and the ad vanished, I went to the **address**—wrong building, or **already rented** to someone with a real lease.',
   victimPain:
-    'I lost **rent money** and **hope** in a week I needed stability.\u2029**Anger** at myself mixed with **exhaustion** from sleeping on a friend\u2019s couch.',
+    'Rent money and stability disappeared the same week; I slept on a friend’s couch while restarting the search.',
   learningVictim:
-    'I now know: if someone **won\u2019t** meet you or use a **licensed local agent**, walk away.\u2029I wish I\u2019d treated "always abroad" as a **red flag**, not a sob story.',
+    'If someone **will not** meet or use a **licensed local agent**, I walk away.\u2029**“Always abroad”** is a **red flag**, not a sob story.',
   learningForReaders: [
-    '**Insist** on in-person viewing or verified video walk-through with **proof of ownership**.',
-    '**Report** rental scams to local police and platforms.',
+    '**Insist** on viewing or **verified** video with **proof of ownership**.',
+    '**Report** rental fraud to **police** and listing platforms.',
   ],
 };
 

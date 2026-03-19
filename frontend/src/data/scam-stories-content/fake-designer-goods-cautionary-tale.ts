@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **bought** a "**mirror** **quality**" **handbag** from a **private** **seller** for **wedding** **photos**.\u2029**Stitching** **failed** **day** **two**; **event** **security** said it **violated** **venue** **anti-counterfeit** **policy**.\u2029**Humiliation** **plus** **loss**.',
+    'I needed a **designer handbag** for wedding photos but not the full retail price, so I bought a “**mirror quality**” piece from a private seller who claimed **factory seconds**.\u2029The stitching frayed on day two.',
   initialPlot:
-    '**Seller** **claimed** "**factory** **seconds**."\u2029**PayPal** **FF** again.\u2029**No** **recourse**.\u2029**Real** **bag** **rental** would have **cost** **less** **than** **shame**.',
+    'Venue security stopped me at the door because their **anti-counterfeit** policy barred obvious fakes; I paid through **Friends & Family**-style transfer, so **PayPal** would not help when the seller vanished.',
   scamExperience:
-    '**Replica** **markets** **blur** **fashion** and **fraud**.\u2029**IP** **theft** **funds** **organised** **crime** **per** **Interpol** **briefings** I **read** **after**.\u2029**Personal** **lesson** **stuck**.',
+    '**Replica** sales fund **grey-market** supply chains; the bag was counterfeit, the “authenticity card” was printed nonsense, and the money was gone.',
   victimExperience:
-    'I **wanted** **aesthetic** **without** **price**.\u2029**Values** **misaligned**.',
+    'While I checked out I told myself I was budgeting smartly; I skipped a ninety-second **authenticator app** check I later learned would have failed the photos instantly.',
   climax:
-    '**Authenticator** **app** **photo** **check** took **ninety** **seconds**—**failed** **instantly**.\u2029**Obvious** **tool** I **skipped**.',
+    'After the wedding I uploaded serial-area photos to a **brand verification** tool the real boutique showed me; the result was **not genuine**, which closed any doubt.',
   victimPain:
-    '**Photos** **deleted**; **memories** **tinged**.',
+    'We deleted group photos where the bag was visible; the loss was not only cash but the memory of a day I wanted to feel polished.',
   learningVictim:
-    'I now **rent**, **buy** **pre-loved** **verified**, or **skip** **logos**.\u2029I wish I\u2019d **priced** **dignity** in **budget**.',
+    'I **rent** occasion pieces from licensed services, buy **pre-loved** through **verified** resellers, or skip logos I cannot afford at retail.',
   learningForReaders: [
-    '**Counterfeits** **aren\u2019t** **victimless**—**labour** and **crime** **ties**.',
+    '**Counterfeits** support **organised crime** and **labour abuse**—not a harmless bargain.',
+    '**Pay** with methods that offer **buyer protection**; verify serials through the brand when unsure.',
   ],
 };
 

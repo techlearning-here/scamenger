@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **Googled** "**Netflix** **billing** **phone**" and **called** the **first** **result**—**sponsored** **ad**.\u2029They said my **account** was **hacked** and **needed** **gift cards** to "**verify**" **identity**.\u2029I **almost** **complied**.',
+    'A billing email about **Netflix** looked slightly off, so I searched **Netflix billing phone** and called the first **sponsored** hit instead of opening the app.\u2029The person who answered said the account was **compromised** and I needed to buy **gift cards** to verify my identity before they could restore access.',
   initialPlot:
-    '**Typosquat** **support** **sites** **buy** **ads**.\u2029**IVR** **sounded** **legit**.\u2029**Red** **flag**—**gift** **cards**—I **caught** **late**.\u2029**Friend** **listening** **heard** and **grabbed** **phone**.',
+    'They kept me on the line through hold music that sounded corporate while I stood in the shop aisle reading card codes.\u2029A friend who was visiting heard **gift cards** and **Netflix** in the same sentence, took the phone, and hung up.',
   scamExperience:
-    '**Fake** **call centers** **parasite** on **brand** **support** **searches**.\u2029**Real** **support** lives in **app** **help** **sections**.\u2029**Search** **ads** ≠ **authority**.',
+    '**Typosquat sites and paid ads** sit above real help numbers; **fake call centres** harvest people who panic-search.\u2029**Real Netflix and similar services** do not demand **gift cards** for account recovery.',
   victimExperience:
-    '**Subscription** **email** **looked** **phishy**—I **panicked** into **bad** **search**.',
+    'I had already been unsettled by the email, so I skipped the calmer step of opening the **official app** and went straight to whatever number looked fastest.',
   climax:
-    '**Official** **help** **chat** said "**we never call about gift cards**" while I was **still** on **hold** with **fakes**.',
+    'While the fake line had me on mute, I opened **in-app chat** on my laptop; the agent there said **they never call customers to buy gift cards**, which matched what my friend had been shouting from the doorway.',
   victimPain:
-    '**Shame** I **almost** **fell** for **Netflix** **cards**—**sounds** **ridiculous** **out loud**.',
+    'I did not lose the card money, but I felt foolish for how close I came; I reported the ad and the number and changed how I look up support.',
   learningVictim:
-    'I now **only** **support** from **in-app** **links**.\u2029I wish **Google** **labelled** **ads** **louder** in **voice** **searches**.',
+    'I only reach **support** through the **app**, the **statement**, or a URL I know—never through a **search ad** for “support number.”',
   learningForReaders: [
-    '**Never** **search** "**company** + **support** **number**"—use **app** or **statement**.',
+    '**Avoid** searching “**company + support phone**”; use the **official app** or card/statement contact details.',
+    '**Gift cards** for **account verification** are always a **scam**—hang up and **report**.',
   ],
 };
 

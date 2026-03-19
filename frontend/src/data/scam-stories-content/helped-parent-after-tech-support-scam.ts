@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Pop-up** **said** **virus**; **Dad** **called** the **number**; **they** **remote** **desktop** **in** and **sold** **$400** **protection**.\u2029I **flew** **home** **weekend**—**wiped** **PC**, **froze** **cards**, **filed** **FTC**, **installed** **password** **manager** **slowly** **with** **him**.',
+    'My dad called the **number on a browser pop-up** that said his **PC was infected**; someone **remoted in**, ran a scary scan, and sold him **four hundred dollars** of useless “**protection**.”\u2029I flew home for a weekend to clean it up.',
   initialPlot:
-    '**Patience** **beat** **lectures**.\u2029We **role-played** **scam** **calls** **laughing**.\u2029**He** **still** **messes** up sometimes—**we** **recover** **together**.',
+    'We **wiped** the machine, **froze** cards he had typed near the session, filed **FTC** complaints, and installed a **password manager** together—slowly, without lecturing.\u2029We role-played **scam calls** until the scripts felt familiar instead of frightening.',
   scamExperience:
-    '**Tech** **support** **scams** **prey** on **fear** of **machines**.\u2029**Family** **IT** **person** **burnout** is **real**—**boundaries** + **scripts** **help**.',
+    '**Tech support scams** prey on **fear of breaking the computer**; **remote access** lets criminals install **malware** or **exfiltrate** data.\u2029Family “IT” burnout is real, so we wrote a one-page **script**: no remote tools, hang up, call me.',
   victimExperience:
-    '**Dad** **felt** **stupid**; I **shared** **my** **own** **phish** **story**—**equalised** **shame**.',
+    'Dad felt foolish; I shared a **phishing** story of my own so the shame was not one-sided.',
   climax:
-    'He **declined** **remote** **access** **himself** **six** **months** later—**texted** me **screenshot** **proud**.',
+    'Six months later he texted a **screenshot** of a new pop-up and wrote “**I declined remote**”—first time he stopped it **himself** without calling me first.',
   victimPain:
-    '**Travel** **cost** + **PTO** **gone**—**worth** it.',
+    'The flight and **PTO** cost stung, but it was cheaper than another **wire** or **identity** loss down the line.',
   learningVictim:
-    'We **use** **admin** **account** **separate** and **no** **saved** **cards** on **his** **browser**.\u2029I wish **OS** **vendors** **blocked** **unsigned** **remote** **tools** **by** **default** for **seniors**.',
+    'His daily account uses a **separate admin login**, **no saved cards** in the browser, and bookmarks only to **real** support pages.',
   learningForReaders: [
-    '**Microsoft** / **Apple** **never** **pop** **phone** **numbers** in **browser** **warnings**—**that\u2019s** the **tell**.',
+    '**Microsoft** and **Apple** do not put **phone numbers** inside browser **virus warnings**—that is the tell.',
+    '**Help parents** rehearse **hang up → call you → official app** before panic sets in.',
   ],
 };
 

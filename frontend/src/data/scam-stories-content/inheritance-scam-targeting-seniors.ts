@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    '**Letter** **claimed** **distant** **relative** **left** **estate**; **notary** **fees** **required** **upfront**.\u2029**Aunt** **nearly** **wired** **thousands**.\u2029**Genealogy** **hook** **felt** **personal**—**names** **scraped** from **obituaries**.',
+    'A **letter** claimed a distant **relative** had left an **estate** and that **notary fees** were needed **upfront** to release my aunt’s share.\u2029Names matched **genealogy** she had posted after an **obituary**.',
   initialPlot:
-    'We **called** **real** **probate** **court**—**no** **case**.\u2029**Lawyer** **letterhead** was **scanned** **artifact**.\u2029**Community** **center** **talk** **afterward**—**half** **room** **knew** **someone** **targeted**.',
+    'We called the **probate court**—**no case**.\u2029The **letterhead** was a **scanned** fake.\u2029At the community centre talk afterward, half the room knew someone who had seen the same envelope.',
   scamExperience:
-    '**Inheritance** **scams** **mix** **greed** and **grief**.\u2029**Seniors** **targeted** via **mail** and **phone**.\u2029**Legitimate** **heirs** **notified** **formally**—**never** **gift** **cards**.',
+    '**Inheritance scams** mix **grief** and **hope**.\u2029**Real heirs** are notified through **formal** process; **fees** come from the **estate**, not **gift cards** from your pocket first.',
   victimExperience:
-    '**Aunt** **lonely**; **letter** **felt** like **purpose**.',
+    'My aunt was **lonely**; the letter felt like **purpose** and connection to family history.',
   climax:
-    '**Family** **tree** **research** proved **named** **"relative"** **never** **existed**.',
+    'Family **tree research** showed the named “relative” **never existed** in our documented line.',
   victimPain:
-    '**Anger** at **predators** **using** **death** **notices**.',
+    'We were angry that **death notices** became a **shopping list** for predators.',
   learningVictim:
-    'We **open** **mail** **together** **now** **Sundays**.\u2029I wish **postal** **services** **flagged** **bulk** **probate** **scams**.',
+    'We open **suspicious mail together** on Sundays now and call the **court** or a **lawyer we choose** before any wire.',
   learningForReaders: [
-    '**Probate** **is** **public** but **slow**—**fees** **come** from **estate**, not **your** **pocket** **first**.',
+    '**Probate** is public but **slow**—**upfront** fees to strangers are a **red flag**.',
+    '**Report** mail fraud to **postal inspectors** or your national **fraud** line.',
   ],
 };
 

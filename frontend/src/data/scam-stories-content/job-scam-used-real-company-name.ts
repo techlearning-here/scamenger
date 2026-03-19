@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I **interviewed** for a **role** at a **company** I **admired**—**logo**, **email** **domain** **almost** right, **recruiter** on **LinkedIn** with **connections**.\u2029They **sent** **equipment** **money** as a **cheque**; **bank** said **wait**; they **pressured** me to **buy** **gift cards** "**for software**" **before** **clear**.',
+    'I interviewed for a **brand I admired**—logo right, **LinkedIn** recruiter with mutual connections, email domain **almost** identical to the real **careers** site.\u2029After six months unemployed the offer felt like oxygen.',
   initialPlot:
-    '**Real** **brands** get **impersonated**.\u2029**Subtle** **domain** typo: **`-careers`** vs **official** **`careers.`**.\u2029I **almost** **muled** **funds**; **HR** **real** **site** had a **fraud** **alert** **page** I **hadn\u2019t** **read**.',
+    'They mailed a **cheque** for “equipment” and told me to buy **gift cards** for “software licences” **before** the deposit **cleared**.\u2029The real company’s **fraud alert** page—buried on their site—described the same pattern.',
   scamExperience:
-    '**Job scams** mix **hope** with **fake** **onboarding**.\u2029**Cheque** **float** + **urgent** **outflow** = **classic**.\u2029I **lost** **$400** **fees** **not** **refunded**.',
+    '**Brand impersonation** plus **cheque float** and **urgent outflow** is a classic **job scam**.\u2029I lost about **four hundred dollars** in fees I could not recover.',
   victimExperience:
-    '**Unemployed** **six months**.\u2029**Offer letter** **felt** like **oxygen**.',
+    'I did not want to **lose the offer** by asking “dumb” questions about timing.',
   climax:
-    '**Real** **talent** **team** **replied** "**that person doesn\u2019t work here**" from **press@**.\u2029**Stomach** **dropped**.',
+    'An email to **press@** the real company got a same-day reply: **that recruiter does not work here**.',
   victimPain:
-    '**Interview** **outfits** and **hope** **archived** **together** in my **closet**.',
+    'The interview clothes stayed in the closet next to a folder of fake onboarding; hope and embarrassment sat in the same hanger bag.',
   learningVictim:
-    'I now **verify** **offers** through **main** **site** **contact** only.\u2029I wish I\u2019d **waited** for **cheque** **clear** **before** **any** **outbound** **money**.',
+    'I **verify** every offer through the **main careers** contact on the **verified** corporate site—never the thread I was given.',
   learningForReaders: [
-    '**Employers** **never** ask for **your** **money** **upfront**.',
+    '**Employers** do not ask for **your money** upfront or **gift cards** before a cheque clears.',
+    '**Report** impersonation to the **real company** and the **FTC**.',
   ],
 };
 

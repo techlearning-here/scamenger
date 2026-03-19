@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I was **waiting for a tax refund** and checking my mail and email often.\u2029When a message said the **IRS** (or tax office) had a **refund** for me and I had to **claim it** via a link, I thought it was **legit**. I was expecting money back.',
+    'I was **waiting for a tax refund** and checking email often, so when a message said the IRS had money for me and I should claim it through a link, it felt timely—not suspicious.',
   initialPlot:
-    'The email or letter looked **official**—government-style wording, **refund amount**, **link or form to complete**.\u2029I clicked and entered my **personal and bank details** to "receive" the refund. I didn\u2019t get a refund. I got **identity theft** and **fraud**. The message wasn\u2019t from the tax office. It was **phishing**.',
+    'The layout copied government wording and listed a refund amount that sounded plausible. I clicked, entered personal and bank details, and waited for a deposit that never came. Instead, alerts for new accounts started.',
   scamExperience:
-    '**Tax-refund phishing** uses fake government messages to steal your details. Scammers **file fake returns**, **drain accounts**, or **sell your data**. The IRS and real tax agencies **don\u2019t** email or text you to claim a refund via a link. I lost **money and time** fixing the damage.',
+    '**Tax-refund phishing** steals credentials to file fake returns or drain accounts. Real agencies do not email or text "claim your refund" links. I lost **time and money** cleaning up identity theft.',
   victimExperience:
-    'I was **expecting a refund** and the message felt **relevant**. I didn\u2019t want to **miss out**. I **clicked without checking** the real tax agency site. I didn\u2019t think the government would **send a fake**.',
+    'Expecting money made the message feel relevant. I did not want to miss a deadline, so I clicked without typing the URL myself.',
   climax:
-    'When I checked with the real tax office, they said they\u2019d never sent that message. That\u2019s when I knew. The "refund" was a **scam** to steal my details.',
+    'A phone agent on the official line read their policy aloud: they do not initiate refund claims by email. Hearing the rule from a human, not a blog, killed the last hope that the message had been real.',
   victimPain:
-    'I lost **money** and had to **deal with identity theft**. The **stress and shame** were huge. Reporting **helped**.',
+    'Stress and shame stacked while I froze accounts and filed affidavits. Reporting gave me a checklist when my brain wanted to shut down.',
   learningVictim:
-    'I now know: real tax agencies don\u2019t ask you to claim a refund via a link in an email or text. I wish I\u2019d gone to the official site myself.',
+    'I only use tax sites I navigate myself from .gov addresses I bookmark. I wish I had paused at the first link.',
   learningForReaders: [
-    '**The IRS and tax agencies** don\u2019t email or text refund links. Go to the **official .gov site** yourself.',
-    '**Report** tax-related phishing to the IRS and the FTC.',
+    '**IRS and tax agencies** do not email or text refund links—use official **.gov** sites.',
+    '**Report** tax phishing to the IRS and FTC.',
   ],
 };
 

@@ -5,6 +5,9 @@ import { getUsScamSlugs } from '@/data/us-scams';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 
+/** Crawl priority for individual `/stories/[slug]/` pages (below hub `/stories/`, comparable to guide pages). */
+const STORY_PAGE_SITEMAP_PRIORITY = 0.78;
+
 /** Paths with a known content last-modified date (ISO date string). Used for accurate lastmod in sitemap. */
 const PATH_LAST_MODIFIED: Record<string, string> = {
   '/tools/books/': BOOKS_LIST_LAST_UPDATED,
@@ -47,18 +50,6 @@ export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
   const slugs = getUsScamSlugs();
   const now = new Date();
-  const scamUrls = slugs.map((slug) => ({
-    url: `${siteUrl}/us/scams/${slug}/`,
-    lastModified: now,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
-  const storyUrls = SCAM_STORY_ENTRIES.map((entry) => ({
-    url: `${siteUrl}/stories/${entry.slug}/`,
-    lastModified: now,
-    changeFrequency: 'weekly' as const,
-    priority: 0.75,
-  }));
   const staticEntries = STATIC_PATHS.map(({ path, priority, changeFreq }) => {
     const lastMod = PATH_LAST_MODIFIED[path] ? new Date(PATH_LAST_MODIFIED[path]) : now;
     const url = path === '/' ? `${siteUrl}/` : `${siteUrl}${path}`;
@@ -69,5 +60,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority,
     };
   });
-  return [...staticEntries, ...scamUrls, ...storyUrls];
+  /** One URL per row in `SCAM_STORY_ENTRIES` — keeps XML sitemap in sync with `/stories/[slug]` routes. */
+  const storyUrls: MetadataRoute.Sitemap = SCAM_STORY_ENTRIES.map((entry) => ({
+    url: `${siteUrl}/stories/${entry.slug}/`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: STORY_PAGE_SITEMAP_PRIORITY,
+  }));
+  const scamUrls = slugs.map((slug) => ({
+    url: `${siteUrl}/us/scams/${slug}/`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+  return [...staticEntries, ...storyUrls, ...scamUrls];
 }

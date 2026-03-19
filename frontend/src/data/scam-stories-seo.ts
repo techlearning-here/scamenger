@@ -3,9 +3,17 @@
  * Used by /stories/[slug] for meta tags, Open Graph, and JSON-LD.
  */
 
+import type { StoryContent } from '@/data/scam-stories-content/types';
 import type { ScamCategoryId } from '@/data/scams/types';
 
 const META_DESC_MAX_LENGTH = 158;
+
+/** ISO date used in Article schema when per-story dates are not stored (keeps structured data valid). */
+export const STORY_ARTICLE_SCHEMA_DATE_ISO = '2025-01-01T12:00:00.000Z';
+
+const OG_DESC_MAX_LENGTH = 200;
+
+const MIN_EXCERPT_LENGTH = 50;
 
 /** SEO keywords and theme phrases per category for long-tail search and meta keywords. */
 export const STORY_CATEGORY_SEO: Record<
@@ -102,5 +110,63 @@ export function getStorySeo(
     themePhrase,
     articleSection: categoryLabel,
     jsonLdKeywords: keywords,
+  };
+}
+
+/**
+ * Strips paragraph separators and markdown bold markers for use in meta descriptions.
+ */
+export function normalizeStoryFieldForMeta(text: string): string {
+  return text
+    .replace(/\u2029/g, ' ')
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Builds a plain-text excerpt from story body fields for unique meta and OG descriptions.
+ */
+export function buildStoryExcerptPlain(content: StoryContent, maxChars: number): string {
+  const parts = [
+    normalizeStoryFieldForMeta(content.characterIntro),
+    normalizeStoryFieldForMeta(content.initialPlot),
+    normalizeStoryFieldForMeta(content.scamExperience),
+  ].filter(Boolean);
+  let combined = parts.join(' ');
+  if (combined.length < 80) {
+    combined = `${combined} ${normalizeStoryFieldForMeta(content.victimExperience)}`.trim();
+  }
+  if (combined.length <= maxChars) {
+    return combined;
+  }
+  const budget = maxChars - 1;
+  let truncated = combined.slice(0, budget);
+  const lastSpace = truncated.lastIndexOf(' ');
+  if (lastSpace > maxChars * 0.55) {
+    truncated = truncated.slice(0, lastSpace);
+  }
+  return `${truncated}…`;
+}
+
+/**
+ * Replaces generic category blurbs with a content-derived excerpt when the story body is available.
+ */
+export function enhanceStorySeoWithContent(
+  seo: StorySeoResult,
+  content: StoryContent | null
+): StorySeoResult {
+  if (!content) {
+    return seo;
+  }
+  const excerptMeta = buildStoryExcerptPlain(content, META_DESC_MAX_LENGTH);
+  if (excerptMeta.length < MIN_EXCERPT_LENGTH) {
+    return seo;
+  }
+  const excerptOg = buildStoryExcerptPlain(content, OG_DESC_MAX_LENGTH);
+  return {
+    ...seo,
+    metaDescription: excerptMeta,
+    ogDescription: excerptOg,
   };
 }

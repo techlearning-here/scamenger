@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import sitemap from './sitemap';
+import { SCAM_STORY_ENTRIES } from '@/data/scam-stories';
 import { getUsScamSlugs } from '@/data/us-scams';
 
 describe('sitemap', () => {
@@ -38,12 +39,17 @@ describe('sitemap', () => {
     expect(urls).toContain(`${base}/tools/books/`);
   });
 
-  it('includes story index and story slug pages', () => {
+  it('includes story index and every individual story slug from SCAM_STORY_ENTRIES', () => {
     const result = sitemap();
     const urls = result.map((e) => e.url);
     const base = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
     expect(urls).toContain(`${base}/stories/`);
-    expect(urls.some((u) => u.startsWith(`${base}/stories/`) && u !== `${base}/stories/`)).toBe(true);
+    expect(SCAM_STORY_ENTRIES.length).toBeGreaterThan(0);
+    const storyDetailUrls = urls.filter((u) => u.startsWith(`${base}/stories/`) && u !== `${base}/stories/`);
+    expect(storyDetailUrls).toHaveLength(SCAM_STORY_ENTRIES.length);
+    for (const entry of SCAM_STORY_ENTRIES) {
+      expect(urls).toContain(`${base}/stories/${entry.slug}/`);
+    }
   });
 
   it('includes legal and policy pages', () => {

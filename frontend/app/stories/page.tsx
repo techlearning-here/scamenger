@@ -13,14 +13,21 @@ export const metadata: Metadata = {
   title: 'Scam stories – real experiences & lessons',
   description: 'Short, true scam and fraud stories: romance scams, investment fraud, phishing, job scams, and more. Learn from others and report your own experience.',
   keywords: 'scam stories, fraud stories, romance scam story, investment scam story, phishing story, job scam story, real scam experiences',
+  authors: [{ name: 'Scam Avenger', url: siteUrl }],
+  creator: 'Scam Avenger',
+  publisher: 'Scam Avenger',
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   alternates: {
     canonical: `${siteUrl}/stories/`,
     types: { 'application/rss+xml': `${siteUrl}/stories/feed` },
   },
   openGraph: {
+    type: 'website',
     title: 'Scam stories – real experiences & lessons | Scam Avenger',
     description: 'Short, true scam and fraud stories. Learn from others and report your own experience.',
     url: `${siteUrl}/stories/`,
+    siteName: 'Scam Avenger',
+    locale: 'en_US',
     images: [{ url: storiesOgImage, width: 1200, height: 630, alt: 'Scam stories – real experiences' }],
   },
   twitter: {

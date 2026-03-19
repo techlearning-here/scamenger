@@ -4,7 +4,11 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { SCAM_STORY_ENTRIES, getRelatedStories, getHardshipTag, HARDSHIP_TAG_LABELS } from '@/data/scam-stories';
 import { getStoryContent } from '@/data/scam-stories-content';
-import { getStorySeo } from '@/data/scam-stories-seo';
+import {
+  STORY_ARTICLE_SCHEMA_DATE_ISO,
+  enhanceStorySeoWithContent,
+  getStorySeo,
+} from '@/data/scam-stories-seo';
 import { SCAM_CATEGORY_ICONS } from '@/data/scams/icons';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
 import { AdUnitMid } from '@/components/AdUnitMid';
@@ -24,19 +28,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const entry = SCAM_STORY_ENTRIES.find((e) => e.slug === slug);
   if (!entry) return { title: 'Story not found' };
   const categoryLabel = SCAM_CATEGORY_LABELS[entry.category];
-  const seo = getStorySeo(entry.category, categoryLabel, entry.title);
+  const content = getStoryContent(slug);
+  const seo = enhanceStorySeoWithContent(getStorySeo(entry.category, categoryLabel, entry.title), content);
   const url = `${siteUrl}/stories/${slug}/`;
+  const tagList = [...seo.jsonLdKeywords, entry.slug.replace(/-/g, ' '), 'Scam Avenger'].slice(0, 12);
   return {
     title: seo.metaTitle,
     description: seo.metaDescription,
     keywords: seo.keywords,
+    authors: [{ name: 'Scam Avenger', url: siteUrl }],
+    creator: 'Scam Avenger',
+    publisher: 'Scam Avenger',
     alternates: { canonical: url },
+    robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
     openGraph: {
       type: 'article',
       title: seo.ogTitle,
       description: seo.ogDescription,
       url,
       siteName: 'Scam Avenger',
+      locale: 'en_US',
+      publishedTime: STORY_ARTICLE_SCHEMA_DATE_ISO,
+      modifiedTime: STORY_ARTICLE_SCHEMA_DATE_ISO,
       images: [{ url: storiesOgImage, width: 1200, height: 630, alt: entry.title }],
     },
     twitter: {
@@ -47,6 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     other: {
       'article:section': seo.articleSection,
+      'article:tag': tagList.join(', '),
     },
   };
 }
@@ -75,25 +89,35 @@ function renderSectionParagraphs(text: string): React.ReactNode {
   ));
 }
 
-function buildStoryArticleJsonLd(
+/**
+ * Builds Article + BreadcrumbList JSON-LD for a story detail page.
+ */
+function buildStoryPageSchemaGraph(
   entry: { title: string; category: string },
   slug: string,
   seo: ReturnType<typeof getStorySeo>
 ) {
   const url = `${siteUrl}/stories/${slug}/`;
-  return {
-    '@context': 'https://schema.org',
+  const article = {
     '@type': 'Article',
+    '@id': `${url}#article`,
     headline: entry.title,
     description: seo.metaDescription,
     url,
     articleSection: seo.articleSection,
     keywords: seo.jsonLdKeywords.join(', '),
-    datePublished: '2025-01-01',
-    dateModified: '2025-01-01',
+    datePublished: STORY_ARTICLE_SCHEMA_DATE_ISO,
+    dateModified: STORY_ARTICLE_SCHEMA_DATE_ISO,
+    inLanguage: 'en-US',
+    isAccessibleForFree: true,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     isPartOf: {
       '@type': 'WebSite',
+      name: 'Scam Avenger',
+      url: siteUrl,
+    },
+    author: {
+      '@type': 'Organization',
       name: 'Scam Avenger',
       url: siteUrl,
     },
@@ -102,6 +126,25 @@ function buildStoryArticleJsonLd(
       name: 'Scam Avenger',
       url: siteUrl,
     },
+    image: {
+      '@type': 'ImageObject',
+      url: storiesOgImage,
+      width: 1200,
+      height: 630,
+    },
+  };
+  const breadcrumb = {
+    '@type': 'BreadcrumbList',
+    '@id': `${url}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Scam stories', item: `${siteUrl}/stories/` },
+      { '@type': 'ListItem', position: 3, name: entry.title, item: url },
+    ],
+  };
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [article, breadcrumb],
   };
 }
 
@@ -112,16 +155,16 @@ export default async function StorySlugPage({ params }: Props) {
 
   const related = getRelatedStories(slug, entry.category, RELATED_STORIES_COUNT);
   const categoryLabel = SCAM_CATEGORY_LABELS[entry.category];
-  const seo = getStorySeo(entry.category, categoryLabel, entry.title);
-  const storyUrl = `${siteUrl}/stories/${slug}/`;
-  const articleJsonLd = buildStoryArticleJsonLd(entry, slug, seo);
   const content = getStoryContent(slug);
+  const seo = enhanceStorySeoWithContent(getStorySeo(entry.category, categoryLabel, entry.title), content);
+  const storyUrl = `${siteUrl}/stories/${slug}/`;
+  const pageSchemaJsonLd = buildStoryPageSchemaGraph(entry, slug, seo);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchemaJsonLd) }}
       />
       <nav className="back" aria-label="Breadcrumb">
         <Link href="/stories/">Stories</Link>

@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'I went to "**verify**" my **identity** on a **link** from a **text**.\u2029The **site** **stole** it—**photos of ID**, **selfie**, **SSN**.\u2029**Everything** they needed to **become** me.',
+    'I was in line for coffee when a text said the bank would **lock my account** unless I **verified my identity** before the branch closed; I had just paid with that card, so I **tapped the link** while I waited because losing access that night felt plausible.',
   initialPlot:
-    'The **URL** was **one character** off a **real** bank.\u2029I **uploaded** **passport** and **answered** "**mother\u2019s maiden**" questions.\u2029Within **hours**, **password resets** hit my **real** accounts.',
+    'The page asked for my **passport**, a **selfie with the ID**, and the last four digits of my **Social Security number**.\u2029The **URL was one character off** the real bank, which I did not spot on a small screen in daylight.\u2029I uploaded everything, pocketed my drink, and went back to work thinking the problem was solved.',
   scamExperience:
-    '**Phishing** dressed as **KYC** collects **gold-standard** ID **images**.\u2029Sold on **dark markets** or used for **account takeover**.\u2029I lost **control** of **email** first—then **everything** chained.',
+    'That evening **password-reset emails** arrived from services I use, none triggered by me, so I called the bank and stayed on hold through dinner—freezing what I could and changing passwords while I thought about where those **ID images** might go next.',
   victimExperience:
-    'I thought I was **preventing** **fraud**.\u2029The **urgent** text said my **account** would **lock**.\u2029**Fear** beat **caution**.',
+    'That same morning, before any of that, I had told myself that moving fast meant **I was ahead of fraud** and that a **frozen account** would be worse than a five-minute form—so I broke the rule about SMS links on purpose, not by accident.',
   climax:
-    'The **real bank** said "**we didn\u2019t send that SMS**."\u2029That\u2019s when I **saw** the **URL** typo.',
+    'The next day I dialled the **number on the back of the card**; the agent said **they had not sent any verification SMS**.\u2029On my laptop the phishing link showed the **typo in the domain** in a second—small, and the hinge for everything that followed.',
   victimPain:
-    '**Nightmares** about **deepfakes** with my **ID**.\u2029**Therapy** + **legal** **freeze** **helped**.',
+    'I **froze my credit** and left alerts on because I could not know who had the photos; for months, checking statements felt like an extension of that same week, only slower.',
   learningVictim:
-    'I now know: **only** verify on **apps** I **installed** from **stores** or **sites** I **type**.\u2029I wish I\u2019d **screenshot** the **text** and **called** the **bank**.',
+    'I only verify in the **bank’s app** or on a **URL I type myself** in a new tab.\u2029A screenshot of the text and one outbound call would have avoided the whole spiral.',
   learningForReaders: [
-    '**Never** upload ID to **links** from **SMS**.',
-    '**Report** phishing to **APWG** and your **institution**.',
+    '**Never upload ID** through links delivered by **SMS or email**.',
+    '**Report phishing** to your bank and to organisations such as **APWG**.',
   ],
 };
 

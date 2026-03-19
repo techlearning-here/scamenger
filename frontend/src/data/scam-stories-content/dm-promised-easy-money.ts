@@ -2,21 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'An **Instagram** **DM**: "**Make** **$500** **a day** **reshipping**" / "**likes** for **pay**."\u2029I **sent** my **address** and **bank** **details**.\u2029I **almost** became a **mule**; instead I **lost** a **"training** **fee**" and **exposed** my **identity**.',
+    'Finals week left me short on cash, so when an **Instagram DM** offered **five hundred dollars a day** reshipping packages or paid likes, I replied and asked how it worked instead of deleting it—I needed something that fit between classes.',
   initialPlot:
-    'They **mailed** me **packages** "**by mistake**"—I was **supposed** to **relabel** and **forward**.\u2029**Something** felt **off**; I **Googled** **reshipping** **scam** **before** I **shipped**.\u2029Still **lost** the **fee** and **had** to **return** **stolen** **goods** to **police**.',
+    'By the next evening they had my address, emailed a **“training fee”** invoice, and the first parcel arrived with my name on the label and instructions to strip one sticker and forward the box.\u2029The pace felt rushed, so before I sealed anything I sat in the library and searched **“reshipping scam.”**',
   scamExperience:
-    '**Easy money** **DMs** **recruit** **mules** or **extract** **fees**.\u2029**Goods** are **fraud** **purchases**; **forwarding** = **charges**.\u2029I **dodged** **worst** by **pausing**.',
+    'The articles described my week almost step for step: **stolen cards** pay for goods, **mules** forward them, and investigators often start with whoever’s address is on the parcel.\u2029I never forwarded the boxes, but the **training fee** was already gone and they still had my details, so I loaded the parcels into a bag, walked to campus security, and ended up at the police station with a report number.',
   victimExperience:
-    'I was **broke** **student**.\u2029**Desperation** **opened** the **chat**.',
+    'While those messages and parcels were stacking up, I kept telling myself this was **rent and textbooks**, not something criminal, and that anyone that broke would have done the same—**desperation** made it easy to scroll past warnings until the pattern looked too tidy to be a normal job.',
   climax:
-    '**Detective** said "**those labels** are **stolen** **cards**."\u2029**Sweat** **cold** on my **neck**.',
+    'At the station the detective matched the labels to **stolen payment data** and recorded that I had not shipped and had come in on my own, which settled whether I would be treated as tied to the **fraud** or as someone who stopped in time.',
   victimPain:
-    '**Fear** I\u2019d be **charged**—**cleared** after **cooperation** but **scarred**.',
+    'I still lost the **fee**, and for months I half-expected another ping or odd package because my address sat in their system—opening the mailbox stopped feeling routine.',
   learningVictim:
-    'I now know: **if** **money** is **easy**, it\u2019s **illegal** or **fake**.\u2029I wish I\u2019d **blocked** at "**daily** **pay**."',
+    '**Easy money in a DM** is usually someone else’s scheme.\u2029I should have closed the chat at **“daily pay”** and used normal job boards instead of letting a stranger set the tempo of my week.',
   learningForReaders: [
-    '**Never** **forward** **packages** for **strangers**; **report** **recruitment** **DMs**.',
+    '**Never forward packages** for strangers; you may be **laundering stolen goods**.',
+    '**Report recruitment DMs** to the platform and, if you received goods, to **local police**.',
   ],
 };
 

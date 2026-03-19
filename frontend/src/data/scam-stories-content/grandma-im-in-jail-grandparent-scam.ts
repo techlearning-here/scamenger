@@ -2,22 +2,22 @@ import type { StoryContent } from './types';
 
 const content: StoryContent = {
   characterIntro:
-    'The call said: **Grandma, I\u2019m in jail—send money now.**\u2029It sounded like **panic**. It was a **script**.',
+    'The landline rang while I was tidying; a young, shaky voice said **“Grandma?”** and I stopped mid-task because it could have been one of our grandchildren.',
   initialPlot:
-    'They wanted **wire**, **gift cards**, or **cash by courier**—**bail**, **lawyer**, **hospital**.\u2029I sent **money**. My **grandchild** was never in jail. The call was a **grandparent scam**.',
+    'They said **jail**, a lawyer who could not stay on the line, and **not to tell Mum** so she would not worry, then told me to buy **gift cards** for **thousands of pounds** and read the codes to an “attorney.”\u2029I took the car keys while they kept talking; the drive to the supermarket lasted ten minutes with the handset pressed to my ear.',
   scamExperience:
-    '**Emergency family scams** pressure grandparents to **send money fast** without verification. I lost **money**. The story was **lies**.',
+    'In the shop I loaded the gift-card rack while they insisted I **not tell the cashier** what they were for.\u2029The cashier looked at my face, asked if **someone on the phone was telling me what to buy**, and the manager walked me to the office and talked me into putting the cards back before any money left.',
   victimExperience:
-    'I was **scared** and **love** made me want to **help immediately**. I didn\u2019t want to **question** in a crisis.',
+    'On the road I had been convinced that if I hung up or asked too many questions something worse would happen to a child I love, so **gift-card bail** did not sound impossible—it sounded like the fastest way to help before time ran out.',
   climax:
-    'When I reached **parents** or my **grandchild** and learned the truth, I knew. **Scam**.',
+    'From the manager’s office I **video-called my daughter**; my grandchild appeared in the frame at practice, fine, and I hung up the landline extension while the other caller was still insisting I move faster.',
   victimPain:
-    'I lost **savings** and felt **foolish**. Family **support** and reporting **helped**.',
+    'After that, unknown numbers made me tense for weeks, and filing a **fraud report** plus agreeing a **family code word** gave us a fixed step before any payment leaves this house.',
   learningVictim:
-    'I now know: **pause**, **verify** with family on another line, **never** send gift cards for "bail."',
+    '**Bail and gift cards** do not go together in real emergencies.\u2029Our rule now is **call a saved family number** first, no matter how urgent the voice on the line sounds.',
   learningForReaders: [
-    '**Jail / bail** scams target grandparents. **Call back** on a number you **already have**.',
-    '**Report** to the FTC.',
+    '**Hang up** on urgent “family in jail” calls and **call your relative** on a number you already trust.',
+    '**Gift cards for bail or legal fees** are almost always scams—**report** them to the FTC or your national fraud line.',
   ],
 };
 

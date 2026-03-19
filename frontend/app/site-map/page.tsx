@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SCAM_STORY_ENTRIES } from '@/data/scam-stories';
 import { getUsScamSlugs, getUsScamTypes } from '@/data/us-scams';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
@@ -38,7 +39,8 @@ const MAIN_SECTIONS: { path: string; label: string }[] = [
 
 export const metadata: Metadata = {
   title: 'Sitemap – Scam Avenger',
-  description: 'Full list of pages: report a scam, get help, read guides, and find official resources by scam type.',
+  description:
+    'Full list of pages: report a scam, get help, read guides, browse real scam stories, and find official resources by scam type.',
   alternates: { canonical: `${siteUrl}/site-map/` },
 };
 
@@ -77,6 +79,17 @@ export default function SiteMapPage() {
               </li>
             );
           })}
+        </ul>
+      </section>
+
+      <section aria-labelledby="sitemap-stories-heading">
+        <h2 id="sitemap-stories-heading">Scam stories (individual)</h2>
+        <ul className="sitemap-list">
+          {SCAM_STORY_ENTRIES.map((entry) => (
+            <li key={entry.slug}>
+              <Link href={`/stories/${entry.slug}/`}>{entry.title}</Link>
+            </li>
+          ))}
         </ul>
       </section>
 

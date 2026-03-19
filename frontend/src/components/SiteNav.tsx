@@ -32,7 +32,7 @@ export function SiteNav() {
   return (
     <nav className="site_nav" aria-label="Main">
       <div className="site_nav_mobile_header">
-        <Link href="/" className="site_nav_logo" aria-label="Scam Avenger – Home">
+        <Link href="/" className="site_nav_logo" aria-label="Scam Avenger – Home" prefetch={false}>
           <Image src="/icon.png" alt="" width={40} height={40} className="site_nav_logo_img" />
           <span className="site_nav_logo_text">Scam <span className="brand-av">Av</span>enger</span>
         </Link>
@@ -59,7 +59,7 @@ export function SiteNav() {
         }}
       >
         <Link href="/">Home</Link>
-        <div className="site_nav_dropdown" ref={helpRef} suppressHydrationWarning>
+        <div className="site_nav_dropdown" ref={helpRef}>
           <button
             type="button"
             className="site_nav_dropdown_trigger"
@@ -71,10 +71,11 @@ export function SiteNav() {
               e.stopPropagation();
               setHelpOpen((o) => !o);
             }}
-            suppressHydrationWarning
           >
             Get help
-            <span className="site_nav_dropdown_icon" aria-hidden="true" suppressHydrationWarning>▾</span>
+            <span className="site_nav_dropdown_icon" aria-hidden="true">
+              ▾
+            </span>
           </button>
           <div
             id="site_nav_get_help_menu"
@@ -83,17 +84,35 @@ export function SiteNav() {
             aria-labelledby="site_nav_get_help_trigger"
             data-open={helpOpen}
           >
-            <Link href="/lookup-report/" role="menuitem">Look up report</Link>
-            <Link href="/emotional-support/" role="menuitem">Emotional support</Link>
-            <Link href="/immediate-help/" role="menuitem">Immediate response</Link>
-            <Link href="/spot-and-avoid-scams/" role="menuitem">Spot and avoid scams</Link>
+            <Link href="/lookup-report/" role="menuitem" prefetch={false}>
+              Look up report
+            </Link>
+            <Link href="/emotional-support/" role="menuitem" prefetch={false}>
+              Emotional support
+            </Link>
+            <Link href="/immediate-help/" role="menuitem" prefetch={false}>
+              Immediate response
+            </Link>
+            <Link href="/spot-and-avoid-scams/" role="menuitem" prefetch={false}>
+              Spot and avoid scams
+            </Link>
           </div>
         </div>
-        <Link href="/tools/">Tools</Link>
-        <Link href="/stories/">Stories</Link>
-        <Link href="/news/">News</Link>
-        <Link href="/about/">About us</Link>
-        <Link href="/contact/">Contact us</Link>
+        <Link href="/tools/" prefetch={false}>
+          Tools
+        </Link>
+        <Link href="/stories/" prefetch={false}>
+          Stories
+        </Link>
+        <Link href="/news/" prefetch={false}>
+          News
+        </Link>
+        <Link href="/about/" prefetch={false}>
+          About us
+        </Link>
+        <Link href="/contact/" prefetch={false}>
+          Contact us
+        </Link>
         <NavReportScamLink />
       </div>
     </nav>

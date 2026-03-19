@@ -190,7 +190,9 @@ export default function RootLayout({
             </nav>
             <p className="disclaimer disclaimer-long">One free platform to learn about scams and fraud, get guided to the right place to report if you need to, and find support to recover. We help you build awareness and warn others.</p>
             <p className="disclaimer disclaimer-short">Free platform to learn, report, and recover. We help you build awareness and warn others.</p>
-            <p className="copy">&copy; {new Date().getFullYear()} Scam Avenger. 100% free. Links go to official government and trusted sites.</p>
+            <p className="copy" suppressHydrationWarning>
+              &copy; {new Date().getFullYear()} Scam Avenger. 100% free. Links go to official government and trusted sites.
+            </p>
           </div>
         </footer>
         <FabActions />

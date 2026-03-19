@@ -48,108 +48,108 @@ serial_number,title,category,angle_or_region,status,story_file
 47,"""Send money for supplies first."" The family wasn't real.",employment,,done,babysitting-scam-send-money-supplies-first.json
 48,"The ""talent agency"" wanted cash before any gig",employment,,done,fake-modelling-talent-agency.json
 49,The interview asked for my credit card. I should have run.,employment,,done,interview-asked-for-credit-card.json
-50,A pop-up said my computer was infected. I believed it.,online,,pending,pop-up-computer-infected.json
-51,I called the number on the screen. Worst call I ever made.,phone,,pending,i-called-number-on-screen-tech-support.json
-52,"""Microsoft"" called to ""fix"" my PC. They didn't.",phone,,pending,when-microsoft-called-fix-my-pc.json
-53,They called as my bank. I gave them the codes.,phone,,pending,fake-bank-call-got-my-one-time-codes.json
-54,They said they were refunding me. They emptied my account.,phone,,pending,refund-call-emptied-my-account.json
-55,"The voice said ""Grandpa."" It wasn't my grandson.",phone,,pending,scammer-pretended-to-be-my-grandson.json
-56,"""Grandma, I'm in jail—send money now""",phone,,pending,grandma-im-in-jail-grandparent-scam.json
-57,"""IRS"" called. They threatened arrest. I paid.",government,,pending,hmrc-irs-called-demanding-payment.json
-58,"The ""police"" called. The warrant was fake.",government,,pending,fake-police-law-enforcement-call.json
-59,They said my account was at risk. The call was the risk.,phone,,pending,suspicious-activity-call-real-threat.json
-60,The caller ID showed my bank. It wasn't my bank.,phone,,pending,how-they-spoofed-my-banks-number.json
-61,"""Your Social Security number is suspended""—I panicked",government,,pending,social-security-number-suspended.json
-62,"A ""security"" call asked for access. I gave it.",phone,,pending,amazon-paypal-security-call-gave-access.json
-63,"I ""won"" a lottery I'd never even entered",prizes_charity,,pending,i-won-lottery-i-never-entered.json
-64,"I won! I just had to pay a ""fee"" first. I did.",prizes_charity,,pending,prize-required-upfront-fee.json
-65,I wanted to help after the disaster. The charity was fake.,prizes_charity,,pending,fake-charity-after-disaster.json
-66,"""You've been selected!""—for a sweepstakes scam",prizes_charity,,pending,youve-been-selected-sweepstakes-scam.json
-67,A stranger left me money. Or so the email said.,prizes_charity,,pending,fake-inheritance-notice.json
-68,"Free grant—I just had to pay to ""unlock"" it",prizes_charity,,pending,grant-benefit-asked-payment-first.json
-69,"I gave to a ""celebrity"" fundraiser. There was no celebrity.",prizes_charity,,pending,fake-celebrity-charity-fundraiser.json
-70,"Pay ""taxes"" on your winnings first. The prize never came.",prizes_charity,,pending,pay-taxes-on-winnings-before-prize.json
-71,"I ""won"" a cruise. I paid ""fees."" No cruise.",prizes_charity,,pending,cruise-holiday-winner-scam.json
-72,They used a real charity's name. The money didn't go there.,prizes_charity,,pending,donation-scam-used-real-charity-name.json
-73,I paid the deposit. The flat wasn't for rent.,housing,,pending,paid-deposit-flat-wasnt-for-rent.json
-74,"The ""landlord"" was always ""in another country""",housing,,pending,landlord-in-another-country.json
-75,I paid. The keys never came. The listing was fake.,housing,,pending,fake-listing-keys-never-arrived.json
-76,"My deposit vanished—and so did the ""landlord""",housing,,pending,lost-deposit-rental-scam.json
-77,Wire transfer only. No viewings. I sent the money.,housing,,pending,owner-asked-wire-transfer-only.json
-78,"We showed up. The ""vacation rental"" didn't exist.",housing,,pending,vacation-rental-property-didnt-exist.json
-79,I paid for the room upfront. Someone else was already there.,housing,,pending,roommate-scam-paid-upfront-room-taken.json
-80,"The ""agent"" took my deposit and disappeared",housing,,pending,fake-real-estate-agent.json
-81,The photos were someone else's home. I found out too late.,housing,,pending,listing-used-someone-elses-photos.json
-82,Rent-to-own: I paid for years. The deed never came.,housing,,pending,rent-to-own-paid-never-got-deed.json
-83,"""Pay now or we arrest you."" It wasn't the tax office.",government,,pending,irs-hmrc-call-threatened-arrest.json
-84,"I paid ""back taxes"" to someone who wasn't the IRS",government,,pending,i-paid-back-taxes-to-scammer.json
-85,"My ""grant"" was ready—I just had to pay to unlock it",government,,pending,fake-benefit-grant-pay-fee-unlock.json
-86,"""Your visa is cancelled unless you pay now""",government,,pending,visa-cancelled-unless-you-pay.json
-87,They said they were from Social Security. They weren't.,government,,pending,scammers-pretended-social-security.json
-88,"I got a ""jury duty"" notice. The court had never heard of it.",government,,pending,fake-jury-duty-court-fine.json
-89,They offered a refund. They took more than I had.,government,,pending,refund-from-tax-office-took-more.json
-90,I paid for government forms. They're free.,government,,pending,immigration-scam-forms-that-are-free.json
-91,The letter looked official. Every word was a lie.,government,,pending,official-letter-that-wasnt.json
-92,Accounts I never opened—in my name,identity_benefits,,pending,someone-opened-accounts-in-my-name.json
-93,"After the breach, someone became ""me""",identity_benefits,,pending,identity-stolen-after-data-breach.json
-94,I paid to fix my credit. It got worse.,identity_benefits,,pending,fake-credit-fix-made-things-worse.json
-95,Someone used my identity at the hospital,identity_benefits,,pending,medical-identity-theft.json
-96,A tax return was filed in my name. Not by me.,identity_benefits,,pending,someone-filed-tax-return-in-my-name.json
-97,"The ""benefits advisor"" wanted my NI number. I gave it.",identity_benefits,,pending,fake-benefits-advisor-wanted-ni-number.json
-98,I found out my SSN was being used—by someone else,identity_benefits,,pending,found-out-ssn-was-being-misused.json
-99,"I went to ""verify"" my identity. The site stole it.",identity_benefits,,pending,verify-identity-site-stole-it.json
-100,I ordered a phone. The box was empty.,online,,pending,ordered-phone-got-empty-box.json
-101,The site looked like the real brand. It wasn't.,online,,pending,website-looked-like-real-brand.json
-102,I bought concert tickets. The site was fake. No tickets.,online,,pending,lost-money-fake-concert-ticket-site.json
-103,"I paid for a puppy. The ""breeder"" vanished.",online,,pending,puppy-pet-scam-animal-never-came.json
-104,"The ""designer"" bag was a convincing fake",online,,pending,fake-designer-goods-cautionary-tale.json
-105,The Marketplace deal seemed legit. It wasn't.,online,,pending,facebook-marketplace-deal-went-wrong.json
-106,"Pay outside the app, they said. I did. I lost.",online,,pending,seller-asked-payment-outside-app.json
-107,I thought I was buying a car. I was buying a lesson.,online,,pending,thought-buying-car-it-was-scam.json
-108,I tried to cancel. They made it impossible.,online,,pending,subscription-trap-couldnt-cancel.json
-109,Free trial—then they charged me for a full year,online,,pending,free-trial-charged-me-for-year.json
-110,"I installed ""antivirus."" It was the virus.",online,,pending,fake-antivirus-software-was-malware.json
-111,The deal was too good. The goods were fake.,online,,pending,counterfeit-goods-my-story.json
-112,"A WhatsApp from ""my boss"" cost me thousands",online,,pending,whatsapp-message-from-my-boss.json
-113,"I joined a Telegram ""crypto group."" They drained my wallet.",online,,pending,telegram-crypto-group-drained-wallet.json
-114,One friend request. Real money gone.,online,,pending,fake-friend-request-real-loss.json
-115,A DM promised easy money. Delivered the opposite.,online,,pending,dm-promised-easy-money.json
-116,"""Can you receive this and send it on?"" It wasn't a friend.",online,,pending,friend-asked-receive-and-send-money.json
-117,"An Instagram ""brand deal"" wanted my bank details first",online,,pending,instagram-brand-deal-wanted-bank-details.json
-118,"I ""won"" a Discord giveaway. I lost money.",online,,pending,discord-giveaway-was-scam.json
-119,LinkedIn felt safe. The scam didn't.,online,,pending,scammed-via-linkedin.json
-120,"A new ""friend"" had a sob story. I sent money.",online,,pending,facebook-friend-hard-luck-story.json
-121,"A ""wrong number"" on WhatsApp led to investment fraud",online,,pending,whatsapp-wrong-number-investment-fraud.json
-122,My parent was targeted. Here's what our family learned.,other,,pending,how-my-parent-was-targeted.json
-123,My relative sent gift cards to a stranger. We found out too late.,financial,,pending,elderly-relative-sent-gift-cards-stranger.json
-124,"We almost sent money. The ""grandchild"" was a scammer.",phone,,pending,grandchild-in-trouble-call-almost-believed.json
-125,Older adults and romance scams: what we wish we'd known,impersonation,,pending,romance-scam-older-adults-what-we-learned.json
-126,After the tech support scam: how we got our parent back on track,other,,pending,helped-parent-after-tech-support-scam.json
-127,They said there was an inheritance. There wasn't.,prizes_charity,,pending,inheritance-scam-targeting-seniors.json
-128,"A ""health"" scam targeted my family. Here's what happened.",other,,pending,medication-health-scam-targeted-family.json
-129,"The ""financial advisor"" had a different identity—and my money",financial,,pending,financial-advisor-wasnt-who-they-said.json
-130,"I was scammed. Then someone offered to ""recover"" my money.",financial,,pending,scammed-twice-recovery-scam.json
-131,I reported it. Here's what actually happened next.,other,,pending,how-i-reported-it-what-happened-next.json
-132,What I wish I'd known before I lost a cent,other,,pending,what-i-wish-id-known-before-lost-money.json
-133,Looking back: the red flags I missed,other,,pending,signs-i-missed-looking-back-at-scam.json
-134,I got some of it back. Here's how.,other,,pending,how-i-got-part-of-money-back.json
-135,I report every scam now. Here's why.,other,,pending,why-i-report-scams-now.json
-136,We realised we'd been scammed. This is what we did.,other,,pending,what-family-did-after-we-realised-scammed.json
-137,"A ""recovery agent"" wanted more money. I said no.",financial,,pending,lawyer-recovery-agent-wanted-more-money.json
-138,After the loss: how I put the pieces back together,other,,pending,how-i-rebuilt-after-major-loss.json
-139,What I tell everyone about this scam now,other,,pending,what-i-tell-others-about-this-scam.json
-140,The voice was my relative's. The call wasn't.,emerging,,pending,deepfake-ai-voice-scam.json
-141,I scanned the QR code. It wasn't a payment page—it was a trap.,emerging,,pending,qr-code-fake-payment-page.json
-142,"A ""bot"" talked me into paying. I did.",emerging,,pending,ai-bot-convinced-me-to-pay.json
-143,The app was in the store. It was still fake.,emerging,,pending,fake-app-in-store-looked-legitimate.json
-144,"""Support"" asked for my keys. I handed them over.",financial,,pending,crypto-support-took-my-keys.json
-145,We had video calls. The person was still a scammer.,impersonation,,pending,romance-scam-used-video-calls.json
-146,They used a real company's name. The job was fake.,employment,,pending,job-scam-used-real-company-name.json
-147,They used my own posts to make me trust them,online,,pending,scammer-used-my-social-media-against-me.json
-148,"Verify, verify, verify—the loop never stopped",online,,pending,verification-loop-never-ended.json
-149,The address was real. The landlord wasn't.,housing,,pending,rental-scam-real-property-address.json
-150,"A text said I'd won a ""government grant."" I hadn't.",government,,pending,fake-government-grant-via-text.json
-151,They offered a refund—if I shared my screen. I did.,online,,pending,refund-asked-for-screen-share.json
-152,"I called ""customer support."" The scammer answered.",online,,pending,customer-support-was-the-scammer.json
-153,I scanned the parking QR code. My payment went to a scammer.,emerging,,pending,qr-code-parking-meter-paid-wrong-place.json
-154,"""Update your payment details""—the text wasn't from my bank",phone,,pending,update-payment-text-not-from-bank.json
+50,A pop-up said my computer was infected. I believed it.,online,,done,pop-up-computer-infected.json
+51,I called the number on the screen. Worst call I ever made.,phone,,done,i-called-number-on-screen-tech-support.json
+52,"""Microsoft"" called to ""fix"" my PC. They didn't.",phone,,done,when-microsoft-called-fix-my-pc.json
+53,They called as my bank. I gave them the codes.,phone,,done,fake-bank-call-got-my-one-time-codes.json
+54,They said they were refunding me. They emptied my account.,phone,,done,refund-call-emptied-my-account.json
+55,"The voice said ""Grandpa."" It wasn't my grandson.",phone,,done,scammer-pretended-to-be-my-grandson.json
+56,"""Grandma, I'm in jail—send money now""",phone,,done,grandma-im-in-jail-grandparent-scam.json
+57,"""IRS"" called. They threatened arrest. I paid.",government,,done,hmrc-irs-called-demanding-payment.json
+58,"The ""police"" called. The warrant was fake.",government,,done,fake-police-law-enforcement-call.json
+59,They said my account was at risk. The call was the risk.,phone,,done,suspicious-activity-call-real-threat.json
+60,The caller ID showed my bank. It wasn't my bank.,phone,,done,how-they-spoofed-my-banks-number.json
+61,"""Your Social Security number is suspended""—I panicked",government,,done,social-security-number-suspended.json
+62,"A ""security"" call asked for access. I gave it.",phone,,done,amazon-paypal-security-call-gave-access.json
+63,"I ""won"" a lottery I'd never even entered",prizes_charity,,done,i-won-lottery-i-never-entered.json
+64,"I won! I just had to pay a ""fee"" first. I did.",prizes_charity,,done,prize-required-upfront-fee.json
+65,I wanted to help after the disaster. The charity was fake.,prizes_charity,,done,fake-charity-after-disaster.json
+66,"""You've been selected!""—for a sweepstakes scam",prizes_charity,,done,youve-been-selected-sweepstakes-scam.json
+67,A stranger left me money. Or so the email said.,prizes_charity,,done,fake-inheritance-notice.json
+68,"Free grant—I just had to pay to ""unlock"" it",prizes_charity,,done,grant-benefit-asked-payment-first.json
+69,"I gave to a ""celebrity"" fundraiser. There was no celebrity.",prizes_charity,,done,fake-celebrity-charity-fundraiser.json
+70,"Pay ""taxes"" on your winnings first. The prize never came.",prizes_charity,,done,pay-taxes-on-winnings-before-prize.json
+71,"I ""won"" a cruise. I paid ""fees."" No cruise.",prizes_charity,,done,cruise-holiday-winner-scam.json
+72,They used a real charity's name. The money didn't go there.,prizes_charity,,done,donation-scam-used-real-charity-name.json
+73,I paid the deposit. The flat wasn't for rent.,housing,,done,paid-deposit-flat-wasnt-for-rent.json
+74,"The ""landlord"" was always ""in another country""",housing,,done,landlord-in-another-country.json
+75,I paid. The keys never came. The listing was fake.,housing,,done,fake-listing-keys-never-arrived.json
+76,"My deposit vanished—and so did the ""landlord""",housing,,done,lost-deposit-rental-scam.json
+77,Wire transfer only. No viewings. I sent the money.,housing,,done,owner-asked-wire-transfer-only.json
+78,"We showed up. The ""vacation rental"" didn't exist.",housing,,done,vacation-rental-property-didnt-exist.json
+79,I paid for the room upfront. Someone else was already there.,housing,,done,roommate-scam-paid-upfront-room-taken.json
+80,"The ""agent"" took my deposit and disappeared",housing,,done,fake-real-estate-agent.json
+81,The photos were someone else's home. I found out too late.,housing,,done,listing-used-someone-elses-photos.json
+82,Rent-to-own: I paid for years. The deed never came.,housing,,done,rent-to-own-paid-never-got-deed.json
+83,"""Pay now or we arrest you."" It wasn't the tax office.",government,,done,irs-hmrc-call-threatened-arrest.json
+84,"I paid ""back taxes"" to someone who wasn't the IRS",government,,done,i-paid-back-taxes-to-scammer.json
+85,"My ""grant"" was ready—I just had to pay to unlock it",government,,done,fake-benefit-grant-pay-fee-unlock.json
+86,"""Your visa is cancelled unless you pay now""",government,,done,visa-cancelled-unless-you-pay.json
+87,They said they were from Social Security. They weren't.,government,,done,scammers-pretended-social-security.json
+88,"I got a ""jury duty"" notice. The court had never heard of it.",government,,done,fake-jury-duty-court-fine.json
+89,They offered a refund. They took more than I had.,government,,done,refund-from-tax-office-took-more.json
+90,I paid for government forms. They're free.,government,,done,immigration-scam-forms-that-are-free.json
+91,The letter looked official. Every word was a lie.,government,,done,official-letter-that-wasnt.json
+92,Accounts I never opened—in my name,identity_benefits,,done,someone-opened-accounts-in-my-name.json
+93,"After the breach, someone became ""me""",identity_benefits,,done,identity-stolen-after-data-breach.json
+94,I paid to fix my credit. It got worse.,identity_benefits,,done,fake-credit-fix-made-things-worse.json
+95,Someone used my identity at the hospital,identity_benefits,,done,medical-identity-theft.json
+96,A tax return was filed in my name. Not by me.,identity_benefits,,done,someone-filed-tax-return-in-my-name.json
+97,"The ""benefits advisor"" wanted my NI number. I gave it.",identity_benefits,,done,fake-benefits-advisor-wanted-ni-number.json
+98,I found out my SSN was being used—by someone else,identity_benefits,,done,found-out-ssn-was-being-misused.json
+99,"I went to ""verify"" my identity. The site stole it.",identity_benefits,,done,verify-identity-site-stole-it.json
+100,I ordered a phone. The box was empty.,online,,done,ordered-phone-got-empty-box.json
+101,The site looked like the real brand. It wasn't.,online,,done,website-looked-like-real-brand.json
+102,I bought concert tickets. The site was fake. No tickets.,online,,done,lost-money-fake-concert-ticket-site.json
+103,"I paid for a puppy. The ""breeder"" vanished.",online,,done,puppy-pet-scam-animal-never-came.json
+104,"The ""designer"" bag was a convincing fake",online,,done,fake-designer-goods-cautionary-tale.json
+105,The Marketplace deal seemed legit. It wasn't.,online,,done,facebook-marketplace-deal-went-wrong.json
+106,"Pay outside the app, they said. I did. I lost.",online,,done,seller-asked-payment-outside-app.json
+107,I thought I was buying a car. I was buying a lesson.,online,,done,thought-buying-car-it-was-scam.json
+108,I tried to cancel. They made it impossible.,online,,done,subscription-trap-couldnt-cancel.json
+109,Free trial—then they charged me for a full year,online,,done,free-trial-charged-me-for-year.json
+110,"I installed ""antivirus."" It was the virus.",online,,done,fake-antivirus-software-was-malware.json
+111,The deal was too good. The goods were fake.,online,,done,counterfeit-goods-my-story.json
+112,"A WhatsApp from ""my boss"" cost me thousands",online,,done,whatsapp-message-from-my-boss.json
+113,"I joined a Telegram ""crypto group."" They drained my wallet.",online,,done,telegram-crypto-group-drained-wallet.json
+114,One friend request. Real money gone.,online,,done,fake-friend-request-real-loss.json
+115,A DM promised easy money. Delivered the opposite.,online,,done,dm-promised-easy-money.json
+116,"""Can you receive this and send it on?"" It wasn't a friend.",online,,done,friend-asked-receive-and-send-money.json
+117,"An Instagram ""brand deal"" wanted my bank details first",online,,done,instagram-brand-deal-wanted-bank-details.json
+118,"I ""won"" a Discord giveaway. I lost money.",online,,done,discord-giveaway-was-scam.json
+119,LinkedIn felt safe. The scam didn't.,online,,done,scammed-via-linkedin.json
+120,"A new ""friend"" had a sob story. I sent money.",online,,done,facebook-friend-hard-luck-story.json
+121,"A ""wrong number"" on WhatsApp led to investment fraud",online,,done,whatsapp-wrong-number-investment-fraud.json
+122,My parent was targeted. Here's what our family learned.,other,,done,how-my-parent-was-targeted.json
+123,My relative sent gift cards to a stranger. We found out too late.,financial,,done,elderly-relative-sent-gift-cards-stranger.json
+124,"We almost sent money. The ""grandchild"" was a scammer.",phone,,done,grandchild-in-trouble-call-almost-believed.json
+125,Older adults and romance scams: what we wish we'd known,impersonation,,done,romance-scam-older-adults-what-we-learned.json
+126,After the tech support scam: how we got our parent back on track,other,,done,helped-parent-after-tech-support-scam.json
+127,They said there was an inheritance. There wasn't.,prizes_charity,,done,inheritance-scam-targeting-seniors.json
+128,"A ""health"" scam targeted my family. Here's what happened.",other,,done,medication-health-scam-targeted-family.json
+129,"The ""financial advisor"" had a different identity—and my money",financial,,done,financial-advisor-wasnt-who-they-said.json
+130,"I was scammed. Then someone offered to ""recover"" my money.",financial,,done,scammed-twice-recovery-scam.json
+131,I reported it. Here's what actually happened next.,other,,done,how-i-reported-it-what-happened-next.json
+132,What I wish I'd known before I lost a cent,other,,done,what-i-wish-id-known-before-lost-money.json
+133,Looking back: the red flags I missed,other,,done,signs-i-missed-looking-back-at-scam.json
+134,I got some of it back. Here's how.,other,,done,how-i-got-part-of-money-back.json
+135,I report every scam now. Here's why.,other,,done,why-i-report-scams-now.json
+136,We realised we'd been scammed. This is what we did.,other,,done,what-family-did-after-we-realised-scammed.json
+137,"A ""recovery agent"" wanted more money. I said no.",financial,,done,lawyer-recovery-agent-wanted-more-money.json
+138,After the loss: how I put the pieces back together,other,,done,how-i-rebuilt-after-major-loss.json
+139,What I tell everyone about this scam now,other,,done,what-i-tell-others-about-this-scam.json
+140,The voice was my relative's. The call wasn't.,emerging,,done,deepfake-ai-voice-scam.json
+141,I scanned the QR code. It wasn't a payment page—it was a trap.,emerging,,done,qr-code-fake-payment-page.json
+142,"A ""bot"" talked me into paying. I did.",emerging,,done,ai-bot-convinced-me-to-pay.json
+143,The app was in the store. It was still fake.,emerging,,done,fake-app-in-store-looked-legitimate.json
+144,"""Support"" asked for my keys. I handed them over.",financial,,done,crypto-support-took-my-keys.json
+145,We had video calls. The person was still a scammer.,impersonation,,done,romance-scam-used-video-calls.json
+146,They used a real company's name. The job was fake.,employment,,done,job-scam-used-real-company-name.json
+147,They used my own posts to make me trust them,online,,done,scammer-used-my-social-media-against-me.json
+148,"Verify, verify, verify—the loop never stopped",online,,done,verification-loop-never-ended.json
+149,The address was real. The landlord wasn't.,housing,,done,rental-scam-real-property-address.json
+150,"A text said I'd won a ""government grant."" I hadn't.",government,,done,fake-government-grant-via-text.json
+151,They offered a refund—if I shared my screen. I did.,online,,done,refund-asked-for-screen-share.json
+152,"I called ""customer support."" The scammer answered.",online,,done,customer-support-was-the-scammer.json
+153,I scanned the parking QR code. My payment went to a scammer.,emerging,,done,qr-code-parking-meter-paid-wrong-place.json
+154,"""Update your payment details""—the text wasn't from my bank",phone,,done,update-payment-text-not-from-bank.json

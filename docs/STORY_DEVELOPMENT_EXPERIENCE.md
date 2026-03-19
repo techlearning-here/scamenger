@@ -92,7 +92,19 @@ This is enforced in the skill and in **docs/SCAM_STORIES_STRUCTURE_for_Writer.md
 
 ---
 
-## 8. Summary: CSV columns and workflow
+## 8. Template batches vs. final copy (SEO & voice)
+
+**Context:** For speed, large batches of stories were sometimes created with a **shared template** opener and generic section text, then dropped into `frontend/src/data/scam-stories-content/{slug}.ts`.
+
+**Reflection:**
+
+- **Template-driven files are not “final” for SEO or read-aloud/voice:** search engines and listeners benefit from **unique**, **story-specific** scenes, stakes, and reader takeaways (same structure as hand-written batches: distinct `characterIntro` through `learningForReaders`, `\u2029` breaks, consistent bolding).
+- **Plan a gradual swap:** treat template output as **placeholder** until each slug is replaced with richer first-person copy aligned with **docs/SCAM_STORIES_STRUCTURE_for_Writer.md**.
+- **Optional tooling:** `frontend/scripts/generate-pending-story-files.py` can bootstrap files; enrichment is a **separate editorial** step—do not assume the Python output is publish-quality narrative.
+
+---
+
+## 9. Summary: CSV columns and workflow
 
 | Column            | Purpose |
 |-------------------|--------|
@@ -107,7 +119,7 @@ This is enforced in the skill and in **docs/SCAM_STORIES_STRUCTURE_for_Writer.md
 
 ---
 
-## 9. Where it’s documented
+## 10. Where it’s documented
 
 | Topic                    | Location |
 |--------------------------|----------|

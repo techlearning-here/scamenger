@@ -1261,7 +1261,8 @@ ul.scam-cards-grid {
   pointer-events: none;
 }
 
-.site_nav a:last-child::after {
+/* Last top-level nav link: avoid stray "|" when Report is wrapped in a span (not :last-child). */
+.site_nav_menu > a:last-of-type::after {
   display: none;
 }
 
@@ -1270,12 +1271,21 @@ ul.scam-cards-grid {
   text-decoration: none;
 }
 
+.site_nav_report_wrap {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.site_nav_report_wrap--hidden {
+  display: none;
+}
+
 .site_nav_report {
   background: var(--color-accent);
   color: #fff !important;
   padding: var(--space-sm) var(--space-md) !important;
   border-radius: var(--radius);
-  margin-left: auto;
 }
 
 .site_nav_report:hover {
@@ -1407,8 +1417,8 @@ ul.scam-cards-grid {
     border-bottom: none;
   }
 
-  .site_nav_menu .site_nav_report {
-    display: none;
+  .site_nav_menu .site_nav_report_wrap {
+    display: none !important;
   }
 
   .site_nav_dropdown {

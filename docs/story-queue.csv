@@ -26,28 +26,28 @@ serial_number,title,category,angle_or_region,status,story_file
 25,"The ""guru"" and the pump-and-dump group that cleaned me out",financial,,done,pump-and-dump-fake-guru-investment-group.json
 26,The email looked exactly like my bank's. It wasn't.,online,,done,email-looked-like-from-my-bank.json
 27,I clicked the link. Everything changed.,online,,done,i-clicked-the-link-phishing-story.json
-28,"""Your account is suspended""—I panicked and paid",online,,pending,fake-account-suspended-email-cost-me.json
-29,A text about my delivery ended with my card drained,online,,pending,delivery-text-stole-card-details.json
+28,"""Your account is suspended""—I panicked and paid",online,,done,fake-account-suspended-email-cost-me.json
+29,A text about my delivery ended with my card drained,online,,done,delivery-text-stole-card-details.json
 30,"""LPG payment pending""—one click, and my phone was hijacked and money from my bank account was gone",online,,done,lpg-payment-pending-link-phone-hijacked.json
-31,"""Amazon"" wanted me to verify. I did. They weren't Amazon.",online,,pending,when-amazon-asked-verify-account.json
-32,I thought it was the IRS. The refund was a trick.,government,,pending,tax-refund-phishing-thought-irs.json
-33,I was one click away from handing over my password,online,,pending,almost-gave-password-fake-microsoft-page.json
-34,The DocuSign looked 100% real. The link wasn't.,online,,pending,docusign-scam-looked-real.json
-35,"I ""accidentally"" paid an invoice. To a scammer.",online,,pending,fake-invoice-email-paid-scammer-mistake.json
-36,They knew my name and my boss's. I bit.,online,,pending,spear-phishing-knew-my-name-and-boss.json
-37,"The ""remote job"" wanted my bank details before I started",employment,,pending,remote-job-asked-for-bank-details.json
-38,I paid for a training kit. The job never existed.,employment,,pending,paid-training-kit-job-didnt-exist.json
-39,I lost money before I'd even had day one,employment,,pending,fake-recruiter-lost-money-before-day-one.json
-40,"Easy money for ""mystery shopping""—sounded perfect",employment,,pending,mystery-shopper-scam-easy-money.json
-41,"My ""employer"" sent a cheque. I deposited it. Then the nightmare started.",employment,,pending,employer-sent-fake-cheque-deposit.json
-42,I thought I had a job. I was shipping for criminals.,employment,,pending,reshipping-scam-unwitting-parcel-mule.json
-43,The LinkedIn offer was dream-level. It was a scam.,employment,,pending,linkedin-job-offer-too-good-to-be-true.json
-44,"I almost moved ""company"" money. It wasn't company money.",employment,,pending,almost-became-money-mule.json
-45,Visa + dream job—I paid thousands. Got neither.,employment,,pending,fake-visa-job-offer-paid-thousands-upfront.json
-46,Work from home—all they wanted was my ID. Red flag.,employment,,pending,work-from-home-scheme-wanted-my-id.json
-47,"""Send money for supplies first."" The family wasn't real.",employment,,pending,babysitting-scam-send-money-supplies-first.json
-48,"The ""talent agency"" wanted cash before any gig",employment,,pending,fake-modelling-talent-agency.json
-49,The interview asked for my credit card. I should have run.,employment,,pending,interview-asked-for-credit-card.json
+31,"""Amazon"" wanted me to verify. I did. They weren't Amazon.",online,,done,when-amazon-asked-verify-account.json
+32,I thought it was the IRS. The refund was a trick.,government,,done,tax-refund-phishing-thought-irs.json
+33,I was one click away from handing over my password,online,,done,almost-gave-password-fake-microsoft-page.json
+34,The DocuSign looked 100% real. The link wasn't.,online,,done,docusign-scam-looked-real.json
+35,"I ""accidentally"" paid an invoice. To a scammer.",online,,done,fake-invoice-email-paid-scammer-mistake.json
+36,They knew my name and my boss's. I bit.,online,,done,spear-phishing-knew-my-name-and-boss.json
+37,"The ""remote job"" wanted my bank details before I started",employment,,done,remote-job-asked-for-bank-details.json
+38,I paid for a training kit. The job never existed.,employment,,done,paid-training-kit-job-didnt-exist.json
+39,I lost money before I'd even had day one,employment,,done,fake-recruiter-lost-money-before-day-one.json
+40,"Easy money for ""mystery shopping""—sounded perfect",employment,,done,mystery-shopper-scam-easy-money.json
+41,"My ""employer"" sent a cheque. I deposited it. Then the nightmare started.",employment,,done,employer-sent-fake-cheque-deposit.json
+42,I thought I had a job. I was shipping for criminals.,employment,,done,reshipping-scam-unwitting-parcel-mule.json
+43,The LinkedIn offer was dream-level. It was a scam.,employment,,done,linkedin-job-offer-too-good-to-be-true.json
+44,"I almost moved ""company"" money. It wasn't company money.",employment,,done,almost-became-money-mule.json
+45,Visa + dream job—I paid thousands. Got neither.,employment,,done,fake-visa-job-offer-paid-thousands-upfront.json
+46,Work from home—all they wanted was my ID. Red flag.,employment,,done,work-from-home-scheme-wanted-my-id.json
+47,"""Send money for supplies first."" The family wasn't real.",employment,,done,babysitting-scam-send-money-supplies-first.json
+48,"The ""talent agency"" wanted cash before any gig",employment,,done,fake-modelling-talent-agency.json
+49,The interview asked for my credit card. I should have run.,employment,,done,interview-asked-for-credit-card.json
 50,A pop-up said my computer was infected. I believed it.,online,,pending,pop-up-computer-infected.json
 51,I called the number on the screen. Worst call I ever made.,phone,,pending,i-called-number-on-screen-tech-support.json
 52,"""Microsoft"" called to ""fix"" my PC. They didn't.",phone,,pending,when-microsoft-called-fix-my-pc.json

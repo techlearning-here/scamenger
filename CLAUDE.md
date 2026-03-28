@@ -57,6 +57,16 @@ Set as GitHub Actions secrets and pass them in the workflow `env:` block, or use
 
 Add an entry to the `US_SCAMS` array in `src/data/scams/data.ts` following the `UsScamType` interface. The slug determines the URL: `/us/scams/{slug}/`. No other file changes are needed for the detail page — `getStaticPaths()` picks it up automatically. To surface it in a category page, add a link in the relevant `src/pages/us/*.astro` file.
 
+### GitHub CLI authentication
+
+Credentials are stored in `frontend/.secrets` (gitignored). Before running any `gh` CLI command, load the token:
+
+```bash
+source frontend/.secrets && GH_TOKEN="$GH_TOKEN" gh <command>
+# or export for the session:
+export $(cat frontend/.secrets | xargs) && gh <command>
+```
+
 ### Adding a new country
 
 Country content goes under `src/pages/{country-code}/`. The root index page is a country picker; add the new country as an `<option>` there and populate its scam topics similarly to the US data pattern.

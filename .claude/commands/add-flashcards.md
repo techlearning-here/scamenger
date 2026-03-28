@@ -1,3 +1,8 @@
+---
+name: add-flashcards
+description: Pick 5 pending stories from story-queue.csv, verify flashcard rendering via Playwright E2E, mark FlashCardAdded=True in CSV, commit, push, and open a GitHub PR — all from a dedicated git worktree.
+---
+
 # add-flashcards
 
 Pick 5 stories from `docs/story-queue.csv` where `FlashCardAdded` is `False`, verify each renders flashcards via Playwright, mark them done in the CSV, commit, push, and open a PR — all from a dedicated git worktree.

@@ -7096,3 +7096,292 @@ summary.spot-avoid-accordion-summary {
 .sitemap-list { list-style: disc; margin: 0 0 var(--space-lg); padding-left: 1.5rem; }
 .sitemap-list li { margin-bottom: var(--space-xs); }
 .sitemap-xml { font-size: 0.95rem; color: var(--color-text-muted); margin-top: var(--space-xl); }
+
+/* ——— Flashcards ——— */
+.flashcards-section {
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-xl);
+  background: linear-gradient(160deg, #f4faf8 0%, #edf5f3 100%);
+  border: 1px solid rgba(13, 122, 111, 0.15);
+  border-radius: 12px;
+}
+
+.flashcards-header {
+  margin-bottom: var(--space-lg);
+}
+
+.flashcards-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 var(--space-xs);
+}
+
+.flashcards-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Dot progress indicator */
+.flashcards-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-lg);
+}
+
+.flashcards-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(13, 122, 111, 0.2);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.flashcards-dot--active {
+  width: 22px;
+  border-radius: 4px;
+  background: var(--color-calm);
+}
+
+.flashcards-dot--done {
+  background: var(--color-calm);
+  opacity: 0.35;
+}
+
+/* Scene provides 3D perspective context */
+.flashcard-scene {
+  perspective: 1200px;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.flashcard-scene:focus-visible .flashcard {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+/*
+ * Card: CSS grid places both faces in the same cell so height is content-driven.
+ * transform-style: preserve-3d keeps child transforms in 3D space.
+ */
+.flashcard {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border-radius: 10px;
+}
+
+.flashcard--flipped {
+  transform: rotateY(180deg);
+}
+
+/*
+ * Both faces in grid-area 1/1 (same cell).
+ * backface-visibility: hidden hides each face when rotated away from viewer.
+ * Back face starts at rotateY(180deg) so it's invisible initially.
+ */
+.flashcard__face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 10px;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+}
+
+/* Front: clean white card */
+.flashcard__front {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.04);
+  justify-content: flex-start;
+}
+
+/* Back: deep teal — makes the reveal feel dramatic */
+.flashcard__back {
+  background: linear-gradient(140deg, #0d7a6f 0%, #0a6660 100%);
+  border: none;
+  box-shadow: 0 4px 20px rgba(13, 122, 111, 0.3);
+  transform: rotateY(180deg);
+  justify-content: center;
+}
+
+/* Label badge on front: "True or false?" */
+.flashcard__label {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-calm);
+  background: rgba(13, 122, 111, 0.1);
+  border: 1px solid rgba(13, 122, 111, 0.2);
+  border-radius: 100px;
+  padding: 3px 10px;
+  margin-bottom: var(--space-md);
+}
+
+/* Main statement text on front */
+.flashcard__statement {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+/* "Tap to flip" hint at the bottom of front */
+.flashcard__hint {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-lg);
+  align-self: flex-start;
+}
+
+/* Verdict: "True" / "Right" / "Warning sign" — prominent on back */
+.flashcard__verdict {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: var(--space-sm);
+}
+
+/* Supporting explanation text on back */
+.flashcard__explanation {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Self-assessment buttons */
+.flashcards-assess {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.flashcards-btn {
+  padding: 13px var(--space-lg);
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+  transition: all 0.15s ease;
+}
+
+.flashcards-btn--got {
+  background: var(--color-calm);
+  color: #fff;
+  border: 2px solid var(--color-calm);
+}
+
+.flashcards-btn--got:hover {
+  background: var(--color-trust);
+  border-color: var(--color-trust);
+}
+
+.flashcards-btn--missed {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 2px solid var(--color-border);
+}
+
+.flashcards-btn--missed:hover {
+  color: #b91c1c;
+  border-color: #fca5a5;
+  background: #fff5f5;
+}
+
+/* Results screen */
+.flashcards-results {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.flashcards-score-ring {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-bottom: var(--space-sm);
+}
+
+.flashcards-score-num {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--color-calm);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.flashcards-score-denom {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.flashcards-score-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-md);
+}
+
+.flashcards-outcome {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.flashcards-outcome--perfect {
+  color: var(--color-calm);
+  font-weight: 500;
+}
+
+.flashcards-outcome--retry {
+  color: var(--color-text-muted);
+}
+
+.flashcards-retry-btn {
+  margin-top: var(--space-lg);
+  padding: 13px var(--space-xl);
+  background: var(--color-calm);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+  transition: background 0.15s ease;
+}
+
+.flashcards-retry-btn:hover {
+  background: var(--color-trust);
+}

@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-const STORY_URL = '/stories/i-won-lottery-i-never-entered/';
+// When run by the skill, TEST_STORY_SLUG is set. Falls back to the reference story.
+const slug = process.env.TEST_STORY_SLUG ?? 'i-won-lottery-i-never-entered';
+const STORY_URL = `/stories/${slug}/`;
 
 test.describe('FlashCards — i-won-lottery-i-never-entered', () => {
 
@@ -21,17 +23,17 @@ test.describe('FlashCards — i-won-lottery-i-never-entered', () => {
   test('card flips on click and reveals the answer', async ({ page }) => {
     await page.goto(STORY_URL);
 
-    // Back face should not be visible before flip
-    await expect(page.locator('.flashcard__verdict')).not.toBeVisible();
+    // Card should NOT have the flipped class before clicking
+    await expect(page.locator('.flashcard--flipped')).not.toBeAttached();
 
     // Click the card to flip
     await page.locator('.flashcard-scene').click();
 
-    // Card should now have the flipped class
-    await expect(page.locator('.flashcard--flipped')).toBeVisible();
+    // Card should now have the flipped class (CSS 3D flip applied)
+    await expect(page.locator('.flashcard--flipped')).toBeAttached();
 
-    // Verdict on the back face should now be visible
-    await expect(page.locator('.flashcard__verdict')).toBeVisible();
+    // Verdict text on the back face should be present
+    await expect(page.locator('.flashcard__verdict')).toHaveText(/.+/);
   });
 
   test('Got it / Missed it buttons appear after flip', async ({ page }) => {

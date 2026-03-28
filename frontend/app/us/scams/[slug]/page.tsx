@@ -7,6 +7,8 @@ import { AdUnitMid } from '@/components/AdUnitMid';
 import { CategoryIntro } from '@/components/CategoryIntro';
 import { ProgressSteps } from '@/components/ProgressSteps';
 import { ReportCard } from '@/components/ReportCard';
+import { FlashCards } from '@/components/FlashCards';
+import { buildScamCards } from '@/lib/buildFlashCards';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
 const defaultScamOgImage = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&h=630&auto=format&fit=crop';
@@ -216,6 +218,8 @@ export default async function ScamSlugPage({ params }: PageProps) {
           </ul>
         </section>
       ) : null}
+
+      <FlashCards cards={buildScamCards(scam)} />
 
       <p className="scam-recommended-reading">
         Build your knowledge: <Link href="/tools/books/">Recommended reading — books &amp; free websites on financial literacy and fraud awareness</Link>

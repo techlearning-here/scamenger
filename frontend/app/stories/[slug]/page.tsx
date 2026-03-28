@@ -12,6 +12,8 @@ import {
 import { SCAM_CATEGORY_ICONS } from '@/data/scams/icons';
 import { SCAM_CATEGORY_LABELS } from '@/data/scams/types';
 import { AdUnitMid } from '@/components/AdUnitMid';
+import { FlashCards } from '@/components/FlashCards';
+import { buildStoryCards } from '@/lib/buildFlashCards';
 import { StoryShareButtons } from './StoryShareButtons';
 
 const siteUrl = process.env.PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://scamenger.com';
@@ -198,6 +200,7 @@ export default async function StorySlugPage({ params }: Props) {
             <p className="story-page-section-body">
               For more help, see our <Link href="/report/">Report a scam</Link> page and <Link href="/spot-and-avoid-scams/">Spot and avoid scams</Link> guide.
             </p>
+            <FlashCards cards={buildStoryCards(content)} />
           </div>
         ) : (
           <p className="story-page-coming">
